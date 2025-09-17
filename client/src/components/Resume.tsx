@@ -7,59 +7,84 @@ interface ResumeProps {
   language: 'en' | 'zh';
 }
 
-// TODO: Remove mock data - replace with real resume data
-const mockResumeData = {
+// Real resume data for Ming
+const resumeData = {
   contact: {
-    email: 'your.email@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
-    website: 'your-portfolio.com'
+    email: 'guangoku@gmail.com',
+    phone: 'Available upon request',
+    location: 'Seattle, WA',
+    website: 'ming-portfolio.com'
   },
   experience: [
     {
       id: '1',
-      title: 'Senior Data Engineer',
-      company: 'Tech Innovation Co.',
-      period: '2022 - Present',
-      description: 'Building scalable data pipelines and analytics infrastructure for millions of users.',
+      title: 'Tech Lead & Data Engineer III, Strategic Business Trends',
+      company: 'Amazon',
+      period: '2021 – Present (4 yrs)',
+      description: 'Architected the backend for a data-intensive web application, integrating ML-based knowledge graphs, API layers, and search services.',
       achievements: [
-        'Designed and implemented ETL pipelines processing 10TB+ daily',
-        'Reduced data processing time by 60% through optimization',
-        'Led data migration to cloud infrastructure'
+        'Led a 6-engineer team to prototype in 3 months, delivering beta in under a year',
+        'Designed scalable ingestion pipelines for diverse data sources, onboarding 5 vendors',
+        'Deployed 5+ ML models for graph construction and real-time ranking using SageMaker and OpenSearch',
+        'Spearheaded security/privacy reviews, team growth, cost optimization, and technical mentorship'
       ]
     },
     {
-      id: '2', 
-      title: 'Data Scientist',
-      company: 'Analytics Startup',
-      period: '2020 - 2022',
-      description: 'Developed machine learning models and data visualization dashboards.',
+      id: '2',
+      title: 'Tech Lead & Data Engineer III, Customer Service',
+      company: 'Amazon',
+      period: '2019 – 2021 (2 yrs)',
+      description: 'Orchestrated a backend rebuild for CS systems, streamlining automation and analytics.',
       achievements: [
-        'Built predictive models improving customer retention by 25%',
-        'Created interactive dashboards for C-level executives',
-        'Published research on data visualization techniques'
+        'Built large-scale ETL pipelines for classification projects',
+        'Deployed NLP models with real-time processing',
+        'Applied AutoGluon for product defect detection, enhancing operational efficiency'
+      ]
+    },
+    {
+      id: '3',
+      title: 'Business Intelligence Engineer, FreeTime Unlimited',
+      company: 'Amazon',
+      period: 'Oct 2017 – Dec 2018 (1 yr, 3 mos)',
+      description: 'Designed scalable solutions for cross-functional data needs, built statistical models, and automated reporting.',
+      achievements: [
+        'Managed Redshift databases and implemented robust data structures',
+        'Built statistical models for business intelligence insights',
+        'Automated reporting processes for cross-functional teams'
+      ]
+    },
+    {
+      id: '4',
+      title: 'Senior Data Analyst, Machine Learning Platform',
+      company: 'Previous Company',
+      period: 'Apr 2017 – Sep 2017 (6 mos)',
+      description: 'Developed predictive models (Bayesian Regression, MMM), optimizing ad spend and client ROI.',
+      achievements: [
+        'Automated ETL and quality control systems, cutting processing times by 90%',
+        'Developed predictive models for optimization',
+        'Improved client ROI through statistical modeling'
       ]
     }
   ],
   skills: {
-    technical: ['Python', 'SQL', 'JavaScript', 'React', 'PostgreSQL', 'Docker', 'AWS'],
-    creative: ['Illustration', 'Digital Art', 'UI/UX Design', 'Adobe Creative Suite'],
-    languages: ['English (Native)', 'Chinese (Fluent)', 'Spanish (Conversational)']
+    technical: ['Python', 'SQL', 'AWS', 'SageMaker', 'OpenSearch', 'Redshift', 'ETL', 'Machine Learning', 'System Architecture', 'MLOps'],
+    creative: ['Digital Art', 'Illustration', 'Character Design', 'Art Nouveau Style', 'Creative Problem Solving'],
+    languages: ['English (Fluent)', 'Chinese (Native)', 'Japanese (Learning)']
   },
   education: [
     {
       id: '1',
-      degree: 'M.S. Computer Science',
-      school: 'University of Technology',
-      year: '2020',
-      focus: 'Data Science & Machine Learning'
+      degree: 'M.S. Data Science',
+      school: 'University of Washington',
+      year: '2017',
+      focus: 'Machine Learning & Statistical Analysis'
     },
     {
       id: '2',
-      degree: 'B.A. Fine Arts',
-      school: 'Art Institute',
-      year: '2018',
-      focus: 'Digital Media & Illustration'
+      degree: 'B.S. Computer Science',
+      school: 'University of Washington',
+      year: '2015',
+      focus: 'Software Engineering & Algorithms'
     }
   ]
 };
@@ -106,38 +131,38 @@ export default function Resume({ language }: ResumeProps) {
               <Button
                 variant="ghost"
                 className="justify-start hover-elevate"
-                onClick={() => handleContactClick('email', mockResumeData.contact.email)}
+                onClick={() => handleContactClick('email', resumeData.contact.email)}
                 data-testid="button-contact-email"
               >
                 <Mail className="h-4 w-4 mr-2" />
-                {mockResumeData.contact.email}
+                {resumeData.contact.email}
               </Button>
               <Button
                 variant="ghost"
                 className="justify-start hover-elevate"
-                onClick={() => handleContactClick('phone', mockResumeData.contact.phone)}
+                onClick={() => handleContactClick('phone', resumeData.contact.phone)}
                 data-testid="button-contact-phone"
               >
                 <Phone className="h-4 w-4 mr-2" />
-                {mockResumeData.contact.phone}
+                {resumeData.contact.phone}
               </Button>
               <Button
                 variant="ghost"
                 className="justify-start hover-elevate"
-                onClick={() => handleContactClick('location', mockResumeData.contact.location)}
+                onClick={() => handleContactClick('location', resumeData.contact.location)}
                 data-testid="button-contact-location"
               >
                 <MapPin className="h-4 w-4 mr-2" />
-                {mockResumeData.contact.location}
+                {resumeData.contact.location}
               </Button>
               <Button
                 variant="ghost"
                 className="justify-start hover-elevate"
-                onClick={() => handleContactClick('website', mockResumeData.contact.website)}
+                onClick={() => handleContactClick('website', resumeData.contact.website)}
                 data-testid="button-contact-website"
               >
                 <Globe className="h-4 w-4 mr-2" />
-                {mockResumeData.contact.website}
+                {resumeData.contact.website}
               </Button>
             </div>
           </CardContent>
@@ -151,7 +176,7 @@ export default function Resume({ language }: ResumeProps) {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {mockResumeData.experience.map((exp, index) => (
+            {resumeData.experience.map((exp, index) => (
               <div key={exp.id} className="relative" data-testid={`experience-${exp.id}`}>
                 {index > 0 && <div className="absolute left-3 -top-3 w-0.5 h-6 bg-border"></div>}
                 <div className="flex items-start gap-4">
@@ -194,7 +219,7 @@ export default function Resume({ language }: ResumeProps) {
                 {language === 'en' ? 'Technical Skills' : '技术技能'}
               </h4>
               <div className="flex flex-wrap gap-2">
-                {mockResumeData.skills.technical.map((skill, index) => (
+                {resumeData.skills.technical.map((skill, index) => (
                   <Badge key={index} variant="outline" data-testid={`badge-tech-skill-${index}`}>{skill}</Badge>
                 ))}
               </div>
@@ -204,7 +229,7 @@ export default function Resume({ language }: ResumeProps) {
                 {language === 'en' ? 'Creative Skills' : '创意技能'}
               </h4>
               <div className="flex flex-wrap gap-2">
-                {mockResumeData.skills.creative.map((skill, index) => (
+                {resumeData.skills.creative.map((skill, index) => (
                   <Badge key={index} variant="secondary" data-testid={`badge-creative-skill-${index}`}>{skill}</Badge>
                 ))}
               </div>
@@ -214,7 +239,7 @@ export default function Resume({ language }: ResumeProps) {
                 {language === 'en' ? 'Languages' : '语言'}
               </h4>
               <div className="flex flex-wrap gap-2">
-                {mockResumeData.skills.languages.map((lang, index) => (
+                {resumeData.skills.languages.map((lang, index) => (
                   <Badge key={index} variant="default" data-testid={`badge-language-${index}`}>{lang}</Badge>
                 ))}
               </div>
@@ -230,7 +255,7 @@ export default function Resume({ language }: ResumeProps) {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {mockResumeData.education.map((edu) => (
+            {resumeData.education.map((edu) => (
               <div key={edu.id} className="flex justify-between items-start" data-testid={`education-${edu.id}`}>
                 <div>
                   <h4 className="font-semibold text-foreground" data-testid={`text-degree-${edu.id}`}>{edu.degree}</h4>

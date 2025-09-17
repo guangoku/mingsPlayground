@@ -9,6 +9,7 @@ import Hero from "@/components/Hero";
 import ArtGallery from "@/components/ArtGallery";
 import BlogSection from "@/components/BlogSection";
 import Resume from "@/components/Resume";
+import Contact from "@/components/Contact";
 import NotFound from "@/pages/not-found";
 
 // Main portfolio page component
@@ -67,14 +68,14 @@ function Portfolio() {
       
       <main>
         <Hero 
-          name={language === 'en' ? 'Your Name' : '你的名字'}
+          name="Ming"
           title={language === 'en' 
-            ? 'Data Engineer & Digital Artist' 
-            : '数据工程师 & 数字艺术家'
+            ? 'Tech Lead & Data Engineer' 
+            : '技术负责人 & 数据工程师'
           }
           description={language === 'en' 
-            ? 'I transform complex data into meaningful insights while creating beautiful digital art. Passionate about the intersection of technology and creativity.'
-            : '我将复杂的数据转化为有意义的洞察，同时创作美丽的数字艺术作品。热衷于技术与创意的交汇点。'
+            ? 'Innovating with Data, Creating Art, and Embracing Curiosity'
+            : '用数据创新，用艺术创作，拥抱好奇心'
           }
           onResumeClick={handleResumeClick}
           onProjectsClick={handleProjectsClick}
@@ -85,6 +86,8 @@ function Portfolio() {
         <BlogSection language={language} />
         
         <Resume language={language} />
+        
+        <Contact language={language} />
       </main>
       
       {/* Footer */}

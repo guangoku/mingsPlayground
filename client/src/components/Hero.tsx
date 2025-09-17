@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/generated_images/Minimalist_flat_workspace_illustration_82014d09.png";
-import profileImage from "@assets/generated_images/Professional_creative_tech_portrait_54f8c9a0.png";
+import octopusGirlOrange from "@assets/octopus_girl_orange.png";
 
 interface HeroProps {
   name: string;
@@ -12,38 +11,39 @@ interface HeroProps {
 
 export default function Hero({ name, title, description, onResumeClick, onProjectsClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(200, 35%, 15%) 0%, hsl(15, 85%, 55%) 100%)' }}>
+      {/* Octopus Girl Image */}
+      <div className="absolute left-0 w-3/5 h-full flex items-center justify-start pl-8">
+        <img
+          src={octopusGirlOrange}
+          alt="Octopus Girl Character"
+          className="max-w-full max-h-full object-contain"
+          data-testid="img-octopus-girl"
+        />
+      </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className="mb-8">
-          <img
-            src={profileImage}
-            alt={name}
-            className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-primary/20 shadow-lg"
-            data-testid="img-profile"
-          />
-        </div>
+      <div className="relative z-10 w-2/5 ml-auto flex flex-col justify-center items-end pr-12 min-h-screen">
+        <div className="text-right">
         
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4" data-testid="text-hero-name">
-          {name}
+        <h1 className="text-5xl md:text-7xl font-bold mb-2" style={{ color: '#F8653C', textShadow: '2px 2px 4px rgba(0,0,0,0.3)', fontFamily: 'Luckiest Guy, cursive' }} data-testid="text-hero-name">
+          Ming's
+        </h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-8" style={{ color: '#F8653C', textShadow: '2px 2px 4px rgba(0,0,0,0.3)', fontFamily: 'Luckiest Guy, cursive' }} data-testid="text-hero-playground">
+          Playground
         </h1>
         
-        <h2 className="text-xl md:text-2xl text-muted-foreground mb-6 font-light" data-testid="text-hero-title">
-          {title}
+        <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#FDF2DB', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle1">
+          Innovating with Data
+        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#FDF2DB', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle2">
+          Creating Art
+        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: '#FDF2DB', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle3">
+          and Embracing Curiosity
         </h2>
         
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed" data-testid="text-hero-description">
-          {description}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col gap-4">
           <Button 
             size="lg" 
             onClick={onResumeClick}
@@ -61,6 +61,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
           >
             Explore Projects
           </Button>
+        </div>
         </div>
       </div>
     </section>
