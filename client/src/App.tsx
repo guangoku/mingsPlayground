@@ -77,6 +77,7 @@ function Portfolio() {
             ? 'Innovating with Data, Creating Art, and Embracing Curiosity'
             : '用数据创新，用艺术创作，拥抱好奇心'
           }
+          language={language}
           onResumeClick={handleResumeClick}
           onProjectsClick={handleProjectsClick}
         />

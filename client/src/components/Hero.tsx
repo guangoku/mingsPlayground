@@ -8,16 +8,17 @@ interface HeroProps {
   description: string;
   onResumeClick: () => void;
   onProjectsClick: () => void;
+  language: 'en' | 'zh';
 }
 
-export default function Hero({ name, title, description, onResumeClick, onProjectsClick }: HeroProps) {
+export default function Hero({ name, title, description, onResumeClick, onProjectsClick, language }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(var(--deep-sea)) 0%, hsl(var(--ocean)) 100%)' }}>
       {/* Octopus Girl Image */}
       <div className="absolute left-0 w-3/5 h-full flex items-center justify-start pl-8">
         <img
           src={octopusGirlOrange}
-          alt="Octopus Girl Character"
+          alt={language === 'en' ? 'Octopus Girl Character' : '章鱼女孩角色'}
           className="max-w-full max-h-full object-contain"
           data-testid="img-octopus-girl"
         />
@@ -28,20 +29,20 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
         <div className="text-right">
         
         <h1 className="text-5xl md:text-7xl font-bold mb-2" style={{ color: 'hsl(var(--coral))', textShadow: '2px 2px 4px rgba(0,0,0,0.3)', fontFamily: 'Luckiest Guy, cursive' }} data-testid="text-hero-name">
-          Ming's
+          {language === 'en' ? "Ming's" : '小明的'}
         </h1>
         <h1 className="text-5xl md:text-7xl font-bold mb-8" style={{ color: 'hsl(var(--coral))', textShadow: '2px 2px 4px rgba(0,0,0,0.3)', fontFamily: 'Luckiest Guy, cursive' }} data-testid="text-hero-playground">
-          Playground
+          {language === 'en' ? 'Playground' : '游乐场'}
         </h1>
         
         <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'hsl(var(--foam))', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle1">
-          Innovating with Data
+          {language === 'en' ? 'Innovating with Data' : '用数据创新'}
         </h2>
         <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'hsl(var(--foam))', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle2">
-          Creating Art
+          {language === 'en' ? 'Creating Art' : '创造艺术'}
         </h2>
         <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'hsl(var(--foam))', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }} data-testid="text-hero-subtitle3">
-          and Embracing Curiosity
+          {language === 'en' ? 'and Embracing Curiosity' : '拥抱好奇心'}
         </h2>
         
         <div className="flex flex-col gap-4">
@@ -52,7 +53,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
             data-testid="button-view-resume"
           >
             <FileText className="h-5 w-5 mr-2" />
-            View Resume
+            {language === 'en' ? 'View Resume' : '查看简历'}
           </Button>
           <Button 
             variant="outline" 
@@ -62,7 +63,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
             data-testid="button-explore-projects"
           >
             <Waves className="h-5 w-5 mr-2" />
-            Explore Projects
+            {language === 'en' ? 'Explore Projects' : '探索项目'}
           </Button>
         </div>
         </div>

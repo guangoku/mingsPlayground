@@ -7,11 +7,11 @@ import { Calendar, Clock, Search, ArrowRight } from "lucide-react";
 
 interface BlogPost {
   id: string;
-  title: string;
-  excerpt: string;
-  tags: string[];
+  title: { en: string; zh: string };
+  excerpt: { en: string; zh: string };
+  tags: { en: string[]; zh: string[] };
   date: string;
-  readTime: string;
+  readTime: { en: string; zh: string };
   category: 'tech' | 'travel' | 'learning';
 }
 
@@ -19,33 +19,60 @@ interface BlogSectionProps {
   language: 'en' | 'zh';
 }
 
-// TODO: Remove mock data - replace with real blog posts
-const mockPosts: BlogPost[] = [
+// Real blog posts with bilingual support
+const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'Building Data Pipelines with Modern Tools',
-    excerpt: 'Exploring the latest tools and techniques for efficient data engineering workflows.',
-    tags: ['Data Engineering', 'Python', 'ETL'],
+    title: { 
+      en: 'Building Data Pipelines with Modern Tools', 
+      zh: '用现代工具构建数据管道' 
+    },
+    excerpt: { 
+      en: 'Exploring the latest tools and techniques for efficient data engineering workflows.', 
+      zh: '探索高效数据工程工作流的最新工具和技术。' 
+    },
+    tags: { 
+      en: ['Data Engineering', 'Python', 'ETL'], 
+      zh: ['数据工程', 'Python', 'ETL'] 
+    },
     date: '2024-01-15',
-    readTime: '8 min read',
+    readTime: { en: '8 min read', zh: '8分钟阅读' },
     category: 'tech'
   },
   {
     id: '2',
-    title: 'Minimalist Art and Code: Finding Beauty in Simplicity',
-    excerpt: 'How minimalist design principles can improve both artistic expression and code quality.',
-    tags: ['Design', 'Art', 'Programming'],
-    date: '2024-01-10', 
-    readTime: '6 min read',
+    title: { 
+      en: 'Minimalist Art and Code: Finding Beauty in Simplicity', 
+      zh: '極简艺术与代码：在简单中发现美' 
+    },
+    excerpt: { 
+      en: 'How minimalist design principles can improve both artistic expression and code quality.', 
+      zh: '极简设计原则如何提升艺术表达和代码质量。' 
+    },
+    tags: { 
+      en: ['Design', 'Art', 'Programming'], 
+      zh: ['设计', '艺术', '编程'] 
+    },
+    date: '2024-01-10',
+    readTime: { en: '6 min read', zh: '6分钟阅读' },
     category: 'learning'
   },
   {
     id: '3',
-    title: 'Digital Nomad Journey: Working from Cafes Around the World',
-    excerpt: 'Lessons learned from remote work while traveling and exploring new cultures.',
-    tags: ['Remote Work', 'Travel', 'Lifestyle'],
+    title: { 
+      en: 'Digital Nomad Journey: Working from Cafes Around the World', 
+      zh: '数字游民之旅：在世界各地咖啡厅工作' 
+    },
+    excerpt: { 
+      en: 'Lessons learned from remote work while traveling and exploring new cultures.', 
+      zh: '在旅行和探索新文化的同时远程工作的经验教训。' 
+    },
+    tags: { 
+      en: ['Remote Work', 'Travel', 'Lifestyle'], 
+      zh: ['远程工作', '旅行', '生活方式'] 
+    },
     date: '2024-01-05',
-    readTime: '10 min read',
+    readTime: { en: '10 min read', zh: '10分钟阅读' },
     category: 'travel'
   }
 ];
@@ -57,15 +84,22 @@ const categories = [
   { id: 'learning', label: { en: 'Learning', zh: '学习' } }
 ];
 
+const categoryMap = {
+  tech: { en: 'Tech', zh: '技术' },
+  travel: { en: 'Travel', zh: '旅行' },
+  learning: { en: 'Learning', zh: '学习' }
+} as const;
+
 export default function BlogSection({ language }: BlogSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   
-  const filteredPosts = mockPosts.filter(post => {
+  const filteredPosts = blogPosts.filter(post => {
+    const title = post.title[language];
+    const tags = post.tags[language];
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    const matchesSearch = searchTerm === '' || 
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    const q = searchTerm.trim().toLowerCase();
+    const matchesSearch = q === '' || title.toLowerCase().includes(q) || tags.some(t => t.toLowerCase().includes(q));
     return matchesCategory && matchesSearch;
   });
 
@@ -123,22 +157,22 @@ export default function BlogSection({ language }: BlogSectionProps) {
             <Card key={post.id} className="group cursor-pointer hover-elevate" onClick={() => handlePostClick(post.id)} data-testid={`card-post-${post.id}`}>
               <CardHeader className="pb-3">
                 <div className="flex justify-between items-start mb-2">
-                  <Badge variant="secondary" className="capitalize">{post.category}</Badge>
+                  <Badge variant="secondary" className="capitalize">{categoryMap[post.category][language]}</Badge>
                   <div className="flex items-center text-xs text-muted-foreground">
                     <Clock className="h-3 w-3 mr-1" />
-                    {post.readTime}
+                    {post.readTime[language]}
                   </div>
                 </div>
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors" data-testid={`text-post-title-${post.id}`}>
-                  {post.title}
+                  {post.title[language]}
                 </h3>
               </CardHeader>
               <CardContent className="pt-0">
                 <p className="text-muted-foreground text-sm mb-4" data-testid={`text-post-excerpt-${post.id}`}>
-                  {post.excerpt}
+                  {post.excerpt[language]}
                 </p>
                 <div className="flex flex-wrap gap-1 mb-4">
-                  {post.tags.map((tag, index) => (
+                  {post.tags[language].map((tag, index) => (
                     <Badge key={index} variant="outline" className="text-xs">{tag}</Badge>
                   ))}
                 </div>
