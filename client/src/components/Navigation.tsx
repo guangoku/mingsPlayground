@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Sun, Moon, Globe } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "react-router-dom";
 
 interface NavigationProps {
   isDark: boolean;
@@ -12,18 +12,18 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { id: 'home', label: { en: 'Home', zh: '首页' }, href: '#' },
-  { id: 'about', label: { en: 'About', zh: '关于' }, href: '#about' },
-  { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '#projects' },
-  { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '#blog' },
-  { id: 'art', label: { en: 'Art', zh: '艺术' }, href: '#art' },
-  { id: 'resume', label: { en: 'Resume', zh: '简历' }, href: '#resume' },
+  { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/', type: 'route' },
+  { id: 'about', label: { en: 'About', zh: '关于' }, href: '#about', type: 'scroll' },
+  { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '/projects', type: 'route' },
+  { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '/blog', type: 'route' },
+  { id: 'art', label: { en: 'Art', zh: '艺术' }, href: '#art', type: 'scroll' },
+  { id: 'resume', label: { en: 'Resume', zh: '简历' }, href: '#resume', type: 'scroll' },
 ];
 
 export default function Navigation({ isDark, onThemeToggle, language, onLanguageToggle }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [location] = useLocation();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -34,16 +34,28 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    console.log(`Scrolling to section: ${href}`);
+  const handleNavClick = (item: typeof navItems[0]) => {
     setIsOpen(false);
-    // TODO: Implement smooth scroll to section
+
+    if (item.type === 'route') {
+      // Handle routing - React Router will handle this
+      return;
+    } else if (item.type === 'scroll') {
+      // Handle smooth scrolling for landing page sections
+      const element = document.getElementById(item.href.replace('#', ''));
+      if (element) {
+        const offsetTop = element.offsetTop - 80; // Account for fixed nav
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
-    }`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
+      }`}>
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -54,16 +66,27 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.href)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  activeSection === item.id ? 'text-primary' : 'text-muted-foreground'
-                }`}
-                data-testid={`link-${item.id}`}
-              >
-                {item.label[language]}
-              </button>
+              item.type === 'route' ? (
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                    }`}
+                  data-testid={`link-${item.id}`}
+                >
+                  {item.label[language]}
+                </Link>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item)}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === item.id ? 'text-primary' : 'text-muted-foreground'
+                    }`}
+                  data-testid={`link-${item.id}`}
+                >
+                  {item.label[language]}
+                </button>
+              )
             ))}
           </div>
 
@@ -78,7 +101,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
             >
               <Globe className="h-4 w-4" />
             </Button>
-            
+
             <Button
               variant="ghost"
               size="icon"
@@ -100,14 +123,26 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                 <SheetContent>
                   <div className="flex flex-col space-y-4 mt-8">
                     {navItems.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => scrollToSection(item.href)}
-                        className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
-                        data-testid={`mobile-link-${item.id}`}
-                      >
-                        {item.label[language]}
-                      </button>
+                      item.type === 'route' ? (
+                        <Link
+                          key={item.id}
+                          to={item.href}
+                          className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          data-testid={`mobile-link-${item.id}`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.label[language]}
+                        </Link>
+                      ) : (
+                        <button
+                          key={item.id}
+                          onClick={() => handleNavClick(item)}
+                          className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          data-testid={`mobile-link-${item.id}`}
+                        >
+                          {item.label[language]}
+                        </button>
+                      )
                     ))}
                   </div>
                 </SheetContent>
