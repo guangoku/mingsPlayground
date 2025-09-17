@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin, Instagram } from "lucide-react";
+import { Mail, Github, Linkedin, Instagram, Waves } from "lucide-react";
 
 interface ContactProps {
   language: 'en' | 'zh';
@@ -90,10 +90,10 @@ export default function Contact({ language }: ContactProps) {
           <Button 
             size="lg"
             onClick={() => handleContactClick('mailto:guangoku@gmail.com', 'Email')}
-            className="hover-elevate bg-accent text-accent-foreground border-0"
+            className="hover-elevate rounded-full bg-accent text-accent-foreground border-0"
             data-testid="button-primary-contact"
           >
-            <Mail className="h-5 w-5 mr-2" />
+            <Waves className="h-5 w-5 mr-2" />
             {language === 'en' ? 'Get In Touch' : '联系我'}
           </Button>
         </div>

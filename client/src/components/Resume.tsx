@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, MapPin, Mail, Phone, Globe, Calendar } from "lucide-react";
+import { Download, MapPin, Mail, Phone, Globe, Calendar, Waves } from "lucide-react";
 
 interface ResumeProps {
   language: 'en' | 'zh';
@@ -130,7 +130,7 @@ export default function Resume({ language }: ResumeProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Button
                 variant="ghost"
-                className="justify-start hover-elevate"
+                className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('email', resumeData.contact.email)}
                 data-testid="button-contact-email"
               >
@@ -139,7 +139,7 @@ export default function Resume({ language }: ResumeProps) {
               </Button>
               <Button
                 variant="ghost"
-                className="justify-start hover-elevate"
+                className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('phone', resumeData.contact.phone)}
                 data-testid="button-contact-phone"
               >
@@ -148,7 +148,7 @@ export default function Resume({ language }: ResumeProps) {
               </Button>
               <Button
                 variant="ghost"
-                className="justify-start hover-elevate"
+                className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('location', resumeData.contact.location)}
                 data-testid="button-contact-location"
               >
@@ -157,7 +157,7 @@ export default function Resume({ language }: ResumeProps) {
               </Button>
               <Button
                 variant="ghost"
-                className="justify-start hover-elevate"
+                className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('website', resumeData.contact.website)}
                 data-testid="button-contact-website"
               >

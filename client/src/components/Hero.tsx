@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { FileText, Waves } from "lucide-react";
 import octopusGirlOrange from "@assets/octopus_girl_orange.png";
 
 interface HeroProps {
@@ -47,18 +48,20 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
           <Button 
             size="lg" 
             onClick={onResumeClick}
-            className="hover-elevate"
+            className="hover-elevate rounded-full"
             data-testid="button-view-resume"
           >
+            <FileText className="h-5 w-5 mr-2" />
             View Resume
           </Button>
           <Button 
             variant="outline" 
             size="lg" 
             onClick={onProjectsClick}
-            className="hover-elevate"
+            className="hover-elevate rounded-full bg-background/20 text-foam backdrop-blur"
             data-testid="button-explore-projects"
           >
+            <Waves className="h-5 w-5 mr-2" />
             Explore Projects
           </Button>
         </div>

@@ -108,7 +108,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category.id)}
-                className="hover-elevate"
+                className="hover-elevate rounded-full"
                 data-testid={`button-category-${category.id}`}
               >
                 {category.label[language]}

@@ -91,7 +91,7 @@ export default function ArtGallery({ language }: ArtGalleryProps) {
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory(category)}
-              className="hover-elevate"
+              className="hover-elevate rounded-full"
               data-testid={`button-category-${category.toLowerCase()}`}
             >
               {category}
@@ -112,7 +112,7 @@ export default function ArtGallery({ language }: ArtGalleryProps) {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button size="icon" variant="secondary" className="hover-elevate" data-testid={`button-view-${piece.id}`}>
+                      <Button size="icon" variant="secondary" className="hover-elevate rounded-full" data-testid={`button-view-${piece.id}`}>
                         <Eye className="h-4 w-4" />
                       </Button>
                     </DialogTrigger>
@@ -140,7 +140,7 @@ export default function ArtGallery({ language }: ArtGalleryProps) {
                     variant="ghost" 
                     size="sm" 
                     onClick={() => handleLike(piece.id)}
-                    className="hover-elevate"
+                    className="hover-elevate rounded-full text-accent hover:text-accent/80"
                     data-testid={`button-like-${piece.id}`}
                   >
                     <Heart className="h-4 w-4 mr-1" />
