@@ -4,6 +4,13 @@
 
 /* LIGHT MODE */
 :root {
+  /* Custom Ocean Tokens */
+  --ocean: 205 75% 45%;        /* Main ocean blue */
+  --deep-sea: 210 50% 18%;     /* Deep ocean */
+  --teal: 190 60% 40%;         /* Teal waters */
+  --foam: 190 60% 95%;         /* Foam white */
+  --coral: 15 85% 55%;         /* Coral accent */
+
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
 
@@ -48,21 +55,21 @@
 
   --popover-border: 220 12% 83%;
 
-  --primary: 15 85% 55%;
+  --primary: 205 75% 45%; /* Ocean blue */
 
-  --primary-foreground: 220 15% 95%;
+  --primary-foreground: 190 60% 95%;
 
-  --secondary: 145 45% 75%;
+  --secondary: 190 60% 40%; /* Teal */
 
-  --secondary-foreground: 220 25% 15%;
+  --secondary-foreground: 190 60% 95%;
 
-  --muted: 220 10% 86%;
+  --muted: 200 25% 88%;
 
-  --muted-foreground: 220 25% 45%;
+  --muted-foreground: 210 40% 45%;
 
-  --accent: 170 50% 70%;
+  --accent: 15 85% 55%; /* Coral accent */
 
-  --accent-foreground: 220 25% 15%;
+  --accent-foreground: 190 60% 95%;
 
   --destructive: 0 75% 35%;
 
@@ -123,6 +130,13 @@
 }
 
 .dark {
+  /* Custom Ocean Tokens - Dark Mode */
+  --ocean: 205 60% 60%;        /* Lighter ocean blue */
+  --deep-sea: 210 60% 8%;      /* Very deep */
+  --teal: 190 50% 50%;         /* Brighter teal */
+  --foam: 190 40% 15%;         /* Dark foam */
+  --coral: 15 75% 65%;         /* Bright coral */
+
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
 
@@ -166,21 +180,21 @@
 
   --popover-border: 220 18% 28%;
 
-  --primary: 15 75% 65%;
+  --primary: 205 60% 60%; /* Ocean blue */
 
-  --primary-foreground: 220 20% 8%;
+  --primary-foreground: 210 60% 8%;
 
-  --secondary: 145 35% 35%;
+  --secondary: 190 50% 50%; /* Teal */
 
-  --secondary-foreground: 220 15% 88%;
+  --secondary-foreground: 210 60% 8%;
 
-  --muted: 220 15% 22%;
+  --muted: 210 30% 22%;
 
-  --muted-foreground: 220 15% 65%;
+  --muted-foreground: 190 30% 65%;
 
-  --accent: 170 40% 40%;
+  --accent: 15 75% 65%; /* Coral accent */
 
-  --accent-foreground: 220 15% 88%;
+  --accent-foreground: 210 60% 8%;
 
   --destructive: 0 75% 55%;
 
