@@ -44,13 +44,13 @@ export default function Contact({ language }: ContactProps) {
   };
 
   return (
-    <section className="py-16 px-6" id="contact" style={{ background: 'linear-gradient(135deg, hsl(200, 35%, 15%) 0%, hsl(170, 50%, 40%) 100%)' }}>
+    <section className="py-16 px-6 bg-secondary" id="contact">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#FDF2DB' }} data-testid="text-contact-title">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-secondary-foreground" data-testid="text-contact-title">
             {language === 'en' ? "Let's Connect" : '联系我'}
           </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#FDF2DB', opacity: 0.9 }} data-testid="text-contact-description">
+          <p className="text-lg max-w-2xl mx-auto text-secondary-foreground/90" data-testid="text-contact-description">
             {language === 'en' 
               ? "I'm always excited to discuss new opportunities, collaborations, or just chat about data, art, and technology!"
               : '我很乐意讨论新机会、合作或只是聊聊数据、艺术和技术！'
@@ -62,7 +62,12 @@ export default function Contact({ language }: ContactProps) {
           {contactLinks.map((contact) => {
             const IconComponent = contact.icon;
             return (
-              <Card key={contact.id} className="group cursor-pointer hover-elevate bg-white/10 backdrop-blur border-white/20" onClick={() => handleContactClick(contact.href, contact.label[language])} data-testid={`card-contact-${contact.id}`}>
+              <Card 
+                key={contact.id} 
+                className="group cursor-pointer hover-elevate bg-card/60 backdrop-blur border-border" 
+                onClick={() => handleContactClick(contact.href, contact.label[language])} 
+                data-testid={`card-contact-${contact.id}`}
+              >
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">
                     <div 
@@ -72,7 +77,7 @@ export default function Contact({ language }: ContactProps) {
                       <IconComponent className="h-8 w-8 text-white" />
                     </div>
                   </div>
-                  <p className="font-medium" style={{ color: '#FDF2DB' }} data-testid={`text-contact-${contact.id}`}>
+                  <p className="font-medium text-secondary-foreground" data-testid={`text-contact-${contact.id}`}>
                     {contact.label[language]}
                   </p>
                 </CardContent>
@@ -85,12 +90,7 @@ export default function Contact({ language }: ContactProps) {
           <Button 
             size="lg"
             onClick={() => handleContactClick('mailto:guangoku@gmail.com', 'Email')}
-            className="hover-elevate"
-            style={{ 
-              backgroundColor: '#F8653C', 
-              color: '#FDF2DB',
-              border: 'none'
-            }}
+            className="hover-elevate bg-accent text-accent-foreground border-0"
             data-testid="button-primary-contact"
           >
             <Mail className="h-5 w-5 mr-2" />

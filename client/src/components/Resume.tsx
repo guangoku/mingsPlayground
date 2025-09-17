@@ -101,7 +101,7 @@ export default function Resume({ language }: ResumeProps) {
   };
 
   return (
-    <section className="py-16 px-6" id="resume">
+    <section className="py-16 px-6 bg-muted/30" id="resume">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-resume-title">

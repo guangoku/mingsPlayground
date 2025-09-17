@@ -69,13 +69,13 @@ export default function ArtGallery({ language }: ArtGalleryProps) {
   };
 
   return (
-    <section className="py-16 px-6" id="art" style={{ background: 'linear-gradient(135deg, hsl(145, 45%, 50%) 0%, hsl(170, 60%, 40%) 100%)' }}>
+    <section className="py-16 px-6 bg-card" id="art">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#FDF2DB' }} data-testid="text-art-title">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground" data-testid="text-art-title">
             {language === 'en' ? 'Art & Illustrations' : '艺术作品'}
           </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#FDF2DB', opacity: 0.9 }} data-testid="text-art-description">
+          <p className="text-lg max-w-2xl mx-auto text-muted-foreground" data-testid="text-art-description">
             {language === 'en' 
               ? 'Meet my octopus girl character - a curious, intelligent, and creative soul who embodies the intersection of art and technology.' 
               : '认识我的章鱼女孩角色 - 一个好奇、智慧和富有创意的灵魂，体现了艺术与技术的交集。'
@@ -128,12 +128,12 @@ export default function ArtGallery({ language }: ArtGalleryProps) {
                   </Dialog>
                 </div>
               </div>
-              <CardContent className="p-4" style={{ backgroundColor: 'rgba(253, 242, 219, 0.9)' }}>
+              <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-semibold" style={{ color: '#003459' }} data-testid={`text-art-title-${piece.id}`}>{piece.title}</h3>
+                  <h3 className="font-semibold text-foreground" data-testid={`text-art-title-${piece.id}`}>{piece.title}</h3>
                   <Badge variant="secondary" className="text-xs">{piece.year}</Badge>
                 </div>
-                <p className="text-sm mb-3" style={{ color: '#003459', opacity: 0.8 }} data-testid={`text-art-description-${piece.id}`}>{piece.description}</p>
+                <p className="text-sm mb-3 text-muted-foreground" data-testid={`text-art-description-${piece.id}`}>{piece.description}</p>
                 <div className="flex justify-between items-center">
                   <Badge variant="outline">{piece.category}</Badge>
                   <Button 

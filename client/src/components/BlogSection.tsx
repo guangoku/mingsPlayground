@@ -75,13 +75,13 @@ export default function BlogSection({ language }: BlogSectionProps) {
   };
 
   return (
-    <section className="py-16 px-6" id="blog" style={{ background: 'linear-gradient(135deg, hsl(290, 70%, 60%) 0%, hsl(260, 80%, 70%) 100%)' }}>
+    <section className="py-16 px-6 bg-background" id="blog">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#FDF2DB' }} data-testid="text-blog-title">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground" data-testid="text-blog-title">
             {language === 'en' ? 'Blog & Thoughts' : '博客与思考'}
           </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#FDF2DB', opacity: 0.9 }} data-testid="text-blog-description">
+          <p className="text-lg max-w-2xl mx-auto text-muted-foreground" data-testid="text-blog-description">
             {language === 'en' 
               ? 'Sharing insights on technology, travel, and continuous learning.'
               : '分享关于技术、旅行和持续学习的见解。'
