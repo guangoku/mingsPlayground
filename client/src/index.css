@@ -66,21 +66,21 @@
 
   --popover-border: 220 12% 83%;
 
-  --primary: 205 75% 45%; /* Ocean blue */
+  --primary: 220 15% 25%; /* Slate gray - professional and neutral */
 
-  --primary-foreground: 190 60% 95%;
+  --primary-foreground: 0 0% 98%;
 
-  --secondary: 190 60% 40%; /* Teal */
+  --secondary: 220 15% 85%; /* Light slate gray */
 
-  --secondary-foreground: 190 60% 95%;
+  --secondary-foreground: 220 15% 15%;
 
   --muted: 200 25% 88%;
 
-  --muted-foreground: 210 40% 45%;
+  --muted-foreground: 220 15% 45%;
 
-  --accent: 15 85% 55%; /* Coral accent */
+  --accent: 220 15% 45%; /* Darker slate for accent */
 
-  --accent-foreground: 190 60% 95%;
+  --accent-foreground: 0 0% 98%;
 
   --destructive: 0 75% 35%;
 
@@ -202,21 +202,21 @@
 
   --popover-border: 220 18% 28%;
 
-  --primary: 205 60% 60%; /* Ocean blue */
+  --primary: 220 15% 75%; /* Light slate gray for dark mode */
 
-  --primary-foreground: 210 60% 8%;
+  --primary-foreground: 220 15% 15%;
 
-  --secondary: 190 50% 50%; /* Teal */
+  --secondary: 220 15% 25%; /* Dark slate gray */
 
-  --secondary-foreground: 210 60% 8%;
+  --secondary-foreground: 0 0% 98%;
 
   --muted: 210 30% 22%;
 
-  --muted-foreground: 190 30% 65%;
+  --muted-foreground: 220 15% 65%;
 
-  --accent: 15 75% 65%; /* Coral accent */
+  --accent: 220 15% 55%; /* Medium slate for accent in dark mode */
 
-  --accent-foreground: 210 60% 8%;
+  --accent-foreground: 0 0% 98%;
 
   --destructive: 0 75% 55%;
 

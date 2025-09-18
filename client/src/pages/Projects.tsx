@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/Navigation";
-import ArtGallery from "@/components/ArtGallery";
+import ProjectSection from "@/components/ProjectSection";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -79,9 +79,9 @@ function ProjectsPage() {
                         </div>
                     </section>
 
-                    {/* Art Gallery Section */}
+                    {/* Project Section */}
                     <section className="max-w-6xl mx-auto px-6 py-12">
-                        <ArtGallery language={language} />
+                        <ProjectSection language={language} />
                     </section>
 
                     {/* Additional Projects Section */}

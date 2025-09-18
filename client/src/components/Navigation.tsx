@@ -12,8 +12,8 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { id: 'home', label: { en: 'Home', zh: '首页' }, href: '#hero', type: 'scroll' },
-  { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '#projects', type: 'scroll' },
+  { id: 'home', label: { en: 'Home', zh: '主页' }, href: '#hero', type: 'scroll' },
+  { id: 'projects', label: { en: 'Projects', zh: '作品' }, href: '#projects', type: 'scroll' },
   { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '#blog', type: 'scroll' },
   { id: 'resume', label: { en: 'Resume', zh: '简历' }, href: '#resume', type: 'scroll' },
   { id: 'contact', label: { en: 'Contact', zh: '联系' }, href: '#contact', type: 'scroll' },
@@ -28,8 +28,24 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Update active section based on scroll position
+      const sections = navItems.map(item => item.href.replace('#', ''));
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i]);
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].id);
+          break;
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
+    // Call once to set initial state
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -68,7 +84,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300`} data-testid="text-logo">
-            Mingyun Guan
+            {language === 'en' ? 'Mingyun Guan' : '超级赛亚关'}
           </div>
 
           {/* Desktop Navigation */}
@@ -88,7 +104,9 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item)}
-                  className={`text-base font-semibold transition-colors duration-300 ${navHoverColor} ${activeSection === item.id ? navActiveColor : navMutedColor
+                  className={`text-base font-semibold transition-all duration-300 ${navHoverColor} ${activeSection === item.id
+                    ? `${navActiveColor} relative after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-0.5 after:bg-current after:rounded-full`
+                    : navMutedColor
                     }`}
                   data-testid={`link-${item.id}`}
                 >
@@ -104,20 +122,22 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
               variant="ghost"
               size="icon"
               onClick={onLanguageToggle}
-              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300`}
+              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300 px-3 py-1 gap-2`}
               data-testid="button-language-toggle"
             >
-              <Globe className="h-5 w-5" />
+              <Globe className="h-4 w-5" />
+              <span className="text-sm font-medium">{language === 'en' ? '中文' : 'EN'}</span>
             </Button>
 
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={onThemeToggle}
-              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300`}
+              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300 px-3 py-1 gap-2`}
               data-testid="button-theme-toggle"
             >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <span className="text-sm font-medium">{isDark ? (language === 'en' ? 'Light' : '亮色') : (language === 'en' ? 'Dark' : '暗色')}</span>
             </Button>
 
             {/* Mobile Menu */}
@@ -135,7 +155,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                         <Link
                           key={item.id}
                           to={item.href}
-                          className="text-left text-xl font-semibold text-foreground hover:text-primary transition-colors"
+                          className="text-left text-xl font-semibold text-foreground hover:text-primary hover:bg-primary/5 px-3 py-2 rounded-lg transition-all duration-300"
                           data-testid={`mobile-link-${item.id}`}
                           onClick={() => setIsOpen(false)}
                         >
@@ -145,7 +165,10 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                         <button
                           key={item.id}
                           onClick={() => handleNavClick(item)}
-                          className="text-left text-xl font-semibold text-foreground hover:text-primary transition-colors"
+                          className={`text-left text-xl font-semibold transition-all duration-300 ${activeSection === item.id
+                            ? 'text-primary bg-primary/10 px-3 py-2 rounded-lg'
+                            : 'text-foreground hover:text-primary hover:bg-primary/5 px-3 py-2 rounded-lg'
+                            }`}
                           data-testid={`mobile-link-${item.id}`}
                         >
                           {item.label[language]}

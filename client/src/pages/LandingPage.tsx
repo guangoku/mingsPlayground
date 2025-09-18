@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import ArtGallery from "@/components/ArtGallery";
+import ProjectSection from "@/components/ProjectSection";
 import BlogSection from "@/components/BlogSection";
 import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
@@ -84,7 +84,7 @@ function LandingPage() {
                     </section>
 
                     <section id="projects">
-                        <ArtGallery language={language} />
+                        <ProjectSection language={language} />
                     </section>
 
                     <section id="blog">
