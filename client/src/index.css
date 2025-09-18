@@ -9,7 +9,18 @@
   --deep-sea: 210 50% 18%;     /* Deep ocean */
   --teal: 190 60% 40%;         /* Teal waters */
   --foam: 190 60% 95%;         /* Foam white */
+  --foam-fixed: 190 60% 95%;   /* Fixed foam that doesn't change in dark mode */
   --coral: 15 85% 55%;         /* Coral accent */
+  --coral-fixed: 15 85% 55%;   /* Fixed coral that doesn't change in dark mode */
+
+  /* Section-specific theme colors */
+  --emerald-green: 150 60% 55%;    /* Projects theme - emerald green #50C878 */
+  --warm-ivory: 45 50% 94%;        /* Blog theme - warm ivory #faf3e0 */
+  --warm-beige: 45 30% 92%;        /* Blog theme - warm beige #f5f0e6 */
+  --graphite-gray: 215 25% 35%;    /* Resume theme - graphite gray #475569 */
+  --light-slate-gray: 220 15% 90%; /* Resume theme - light slate gray #e5e7eb */
+  --coral-orange: 15 75% 65%;      /* Contact theme - coral orange #FF7F50 */
+  --coral-salmon: 15 65% 60%;      /* Contact theme - coral salmon #e07a5f */
 
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
@@ -135,7 +146,18 @@
   --deep-sea: 210 60% 8%;      /* Very deep */
   --teal: 190 50% 50%;         /* Brighter teal */
   --foam: 190 40% 15%;         /* Dark foam */
+  --foam-fixed: 190 60% 95%;   /* Fixed foam that doesn't change in dark mode */
   --coral: 15 75% 65%;         /* Bright coral */
+  --coral-fixed: 15 85% 55%;   /* Fixed coral that doesn't change in dark mode */
+
+  /* Section-specific theme colors - Dark Mode */
+  --emerald-green: 150 50% 60%;    /* Projects theme - brighter emerald for dark mode */
+  --warm-ivory: 45 25% 15%;        /* Blog theme - dark warm tone */
+  --warm-beige: 45 20% 18%;        /* Blog theme - darker beige */
+  --graphite-gray: 215 20% 25%;    /* Resume theme - lighter graphite for dark mode */
+  --light-slate-gray: 220 15% 25%; /* Resume theme - darker slate gray for dark mode */
+  --coral-orange: 15 70% 70%;      /* Contact theme - brighter coral orange for dark mode */
+  --coral-salmon: 15 60% 65%;      /* Contact theme - brighter coral salmon for dark mode */
 
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
@@ -339,4 +361,31 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+/* Section-specific background gradients */
+.projects-bg {
+  background: linear-gradient(135deg, hsl(150 60% 44%) 0%, hsl(150 50% 36%) 100%);
+}
+
+.dark .projects-bg {
+  background: linear-gradient(135deg, hsl(150 40% 15%) 0%, hsl(150 30% 10%) 100%);
+}
+
+.blog-bg {
+  background-color: hsl(20 15% 92%);
+}
+
+.dark .blog-bg {
+  background-color: hsl(20 10% 12%);
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, hsl(var(--deep-sea)) 0%, hsl(var(--ocean)) 100%);
+  --button-outline: rgba(255,255,255, 1);
+}
+
+.dark .hero-bg {
+  background: linear-gradient(135deg, hsl(210 60% 6%) 0%, hsl(205 60% 50%) 100%);
+  --button-outline: rgba(255,255,255, 1);
 }

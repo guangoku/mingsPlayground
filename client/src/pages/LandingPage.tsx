@@ -52,7 +52,7 @@ function LandingPage() {
     };
 
     const handleResumeClick = () => scrollToSection('resume');
-    const handleProjectsClick = () => scrollToSection('art');
+    const handleProjectsClick = () => scrollToSection('projects');
 
     return (
         <TooltipProvider>
@@ -83,7 +83,7 @@ function LandingPage() {
                         />
                     </section>
 
-                    <section id="art">
+                    <section id="projects">
                         <ArtGallery language={language} />
                     </section>
 
@@ -103,12 +103,19 @@ function LandingPage() {
                 {/* Footer */}
                 <footer className="py-8 px-6 border-t bg-muted/30">
                     <div className="max-w-6xl mx-auto text-center">
-                        <p className="text-muted-foreground" data-testid="text-footer">
-                            {language === 'en'
-                                ? '© 2024 Your Portfolio. Built with passion for design and technology.'
-                                : '© 2024 你的作品集。用对设计和技术的热情构建。'
-                            }
-                        </p>
+                        <div className="text-muted-foreground" data-testid="text-footer">
+                            {language === 'en' ? (
+                                <>
+                                    <p>© 2025 Mingyun Guan. All rights reserved.</p>
+                                    <p className="mt-1">Made with ocean hues, code, and curiosity — in Galicia, Spain.</p>
+                                </>
+                            ) : (
+                                <>
+                                    <p>© 2025 超级赛亚关 — 版权所有。</p>
+                                    <p className="mt-1">在西班牙加利西亚，用海洋色调、代码与好奇心编织而成。</p>
+                                </>
+                            )}
+                        </div>
                     </div>
                 </footer>
             </div>

@@ -47,12 +47,14 @@ Primary Tailwind spacing units: **2, 4, 6, 8, 12, 16** (p-2, m-4, gap-6, h-8, et
 - Search and filter functionality
 - Reading time indicators
 
-**Art Gallery**:
+**Projects Gallery**:
 
 - Masonry grid layout for varied image sizes
 - Lightbox modal for detailed viewing
 - Collection/series grouping with themed headers
 - Zoom and pan capabilities for detailed artwork
+- Category filtering (Art & Illustration, Graphic Novels, Tech Innovation, Social Impact)
+- Like functionality for user engagement (future consideration)
 
 **Resume Section**:
 
@@ -97,3 +99,21 @@ Primary Tailwind spacing units: **2, 4, 6, 8, 12, 16** (p-2, m-4, gap-6, h-8, et
 **Blog Images**: Featured images for posts, icons for categories, and inline illustrations for technical content
 
 The design balances your technical expertise with artistic sensibility, creating a professional yet playful experience that showcases your diverse skills while maintaining excellent usability and accessibility.
+
+## Future Considerations
+
+### User Engagement Features
+
+**Like Functionality for Projects**:
+
+- **Current Status**: Not implemented (low priority)
+- **Purpose**: Allow visitors to show appreciation for specific projects
+- **Technical Options Evaluated**:
+  - **Local Storage**: Per-browser only, no global counts
+  - **Firebase**: Real-time global counts, free tier available
+  - **Supabase**: Open source alternative with PostgreSQL
+  - **GitHub Gists**: Creative free solution using public gists
+  - **Airtable**: Simple database with visual interface
+  - **Google Sheets API**: Free spreadsheet-based solution
+- **Decision**: Deferred for future consideration
+- **Rationale**: Not critical for portfolio functionality, external dependencies add complexity

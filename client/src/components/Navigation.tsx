@@ -12,12 +12,11 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/', type: 'route' },
-  { id: 'about', label: { en: 'About', zh: '关于' }, href: '#about', type: 'scroll' },
-  { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '/projects', type: 'route' },
-  { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '/blog', type: 'route' },
-  { id: 'art', label: { en: 'Art', zh: '艺术' }, href: '#art', type: 'scroll' },
+  { id: 'home', label: { en: 'Home', zh: '首页' }, href: '#hero', type: 'scroll' },
+  { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '#projects', type: 'scroll' },
+  { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '#blog', type: 'scroll' },
   { id: 'resume', label: { en: 'Resume', zh: '简历' }, href: '#resume', type: 'scroll' },
+  { id: 'contact', label: { en: 'Contact', zh: '联系' }, href: '#contact', type: 'scroll' },
 ];
 
 export default function Navigation({ isDark, onThemeToggle, language, onLanguageToggle }: NavigationProps) {
@@ -53,14 +52,23 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
     }
   };
 
+  // Simple, visible navigation colors
+  const isOnHero = !isScrolled;
+  const navTextColor = isOnHero ? 'text-white' : 'text-foreground';
+  const navHoverColor = isOnHero ? 'hover:text-white' : 'hover:text-primary';
+  const navActiveColor = isOnHero ? 'text-white' : 'text-primary';
+  const navMutedColor = isOnHero ? 'text-white/80' : 'text-muted-foreground';
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+      ? 'bg-background/95 backdrop-blur-md border-b shadow-sm'
+      : 'bg-black/20 backdrop-blur-sm'
       }`}>
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-xl font-bold text-foreground" data-testid="text-logo">
-            Portfolio
+          <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300`} data-testid="text-logo">
+            Mingyun Guan
           </div>
 
           {/* Desktop Navigation */}
@@ -70,7 +78,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                 <Link
                   key={item.id}
                   to={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                  className={`text-base font-semibold transition-colors hover:text-white ${location.pathname === item.href ? 'text-white' : 'text-white/80'
                     }`}
                   data-testid={`link-${item.id}`}
                 >
@@ -80,7 +88,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === item.id ? 'text-primary' : 'text-muted-foreground'
+                  className={`text-base font-semibold transition-colors duration-300 ${navHoverColor} ${activeSection === item.id ? navActiveColor : navMutedColor
                     }`}
                   data-testid={`link-${item.id}`}
                 >
@@ -96,28 +104,28 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
               variant="ghost"
               size="icon"
               onClick={onLanguageToggle}
-              className="hover-elevate"
+              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300`}
               data-testid="button-language-toggle"
             >
-              <Globe className="h-4 w-4" />
+              <Globe className="h-5 w-5" />
             </Button>
 
             <Button
               variant="ghost"
               size="icon"
               onClick={onThemeToggle}
-              className="hover-elevate"
+              className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300`}
               data-testid="button-theme-toggle"
             >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
             {/* Mobile Menu */}
             <div className="md:hidden">
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="hover-elevate" data-testid="button-mobile-menu">
-                    <Menu className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className={`hover-elevate ${navTextColor} ${navHoverColor} transition-colors duration-300`} data-testid="button-mobile-menu">
+                    <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent>
@@ -127,7 +135,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                         <Link
                           key={item.id}
                           to={item.href}
-                          className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          className="text-left text-xl font-semibold text-foreground hover:text-primary transition-colors"
                           data-testid={`mobile-link-${item.id}`}
                           onClick={() => setIsOpen(false)}
                         >
@@ -137,7 +145,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
                         <button
                           key={item.id}
                           onClick={() => handleNavClick(item)}
-                          className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors"
+                          className="text-left text-xl font-semibold text-foreground hover:text-primary transition-colors"
                           data-testid={`mobile-link-${item.id}`}
                         >
                           {item.label[language]}

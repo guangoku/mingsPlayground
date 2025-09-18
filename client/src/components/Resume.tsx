@@ -101,28 +101,37 @@ export default function Resume({ language }: ResumeProps) {
   };
 
   return (
-    <section className="py-16 px-6 bg-muted/30" id="resume">
+    <section className="py-16 px-6" id="resume" style={{ backgroundColor: 'hsl(var(--light-slate-gray))' }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-resume-title">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-resume-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
             {language === 'en' ? 'Resume' : '简历'}
           </h2>
-          <p className="text-lg text-muted-foreground mb-6" data-testid="text-resume-description">
-            {language === 'en' 
+          <p className="text-lg mb-6" data-testid="text-resume-description" style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>
+            {language === 'en'
               ? 'A comprehensive overview of my professional experience and skills.'
               : '我的职业经历和技能的全面概述。'
             }
           </p>
-          <Button onClick={handleDownloadPDF} className="hover-elevate" data-testid="button-download-resume">
+          <Button
+            onClick={handleDownloadPDF}
+            className="hover-elevate"
+            data-testid="button-download-resume"
+            style={{
+              backgroundColor: 'hsl(var(--graphite-gray))',
+              color: 'white',
+              borderColor: 'hsl(var(--graphite-gray))'
+            }}
+          >
             <Download className="h-4 w-4 mr-2" />
             {language === 'en' ? 'Download PDF' : '下载PDF'}
           </Button>
         </div>
 
         {/* Contact Info */}
-        <Card className="mb-8">
+        <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
-            <CardTitle className="text-xl" data-testid="text-contact-title">
+            <CardTitle className="text-xl" data-testid="text-contact-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
               {language === 'en' ? 'Contact Information' : '联系方式'}
             </CardTitle>
           </CardHeader>
@@ -133,6 +142,7 @@ export default function Resume({ language }: ResumeProps) {
                 className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('email', resumeData.contact.email)}
                 data-testid="button-contact-email"
+                style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}
               >
                 <Mail className="h-4 w-4 mr-2" />
                 {resumeData.contact.email}
@@ -142,6 +152,7 @@ export default function Resume({ language }: ResumeProps) {
                 className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('phone', resumeData.contact.phone)}
                 data-testid="button-contact-phone"
+                style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}
               >
                 <Phone className="h-4 w-4 mr-2" />
                 {resumeData.contact.phone}
@@ -151,6 +162,7 @@ export default function Resume({ language }: ResumeProps) {
                 className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('location', resumeData.contact.location)}
                 data-testid="button-contact-location"
+                style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}
               >
                 <MapPin className="h-4 w-4 mr-2" />
                 {resumeData.contact.location}
@@ -160,6 +172,7 @@ export default function Resume({ language }: ResumeProps) {
                 className="justify-start hover-elevate rounded-full"
                 onClick={() => handleContactClick('website', resumeData.contact.website)}
                 data-testid="button-contact-website"
+                style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}
               >
                 <Globe className="h-4 w-4 mr-2" />
                 {resumeData.contact.website}
@@ -169,32 +182,32 @@ export default function Resume({ language }: ResumeProps) {
         </Card>
 
         {/* Experience */}
-        <Card className="mb-8">
+        <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
-            <CardTitle className="text-xl" data-testid="text-experience-title">
+            <CardTitle className="text-xl" data-testid="text-experience-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
               {language === 'en' ? 'Experience' : '工作经历'}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {resumeData.experience.map((exp, index) => (
               <div key={exp.id} className="relative" data-testid={`experience-${exp.id}`}>
-                {index > 0 && <div className="absolute left-3 -top-3 w-0.5 h-6 bg-border"></div>}
+                {index > 0 && <div className="absolute left-3 -top-3 w-0.5 h-6" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.3)' }}></div>}
                 <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 bg-primary rounded-full flex-shrink-0 mt-1"></div>
+                  <div className="w-6 h-6 rounded-full flex-shrink-0 mt-1" style={{ backgroundColor: 'hsl(var(--graphite-gray))' }}></div>
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                      <h3 className="font-semibold text-foreground" data-testid={`text-job-title-${exp.id}`}>{exp.title}</h3>
-                      <div className="flex items-center text-sm text-muted-foreground">
+                      <h3 className="font-semibold" data-testid={`text-job-title-${exp.id}`} style={{ color: 'hsl(var(--graphite-gray))' }}>{exp.title}</h3>
+                      <div className="flex items-center text-sm" style={{ color: 'hsl(var(--graphite-gray) / 0.7)' }}>
                         <Calendar className="h-4 w-4 mr-1" />
                         {exp.period}
                       </div>
                     </div>
-                    <p className="font-medium text-primary mb-2" data-testid={`text-company-${exp.id}`}>{exp.company}</p>
-                    <p className="text-muted-foreground mb-3" data-testid={`text-job-description-${exp.id}`}>{exp.description}</p>
+                    <p className="font-medium mb-2" data-testid={`text-company-${exp.id}`} style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>{exp.company}</p>
+                    <p className="mb-3" data-testid={`text-job-description-${exp.id}`} style={{ color: 'hsl(var(--graphite-gray) / 0.7)' }}>{exp.description}</p>
                     <ul className="space-y-1">
                       {exp.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="text-sm text-muted-foreground flex items-start gap-2" data-testid={`text-achievement-${exp.id}-${achIndex}`}>
-                          <div className="w-1 h-1 bg-muted-foreground rounded-full mt-2 flex-shrink-0"></div>
+                        <li key={achIndex} className="text-sm flex items-start gap-2" data-testid={`text-achievement-${exp.id}-${achIndex}`} style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>
+                          <div className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.6)' }}></div>
                           {achievement}
                         </li>
                       ))}
@@ -207,40 +220,73 @@ export default function Resume({ language }: ResumeProps) {
         </Card>
 
         {/* Skills */}
-        <Card className="mb-8">
+        <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
-            <CardTitle className="text-xl" data-testid="text-skills-title">
+            <CardTitle className="text-xl" data-testid="text-skills-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
               {language === 'en' ? 'Skills' : '技能'}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-              <h4 className="font-medium text-foreground mb-3" data-testid="text-technical-skills">
+              <h4 className="font-medium mb-3" data-testid="text-technical-skills" style={{ color: 'hsl(var(--graphite-gray))' }}>
                 {language === 'en' ? 'Technical Skills' : '技术技能'}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {resumeData.skills.technical.map((skill, index) => (
-                  <Badge key={index} variant="outline" data-testid={`badge-tech-skill-${index}`}>{skill}</Badge>
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    data-testid={`badge-tech-skill-${index}`}
+                    style={{
+                      borderColor: 'hsl(var(--graphite-gray) / 0.4)',
+                      color: 'hsl(var(--graphite-gray) / 0.8)',
+                      backgroundColor: 'transparent'
+                    }}
+                  >
+                    {skill}
+                  </Badge>
                 ))}
               </div>
             </div>
             <div>
-              <h4 className="font-medium text-foreground mb-3" data-testid="text-creative-skills">
+              <h4 className="font-medium mb-3" data-testid="text-creative-skills" style={{ color: 'hsl(var(--graphite-gray))' }}>
                 {language === 'en' ? 'Creative Skills' : '创意技能'}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {resumeData.skills.creative.map((skill, index) => (
-                  <Badge key={index} variant="secondary" data-testid={`badge-creative-skill-${index}`}>{skill}</Badge>
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    data-testid={`badge-creative-skill-${index}`}
+                    style={{
+                      backgroundColor: 'hsl(var(--graphite-gray) / 0.1)',
+                      color: 'hsl(var(--graphite-gray) / 0.8)',
+                      borderColor: 'hsl(var(--graphite-gray) / 0.2)'
+                    }}
+                  >
+                    {skill}
+                  </Badge>
                 ))}
               </div>
             </div>
             <div>
-              <h4 className="font-medium text-foreground mb-3" data-testid="text-languages">
+              <h4 className="font-medium mb-3" data-testid="text-languages" style={{ color: 'hsl(var(--graphite-gray))' }}>
                 {language === 'en' ? 'Languages' : '语言'}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {resumeData.skills.languages.map((lang, index) => (
-                  <Badge key={index} variant="default" data-testid={`badge-language-${index}`}>{lang}</Badge>
+                  <Badge
+                    key={index}
+                    variant="default"
+                    data-testid={`badge-language-${index}`}
+                    style={{
+                      backgroundColor: 'hsl(var(--graphite-gray))',
+                      color: 'white',
+                      borderColor: 'hsl(var(--graphite-gray))'
+                    }}
+                  >
+                    {lang}
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -248,9 +294,9 @@ export default function Resume({ language }: ResumeProps) {
         </Card>
 
         {/* Education */}
-        <Card>
+        <Card style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
-            <CardTitle className="text-xl" data-testid="text-education-title">
+            <CardTitle className="text-xl" data-testid="text-education-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
               {language === 'en' ? 'Education' : '教育背景'}
             </CardTitle>
           </CardHeader>
@@ -258,11 +304,11 @@ export default function Resume({ language }: ResumeProps) {
             {resumeData.education.map((edu) => (
               <div key={edu.id} className="flex justify-between items-start" data-testid={`education-${edu.id}`}>
                 <div>
-                  <h4 className="font-semibold text-foreground" data-testid={`text-degree-${edu.id}`}>{edu.degree}</h4>
-                  <p className="text-primary" data-testid={`text-school-${edu.id}`}>{edu.school}</p>
-                  <p className="text-sm text-muted-foreground" data-testid={`text-focus-${edu.id}`}>{edu.focus}</p>
+                  <h4 className="font-semibold" data-testid={`text-degree-${edu.id}`} style={{ color: 'hsl(var(--graphite-gray))' }}>{edu.degree}</h4>
+                  <p data-testid={`text-school-${edu.id}`} style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>{edu.school}</p>
+                  <p className="text-sm" data-testid={`text-focus-${edu.id}`} style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>{edu.focus}</p>
                 </div>
-                <span className="text-sm text-muted-foreground" data-testid={`text-year-${edu.id}`}>{edu.year}</span>
+                <span className="text-sm" data-testid={`text-year-${edu.id}`} style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>{edu.year}</span>
               </div>
             ))}
           </CardContent>
