@@ -1,0 +1,42 @@
+---
+alwaysApply: false
+---
+
+# Project Rules — Portfolio Website
+
+## General
+
+- Apply these rules **intelligently**, not blindly:
+  - If the repo already has a clear pattern → follow it.
+  - If a rule conflicts with current structure → suggest alternatives with trade-offs.
+  - Always provide options (minimal change vs. best practice vs. redesign).
+
+## Code Style
+
+- Respect file/folder layout: `src/pages`, `src/components`, `src/lib`.
+- Use function components + hooks; avoid class components.
+- Keep components small and focused.
+- Add/keep TypeScript types at boundaries (props, utilities).
+- Use Tailwind for styling; prefer shadcn/ui components over new deps.
+- Ensure accessibility: semantic HTML, aria labels, focus states.
+
+## Architecture
+
+- Pages: routing + high-level composition only.
+- Components: presentational, reusable; minimal side effects.
+- Utilities (`lib`): pure logic, framework-agnostic.
+- State: prefer local state + props; introduce global state only if justified.
+- Keep responsibilities separated across layers.
+
+## Testing
+
+- Add/maintain tests when logic changes.
+- Unit tests for utilities.
+- Behavior tests for critical components.
+- Prefer deterministic, simple tests.
+
+## Process
+
+- For larger changes: first propose a **Change Plan** (files touched, trade-offs).
+- Document reasons for non-trivial design choices in comments or PR notes.
+- Update `CURSOR_MEMORY.md` when new patterns or conventions emerge.
