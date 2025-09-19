@@ -7,6 +7,7 @@ import { Eye, Heart } from "lucide-react";
 import octopusGirlCool from "@assets/octopus_girl_cool.png";
 import nepal_travel_diaries_cover from "@assets/nepal_travel_diaries_cover.jpg";
 import flashmind_cover from "@assets/flashmind_cover.png";
+import yihe_miniprogram_cover from "@assets/yihe_miniprogram_cover.jpg";
 interface Project {
   id: string;
   title: {
@@ -72,6 +73,21 @@ const projects: Project[] = [
     imageUrl: flashmind_cover,
     likes: 35,
     year: '2024'
+  },
+  {
+    id: '4',
+    title: {
+      en: 'Charity Box Mini-Program',
+      zh: '益盒小程序'
+    },
+    category: 'Social Impact',
+    description: {
+      en: 'A WeChat mini-program that makes donating 1% of income simple and transparent, supporting effective charities across China. I contributed to backend design, payment workflows, and user experience improvements.',
+      zh: '基于微信的小程序，让用户轻松透明地捐出收入的1%，支持全中国的高效公益组织。我参与了后端设计、支付流程及用户体验优化。'
+    },
+    imageUrl: yihe_miniprogram_cover,
+    likes: 41,
+    year: '2024'
   }
 ];
 
@@ -108,8 +124,8 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-white/90 dark:text-gray-200" data-testid="text-projects-description" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
             {language === 'en'
-              ? 'From art and graphic novels to tech innovation and social impact — a showcase of my work'
-              : '从艺术与绘本，到技术创新与社会实践 —— 这里是我的创作一隅'
+              ? 'A showcase of my independent projects and contributions'
+              : '独立项目与合作成果'
             }
           </p>
         </div>

@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
 import ProjectSection from "@/components/ProjectSection";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface ProjectsPageProps {
-    language: 'en' | 'zh';
-}
-
 function ProjectsPage() {
     const [isDark, setIsDark] = useState(false);
-    const [language, setLanguage] = useState<'en' | 'zh'>('en');
+    const { language, toggleLanguage } = useLanguage();
 
     // Initialize theme from localStorage or system preference
     useEffect(() => {
@@ -32,11 +29,6 @@ function ProjectsPage() {
         localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     };
 
-    const handleLanguageToggle = () => {
-        const newLanguage = language === 'en' ? 'zh' : 'en';
-        setLanguage(newLanguage);
-        localStorage.setItem('language', newLanguage);
-    };
 
     return (
         <TooltipProvider>
@@ -46,7 +38,7 @@ function ProjectsPage() {
                     isDark={isDark}
                     onThemeToggle={handleThemeToggle}
                     language={language}
-                    onLanguageToggle={handleLanguageToggle}
+                    onLanguageToggle={toggleLanguage}
                 />
 
                 <main className="pt-20">
@@ -125,12 +117,12 @@ function ProjectsPage() {
                             {language === 'en' ? (
                                 <>
                                     <p>© 2025 Mingyun Guan. All rights reserved.</p>
-                                    <p className="mt-1">Made with ocean hues, code, and curiosity — in Galicia, Spain.</p>
+                                    <p className="mt-1">Made with ocean hues, code, and curiosity — on this journey.</p>
                                 </>
                             ) : (
                                 <>
                                     <p>© 2025 超级赛亚关 — 版权所有。</p>
-                                    <p className="mt-1">在西班牙加利西亚，用海洋色调、代码与好奇心编织而成。</p>
+                                    <p className="mt-1">在旅途中，用海色、代码与好奇心编织而成。</p>
                                 </>
                             )}
                         </div>

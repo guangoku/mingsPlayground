@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
 import BlogSection from "@/components/BlogSection";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface BlogPageProps {
-    language: 'en' | 'zh';
-}
-
 function BlogPage() {
     const [isDark, setIsDark] = useState(false);
-    const [language, setLanguage] = useState<'en' | 'zh'>('en');
+    const { language, toggleLanguage } = useLanguage();
 
     // Initialize theme from localStorage or system preference
     useEffect(() => {
@@ -32,11 +29,6 @@ function BlogPage() {
         localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     };
 
-    const handleLanguageToggle = () => {
-        const newLanguage = language === 'en' ? 'zh' : 'en';
-        setLanguage(newLanguage);
-        localStorage.setItem('language', newLanguage);
-    };
 
     return (
         <TooltipProvider>
@@ -46,7 +38,7 @@ function BlogPage() {
                     isDark={isDark}
                     onThemeToggle={handleThemeToggle}
                     language={language}
-                    onLanguageToggle={handleLanguageToggle}
+                    onLanguageToggle={toggleLanguage}
                 />
 
                 <main className="pt-20">

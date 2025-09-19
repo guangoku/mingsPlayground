@@ -15,7 +15,7 @@ Update when new patterns emerge.
 - Pages: under `src/pages/`, each represents a route.
 - Components: under `src/components/`, small and reusable.
 - Utilities: under `src/lib/`, pure functions, no React imports.
-- Assets: in `public/` or imported via Vite.
+- Assets: in `attached_assets/` or imported via Vite.
 
 ## Patterns
 
