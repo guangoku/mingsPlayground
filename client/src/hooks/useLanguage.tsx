@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-type Language = 'en' | 'zh';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { type Language } from '@/lib/types';
+import { LANGUAGES } from '@/lib/constants';
 
 interface LanguageContextType {
     language: Language;
@@ -33,7 +33,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
 
     const toggleLanguage = () => {
-        const newLanguage = language === 'en' ? 'zh' : 'en';
+        const newLanguage = language === LANGUAGES.EN ? LANGUAGES.ZH : LANGUAGES.EN;
         setLanguage(newLanguage);
     };
 

@@ -1,24 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Waves } from "lucide-react";
 import octopusGirlOrange from "@assets/octopus_girl_orange.png";
+import { getBilingualText } from "@/lib/utils";
+import { type Language } from "@/lib/types";
 
 interface HeroProps {
   name: string;
-  title: string;
   description: string;
   onResumeClick: () => void;
   onProjectsClick: () => void;
-  language: 'en' | 'zh';
+  language: Language;
 }
 
-export default function Hero({ name, title, description, onResumeClick, onProjectsClick, language }: HeroProps) {
+export default function Hero({ name, description, onResumeClick, onProjectsClick, language }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden hero-bg">
       {/* Octopus Girl Image */}
       <div className="absolute left-0 w-3/5 h-full flex items-center justify-start pl-8">
         <img
           src={octopusGirlOrange}
-          alt={language === 'en' ? 'Octopus Girl Character' : '章鱼女孩角色'}
+          alt={getBilingualText({ en: 'Octopus Girl Character', zh: '章鱼女孩角色' }, language)}
           className="max-w-full max-h-full object-contain"
           data-testid="img-octopus-girl"
         />
@@ -36,7 +37,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
             transform: 'rotate(-1deg)',
             marginRight: '20px'
           }} data-testid="text-hero-name">
-            {language === 'en' ? "Ming's" : '关关的'}
+            {getBilingualText({ en: "Ming's", zh: '关关的' }, language)}
           </h1>
           <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tight" style={{
             color: 'hsl(var(--coral-fixed))',
@@ -46,7 +47,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
             transform: 'rotate(1deg)',
             marginRight: '-10px'
           }} data-testid="text-hero-playground">
-            {language === 'en' ? 'Playground' : '游乐场'}
+            {getBilingualText({ en: 'Playground', zh: '游乐场' }, language)}
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{
@@ -54,21 +55,21 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             marginRight: '15px'
           }} data-testid="text-hero-subtitle1">
-            {language === 'en' ? 'Innovating with Data' : '以数据创新'}
+            {getBilingualText({ en: 'Innovating with Data', zh: '以数据创新' }, language)}
           </h2>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{
             color: 'hsl(var(--foam-fixed))',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             marginRight: '-5px'
           }} data-testid="text-hero-subtitle2">
-            {language === 'en' ? 'Creating Art' : '以艺术创作'}
+            {getBilingualText({ en: 'Creating Art', zh: '以艺术创作' }, language)}
           </h2>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{
             color: 'hsl(var(--foam-fixed))',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             marginRight: '25px'
           }} data-testid="text-hero-subtitle3">
-            {language === 'en' ? 'and Embracing Curiosity' : '以好奇心前行'}
+            {getBilingualText({ en: 'and Embracing Curiosity', zh: '以好奇心前行' }, language)}
           </h2>
 
           <div className="flex flex-col gap-4">
@@ -79,7 +80,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
               data-testid="button-view-resume"
             >
               <FileText className="h-5 w-5 mr-2" />
-              {language === 'en' ? 'View Resume' : '查看简历'}
+              {getBilingualText({ en: 'View Resume', zh: '查看简历' }, language)}
             </Button>
             <Button
               variant="outline"
@@ -89,7 +90,7 @@ export default function Hero({ name, title, description, onResumeClick, onProjec
               data-testid="button-explore-projects"
             >
               <Waves className="h-5 w-5 mr-2" />
-              {language === 'en' ? 'See My Work' : '看看我的作品'}
+              {getBilingualText({ en: 'See My Work', zh: '看看我的作品' }, language)}
             </Button>
           </div>
         </div>

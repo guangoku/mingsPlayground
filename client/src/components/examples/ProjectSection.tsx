@@ -1,5 +1,6 @@
 import ProjectSection from '../ProjectSection';
+import { LANGUAGES } from '@/lib/constants';
 
 export default function ProjectSectionExample() {
-  return <ProjectSection language="en" />;
+  return <ProjectSection language={LANGUAGES.EN} />;
 }

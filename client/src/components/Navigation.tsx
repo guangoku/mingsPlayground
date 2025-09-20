@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Sun, Moon, Globe } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
+import { getBilingualText } from "@/lib/utils";
+import { type Language } from "@/lib/types";
 
 interface NavigationProps {
   isDark: boolean;
   onThemeToggle: () => void;
-  language: 'en' | 'zh';
+  language: Language;
   onLanguageToggle: () => void;
 }
 
@@ -84,7 +86,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300`} data-testid="text-logo">
-            {language === 'en' ? 'Mingyun Guan' : '超级赛亚关'}
+            {getBilingualText({ en: 'Mingyun Guan', zh: '超级赛亚关' }, language)}
           </div>
 
           {/* Desktop Navigation */}
@@ -126,7 +128,7 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
               data-testid="button-language-toggle"
             >
               <Globe className="h-4 w-5" />
-              <span className="text-sm font-medium">{language === 'en' ? '中文' : 'EN'}</span>
+              <span className="text-sm font-medium">{getBilingualText({ en: '中文', zh: 'EN' }, language)}</span>
             </Button>
 
             <Button
@@ -137,7 +139,12 @@ export default function Navigation({ isDark, onThemeToggle, language, onLanguage
               data-testid="button-theme-toggle"
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              <span className="text-sm font-medium">{isDark ? (language === 'en' ? 'Light' : '亮色') : (language === 'en' ? 'Dark' : '暗色')}</span>
+              <span className="text-sm font-medium">
+                {isDark
+                  ? getBilingualText({ en: 'Light', zh: '亮色' }, language)
+                  : getBilingualText({ en: 'Dark', zh: '暗色' }, language)
+                }
+              </span>
             </Button>
 
             {/* Mobile Menu */}

@@ -1,9 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Code, Linkedin, Camera } from "lucide-react";
+import { getBilingualText } from "@/lib/utils";
+import { type Language } from "@/lib/types";
 
 interface ContactProps {
-  language: 'en' | 'zh';
+  language: Language;
 }
 
 const contactLinks = [
@@ -48,13 +50,13 @@ export default function Contact({ language }: ContactProps) {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white dark:text-gray-100" data-testid="text-contact-title" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-            {language === 'en' ? "Let's Connect" : '联系我'}
+            {getBilingualText({ en: "Let's Connect", zh: '联系我' }, language)}
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-white/90 dark:text-gray-200" data-testid="text-contact-description" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-            {language === 'en'
-              ? "Open to collaborations, opportunities, or just a good conversation."
-              : '欢迎合作、机会洽谈，或是简单地聊聊。'
-            }
+            {getBilingualText({
+              en: "Open to collaborations, opportunities, or just a good conversation.",
+              zh: '欢迎合作、机会洽谈，或是简单地聊聊。'
+            }, language)}
           </p>
         </div>
 

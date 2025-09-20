@@ -10,6 +10,8 @@ import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { getBilingualText } from "@/lib/utils";
+import { COPYRIGHT, FOOTER_TAGLINES } from "@/lib/constants";
 
 function LandingPage() {
     const [isDark, setIsDark] = useState(false);
@@ -64,14 +66,10 @@ function LandingPage() {
                     <section id="hero">
                         <Hero
                             name="Ming"
-                            title={language === 'en'
-                                ? 'Tech Lead & Data Engineer'
-                                : '技术负责人 & 数据工程师'
-                            }
-                            description={language === 'en'
-                                ? 'Innovating with Data, Creating Art, and Embracing Curiosity'
-                                : '用数据创新，用艺术创作，拥抱好奇心'
-                            }
+                            description={getBilingualText({
+                                en: 'Innovating with Data, Creating Art, and Embracing Curiosity',
+                                zh: '用数据创新，用艺术创作，拥抱好奇心'
+                            }, language)}
                             language={language}
                             onResumeClick={handleResumeClick}
                             onProjectsClick={handleProjectsClick}
@@ -99,17 +97,8 @@ function LandingPage() {
                 <footer className="py-8 px-6 border-t bg-muted/30">
                     <div className="max-w-6xl mx-auto text-center">
                         <div className="text-muted-foreground" data-testid="text-footer">
-                            {language === 'en' ? (
-                                <>
-                                    <p>© 2025 Mingyun Guan. All rights reserved.</p>
-                                    <p className="mt-1">Made with ocean hues, code, and curiosity.</p>
-                                </>
-                            ) : (
-                                <>
-                                    <p>© 2025 超级赛亚关 — 版权所有。</p>
-                                    <p className="mt-1">用海洋色调、代码与好奇心编织而成。</p>
-                                </>
-                            )}
+                            <p>{getBilingualText(COPYRIGHT, language)}</p>
+                            <p className="mt-1">{getBilingualText(FOOTER_TAGLINES, language)}</p>
                         </div>
                     </div>
                 </footer>

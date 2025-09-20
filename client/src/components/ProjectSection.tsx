@@ -8,24 +8,21 @@ import octopusGirlCool from "@assets/octopus_girl_cool.png";
 import nepal_travel_diaries_cover from "@assets/nepal_travel_diaries_cover.jpg";
 import flashmind_cover from "@assets/flashmind_cover.png";
 import yihe_miniprogram_cover from "@assets/yihe_miniprogram_cover.jpg";
+import { getBilingualText, getBilingualArray } from "@/lib/utils";
+import { LANGUAGES, COLORS, CATEGORIES } from "@/lib/constants";
+import { type BilingualText, type Language } from "@/lib/types";
 interface Project {
   id: string;
-  title: {
-    en: string;
-    zh: string;
-  };
+  title: BilingualText;
   category: string;
-  description: {
-    en: string;
-    zh: string;
-  };
+  description: BilingualText;
   imageUrl: string;
   likes: number;
   year: string;
 }
 
 interface ProjectSectionProps {
-  language: 'en' | 'zh';
+  language: Language;
 }
 
 const projects: Project[] = [
@@ -92,7 +89,7 @@ const projects: Project[] = [
 ];
 
 const categories = [
-  { en: 'All', zh: '全部' },
+  CATEGORIES.ALL,
   { en: 'Art & Illustration', zh: '艺术插画' },
   { en: 'Graphic Novels', zh: '绘本' },
   { en: 'Tech Development', zh: '技术开发' },
@@ -100,10 +97,10 @@ const categories = [
 ];
 
 export default function ProjectSection({ language }: ProjectSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>(CATEGORIES.ALL.en);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filteredProjects = selectedCategory === 'All'
+  const filteredProjects = selectedCategory === CATEGORIES.ALL.en
     ? projects
     : projects.filter(project => project.category === selectedCategory);
 
@@ -120,13 +117,13 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white dark:text-gray-100" data-testid="text-projects-title" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-            {language === 'en' ? 'Projects & Creative Work' : '项目与创作'}
+            {getBilingualText({ en: 'Projects & Creative Work', zh: '项目与创作' }, language)}
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-white/90 dark:text-gray-200" data-testid="text-projects-description" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-            {language === 'en'
-              ? 'A showcase of my independent projects and contributions'
-              : '独立项目与合作成果'
-            }
+            {getBilingualText({
+              en: 'A showcase of my independent projects and contributions',
+              zh: '独立项目与合作成果'
+            }, language)}
           </p>
         </div>
 
@@ -147,7 +144,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                 textShadow: selectedCategory === category.en ? 'none' : '1px 1px 2px rgba(0,0,0,0.3)'
               }}
             >
-              {language === 'en' ? category.en : category.zh}
+              {getBilingualText(category, language)}
             </Button>
           ))}
         </div>
@@ -166,7 +163,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
               <div className="relative aspect-square overflow-hidden">
                 <img
                   src={project.imageUrl}
-                  alt={language === 'en' ? project.title.en : project.title.zh}
+                  alt={getBilingualText(project.title, language)}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
@@ -180,7 +177,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                       <div className="aspect-square w-full">
                         <img
                           src={project.imageUrl}
-                          alt={language === 'en' ? project.title.en : project.title.zh}
+                          alt={getBilingualText(project.title, language)}
                           className="w-full h-full object-contain"
                         />
                       </div>
@@ -191,7 +188,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-semibold text-emerald-700 dark:text-emerald-400" data-testid={`text-project-title-${project.id}`}>
-                    {language === 'en' ? project.title.en : project.title.zh}
+                    {getBilingualText(project.title, language)}
                   </h3>
                   <Badge
                     variant="secondary"
@@ -201,17 +198,17 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                   </Badge>
                 </div>
                 <p className="text-sm mb-3 text-gray-600 dark:text-gray-300" data-testid={`text-project-description-${project.id}`}>
-                  {language === 'en' ? project.description.en : project.description.zh}
+                  {getBilingualText(project.description, language)}
                 </p>
                 <div className="flex justify-between items-center">
                   <Badge
                     variant="outline"
                     className="border-emerald-700 dark:border-emerald-400 text-emerald-700 dark:text-emerald-400 bg-transparent"
                   >
-                    {language === 'en'
-                      ? categories.find(cat => cat.en === project.category)?.en || project.category
-                      : categories.find(cat => cat.en === project.category)?.zh || project.category
-                    }
+                    {getBilingualText(
+                      categories.find(cat => cat.en === project.category) || { en: project.category, zh: project.category },
+                      language
+                    )}
                   </Badge>
                   <Button
                     variant="ghost"

@@ -4,19 +4,22 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar, Clock, Search, ArrowRight } from "lucide-react";
+import { getBilingualText, getBilingualArray, formatReadTime } from "@/lib/utils";
+import { LANGUAGES, CATEGORIES } from "@/lib/constants";
+import { type Language, type BilingualText, type BilingualArray } from "@/lib/types";
 
 interface BlogPost {
   id: string;
-  title: { en: string; zh: string };
-  excerpt: { en: string; zh: string };
-  tags: { en: string[]; zh: string[] };
+  title: BilingualText;
+  excerpt: BilingualText;
+  tags: BilingualArray;
   date: string;
-  readTime: { en: string; zh: string };
+  readTimeMinutes: number;
   category: 'learning-journey' | 'curious-minds' | 'adventure-travel' | 'deep-dives' | 'reading-notes';
 }
 
 interface BlogSectionProps {
-  language: 'en' | 'zh';
+  language: Language;
 }
 
 // Real blog posts with bilingual support
@@ -36,7 +39,7 @@ const blogPosts: BlogPost[] = [
       zh: ['数据工程', 'Python', 'ETL']
     },
     date: '2024-01-15',
-    readTime: { en: '8 min read', zh: '8分钟阅读' },
+    readTimeMinutes: 8,
     category: 'learning-journey'
   },
   {
@@ -54,7 +57,7 @@ const blogPosts: BlogPost[] = [
       zh: ['设计', '艺术', '编程']
     },
     date: '2024-01-10',
-    readTime: { en: '6 min read', zh: '6分钟阅读' },
+    readTimeMinutes: 6,
     category: 'deep-dives'
   },
   {
@@ -72,7 +75,7 @@ const blogPosts: BlogPost[] = [
       zh: ['远程工作', '旅行', '生活方式']
     },
     date: '2024-01-05',
-    readTime: { en: '10 min read', zh: '10分钟阅读' },
+    readTimeMinutes: 10,
     category: 'adventure-travel'
   },
   {
@@ -90,7 +93,7 @@ const blogPosts: BlogPost[] = [
       zh: ['科学', '心理学', '睡眠']
     },
     date: '2024-01-20',
-    readTime: { en: '7 min read', zh: '7分钟阅读' },
+    readTimeMinutes: 7,
     category: 'curious-minds'
   },
   {
@@ -108,7 +111,7 @@ const blogPosts: BlogPost[] = [
       zh: ['书评', '习惯', '生产力']
     },
     date: '2024-01-18',
-    readTime: { en: '5 min read', zh: '5分钟阅读' },
+    readTimeMinutes: 5,
     category: 'reading-notes'
   }
 ];
@@ -153,13 +156,13 @@ export default function BlogSection({ language }: BlogSectionProps) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-900 dark:text-stone-200" data-testid="text-blog-title">
-            {language === 'en' ? 'Blog' : '博客'}
+            {getBilingualText({ en: 'Blog', zh: '博客' }, language)}
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-stone-700 dark:text-stone-300" data-testid="text-blog-description">
-            {language === 'en'
-              ? 'Reflections on technology, lifelong learning, books, and the world around me.'
-              : '分享关于技术、旅行和持续学习的见解。'
-            }
+            {getBilingualText({
+              en: 'Reflections on technology, lifelong learning, books, and the world around me.',
+              zh: '分享关于技术、旅行和持续学习的见解。'
+            }, language)}
           </p>
         </div>
 
@@ -168,7 +171,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-stone-600 dark:text-stone-400" />
             <Input
-              placeholder={language === 'en' ? 'Search posts...' : '搜索文章...'}
+              placeholder={getBilingualText({ en: 'Search posts...', zh: '搜索文章...' }, language)}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 rounded-full border-2 bg-stone-50 dark:bg-stone-900/20 border-stone-300 dark:border-stone-600 text-stone-900 dark:text-stone-200 placeholder:text-stone-600 dark:placeholder:text-stone-400"
@@ -214,27 +217,27 @@ export default function BlogSection({ language }: BlogSectionProps) {
                       </Badge>
                       <div className="flex items-center text-xs text-stone-600 dark:text-stone-400">
                         <Calendar className="h-3 w-3 mr-1" />
-                        {new Date(post.date).toLocaleDateString(language === 'en' ? 'en-US' : 'zh-CN')}
+                        {new Date(post.date).toLocaleDateString(language === LANGUAGES.EN ? 'en-US' : 'zh-CN')}
                       </div>
                       <div className="flex items-center text-xs text-stone-600 dark:text-stone-400">
                         <Clock className="h-3 w-3 mr-1" />
-                        {post.readTime[language]}
+                        {formatReadTime(post.readTimeMinutes, language)}
                       </div>
                     </div>
 
                     <h3 className="text-lg font-bold mb-2 group-hover:text-opacity-80 transition-colors text-stone-900 dark:text-stone-100" data-testid={`text-post-title-${post.id}`}>
-                      {post.title[language]}
+                      {getBilingualText(post.title, language)}
                     </h3>
 
                     <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300" data-testid={`text-post-excerpt-${post.id}`}>
-                      {post.excerpt[language]}
+                      {getBilingualText(post.excerpt, language)}
                     </p>
                   </div>
 
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-all text-stone-600 dark:text-stone-400" />
                     <div className="flex flex-wrap gap-1 justify-end max-w-[200px]">
-                      {post.tags[language].slice(0, 3).map((tag, tagIndex) => (
+                      {getBilingualArray(post.tags, language).slice(0, 3).map((tag, tagIndex) => (
                         <Badge
                           key={tagIndex}
                           variant="outline"
@@ -262,7 +265,10 @@ export default function BlogSection({ language }: BlogSectionProps) {
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
             <p data-testid="text-no-posts" className="text-stone-600 dark:text-stone-400">
-              {language === 'en' ? 'No posts found matching your criteria.' : '未找到符合条件的文章。'}
+              {getBilingualText({
+                en: 'No posts found matching your criteria.',
+                zh: '未找到符合条件的文章。'
+              }, language)}
             </p>
           </div>
         )}

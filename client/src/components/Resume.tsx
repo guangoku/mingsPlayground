@@ -6,9 +6,12 @@ import AmazonLogo from "../../../attached_assets/logos/logo_amazon.png";
 import ColumbiaLogo from "../../../attached_assets/logos/logo_columbia.png";
 import XiamenLogo from "../../../attached_assets/logos/logo_xiamen_university.png";
 import UMLogo from "../../../attached_assets/logos/logo_um.png";
+import { getBilingualText } from "@/lib/utils";
+import { LANGUAGES } from "@/lib/constants";
+import { type Language, type BilingualText } from "@/lib/types";
 
 interface ResumeProps {
-  language: 'en' | 'zh';
+  language: Language;
 }
 
 const resumeData = {
@@ -209,7 +212,6 @@ export default function Resume({ language }: ResumeProps) {
     // TODO: Implement contact actions (email, phone, website)
   };
 
-  const t = <T extends Record<string, string>>(obj: T) => obj?.[language] ?? obj?.en;
 
 
   return (
@@ -217,13 +219,13 @@ export default function Resume({ language }: ResumeProps) {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-resume-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
-            {language === 'en' ? 'Resume' : '简历'}
+            {getBilingualText({ en: 'Resume', zh: '简历' }, language)}
           </h2>
           <p className="text-lg mb-6" data-testid="text-resume-description" style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>
-            {language === 'en'
-              ? 'A comprehensive overview of my professional experience and skills.'
-              : '我的职业经历和技能的全面概述。'
-            }
+            {getBilingualText({
+              en: 'A comprehensive overview of my professional experience and skills.',
+              zh: '我的职业经历和技能的全面概述。'
+            }, language)}
           </p>
           <Button
             onClick={handleDownloadPDF}
@@ -236,7 +238,7 @@ export default function Resume({ language }: ResumeProps) {
             }}
           >
             <Download className="h-4 w-4 mr-2" />
-            {language === 'en' ? 'Download PDF' : '下载PDF'}
+            {getBilingualText({ en: 'Download PDF', zh: '下载PDF' }, language)}
           </Button>
         </div>
 
@@ -245,15 +247,15 @@ export default function Resume({ language }: ResumeProps) {
           <CardContent className="pt-6">
             <div className="space-y-2">
               <h2 className="text-xl font-medium" style={{ color: 'hsl(var(--graphite-gray))' }}>
-                {t(resumeData.profile.headline)}
+                {getBilingualText(resumeData.profile.headline, language)}
               </h2>
               <p className="text-base" style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>
-                {t(resumeData.profile.subhead)}
+                {getBilingualText(resumeData.profile.subhead, language)}
               </p>
               {resumeData.profile.location && (
                 <div className="text-sm flex items-center gap-2" style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>
                   <MapPin className="h-4 w-4 opacity-70" aria-hidden />
-                  <span>{t(resumeData.profile.location)}</span>
+                  <span>{getBilingualText(resumeData.profile.location, language)}</span>
                 </div>
               )}
             </div>
@@ -264,7 +266,7 @@ export default function Resume({ language }: ResumeProps) {
         <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
             <CardTitle className="text-xl" style={{ color: 'hsl(var(--graphite-gray))' }}>
-              {language === 'en' ? 'Key Highlights' : '核心亮点'}
+              {getBilingualText({ en: 'Key Highlights', zh: '核心亮点' }, language)}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -280,14 +282,14 @@ export default function Resume({ language }: ResumeProps) {
         <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
             <CardTitle className="text-xl" data-testid="text-experience-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
-              {language === 'en' ? 'Experience' : '工作经历'}
+              {getBilingualText({ en: 'Experience', zh: '工作经历' }, language)}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {resumeData.experience.map((exp, index) => (
               <div key={exp.company + exp.period} className="space-y-1" data-testid={`experience-${index}`}>
                 <h3 className="font-medium" data-testid={`text-job-title-${index}`} style={{ color: 'hsl(var(--graphite-gray))' }}>
-                  {t(exp.title)}
+                  {getBilingualText(exp.title, language)}
                 </h3>
                 <div className="text-base flex items-center gap-2" style={{ color: 'hsl(var(--graphite-gray) / 0.8)' }}>
                   <div className="flex items-center gap-2">
@@ -324,7 +326,7 @@ export default function Resume({ language }: ResumeProps) {
         <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
             <CardTitle className="text-xl" style={{ color: 'hsl(var(--graphite-gray))' }}>
-              {t(resumeData.gap.title)}
+              {getBilingualText(resumeData.gap.title, language)}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -348,13 +350,13 @@ export default function Resume({ language }: ResumeProps) {
         <Card className="mb-8" style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
             <CardTitle className="text-xl" data-testid="text-skills-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
-              {language === 'en' ? 'Skills' : '技能'}
+              {getBilingualText({ en: 'Skills', zh: '技能' }, language)}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex items-center gap-2">
               <h4 className="font-medium text-sm" data-testid="text-core-skills" style={{ color: 'hsl(var(--graphite-gray))', minWidth: '80px' }}>
-                {language === 'zh' ? '核心' : 'Core'}:
+                {getBilingualText({ en: 'Core', zh: '核心' }, language)}:
               </h4>
               <div className="flex flex-wrap gap-1">
                 {(resumeData.skills.core?.[language] ?? resumeData.skills.core.en).map((skill, index) => (
@@ -469,7 +471,7 @@ export default function Resume({ language }: ResumeProps) {
         <Card style={{ backgroundColor: 'hsl(var(--graphite-gray) / 0.05)', borderColor: 'hsl(var(--graphite-gray) / 0.2)' }}>
           <CardHeader>
             <CardTitle className="text-xl" data-testid="text-education-title" style={{ color: 'hsl(var(--graphite-gray))' }}>
-              {language === 'en' ? 'Education' : '教育经历'}
+              {getBilingualText({ en: 'Education', zh: '教育经历' }, language)}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -482,7 +484,7 @@ export default function Resume({ language }: ResumeProps) {
                     {ed.school !== "Columbia University" && ed.school !== "Xiamen University" && <GraduationCap className="h-6 w-6" />}
                     <p className="text-base font-semibold" data-testid={`text-school-${index}`} style={{ color: 'hsl(var(--graphite-gray))' }}>{ed.school}</p>
                     <span className="text-base" style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>—</span>
-                    <h4 className="font-medium text-base" data-testid={`text-degree-${index}`} style={{ color: 'hsl(var(--graphite-gray))' }}>{t(ed.degree)}</h4>
+                    <h4 className="font-medium text-base" data-testid={`text-degree-${index}`} style={{ color: 'hsl(var(--graphite-gray))' }}>{getBilingualText(ed.degree, language)}</h4>
                   </div>
                 </div>
                 <span className="text-sm" data-testid={`text-year-${index}`} style={{ color: 'hsl(var(--graphite-gray) / 0.6)' }}>{ed.year}</span>
