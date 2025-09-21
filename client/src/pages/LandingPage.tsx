@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import ProjectSection from "@/components/ProjectSection";
+import ProjectSection from "@/components/projects/ProjectSection";
 import BlogSection from "@/components/BlogSection";
 import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";

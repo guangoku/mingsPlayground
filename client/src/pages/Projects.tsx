@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
-import ProjectSection from "@/components/ProjectSection";
+import ProjectSection from "@/components/projects/ProjectSection";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";

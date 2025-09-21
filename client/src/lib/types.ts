@@ -48,3 +48,5 @@ export interface ThemeProps {
  * Common props interface for components that handle both language and theme
  */
 export interface LanguageAndThemeProps extends LanguageProps, ThemeProps {}
+
+// Project-related types are now in @/lib/projects

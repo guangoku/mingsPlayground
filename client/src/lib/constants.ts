@@ -35,6 +35,8 @@ export const CATEGORIES = {
   ALL_POSTS: { en: 'All Posts', zh: '所有文章' }
 } as const;
 
+// Project-specific constants are now in @/lib/projects
+
 // Copyright text
 export const COPYRIGHT = {
   en: '© 2025 Mingyun Guan. All rights reserved.',
