@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Waves } from "lucide-react";
-import octopusGirlOrange from "@assets/octopus_girl_orange.png";
+import octopusGirlOrange from "@assets/hero_cover.png";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 
