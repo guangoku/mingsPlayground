@@ -62,9 +62,37 @@ npm run preview
 
 ## Deployment
 
-The project is configured for static hosting with client-side routing support:
+The project is deployed and live at **https://mingsplayground.com**
 
-- **Vercel**: Deploy with `vercel.json` configuration
+### Hosting Platform: Vercel ✅
+
+- **Live URL**: https://mingsplayground.com
+- **Vercel URL**: https://mings-playground.vercel.app
+- **Configuration**: `vercel.json` for SPA routing
+- **Custom Domain**: mingsplayground.com (A record: 76.76.21.21)
+
+### Deployment Process
+
+```bash
+# Build the project
+npm run build
+
+# Deploy to Vercel
+vercel --prod
+
+# Add custom domain (one-time setup)
+vercel domains add mingsplayground.com
+```
+
+### DNS Configuration
+
+- **Method**: A Record (Option A)
+- **Record**: `A @ 76.76.21.21`
+- **Registrar**: Cloudflare (proxy disabled)
+- **Status**: ✅ Active and working
+
+### Alternative Hosting Options
+
 - **Netlify**: Deploy with `public/_redirects` configuration
 - **GitHub Pages**: Works with SPA routing
 

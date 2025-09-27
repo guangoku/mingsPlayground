@@ -56,3 +56,12 @@ Update when new patterns emerge.
 - **Type safety**: Enhanced interfaces with rich detail support for future modal/page features
 - **Helper functions**: `getProjectById()`, `getProjectsByCategory()`, `searchProjects()` for data manipulation
 - **Single import**: Import everything from `@/lib/projects` for project-related functionality
+
+### Deployment & Hosting
+
+- **Platform**: Vercel (static hosting with SPA routing)
+- **Live URL**: https://mingsplayground.com
+- **DNS**: A record method (76.76.21.21) with Cloudflare (proxy disabled)
+- **Build**: `npm run build` → `vercel --prod`
+- **Configuration**: `vercel.json` for client-side routing
+- **Domain management**: `vercel domains add [domain]` for custom domains
