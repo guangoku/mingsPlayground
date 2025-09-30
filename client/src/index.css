@@ -397,3 +397,22 @@
 .dark .contact-bg {
   background: linear-gradient(135deg, hsl(15 40% 25%) 0%, hsl(15 30% 20%) 100%);
 }
+
+/* Resume-specific cooler theme */
+.resume-bg {
+  background-color: hsl(210 40% 98%);
+}
+
+.dark .resume-bg {
+  background-color: hsl(200 35% 8%);
+}
+
+.resume-card {
+  background-color: hsl(210 30% 96%);
+  border-color: hsl(220 12% 87%);
+}
+
+.dark .resume-card {
+  background-color: hsl(200 25% 12%);
+  border-color: hsl(220 18% 22%);
+}

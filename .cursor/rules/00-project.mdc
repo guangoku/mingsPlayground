@@ -10,6 +10,7 @@ alwaysApply: true
   - If the repo already has a clear pattern → follow it.
   - If a rule conflicts with current structure → suggest alternatives with trade-offs.
   - Always provide options (minimal change vs. best practice vs. redesign).
+  - Refer to `CURSOR_MEMORY.md`
 
 ## Code Style
 

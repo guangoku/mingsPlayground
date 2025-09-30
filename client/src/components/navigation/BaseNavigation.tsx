@@ -78,7 +78,7 @@ export default function BaseNavigation({
 
             // Update active section based on scroll position
             const sections = landingNavItems.map(item => item.href.replace('#', ''));
-            const scrollPosition = window.scrollY + 100;
+            const scrollPosition = window.scrollY + 80; // Match navigation bar height
 
             for (let i = sections.length - 1; i >= 0; i--) {
                 const element = document.getElementById(sections[i]);
@@ -99,7 +99,12 @@ export default function BaseNavigation({
         if (item.type === 'scroll') {
             const element = document.getElementById(item.href.replace('#', ''));
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                const navHeight = 80; // Account for navigation bar height
+                const elementPosition = element.offsetTop - navHeight;
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
             }
         }
         setIsOpen(false);
@@ -249,7 +254,10 @@ export default function BaseNavigation({
                             variant="outline"
                             size="sm"
                             onClick={onThemeToggle}
-                            className="p-2"
+                            className={`p-2 transition-colors duration-300 ${isOnHero
+                                ? 'border-white/30 text-white hover:bg-white/10 hover:border-white/50'
+                                : 'border-border text-foreground hover:bg-accent hover:text-accent-foreground'
+                                }`}
                             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                         >
                             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -260,10 +268,16 @@ export default function BaseNavigation({
                             variant="outline"
                             size="sm"
                             onClick={onLanguageToggle}
-                            className="p-2"
+                            className={`px-3 py-2 transition-colors duration-300 ${isOnHero
+                                ? 'border-white/30 text-white hover:bg-white/10 hover:border-white/50'
+                                : 'border-border text-foreground hover:bg-accent hover:text-accent-foreground'
+                                }`}
                             aria-label="Toggle language"
                         >
-                            <Globe className="h-4 w-4" />
+                            <Globe className="h-4 w-4 mr-0" />
+                            <span className="text-sm font-medium">
+                                {getBilingualText({ en: '中文', zh: 'EN' }, language)}
+                            </span>
                         </Button>
 
                         {/* Mobile Menu */}
@@ -272,7 +286,10 @@ export default function BaseNavigation({
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="md:hidden p-2"
+                                    className={`md:hidden p-2 transition-colors duration-300 ${isOnHero
+                                        ? 'border-white/30 text-white hover:bg-white/10 hover:border-white/50'
+                                        : 'border-border text-foreground hover:bg-accent hover:text-accent-foreground'
+                                        }`}
                                     aria-label="Open menu"
                                 >
                                     <Menu className="h-4 w-4" />

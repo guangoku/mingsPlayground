@@ -85,7 +85,7 @@ function LandingPage() {
                     </section>
 
                     <section id="resume">
-                        <Resume language={language} />
+                        <Resume language={language} isDark={isDark} />
                     </section>
 
                     <section id="contact">
