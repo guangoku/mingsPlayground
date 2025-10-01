@@ -24,7 +24,10 @@ export interface Project {
   impactMetrics?: { label: string; value: string }[];
   artistStatement?: BilingualText;
   technicalStack?: string[];
-  tags?: import('../constants').ProjectTag[]; // Additional tags (separate from category)
+  tags?: import('../constants').ProjectTag[];
+  
+  // Allow any additional custom fields
+  [key: string]: any;
 }
 
 // Project filter type
@@ -65,20 +68,6 @@ export interface ProjectData {
   imageUrl: string;
   tags: import('../constants').ProjectTag[];
   
-  // Rich detail data
-  detailImages?: string[];
-  processImages?: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  impactMetrics?: { label: string; value: string }[];
-  artistStatement?: BilingualText;
-  technicalStack?: string[];
-  
-  // Type-specific fields
-  medium?: string;
-  techniques?: string[];
-  collaborators?: string[];
-  timeline?: string;
-  challenges?: BilingualText;
-  learnings?: BilingualText;
+  // Allow any additional custom fields
+  [key: string]: any;
 }

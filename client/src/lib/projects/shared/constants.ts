@@ -3,6 +3,8 @@
  * Constants used across all project modules
  */
 
+import { type BilingualText } from '../../types';
+
 // Project category definitions with visual indicators
 export const PROJECT_CATEGORIES = {
   ART: {
@@ -49,6 +51,11 @@ const CONTENT_TAGS = {
     label: { en: 'Graphic Novels', zh: '图像小说' },
     filterable: true
   },
+  AI_GENERATED_ART: {
+    id: 'ai-generated-art',
+    label: { en: 'AI-Generated Art', zh: 'AI生成艺术' },
+    filterable: true
+  },
   CHINESE_LITERATURE: {
     id: 'chinese-literature',
     label: { en: 'Chinese Literature', zh: '中国文学' },
@@ -91,7 +98,7 @@ export const PROJECT_TAGS = {
   ),
   // Add content tags
   ...CONTENT_TAGS
-} as const;
+} as const satisfies Record<string, { id: string; label: BilingualText; filterable: boolean }>;
 
 export type ProjectTag = typeof PROJECT_TAGS[keyof typeof PROJECT_TAGS]['id'] | ProjectCategory;
 

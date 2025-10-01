@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { getProjectById } from "@/lib/projects";
-import { type Project } from "@/lib/projects";
+import { type ProjectData } from "@/lib/projects";
 import ProjectNavigation from "@/components/navigation/ProjectNavigation";
 import ProjectDetailComposer from "@/components/projects/ProjectDetailComposer";
 
@@ -10,7 +10,7 @@ export default function NepalTravelProjectPage() {
     const navigate = useNavigate();
     const { language, toggleLanguage } = useLanguage();
     const [isDark, setIsDark] = useState(false);
-    const [project, setProject] = useState<Project | null>(null);
+    const [project, setProject] = useState<ProjectData | null>(null);
 
     // Initialize theme from localStorage or system preference
     useEffect(() => {

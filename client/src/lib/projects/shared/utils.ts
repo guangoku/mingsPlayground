@@ -3,28 +3,28 @@
  * Common helper functions used across all project modules
  */
 
-import { type Project, type ProjectData } from './types';
+import { type ProjectData } from './types';
 
 // Helper functions for project data manipulation
-export const getProjectById = (projects: Project[], id: string): Project | undefined => {
+export const getProjectById = (projects: ProjectData[], id: string): ProjectData | undefined => {
   return projects.find(project => project.id === id);
 };
 
-export const getProjectsByCategory = (projects: Project[], category: string): Project[] => {
+export const getProjectsByCategory = (projects: ProjectData[], category: string): ProjectData[] => {
   return projects.filter(project => project.category === category);
 };
 
-export const getFeaturedProjects = (projects: Project[]): Project[] => {
+export const getFeaturedProjects = (projects: ProjectData[]): ProjectData[] => {
   // For now, return all projects since we removed the featured field
   // In the future, you can add a featured field back or use other criteria
   return projects;
 };
 
-export const getAllProjectCategories = (projects: Project[]): string[] => {
+export const getAllProjectCategories = (projects: ProjectData[]): string[] => {
   return Array.from(new Set(projects.map(project => project.category)));
 };
 
-export const getProjectsByFilter = (projects: Project[], filter: string): Project[] => {
+export const getProjectsByFilter = (projects: ProjectData[], filter: string): ProjectData[] => {
   switch (filter) {
     case 'featured':
       return getFeaturedProjects(projects);
@@ -34,7 +34,7 @@ export const getProjectsByFilter = (projects: Project[], filter: string): Projec
   }
 };
 
-export const searchProjects = (projects: Project[], query: string, language: 'en' | 'zh' = 'en'): Project[] => {
+export const searchProjects = (projects: ProjectData[], query: string, language: 'en' | 'zh' = 'en'): ProjectData[] => {
   const lowerQuery = query.toLowerCase();
   return projects.filter(project => {
     const title = project.title[language].toLowerCase();
@@ -47,7 +47,7 @@ export const searchProjects = (projects: Project[], query: string, language: 'en
   });
 };
 
-export const getProjectStats = (projects: Project[]) => {
+export const getProjectStats = (projects: ProjectData[]) => {
   const totalProjects = projects.length;
   const featuredProjects = getFeaturedProjects(projects).length;
   const categories = getAllProjectCategories(projects);
@@ -63,21 +63,3 @@ export const getProjectStats = (projects: Project[]) => {
   };
 };
 
-// Convert ProjectData to Project (for backward compatibility)
-export const projectDataToProject = (projectData: ProjectData): Project => {
-  return {
-    id: projectData.id,
-    title: projectData.title,
-    category: projectData.category,
-    description: projectData.description,
-    imageUrl: projectData.imageUrl,
-    tags: projectData.tags,
-    detailImages: projectData.detailImages,
-    processImages: projectData.processImages,
-    liveUrl: projectData.liveUrl,
-    githubUrl: projectData.githubUrl,
-    impactMetrics: projectData.impactMetrics,
-    artistStatement: projectData.artistStatement,
-    technicalStack: projectData.technicalStack
-  };
-};

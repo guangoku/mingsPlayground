@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
-import { type Project } from "@/lib/projects";
+import { type ProjectData } from "@/lib/projects";
 import { getProjectById, projects } from "@/lib/projects";
 import ProjectDetailComposer from "./ProjectDetailComposer";
 
@@ -23,8 +23,8 @@ export default function ProjectDetailModal({
     language
 }: ProjectDetailModalProps) {
     const navigate = useNavigate();
-    const [currentProject, setCurrentProject] = useState<Project | null>(null);
-    const [allProjects, setAllProjects] = useState<Project[]>([]);
+    const [currentProject, setCurrentProject] = useState<ProjectData | null>(null);
+    const [allProjects, setAllProjects] = useState<ProjectData[]>([]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     // Load project data when modal opens

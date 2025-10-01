@@ -320,7 +320,6 @@ interface Project {
 
   // Type-specific fields
   medium?: string;
-  techniques?: string[];
   collaborators?: string[];
   timeline?: string;
   challenges?: BilingualText;

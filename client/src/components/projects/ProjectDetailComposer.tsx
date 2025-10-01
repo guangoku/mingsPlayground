@@ -1,12 +1,12 @@
 import { type Language } from "@/lib/types";
-import { type Project } from "@/lib/projects";
+import { type ProjectData } from "@/lib/projects";
 import OctopusGirlDetail from "./details/OctopusGirlDetail";
 import FlashMindDetail from "./details/FlashMindDetail";
 import CharityBoxDetail from "./details/CharityBoxDetail";
 import NepalTravelDetail from "./details/NepalTravelDetail";
 
 interface ProjectDetailComposerProps {
-    project: Project;
+    project: ProjectData;
     language: Language;
     showHeader?: boolean;
     onBack?: () => void;

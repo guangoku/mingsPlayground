@@ -34,15 +34,14 @@ import { octopusGirlData } from './octopus-girl/data';
 import { flashmindData } from './flashmind/data';
 import { nepalTravelData } from './nepal-travel/data';
 import { charityBoxData } from './charity-box/data';
-import { projectDataToProject } from './shared/utils';
-import { type Project } from './shared/types';
+import { type ProjectData } from './shared/types';
 
-// Convert all project data to Project format
-export const projects: Project[] = [
-  projectDataToProject(octopusGirlData),
-  projectDataToProject(nepalTravelData),
-  projectDataToProject(flashmindData),
-  projectDataToProject(charityBoxData),
+// Use project data directly
+export const projects: ProjectData[] = [
+  octopusGirlData,
+  nepalTravelData,
+  flashmindData,
+  charityBoxData,
 ];
 
 // Create helper functions that use the projects array

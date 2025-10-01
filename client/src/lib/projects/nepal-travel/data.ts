@@ -28,7 +28,6 @@ export const nepalTravelData: ProjectData = {
   
   // Type-specific fields
   medium: NEPAL_TRAVEL_CONSTANTS.MEDIUM,
-  techniques: ['Ink Painting', 'Comic Illustration', 'Classical Chinese Prose'],
   timeline: NEPAL_TRAVEL_CONSTANTS.CREATED_YEAR,
   
   // Challenges and learnings
