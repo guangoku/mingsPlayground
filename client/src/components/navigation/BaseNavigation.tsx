@@ -168,7 +168,7 @@ export default function BaseNavigation({
             ? 'bg-background/95 backdrop-blur-md border-b shadow-sm'
             : 'bg-black/20 backdrop-blur-sm'
             }`}>
-            <div className="max-w-6xl mx-auto px-6 py-4">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo/Title */}
                     <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300`}>

@@ -10,6 +10,143 @@ This portfolio website is deployed on Vercel with a custom domain. The deploymen
 - **Vercel**: https://mings-playground.vercel.app
 - **Status**: ✅ Live and fully functional
 
+## Mobile Testing Guide
+
+### Overview
+
+This guide covers how to test the portfolio website on mobile devices during development. The site has been optimized for mobile with responsive design and overflow prevention.
+
+### Prerequisites
+
+- Development server running (`npm run dev`)
+- Mobile device connected to the same WiFi network as development machine
+- Basic terminal/command line access
+
+### Method 1: Network IP Access (Recommended)
+
+**Step 1: Find Your Computer's IP Address**
+
+```bash
+# On macOS/Linux
+ipconfig getifaddr en0
+
+# Alternative method
+ifconfig | grep "inet " | grep -v 127.0.0.1
+```
+
+**Step 2: Start Development Server with Network Access**
+
+```bash
+# Stop current server (Ctrl+C) and restart with network access
+npm run dev -- --host
+
+# Or specify all interfaces explicitly
+npm run dev -- --host 0.0.0.0
+```
+
+**Step 3: Access from Mobile Device**
+
+1. Connect mobile device to the same WiFi network
+2. Open mobile browser
+3. Navigate to: `http://[YOUR_IP]:5173` (or 5174 if 5173 is in use)
+4. Example: `http://192.168.1.100:5173`
+
+### Method 2: Using ngrok (Tunnel Service)
+
+**Step 1: Install ngrok**
+
+```bash
+# Via npm (global install)
+npm install -g ngrok
+
+# Or download from https://ngrok.com/
+```
+
+**Step 2: Start Development Server**
+
+```bash
+npm run dev
+```
+
+**Step 3: Create Tunnel**
+
+```bash
+# In a new terminal window
+ngrok http 5173
+```
+
+**Step 4: Use ngrok URL**
+
+- ngrok provides a public URL like `https://abc123.ngrok.io`
+- Access this URL from any mobile device (no WiFi network restrictions)
+
+### Method 3: Browser Developer Tools (Quick Testing)
+
+**For rapid testing without mobile device:**
+
+1. Open Chrome DevTools (F12)
+2. Click device toggle icon (📱) or press `Ctrl+Shift+M`
+3. Select mobile device from dropdown
+4. Test different screen sizes and orientations
+
+### Mobile Testing Checklist
+
+**Critical Tests for Mobile Experience:**
+
+- [ ] **Horizontal Scrolling**: Verify no horizontal overflow (users can't swipe to see page edges)
+- [ ] **Text Responsiveness**: Hero text scales properly on small screens
+- [ ] **Button Layout**: Buttons are properly sized and positioned
+- [ ] **Navigation**: Mobile menu works correctly
+- [ ] **Touch Interactions**: All interactive elements respond to touch
+- [ ] **Performance**: Page loads quickly on mobile networks
+- [ ] **Orientation**: Layout works in both portrait and landscape
+
+**Screen Sizes to Test:**
+
+- iPhone SE (375px width)
+- iPhone 12/13 (390px width)
+- iPhone 12/13 Pro Max (428px width)
+- Samsung Galaxy S21 (360px width)
+- iPad (768px width)
+
+### Troubleshooting
+
+**Common Issues:**
+
+1. **Can't access from mobile device**
+
+   - Ensure both devices are on same WiFi network
+   - Check firewall settings on development machine
+   - Try using ngrok method instead
+
+2. **Site looks broken on mobile**
+
+   - Clear mobile browser cache
+   - Check browser console for errors
+   - Verify responsive CSS is loading
+
+3. **Slow loading on mobile**
+   - Test on different network speeds
+   - Check image optimization
+   - Monitor network tab in mobile browser dev tools
+
+### Mobile-Specific Features
+
+**Responsive Design Elements:**
+
+- **Hero Section**: Text scales from 3xl on mobile to 7xl on desktop
+- **Navigation**: Collapsible mobile menu with proper touch targets
+- **Images**: Optimized loading and sizing for mobile bandwidth
+- **Buttons**: Full-width on mobile, auto-width on larger screens
+- **Overflow Prevention**: Global CSS prevents horizontal scrolling
+
+**Performance Optimizations:**
+
+- Mobile-first CSS approach
+- Optimized images and assets
+- Touch-friendly interaction areas
+- Fast loading on mobile networks
+
 ## Deployment Process
 
 ### Initial Setup (One-time)
