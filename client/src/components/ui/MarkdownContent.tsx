@@ -33,7 +33,7 @@ export default function MarkdownContent({ content, language, className = '' }: M
                         </h3>
                     ),
                     p: ({ children }) => (
-                        <p className="mb-4 leading-relaxed">
+                        <p className="mb-2 leading-relaxed">
                             {children}
                         </p>
                     ),
@@ -48,12 +48,12 @@ export default function MarkdownContent({ content, language, className = '' }: M
                         </em>
                     ),
                     ul: ({ children }) => (
-                        <ul className="list-disc list-inside mb-4 space-y-1">
+                        <ul className="list-disc list-outside mb-4 space-y-1 pl-4">
                             {children}
                         </ul>
                     ),
                     ol: ({ children }) => (
-                        <ol className="list-decimal list-inside mb-4 space-y-1">
+                        <ol className="list-decimal list-outside mb-4 space-y-1 pl-4">
                             {children}
                         </ol>
                     ),

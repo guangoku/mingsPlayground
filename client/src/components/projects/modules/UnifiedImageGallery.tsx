@@ -225,10 +225,10 @@ export default function UnifiedImageGallery({
                             onTouchEnd={onTouchEnd}
                             onClick={closeGallery}
                         >
-                            {/* Left side preview cards */}
+                            {/* Left side preview cards - hidden on mobile */}
                             {allImages.length > 1 && currentIndex !== null && currentIndex > 0 && (
                                 <div
-                                    className="absolute left-4 top-2/3 -translate-y-1/2 z-10 flex space-x-2 cursor-pointer transition-all duration-300 hover:scale-105"
+                                    className="absolute left-4 top-2/3 -translate-y-1/2 z-10 hidden md:flex space-x-2 cursor-pointer transition-all duration-300 hover:scale-105"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         handlePrevious();
@@ -262,10 +262,10 @@ export default function UnifiedImageGallery({
                                 </div>
                             )}
 
-                            {/* Right side preview cards */}
+                            {/* Right side preview cards - hidden on mobile */}
                             {allImages.length > 1 && currentIndex !== null && currentIndex < allImages.length - 1 && (
                                 <div
-                                    className="absolute right-4 top-2/3 -translate-y-1/2 z-10 flex space-x-2 cursor-pointer transition-all duration-300 hover:scale-105"
+                                    className="absolute right-4 top-2/3 -translate-y-1/2 z-10 hidden md:flex space-x-2 cursor-pointer transition-all duration-300 hover:scale-105"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         handleNext();
@@ -303,15 +303,39 @@ export default function UnifiedImageGallery({
                                 <img
                                     src={allImages[currentIndex]}
                                     alt={`${alt} ${currentIndex + 1}`}
-                                    className="object-contain rounded-lg shadow-lg transition-transform duration-200"
-                                    style={{
-                                        maxWidth: 'calc(100vw - 12rem)', // More space for side previews
-                                        maxHeight: 'calc(95vh - 4rem)',
-                                        width: 'auto',
-                                        height: 'auto'
-                                    }}
+                                    className="object-contain rounded-lg shadow-lg transition-transform duration-200 max-w-[calc(100vw-2rem)] md:max-w-[calc(100vw-12rem)] max-h-[calc(95vh-4rem)] w-auto h-auto"
                                     onClick={(e) => e.stopPropagation()}
                                 />
+                            )}
+
+                            {/* Mobile navigation buttons */}
+                            {allImages.length > 1 && (
+                                <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 z-20">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handlePrevious();
+                                        }}
+                                        className="p-3 bg-white/90 dark:bg-gray-900/90 hover:bg-white dark:hover:bg-gray-900 border-white/20 dark:border-gray-700 rounded-full"
+                                        aria-label="Previous image"
+                                    >
+                                        <ChevronLeft className="h-5 w-5" />
+                                    </Button>
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleNext();
+                                        }}
+                                        className="p-3 bg-white/90 dark:bg-gray-900/90 hover:bg-white dark:hover:bg-gray-900 border-white/20 dark:border-gray-700 rounded-full"
+                                        aria-label="Next image"
+                                    >
+                                        <ChevronRight className="h-5 w-5" />
+                                    </Button>
+                                </div>
                             )}
                         </div>
                     </div>

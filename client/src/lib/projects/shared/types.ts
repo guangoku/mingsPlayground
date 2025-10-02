@@ -59,6 +59,7 @@ export interface ProjectDetailProps {
   showNavigation?: boolean;
 }
 
+
 // Project-specific data interface
 export interface ProjectData {
   id: string;

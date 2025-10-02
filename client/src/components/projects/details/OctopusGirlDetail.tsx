@@ -16,7 +16,8 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
     const allProjectImages = [
         ...(project.aboutOctopus?.imageUrl ? [project.aboutOctopus.imageUrl] : []),
         ...(project.characterDesigns?.detailImages || []),
-        ...(project.variations?.detailImages || []),
+        // Collect images from all variation sections
+        ...(project.variations?.sections?.flatMap((section: any) => section.images) || []),
         ...(project.detailImages || []),
 
     ].filter(Boolean);
@@ -69,7 +70,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
                                 <ClickableImage
                                     src={project.aboutOctopus.imageUrl}
                                     alt={getBilingualText(project.aboutOctopus.title, language)}
-                                    className="max-w-full h-auto rounded-lg shadow-lg"
+                                    className="max-w-sm h-auto rounded-lg shadow-lg"
                                     allImages={allProjectImages}
                                     initialIndex={allProjectImages.findIndex(img => img === project.aboutOctopus.imageUrl)}
                                 />
@@ -115,22 +116,48 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
 
             {/* Variations Section */}
             {project.variations && (
-                <div className="space-y-4">
+                <div className="space-y-8">
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                         {getBilingualText(project.variations.title, language)}
                     </h2>
-                    <MarkdownContent
-                        content={project.variations.content}
-                        language={language}
-                    />
-                    {project.variations.detailImages && project.variations.detailImages.length > 0 && (
-                        <UnifiedImageGallery
-                            images={project.variations.detailImages}
-                            alt={getBilingualText(project.variations.title, language)}
-                            gridCols={3}
-                            allProjectImages={allProjectImages}
+                    {project.variations.intro && (
+                        <MarkdownContent
+                            content={project.variations.intro}
+                            language={language}
                         />
                     )}
+                    {project.variations.sections && project.variations.sections.map((section: any, index: number) => (
+                        <div key={index} className="space-y-4">
+                            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                                {getBilingualText(section.title, language)}
+                            </h3>
+                            <MarkdownContent
+                                content={section.description}
+                                language={language}
+                            />
+                            {section.images && section.images.length > 0 && (
+                                <UnifiedImageGallery
+                                    images={section.images}
+                                    alt={getBilingualText(section.title, language)}
+                                    gridCols={4}
+                                    allProjectImages={allProjectImages}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* Finishing Thoughts Section */}
+            {project.finishingThoughts && (
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        {getBilingualText(project.finishingThoughts.title, language)}
+                    </h2>
+                    <MarkdownContent
+                        content={project.finishingThoughts.content}
+                        language={language}
+                    />
                 </div>
             )}
 
