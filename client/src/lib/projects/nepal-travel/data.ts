@@ -7,6 +7,8 @@ import { type ProjectData } from '../shared/types';
 import { PROJECT_CATEGORIES, PROJECT_TAGS } from '../shared/constants';
 import { NEPAL_TRAVEL_IMAGES } from './images';
 import { NEPAL_TRAVEL_CONSTANTS } from './constants';
+import nepalTravelJournalEn from './nepal-travel-journal-en.md?raw';
+import nepalTravelJournalZh from './nepal-travel-journal-zh.md?raw';
 
 export const nepalTravelData: ProjectData = {
   id: NEPAL_TRAVEL_CONSTANTS.PROJECT_ID,
@@ -22,22 +24,20 @@ export const nepalTravelData: ProjectData = {
   imageUrl: NEPAL_TRAVEL_IMAGES.hero,
   tags: [PROJECT_CATEGORIES.ART.id, PROJECT_TAGS.GRAPHIC_NOVELS.id, PROJECT_TAGS.CHINESE_LITERATURE.id],
   
-  // Rich detail data
-  detailImages: [...NEPAL_TRAVEL_IMAGES.pages],
-  processImages: [...NEPAL_TRAVEL_IMAGES.sketches],
-  
-  // Type-specific fields
-  medium: NEPAL_TRAVEL_CONSTANTS.MEDIUM,
-  timeline: NEPAL_TRAVEL_CONSTANTS.CREATED_YEAR,
-  
-  // Challenges and learnings
-  challenges: {
-    en: 'Balancing classical Chinese literary style with modern graphic novel format, and capturing the essence of Nepalese culture through art.',
-    zh: '平衡古典中国文学风格与现代图像小说格式，并通过艺术捕捉尼泊尔文化的精髓。'
+  // Rich content for Nepal Travel
+  mainContentTitle: {
+    en: 'Travel Journal',
+    zh: '游记正文'
   },
   
-  learnings: {
-    en: 'Developed skills in classical Chinese prose writing, learned to blend traditional and modern art styles, and gained deep appreciation for cross-cultural storytelling.',
-    zh: '发展了古典中国散文写作技能，学会了融合传统和现代艺术风格，并对跨文化叙事有了深刻的理解。'
+  travelJournal: {
+    title: {
+      en: 'Nepal Travel Journal',
+      zh: '尼泊尔游记'
+    },
+    content: {
+      en: nepalTravelJournalEn,
+      zh: nepalTravelJournalZh
+    }
   }
 };

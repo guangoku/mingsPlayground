@@ -33,9 +33,12 @@ export default function MarkdownContent({ content, language, className = '' }: M
                         </h3>
                     ),
                     p: ({ children }) => (
-                        <p className="mb-2 leading-relaxed">
+                        <p className="mb-6 leading-relaxed">
                             {children}
                         </p>
+                    ),
+                    br: () => (
+                        <br className="mb-2" />
                     ),
                     strong: ({ children }) => (
                         <strong className="font-semibold text-gray-900 dark:text-white">

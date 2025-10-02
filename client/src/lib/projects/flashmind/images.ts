@@ -1,25 +1,29 @@
 /**
  * FlashMind project images
- * All image imports for the FlashMind project
+ * Dynamically loads images from specific directories
  */
 
 // Hero image
 import heroImage from '@assets/projects/flashmind/hero.png';
 
-// Screenshots (placeholder for future additions)
-// import screenshot1 from '@assets/projects/flashmind/screenshots/dashboard.png';
-// import screenshot2 from '@assets/projects/flashmind/screenshots/card-creation.png';
+// Dynamically import screenshot images
+const screenshotImages = import.meta.glob('@assets/projects/flashmind/screenshots/*.{png,jpg,jpeg,webp}', { 
+  eager: true,
+  import: 'default'
+});
 
-// Architecture diagrams (placeholder for future additions)
-// import architecture1 from '@assets/projects/flashmind/architecture/system-diagram.png';
+// Dynamically import architecture images (placeholder for future additions)
+const architectureImages = import.meta.glob('@assets/projects/flashmind/architecture/*.{png,jpg,jpeg,webp}', { 
+  eager: true,
+  import: 'default'
+});
+
+// Convert the glob results to arrays of image URLs
+const screenshotGallery = Object.values(screenshotImages) as string[];
+const architectureGallery = Object.values(architectureImages) as string[];
 
 export const FLASHMIND_IMAGES = {
   hero: heroImage,
-  screenshots: [
-    // screenshot1,
-    // screenshot2,
-  ],
-  architecture: [
-    // architecture1,
-  ]
+  screenshots: screenshotGallery,
+  architecture: architectureGallery
 } as const;

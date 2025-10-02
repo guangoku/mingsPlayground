@@ -66,6 +66,7 @@ export const octopusGirlData: ProjectData = {
       en: `The first stage of Octopus Girl began with a series of illustrations. Using **MidJourney**, I explored different moods and personalities — playful, warm, contemplative, serene — until her character started to take shape.
 
   A core prompt I used was:
+  
 \`\`\`
 A lovely little girl with octopus as her hair, charming character illustrations, minimal art, simplified line work, flat illustration, Noritake style --niji 6 --stylize 50
 \`\`\`
