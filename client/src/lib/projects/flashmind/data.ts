@@ -10,6 +10,7 @@ import { FLASHMIND_CONSTANTS } from './constants';
 
 export const flashmindData: ProjectData = {
   id: FLASHMIND_CONSTANTS.PROJECT_ID,
+  slug: 'flashmind',
   title: {
     en: 'FlashMind',
     zh: '闪念卡'

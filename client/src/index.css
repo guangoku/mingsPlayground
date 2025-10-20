@@ -2,6 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Notion Content Styling */
+.notion-content {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.notion-content h1 {
+  @apply text-3xl font-bold mb-6 mt-8 text-gray-900 dark:text-white;
+}
+
+.notion-content h2 {
+  @apply text-2xl font-semibold mb-4 mt-6 text-gray-800 dark:text-gray-200;
+}
+
+.notion-content h3 {
+  @apply text-xl font-medium mb-3 mt-5 text-gray-700 dark:text-gray-300;
+}
+
+.notion-content p {
+  @apply mb-4 leading-relaxed text-gray-700 dark:text-gray-300;
+}
+
+.notion-content ul, .notion-content ol {
+  @apply mb-4 pl-6;
+}
+
+.notion-content li {
+  @apply mb-2 text-gray-700 dark:text-gray-300;
+}
+
+.notion-content blockquote {
+  @apply border-l-4 border-blue-500 pl-4 py-2 mb-4 bg-blue-50 dark:bg-blue-900/20 italic text-gray-700 dark:text-gray-300;
+}
+
+.notion-content code {
+  @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm font-mono text-gray-800 dark:text-gray-200;
+}
+
+.notion-content pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.notion-content pre code {
+  @apply bg-transparent p-0 text-sm;
+}
+
+.notion-content a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.notion-content img {
+  @apply max-w-full h-auto rounded-lg shadow-sm mb-4;
+}
+
+.notion-content table {
+  @apply w-full border-collapse border border-gray-300 dark:border-gray-600 mb-4;
+}
+
+.notion-content th, .notion-content td {
+  @apply border border-gray-300 dark:border-gray-600 px-4 py-2 text-left;
+}
+
+.notion-content th {
+  @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+}
+
+.notion-fallback-notice {
+  @apply bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-6;
+}
+
+.notion-fallback-notice p {
+  @apply text-blue-700 dark:text-blue-300 text-sm mb-0;
+}
+
 /* LIGHT MODE */
 :root {
   /* Custom Ocean Tokens */

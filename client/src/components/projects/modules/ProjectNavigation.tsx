@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Home, Grid3X3 } from "lucide-react";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type Project } from "@/lib/projects";
-import { projects, getProjectById } from "@/lib/projects";
+import { projects, getProjectById, getProjectUrl } from "@/lib/projects";
 
 interface ProjectNavigationProps {
     currentProjectId: string;
@@ -61,13 +61,8 @@ export default function ProjectNavigation({
     };
 
     const getProjectSlug = (projectId: string): string => {
-        const projectRoutes: Record<string, string> = {
-            '1': 'octopus-girl',
-            '2': 'nepal-travel',
-            '3': 'flashmind',
-            '4': 'charity-box'
-        };
-        return projectRoutes[projectId] || 'unknown';
+        const url = getProjectUrl(projectId);
+        return url.replace('/projects/', '') || 'unknown';
     };
 
     if (!currentProject) return null;

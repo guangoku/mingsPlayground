@@ -6,13 +6,14 @@
 import { type BilingualText } from '../../types';
 
 // Project category type
-export type { ProjectCategory } from '../constants';
+export type { ProjectCategory } from './constants';
 
 // Enhanced project interface with rich detail support
 export interface Project {
   id: string;
+  slug: string; // URL-friendly identifier for routing
   title: BilingualText;
-  category: import('../constants').ProjectCategory;
+  category: import('./constants').ProjectCategory;
   description: BilingualText;
   imageUrl: string;
   
@@ -24,7 +25,7 @@ export interface Project {
   impactMetrics?: { label: string; value: string }[];
   artistStatement?: BilingualText;
   technicalStack?: string[];
-  tags?: import('../constants').ProjectTag[];
+  tags?: import('./constants').ProjectTag[];
   
   // Allow any additional custom fields
   [key: string]: any;
@@ -63,11 +64,12 @@ export interface ProjectDetailProps {
 // Project-specific data interface
 export interface ProjectData {
   id: string;
+  slug: string; // URL-friendly identifier for routing
   title: BilingualText;
-  category: import('../constants').ProjectCategory;
+  category: import('./constants').ProjectCategory;
   description: BilingualText;
   imageUrl: string;
-  tags: import('../constants').ProjectTag[];
+  tags: import('./constants').ProjectTag[];
   
   // Allow any additional custom fields
   [key: string]: any;

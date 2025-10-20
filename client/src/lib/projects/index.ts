@@ -53,6 +53,9 @@ import {
   getProjectsByFilter as _getProjectsByFilter,
   searchProjects as _searchProjects,
   getProjectStats as _getProjectStats,
+  getProjectUrl as _getProjectUrl,
+  getProjectSlug as _getProjectSlug,
+  getProjectIdFromSlug as _getProjectIdFromSlug,
 } from './shared/utils';
 
 export const getProjectById = (id: string) => _getProjectById(projects, id);
@@ -62,3 +65,8 @@ export const getAllProjectCategories = () => _getAllProjectCategories(projects);
 export const getProjectsByFilter = (filter: string) => _getProjectsByFilter(projects, filter);
 export const searchProjects = (query: string, language: 'en' | 'zh' = 'en') => _searchProjects(projects, query, language);
 export const getProjectStats = () => _getProjectStats(projects);
+export const getProjectUrl = (projectId: string) => _getProjectUrl(projectId, projects);
+
+// Slug mapping functions that use the projects array
+export const getProjectSlug = (projectId: string) => _getProjectSlug(projectId, projects);
+export const getProjectIdFromSlug = (slug: string) => _getProjectIdFromSlug(slug, projects);

@@ -6,7 +6,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type Project } from "@/lib/projects";
-import { projects, getProjectById } from "@/lib/projects";
+import { projects, getProjectById, getProjectUrl } from "@/lib/projects";
 
 export interface NavItem {
     id: string;
@@ -21,7 +21,7 @@ export interface NavigationProps {
     onThemeToggle: () => void;
     language: Language;
     onLanguageToggle: () => void;
-    variant?: 'landing' | 'project' | 'minimal';
+    variant?: 'landing' | 'project' | 'blog' | 'minimal';
     currentProjectId?: string;
     onBack?: () => void;
     backText?: { en: string; zh: string };
@@ -127,13 +127,8 @@ export default function BaseNavigation({
     };
 
     const getProjectSlug = (projectId: string): string => {
-        const projectRoutes: Record<string, string> = {
-            '1': 'octopus-girl',
-            '2': 'nepal-travel',
-            '3': 'flashmind',
-            '4': 'charity-box'
-        };
-        return projectRoutes[projectId] || 'unknown';
+        const url = getProjectUrl(projectId);
+        return url.replace('/projects/', '') || 'unknown';
     };
 
     const handleBackToProjects = () => {
@@ -149,6 +144,7 @@ export default function BaseNavigation({
         switch (variant) {
             case 'project':
                 return projectNavItems;
+            case 'blog':
             case 'minimal':
                 return [];
             default:
@@ -187,6 +183,25 @@ export default function BaseNavigation({
                                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white truncate">
                                     {getBilingualText(currentProject.title, language)}
                                 </h1>
+                            </div>
+                        ) : variant === 'blog' ? (
+                            <div className="flex items-center gap-4 min-w-0 flex-1">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={onBack}
+                                    className="flex items-center gap-2 flex-shrink-0"
+                                >
+                                    <ArrowLeft className="h-4 w-4" />
+                                    {getBilingualText(backText, language)}
+                                </Button>
+                                {currentProjectId && (
+                                    <div className="hidden sm:block">
+                                        <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">
+                                            Blog #{currentProjectId}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
                         ) : (
                             getBilingualText({ en: 'Mingyun Guan', zh: '超级赛亚关' }, language)

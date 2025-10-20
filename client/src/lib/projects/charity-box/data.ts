@@ -9,6 +9,7 @@ import { CHARITY_BOX_IMAGES } from './images';
 import { CHARITY_BOX_CONSTANTS } from './constants';
 export const charityBoxData: ProjectData = {
   id: CHARITY_BOX_CONSTANTS.PROJECT_ID,
+  slug: 'charity-box',
   title: {
     en: 'CharityBox (WeChat App)',
     zh: '益盒（微信小程序）'

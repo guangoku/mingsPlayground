@@ -11,6 +11,8 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 - 📱 **Responsive Design** - Mobile-first approach
 - 🚀 **Fast & Modern** - Built with Vite and React 18
 - 🎯 **SEO Friendly** - Proper routing and meta tags
+- 📝 **Blog System** - Hybrid content with Notion integration
+- 🔒 **Secure** - Environment variables for API tokens
 
 ## Pages
 
@@ -26,7 +28,14 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 # Install dependencies
 npm install
 
-# Start development server
+# Set up environment variables
+cp docs/env-example.txt .env.local
+# Edit .env.local and add your NOTION_TOKEN
+
+# Start development server (with API routes)
+vercel dev
+
+# Alternative: Start frontend only (no API routes)
 npm run dev
 
 # Build for production
@@ -43,7 +52,8 @@ npm run preview
 - **Tailwind CSS** with custom design system
 - **Shadcn/ui** component library
 - **React Router** for navigation
-- **Static hosting ready** (Vercel, Netlify, GitHub Pages)
+- **Notion API** for blog content integration
+- **Vercel** for hosting and serverless functions
 
 ## Project Structure
 
@@ -51,13 +61,24 @@ npm run preview
 ├── client/                 # Frontend React application
 │   ├── src/
 │   │   ├── components/     # React components
+│   │   │   ├── blog/       # Blog-specific components
+│   │   │   ├── projects/   # Project showcase components
+│   │   │   └── navigation/ # Navigation components
 │   │   ├── pages/         # Page components
-│   │   ├── lib/           # Utilities
+│   │   │   ├── blog/      # Blog pages
+│   │   │   └── projects/  # Project pages
+│   │   ├── lib/           # Utilities and data
+│   │   │   ├── blog/      # Blog data and Notion API
+│   │   │   └── projects/  # Project data
 │   │   └── App.tsx        # Main application
 │   └── index.html
+├── api/                   # Vercel serverless functions
+│   └── notion/           # Notion API proxy
 ├── attached_assets/        # Static assets
 ├── public/                # Public assets
-└── docs/                  # Documentation
+├── docs/                  # Documentation
+├── vercel.json           # Vercel configuration
+└── .env.local            # Environment variables (not in git)
 ```
 
 ## Deployment
@@ -74,6 +95,9 @@ The project is deployed and live at **https://mingsplayground.com**
 ### Deployment Process
 
 ```bash
+# Set up environment variables in Vercel dashboard
+# Add NOTION_TOKEN to Vercel environment variables
+
 # Build the project
 npm run build
 
@@ -95,6 +119,50 @@ vercel domains add mingsplayground.com
 
 - **Netlify**: Deploy with `public/_redirects` configuration
 - **GitHub Pages**: Works with SPA routing
+
+## Blog System
+
+The website includes a hybrid blog system that supports both static content and dynamic Notion integration:
+
+### Features
+
+- **Static Posts**: React components for custom content
+- **Notion Posts**: Dynamic content fetched from Notion API
+- **Unified Navigation**: Modal and individual page views
+- **Bilingual Support**: English and Chinese content
+- **Responsive Design**: Mobile-optimized layout
+
+### Setup
+
+1. **Create Notion Integration**:
+
+   - Go to https://www.notion.so/my-integrations
+   - Create new integration
+   - Copy the integration token
+
+2. **Configure Environment**:
+
+   ```bash
+   # Add to .env.local
+   NOTION_TOKEN=your_integration_token_here
+   ```
+
+3. **Share Notion Pages**:
+   - Share your Notion pages with the integration
+   - Get page IDs from Notion URLs
+   - Add pages to blog data configuration
+
+### Development
+
+```bash
+# Start with API routes (recommended)
+vercel dev
+
+# Or start frontend only
+npm run dev
+```
+
+For detailed blog system documentation, see `docs/blog-documentation.md`.
 
 ## License
 
