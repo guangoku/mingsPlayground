@@ -6,6 +6,9 @@
 import { type BilingualText, type BilingualArray } from '../../types';
 import { type BlogPostType, type BlogCategoryId } from './constants';
 
+// Re-export common types for convenience
+export type { BilingualText, BilingualArray };
+
 // Enhanced blog post interface
 export interface BlogPost {
   id: string;
@@ -19,6 +22,9 @@ export interface BlogPost {
   category: BlogCategoryId;
   isFeatured: boolean; // Explicit featured flag instead of relying on tags
   
+  // Journey map reference
+  journeyMapId?: string; // Reference to journey map
+  
   // Static post data
   staticContent?: {
     component: string;        // Component name for static posts
@@ -30,21 +36,6 @@ export interface BlogPost {
   notionContent?: {
     pageId: string;          // Notion page ID
     lastUpdated: string;     // For cache invalidation
-  };
-  
-  // Relationship data (for subway map)
-  relationships?: {
-    related: string[];       // Related post IDs
-    prerequisites: string[]; // Posts you should read first
-    followUps: string[];    // Posts that build on this
-    references: string[];    // Posts this one references
-  };
-  
-  // Journey mapping (for subway map)
-  journeyPosition?: {
-    line: string;            // Which subway line
-    station: string;         // Station name
-    connections: string[];    // Connected stations
   };
 }
 

@@ -128,16 +128,21 @@ vercel dev
 
 ### 🔄 Remaining Phases
 
-#### Phase 6: Subway Map System
-
-- **Status**: Not Started
+#### Phase 6: Journey Map System
+- **Reference** https://roadmap.sh/
+- **Status**: In Progress
+- **Architecture**: React Flow with custom node/edge types
+- **File Structure**:
+  - `client/src/lib/blog/journey/` - Journey map system (types, constants, utils)
+  - `client/src/lib/blog/posts/` - Individual blog posts with journey data
+  - `client/src/components/blog/journey/` - Journey map components
 - **Planned Features**:
-  - Interactive subway map visualization for interconnected blog posts
-  - Learning journey mapping
-  - Node-based relationship display
-  - Integration with "From Panels to Prose" post
+  - Interactive journey map visualization for interconnected blog posts
+  - Learning journey mapping with custom node types (Foundation, Project, Branch, Reference)
+  - Node-based relationship display with React Flow
+  - Integration with "Visual Storytelling Lab" post
   - Connection to Nepal Travel project
-  - Notion note integration in journey map
+  - Custom visual design with animations and interactions
 
 #### Phase 7: Documentation & Cleanup
 
@@ -225,13 +230,34 @@ client/src/
 │   ├── BlogSection.tsx              # Main blog listing
 │   ├── BlogDetailModal.tsx          # Modal view
 │   ├── BlogDetailComposer.tsx       # Content composer
-│   └── details/                     # Static post components
+│   ├── details/                     # Static post components
+│   └── journey/                     # Journey map components
+│       ├── JourneyMap.tsx           # Main journey map component
+│       ├── JourneyMapNode.tsx       # Custom node component
+│       ├── JourneyMapEdge.tsx       # Custom edge component
+│       ├── JourneyMapControls.tsx   # Map controls
+│       ├── JourneyMapLegend.tsx     # Legend component
+│       └── nodes/                   # Specific node types
+│           ├── FoundationNode.tsx   # Foundation node
+│           ├── ProjectNode.tsx      # Project node
+│           ├── BranchNode.tsx       # Branch node
+│           └── ReferenceNode.tsx    # Reference node
 ├── lib/blog/
 │   ├── shared/
 │   │   ├── types.ts                 # Type definitions
 │   │   ├── constants.ts             # Constants and categories
 │   │   ├── data.ts                  # Blog post data
 │   │   └── utils.ts                 # Utility functions
+│   ├── journey/                     # Journey map system
+│   │   ├── types.ts                 # Journey map types
+│   │   ├── constants.ts              # Journey map constants
+│   │   ├── utils.ts                 # Journey map utilities
+│   │   └── components/              # Journey map components
+│   ├── posts/                       # Individual blog posts
+│   │   ├── visual-storytelling-lab/
+│   │   │   ├── data.ts              # Blog post data
+│   │   │   └── journey.ts           # Journey map data
+│   │   └── index.ts                 # Export all posts
 │   └── notion/
 │       └── api.ts                   # Notion API client
 └── pages/blog/

@@ -4,38 +4,28 @@ import { BLOG_POST_TYPES } from './constants';
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    slug: 'from-panels-to-prose',
+    slug: 'visual-storytelling-lab',
     type: BLOG_POST_TYPES.static,
     title: {
-      en: 'From Panels to Prose: My First Steps in Graphic Novel Storytelling',
-      zh: '从分镜到文字：我的图像小说初体验'
+      en: 'Visual Storytelling Lab: A Systematic Learning Journey',
+      zh: '图像叙事实验室：我的系统化学习之旅'
     },
     excerpt: {
-      en: 'Notes on how I approached graphic novel writing and illustration, from choosing materials to studying narrative flow.',
-      zh: '记录我学习图像小说写作与插画的过程：从材料选择到叙事节奏的探索。'
+      en: 'A hub mapping my visual storytelling learning line — from drawing and picture-book craft to illustrated travel writing and graphic novels. It includes two major projects (Nepal Illustrated Travelogue • Magical-Island Scuba Graphic Novel) and a casual daily sketchbook branch.',
+      zh: '作为总览页，用“地铁图”梳理我的图像叙事学习路线：从绘画与绘本技法，到插图旅行写作与图像小说创作。包含两个主要项目（尼泊尔插图书 • 海岛潜水奇幻图像小说）以及日常速写分支。'
     },
     tags: {
-      en: ['Reading Journey', 'Graphic Novel', 'Art'],
-      zh: ['阅读之旅', '图像小说', '艺术']
+      en: ['Visual Storytelling','Illustrated Book','Graphic Novel','Manga','Sketchbook','Storytelling','Chinese Ink','Travelogue','Art'],
+      zh: ['图像叙事','插图书','图像小说','漫画','速写本','故事叙事','水墨','旅行插图','艺术']
     },
     isFeatured: true,
     date: '2025-03-01',
     readTimeMinutes: 7,
     category: 'systematic-study',
+    journeyMapId: 'visual-storytelling-lab',
     staticContent: {
       component: 'GraphicNovelDetail',
       images: ['sketch-process.jpg', 'final-pages.jpg']
-    },
-    relationships: {
-      related: ['2', '3'],
-      prerequisites: [],
-      followUps: ['4'],
-      references: []
-    },
-    journeyPosition: {
-      line: 'systematic-study',
-      station: 'graphic-novels',
-      connections: ['reading-journey', 'art-exploration']
     }
   },
   {
@@ -61,17 +51,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'TravelNotesDetail',
       images: ['spain-photos.jpg', 'book-stack.jpg']
-    },
-    relationships: {
-      related: ['1', '4'],
-      prerequisites: [],
-      followUps: ['5'],
-      references: []
-    },
-    journeyPosition: {
-      line: 'travel-notes',
-      station: 'spain-journey',
-      connections: ['cultural-learning', 'storytelling']
     }
   },
   {
@@ -97,17 +76,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'SystematicStudyDetail',
       images: ['learning-plan.jpg']
-    },
-    relationships: {
-      related: ['1', '2'],
-      prerequisites: [],
-      followUps: ['6'],
-      references: []
-    },
-    journeyPosition: {
-      line: 'systematic-study',
-      station: 'learning-planning',
-      connections: ['career-development', 'technical-skills']
     }
   },
   {
@@ -134,17 +102,6 @@ export const blogPosts: BlogPost[] = [
       component: 'CuriousMindsDetail',
       images: ['color-examples.jpg']
     },
-    relationships: {
-      related: ['1'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'curious-minds',
-      station: 'color-science',
-      connections: ['visual-perception']
-    }
   },
   {
     id: '5',
@@ -169,17 +126,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'CDNGuideDetail',
       images: ['cdn-diagram.jpg']
-    },
-    relationships: {
-      related: ['3'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'curious-minds',
-      station: 'web-infrastructure',
-      connections: ['technical-skills']
     }
   },
   {
@@ -205,17 +151,6 @@ export const blogPosts: BlogPost[] = [
     notionContent: {
       pageId: '28dd61d413a180c7998fe3a145acfff9', 
       lastUpdated: '2025-01-15'
-    },
-    relationships: {
-      related: ['2'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'travel-notes',
-      station: 'myanmar-journey',
-      connections: ['cultural-learning', 'storytelling']
     }
   },
   {
@@ -241,17 +176,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'LifeExperiencesDetail',
       images: ['volunteer-photos.jpg']
-    },
-    relationships: {
-      related: ['2'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'life-experiences',
-      station: 'volunteering',
-      connections: ['social-impact', 'empathy']
     }
   },
   {
@@ -277,17 +201,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'LifeExperiencesDetail',
       images: ['skiing-photos.jpg']
-    },
-    relationships: {
-      related: ['7'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'life-experiences',
-      station: 'adaptive-sports',
-      connections: ['volunteering', 'inclusion']
     }
   },
   {
@@ -313,17 +226,6 @@ export const blogPosts: BlogPost[] = [
     staticContent: {
       component: 'LifeExperiencesDetail',
       images: ['coliving-photos.jpg']
-    },
-    relationships: {
-      related: ['2', '6'],
-      prerequisites: [],
-      followUps: [],
-      references: []
-    },
-    journeyPosition: {
-      line: 'life-experiences',
-      station: 'coliving-experience',
-      connections: ['travel', 'community']
     }
   }
 ];

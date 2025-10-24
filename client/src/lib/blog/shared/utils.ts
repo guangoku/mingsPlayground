@@ -48,15 +48,6 @@ export const searchPosts = (posts: BlogPost[], query: string, language: Language
   });
 };
 
-// Get related posts
-export const getRelatedPosts = (posts: BlogPost[], currentPost: BlogPost): BlogPost[] => {
-  if (!currentPost.relationships?.related) return [];
-  
-  return currentPost.relationships.related
-    .map(id => getBlogPostById(posts, id))
-    .filter(Boolean) as BlogPost[];
-};
-
 // Format read time
 export const formatReadTime = (minutes: number, language: Language): string => {
   if (language === 'zh') {
