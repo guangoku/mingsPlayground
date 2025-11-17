@@ -12,7 +12,7 @@ const contactLinks = [
   {
     id: 'linkedin',
     label: { en: 'LinkedIn', zh: '领英' },
-    href: 'https://www.linkedin.com/in/mingyun-guan-17760390/',
+    href: 'https://www.linkedin.com/in/mingyun-guan-founder-data/',
     icon: Linkedin,
     color: '#0077B5'
   },
