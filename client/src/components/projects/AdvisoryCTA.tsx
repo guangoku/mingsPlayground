@@ -1,7 +1,7 @@
-import { Heart, ArrowRight } from "lucide-react";
+import { HeartHandshake, FileSearch, GitBranch, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBilingualText } from "@/lib/utils";
-import { type Language } from "@/lib/types";
+import { type Language, type BilingualText } from "@/lib/types";
 
 interface AdvisoryCTAProps {
     language: Language;
@@ -9,58 +9,117 @@ interface AdvisoryCTAProps {
 }
 
 const CONTACT_EMAIL =
-    "mailto:guangoku@gmail.com?subject=" + encodeURIComponent("Technical & AI advisory");
+    "mailto:guangoku@gmail.com?subject=" + encodeURIComponent("Pro-bono tech advisory");
+
+const services: { icon: typeof FileSearch; title: BilingualText; desc: BilingualText }[] = [
+    {
+        icon: FileSearch,
+        title: { en: "Design & budget review before you sign", zh: "签约前的方案与预算评审" },
+        desc: {
+            en: "A second pair of eyes on a vendor's proposal, scope, and price — so you don't overpay or get locked into the wrong build.",
+            zh: "在你与供应商签约前，帮你审视方案、范围与报价——避免多花钱，或被锁进错误的方案。",
+        },
+    },
+    {
+        icon: GitBranch,
+        title: { en: "Tech decision reviews", zh: "技术决策评审" },
+        desc: {
+            en: "Build vs. buy, which tool or platform, or whether to build it at all.",
+            zh: "自建还是采购、选哪个工具或平台，或者到底要不要做。",
+        },
+    },
+    {
+        icon: Sparkles,
+        title: { en: "AI transformation", zh: "AI 转型" },
+        desc: {
+            en: "Where AI genuinely helps your work, and how to start small.",
+            zh: "找到 AI 真正能帮上忙的地方，并从小处着手。",
+        },
+    },
+];
 
 export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAProps) {
     return (
         <div
-            className={`rounded-xl border border-emerald-200 dark:border-emerald-700 bg-white/95 dark:bg-gray-800/95 p-5 md:p-6 ${className}`}
-            style={{ backdropFilter: "blur(10px)" }}
+            className={`rounded-xl border-2 border-amber-300 dark:border-amber-600/70 bg-amber-50 dark:bg-amber-950/40 p-5 md:p-6 ${className}`}
         >
             <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
-                    <Heart className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
+                    <HeartHandshake className="h-6 w-6 text-amber-700 dark:text-amber-300" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-emerald-800 dark:text-emerald-300">
+                    <span className="inline-block text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 px-2.5 py-1 rounded-full">
+                        {getBilingualText({ en: "Pro-bono advisory", zh: "公益咨询" }, language)}
+                    </span>
+                    <h4 className="mt-2 text-lg font-bold text-amber-900 dark:text-amber-200">
                         {getBilingualText(
-                            { en: "Technical & AI advice for mission-driven teams", zh: "为公益团队提供技术与 AI 咨询" },
+                            { en: "Tech & AI advice for mission-driven teams", zh: "为公益团队提供技术与 AI 咨询" },
                             language
                         )}
                     </h4>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                    <p className="mt-1 text-sm leading-relaxed text-amber-950/80 dark:text-amber-100/80">
                         {getBilingualText(
                             {
-                                en: "Non-profits face real technical decisions — build vs. buy, whether a vendor's quote is fair, whether an AI project will actually work — and they're costly to get wrong. I give you a senior engineer's honest read, so you can decide with confidence.",
-                                zh: "公益组织也要面对真实的技术决策——自建还是采购、供应商的报价是否合理、某个 AI 项目到底行不行——而做错的代价往往很高。我会给你一位资深工程师的坦诚判断，让你更有把握地做决定。",
+                                en: "Run a small non-profit or social-impact team? I help with the technical calls that are hard to make alone — strongest on AI, but not limited to it.",
+                                zh: "在运营小型公益或社会影响力团队？那些独自难以拍板的技术决策，我可以帮你——尤其擅长 AI，但不限于 AI。",
                             },
                             language
                         )}
                     </p>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+
+                    <div className="mt-4 flex flex-col gap-3">
+                        {services.map((s, i) => {
+                            const Icon = s.icon;
+                            return (
+                                <div key={i} className="flex items-start gap-2.5">
+                                    <Icon className="h-4 w-4 mt-0.5 flex-shrink-0 text-amber-600 dark:text-amber-400" />
+                                    <div className="min-w-0">
+                                        <span className="text-sm font-semibold text-amber-900 dark:text-amber-100">
+                                            {getBilingualText(s.title, language)}
+                                        </span>
+                                        <span className="text-sm text-amber-950/70 dark:text-amber-100/70">
+                                            {" — "}{getBilingualText(s.desc, language)}
+                                        </span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    <p className="mt-4 text-xs leading-relaxed text-amber-900/60 dark:text-amber-200/60">
                         {getBilingualText(
                             {
-                                en: "Start with a single review — many teams just need one good call. If it helps, we can do a few more, or an ongoing advisory role as the work grows.",
-                                zh: "可以先从一次评审开始——很多团队只需要一个靠谱的判断。如果有帮助，我们可以多做几次，或随着工作深入建立长期顾问关系。",
+                                en: "A second opinion and advisor — not a full-time hire or a software vendor. Pro-bono or low-fee, and bounded: one review to start, more if it helps, or a light ongoing role.",
+                                zh: "我是第二意见与顾问——不是全职雇员，也不是软件供应商。无偿或低收费，且有边界：先做一次评审，有帮助再继续，或建立轻量的长期顾问关系。",
                             },
                             language
                         )}
                     </p>
-                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                        {getBilingualText(
-                            {
-                                en: "Sole engineer & AI advisor at 益盒 · technical reviews for a partner foundation.",
-                                zh: "『益盒』唯一工程师与 AI 顾问 · 为合作基金会做技术评审。",
-                            },
-                            language
-                        )}
-                    </p>
-                    <Button asChild size="sm" className="mt-4">
-                        <a href={CONTACT_EMAIL}>
-                            {getBilingualText({ en: "Get a technical read", zh: "获取一次技术判断" }, language)}
-                            <ArrowRight className="h-4 w-4 ml-2" />
-                        </a>
-                    </Button>
+
+                    <div className="mt-4 flex items-center gap-4 flex-wrap">
+                        <Button
+                            asChild
+                            size="sm"
+                            className="bg-amber-600 hover:bg-amber-700 text-white border-amber-600"
+                        >
+                            <a href={CONTACT_EMAIL}>
+                                {getBilingualText(
+                                    { en: "Weighing a decision? Tell me about it", zh: "正在纠结某个决策？说给我听" },
+                                    language
+                                )}
+                                <ArrowRight className="h-4 w-4 ml-2" />
+                            </a>
+                        </Button>
+                        <span className="text-xs text-amber-900/55 dark:text-amber-200/55">
+                            {getBilingualText(
+                                {
+                                    en: "Engineer & AI advisor @ 益盒 · contract & budget reviews for a partner foundation",
+                                    zh: "『益盒』工程师与 AI 顾问 · 为合作基金会做合同与预算评审",
+                                },
+                                language
+                            )}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

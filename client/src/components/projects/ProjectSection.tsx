@@ -136,7 +136,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                   ))}
                 </div>
                 {category === 'social-impact' && (
-                  <AdvisoryCTA language={language} className="mt-6 max-w-2xl" />
+                  <AdvisoryCTA language={language} className="mt-8" />
                 )}
               </div>
             ));
