@@ -20,7 +20,7 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
         <img
           src={octopusGirlOrange}
           alt={getBilingualText({ en: 'Octopus Girl Character', zh: '章鱼女孩角色' }, language)}
-          className="max-w-full max-h-full object-contain"
+          className="max-w-full max-h-[48svh] sm:max-h-[82svh] object-contain"
           data-testid="img-octopus-girl"
         />
       </div>
