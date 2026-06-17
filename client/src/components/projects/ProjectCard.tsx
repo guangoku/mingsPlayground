@@ -42,9 +42,9 @@ export default function ProjectCard({ project, language }: ProjectCardProps) {
                     }}
                 >
                     <CardContent className="p-4">
-                        <div className="flex gap-4">
-                            {/* Image on the left - made bigger */}
-                            <div className="relative w-40 h-40 flex-shrink-0 overflow-hidden rounded-lg">
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            {/* Image: shorter banner on mobile, fixed square on larger screens */}
+                            <div className="relative w-full h-36 sm:w-40 sm:h-40 flex-shrink-0 overflow-hidden rounded-lg">
                                 <img
                                     src={project.imageUrl}
                                     alt={getBilingualText(project.title, language)}

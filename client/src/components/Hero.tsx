@@ -27,47 +27,49 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
 
       {/* Content */}
       <div className="w-full sm:w-2/5 flex flex-col justify-center items-center sm:items-end px-4 sm:pr-12 h-1/2 sm:h-full order-2 sm:order-2">
-        <div className="text-center sm:text-right max-w-full">
+        <div className="text-center sm:text-right w-full max-w-full min-w-0" style={{ containerType: 'inline-size' }}>
 
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-2 tracking-tight" style={{
+          <h1 className="font-black mb-2 tracking-tight" style={{
             color: 'hsl(var(--coral-fixed))',
             textShadow: '3px 3px 6px rgba(0,0,0,0.4), 1px 1px 2px rgba(0,0,0,0.2)',
             fontFamily: 'var(--font-sans)',
             letterSpacing: '-0.02em',
             transform: 'rotate(-1deg)',
-            marginRight: 'clamp(5px, 4vw, 20px)'
+            fontSize: 'clamp(1.75rem, 16cqw, 4.5rem)',
+            lineHeight: 1.05
           }} data-testid="text-hero-name">
             {getBilingualText({ en: "Ming's", zh: '关关的' }, language)}
           </h1>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tight" style={{
+          <h1 className="font-black mb-8 tracking-tight" style={{
             color: 'hsl(var(--coral-fixed))',
             textShadow: '3px 3px 6px rgba(0,0,0,0.4), 1px 1px 2px rgba(0,0,0,0.2)',
             fontFamily: 'var(--font-sans)',
             letterSpacing: '-0.02em',
             transform: 'rotate(1deg)',
-            marginRight: 'clamp(-5px, -2vw, -10px)'
+            fontSize: 'clamp(1.75rem, 16cqw, 4.5rem)',
+            lineHeight: 1.05
           }} data-testid="text-hero-playground">
             {getBilingualText({ en: 'Playground', zh: '游乐场' }, language)}
           </h1>
 
-          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4" style={{
+          <h2 className="font-bold mb-4" style={{
             color: 'hsl(var(--foam-fixed))',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-            marginRight: 'clamp(5px, 3vw, 15px)'
+            fontSize: 'clamp(1.05rem, 6.5cqw, 1.875rem)'
           }} data-testid="text-hero-subtitle1">
             {getBilingualText({ en: 'Innovating with Data', zh: '以数据创新' }, language)}
           </h2>
-          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4" style={{
+          <h2 className="font-bold mb-4" style={{
             color: 'hsl(var(--foam-fixed))',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-            marginRight: 'clamp(-5px, -1vw, -5px)'
+            fontSize: 'clamp(1.05rem, 6.5cqw, 1.875rem)'
           }} data-testid="text-hero-subtitle2">
             {getBilingualText({ en: 'Creating Art', zh: '以艺术创作' }, language)}
           </h2>
-          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold mb-8" style={{
+          <h2 className="font-bold mb-8" style={{
             color: 'hsl(var(--foam-fixed))',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-            marginRight: 'clamp(5px, 5vw, 25px)'
+            fontSize: 'clamp(1.05rem, 6.5cqw, 1.875rem)'
           }} data-testid="text-hero-subtitle3">
             {getBilingualText({ en: 'and Embracing Curiosity', zh: '以好奇心前行' }, language)}
           </h2>

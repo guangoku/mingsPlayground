@@ -167,7 +167,7 @@ export default function BaseNavigation({
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo/Title */}
-                    <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300`}>
+                    <div className={`text-2xl font-bold ${navTextColor} ${isOnHero ? 'drop-shadow-lg' : ''} transition-colors duration-300 ${variant === 'project' || variant === 'blog' ? 'min-w-0 flex-1 mr-2' : ''}`}>
                         {variant === 'project' && currentProject ? (
                             <div className="flex items-center gap-4 min-w-0 flex-1">
                                 <Button
@@ -177,10 +177,10 @@ export default function BaseNavigation({
                                     className="flex items-center gap-2 flex-shrink-0"
                                 >
                                     <ArrowLeft className="h-4 w-4" />
-                                    {getBilingualText(backText, language)}
+                                    <span className="hidden sm:inline">{getBilingualText(backText, language)}</span>
                                 </Button>
                                 <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
-                                <h1 className="text-2xl font-bold text-gray-900 dark:text-white truncate">
+                                <h1 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white truncate min-w-0">
                                     {getBilingualText(currentProject.title, language)}
                                 </h1>
                             </div>
