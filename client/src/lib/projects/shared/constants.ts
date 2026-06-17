@@ -10,16 +10,28 @@ export const PROJECT_CATEGORIES = {
   ART: {
     id: 'art',
     label: { en: 'Art & Illustration', zh: '艺术插画' },
+    lede: {
+      en: 'The personal, playful side — characters, comics, and visual experiments.',
+      zh: '更个人、更好玩的一面——角色、漫画与视觉实验。'
+    },
     icon: 'Palette'
   },
   TECH: {
     id: 'tech',
     label: { en: 'Tech Development', zh: '技术开发' },
+    lede: {
+      en: "Founder & builder — products I've taken from idea to live, end to end.",
+      zh: '创始人与构建者——把想法从零做到上线的产品。'
+    },
     icon: 'Code'
   },
   SOCIAL_IMPACT: {
     id: 'social-impact',
     label: { en: 'Social Impact', zh: '社会影响' },
+    lede: {
+      en: 'Small, steady technical help for mission-driven teams.',
+      zh: '以小而稳的方式，为公益团队提供技术支持。'
+    },
     icon: 'Heart'
   }
 } as const;
@@ -80,6 +92,11 @@ const CONTENT_TAGS = {
     id: 'charity',
     label: { en: 'Charity', zh: '慈善' },
     filterable: false
+  },
+  AI_ML: {
+    id: 'ai-ml',
+    label: { en: 'AI & ML', zh: 'AI 与机器学习' },
+    filterable: true
   }
 } as const;
 

@@ -11,6 +11,7 @@ import {
 } from "@/lib/projects";
 import CategoryHeader from "./CategoryHeader";
 import ProjectCard from "./ProjectCard";
+import AdvisoryCTA from "./AdvisoryCTA";
 
 interface ProjectSectionProps {
   language: Language;
@@ -28,8 +29,13 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
     return acc;
   }, {} as Record<ProjectCategory, Project[]>);
 
+  // Explicit display order: tech (founder/builder) → social impact → art
+  const CATEGORY_ORDER: ProjectCategory[] = ['tech', 'social-impact', 'art'];
+
   // Get categories that have projects (exclude graphic-novel from landing page display)
-  const categoriesWithProjects = Object.keys(projectsByCategory).filter(cat => cat !== 'graphic-novel') as ProjectCategory[];
+  const categoriesWithProjects = (Object.keys(projectsByCategory)
+    .filter(cat => cat !== 'graphic-novel') as ProjectCategory[])
+    .sort((a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b));
 
   // Filter projects by tag only
   const filteredProjects = projects.filter(project => {
@@ -129,6 +135,9 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                     <ProjectCard key={project.id} project={project} language={language} />
                   ))}
                 </div>
+                {category === 'social-impact' && (
+                  <AdvisoryCTA language={language} className="mt-6 max-w-2xl" />
+                )}
               </div>
             ));
           })()}

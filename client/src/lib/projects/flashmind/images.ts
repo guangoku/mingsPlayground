@@ -3,8 +3,8 @@
  * Dynamically loads images from specific directories
  */
 
-// Hero image
-import heroImage from '@assets/projects/flashmind/hero.png';
+// Hero image (screenshot of catch-and-keep.com)
+import heroImage from '@assets/projects/flashmind/cover.png';
 
 // Dynamically import screenshot images
 const screenshotImages = import.meta.glob('@assets/projects/flashmind/screenshots/*.{png,jpg,jpeg,webp}', { 

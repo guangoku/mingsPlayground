@@ -4,6 +4,7 @@ import OctopusGirlDetail from "./details/OctopusGirlDetail";
 import FlashMindDetail from "./details/FlashMindDetail";
 import CharityBoxDetail from "./details/CharityBoxDetail";
 import NepalTravelDetail from "./details/NepalTravelDetail";
+import AtollaOceanDetail from "./details/AtollaOceanDetail";
 
 interface ProjectDetailComposerProps {
     project: ProjectData;
@@ -28,6 +29,8 @@ export default function ProjectDetailComposer({
             return <FlashMindDetail project={project} language={language} />;
         case '4':
             return <CharityBoxDetail project={project} language={language} />;
+        case '5':
+            return <AtollaOceanDetail project={project} language={language} />;
         default:
             return (
                 <div className="text-center py-12">

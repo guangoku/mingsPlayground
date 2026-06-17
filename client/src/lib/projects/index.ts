@@ -16,30 +16,35 @@ export { octopusGirlData } from './octopus-girl/data';
 export { flashmindData } from './flashmind/data';
 export { nepalTravelData } from './nepal-travel/data';
 export { charityBoxData } from './charity-box/data';
+export { atollaOceanData } from './atolla-ocean/data';
 
 // Project images
 export { OCTOPUS_GIRL_IMAGES } from './octopus-girl/images';
 export { FLASHMIND_IMAGES } from './flashmind/images';
 export { NEPAL_TRAVEL_IMAGES } from './nepal-travel/images';
 export { CHARITY_BOX_IMAGES } from './charity-box/images';
+export { ATOLLA_OCEAN_IMAGES } from './atolla-ocean/images';
 
 // Project constants
 export { OCTOPUS_GIRL_CONSTANTS } from './octopus-girl/constants';
 export { FLASHMIND_CONSTANTS } from './flashmind/constants';
 export { NEPAL_TRAVEL_CONSTANTS } from './nepal-travel/constants';
 export { CHARITY_BOX_CONSTANTS } from './charity-box/constants';
+export { ATOLLA_OCEAN_CONSTANTS } from './atolla-ocean/constants';
 
 // Import all project data
 import { octopusGirlData } from './octopus-girl/data';
 import { flashmindData } from './flashmind/data';
 import { nepalTravelData } from './nepal-travel/data';
 import { charityBoxData } from './charity-box/data';
+import { atollaOceanData } from './atolla-ocean/data';
 import { type ProjectData } from './shared/types';
 
 // Use project data directly
 export const projects: ProjectData[] = [
   octopusGirlData,
   nepalTravelData,
+  atollaOceanData,
   flashmindData,
   charityBoxData,
 ];

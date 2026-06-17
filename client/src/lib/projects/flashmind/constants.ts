@@ -5,11 +5,11 @@
 
 export const FLASHMIND_CONSTANTS = {
   PROJECT_ID: '3',
-  LAUNCH_YEAR: '2024',
-  LIVE_URL: 'https://flashmind.app',
-  
+  LAUNCH_YEAR: '2026',
+  LIVE_URL: 'https://www.catch-and-keep.com',
+
   // Technical stack
-  TECHNICAL_STACK: ['React', 'TypeScript', 'Node.js', 'OpenAI API'],
+  TECHNICAL_STACK: ['FastAPI', 'SQLModel', 'React', 'TypeScript', 'FSRS', 'GPT-4o', 'Whisper', 'Neon Postgres'],
   
   // Features configuration
   FEATURES: {

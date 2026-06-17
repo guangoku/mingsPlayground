@@ -1,20 +1,38 @@
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
+import { Coins, BadgeCheck, Eye } from "lucide-react";
 import { TagsSection } from "../modules";
 import UnifiedImageGallery from "../modules/UnifiedImageGallery";
 import MarkdownContent from "@/components/ui/MarkdownContent";
+import AdvisoryCTA from "../AdvisoryCTA";
+import ProjectFlow, { type FlowStep } from "../ProjectFlow";
 
 interface CharityBoxDetailProps {
     project: ProjectData;
     language: Language;
 }
 
+const flowSteps: FlowStep[] = [
+    {
+        icon: Coins,
+        title: { en: 'Give 1%', zh: '捐出 1%' },
+        subtitle: { en: 'Simple, recurring, in WeChat', zh: '微信内简单定期捐赠' }
+    },
+    {
+        icon: BadgeCheck,
+        title: { en: 'Vetted charities', zh: '经筛选的公益组织' },
+        subtitle: { en: 'Effective, high-impact', zh: '高效、高影响力' }
+    },
+    {
+        icon: Eye,
+        title: { en: 'Transparent impact', zh: '透明的影响' },
+        subtitle: { en: 'See where it goes', zh: '看见善款去向' }
+    }
+];
+
 export default function CharityBoxDetail({ project, language }: CharityBoxDetailProps) {
-    // Collect all images from the project for unified gallery
-    const allProjectImages = [
-        ...(project.detailImages || []),
-    ].filter(Boolean);
+    const allProjectImages = [...(project.detailImages || [])].filter(Boolean);
 
     return (
         <div className="space-y-8">
@@ -34,17 +52,38 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
                 language={language}
             />
 
-            {/* Main Content Section */}
-            {project.mainContent && (
+            {/* About */}
+            {project.about && (
                 <div className="space-y-4">
-                    <MarkdownContent
-                        content={project.mainContent}
-                        language={language}
-                    />
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        {getBilingualText(project.about.title, language)}
+                    </h2>
+                    <MarkdownContent content={project.about.content} language={language} />
                 </div>
             )}
 
-            {/* Image Gallery */}
+            {/* How it works */}
+            <div className="space-y-4">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    {getBilingualText({ en: 'How it works', zh: '运作方式' }, language)}
+                </h2>
+                <ProjectFlow steps={flowSteps} language={language} />
+            </div>
+
+            {/* My Role */}
+            {project.role && (
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        {getBilingualText(project.role.title, language)}
+                    </h2>
+                    <MarkdownContent content={project.role.content} language={language} />
+                </div>
+            )}
+
+            {/* Advisory positioning + contact */}
+            <AdvisoryCTA language={language} />
+
+            {/* Posters gallery */}
             {project.detailImages && project.detailImages.length > 0 && (
                 <div className="space-y-4">
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
