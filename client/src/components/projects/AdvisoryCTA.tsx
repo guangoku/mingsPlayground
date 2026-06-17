@@ -1,4 +1,4 @@
-import { Heart, Mail } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
@@ -9,7 +9,7 @@ interface AdvisoryCTAProps {
 }
 
 const CONTACT_EMAIL =
-    "mailto:guangoku@gmail.com?subject=" + encodeURIComponent("Mission-driven work");
+    "mailto:guangoku@gmail.com?subject=" + encodeURIComponent("Technical & AI advisory");
 
 export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAProps) {
     return (
@@ -24,32 +24,41 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                 <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-emerald-800 dark:text-emerald-300">
                         {getBilingualText(
-                            { en: "How I show up for mission-driven work", zh: "我如何参与公益" },
+                            { en: "Technical & AI advice for mission-driven teams", zh: "为公益团队提供技术与 AI 咨询" },
                             language
                         )}
                     </h4>
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                         {getBilingualText(
                             {
-                                en: "I keep my involvement small but consistent — building and advising on AI at 益盒, the occasional technical review for a partner foundation, and steady monthly donations. I'm not full-time in this world; I just keep one useful thread always running.",
-                                zh: "我让自己的参与保持小而稳：在『益盒』做开发与 AI 顾问，偶尔为合作基金会做技术评审，并持续每月捐赠。我不是全职做公益，只是让一条有用的线一直运转着。",
+                                en: "Non-profits face real technical decisions — build vs. buy, whether a vendor's quote is fair, whether an AI project will actually work — and they're costly to get wrong. I give you a senior engineer's honest read, so you can decide with confidence.",
+                                zh: "公益组织也要面对真实的技术决策——自建还是采购、供应商的报价是否合理、某个 AI 项目到底行不行——而做错的代价往往很高。我会给你一位资深工程师的坦诚判断，让你更有把握地做决定。",
                             },
                             language
                         )}
                     </p>
-                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                         {getBilingualText(
                             {
-                                en: "If that's the kind of help your team needs, get in touch.",
-                                zh: "如果这正是你的团队需要的帮助，欢迎联系我。",
+                                en: "Start with a single review — many teams just need one good call. If it helps, we can do a few more, or an ongoing advisory role as the work grows.",
+                                zh: "可以先从一次评审开始——很多团队只需要一个靠谱的判断。如果有帮助，我们可以多做几次，或随着工作深入建立长期顾问关系。",
                             },
                             language
                         )}
                     </p>
-                    <Button asChild size="sm" variant="outline" className="mt-4">
+                    <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                        {getBilingualText(
+                            {
+                                en: "Sole engineer & AI advisor at 益盒 · technical reviews for a partner foundation.",
+                                zh: "『益盒』唯一工程师与 AI 顾问 · 为合作基金会做技术评审。",
+                            },
+                            language
+                        )}
+                    </p>
+                    <Button asChild size="sm" className="mt-4">
                         <a href={CONTACT_EMAIL}>
-                            <Mail className="h-4 w-4 mr-2" />
-                            {getBilingualText({ en: "Get in touch", zh: "联系我" }, language)}
+                            {getBilingualText({ en: "Get a technical read", zh: "获取一次技术判断" }, language)}
+                            <ArrowRight className="h-4 w-4 ml-2" />
                         </a>
                     </Button>
                 </div>
