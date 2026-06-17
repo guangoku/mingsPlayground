@@ -104,7 +104,7 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                         >
                             <a href={CONTACT_EMAIL}>
                                 {getBilingualText(
-                                    { en: "Get a second opinion", zh: "听听第二意见" },
+                                    { en: "Let's talk", zh: "聊聊吧" },
                                     language
                                 )}
                                 <ArrowRight className="h-4 w-4 ml-2" />
