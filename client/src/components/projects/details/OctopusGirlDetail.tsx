@@ -61,16 +61,18 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
                         {getBilingualText(project.aboutOctopus.title, language)}
                     </h2>
                     <div className="grid md:grid-cols-2 gap-8 items-start">
-                        <MarkdownContent
-                            content={project.aboutOctopus.content}
-                            language={language}
-                        />
+                        <div className="min-w-0">
+                            <MarkdownContent
+                                content={project.aboutOctopus.content}
+                                language={language}
+                            />
+                        </div>
                         {project.aboutOctopus.imageUrl && (
-                            <div className="flex justify-center">
+                            <div className="flex justify-center min-w-0">
                                 <ClickableImage
                                     src={project.aboutOctopus.imageUrl}
                                     alt={getBilingualText(project.aboutOctopus.title, language)}
-                                    className="max-w-sm h-auto rounded-lg shadow-lg"
+                                    className="w-full max-w-sm h-auto rounded-lg shadow-lg"
                                     allImages={allProjectImages}
                                     initialIndex={allProjectImages.findIndex(img => img === project.aboutOctopus.imageUrl)}
                                 />

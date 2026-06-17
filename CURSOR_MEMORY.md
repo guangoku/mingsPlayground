@@ -33,6 +33,9 @@ Update when new patterns emerge.
 
 - For big edits: propose a short "Change Plan" (goals, trade-offs).
 - When a new convention is adopted, add it here with a short note.
+- **NEVER delete files directly**: Always empty the code first for code review approval.
+- **Always analyze dependencies**: Check what uses a component before removing it.
+- **Migration strategy**: Plan proper migration path before making changes.
 
 ## Project-Specific Patterns
 
@@ -57,11 +60,42 @@ Update when new patterns emerge.
 - **Helper functions**: `getProjectById()`, `getProjectsByCategory()`, `searchProjects()` for data manipulation
 - **Single import**: Import everything from `@/lib/projects` for project-related functionality
 
+### Blog System Architecture
+
+- **Hybrid Content**: Static posts (React components) + Notion posts (dynamic API)
+- **Notion Integration**: Vercel serverless functions handle CORS for Notion API
+- **Content Types**: Static (React components) vs Notion (API-fetched)
+- **Navigation**: Unified system with modal + individual page views
+- **Data Structure**: Feature-based modules with constants, types, data, and utilities
+- **Bilingual Support**: All content supports English/Chinese with `getBilingualText()`
+- **Security**: Environment variables for API tokens, no hardcoded secrets
+
+### Blog Implementation Status
+
+- **Phase 1-5**: ✅ Complete (Architecture, UI, Navigation, Static Content, Notion Integration)
+- **Phase 6**: 🔄 Subway Map System (not started)
+- **Phase 7**: ⏳ Documentation & Cleanup (not started)
+- **Phase 8**: ⏳ Final Cleanup (not started)
+
+### ✅ Security Issues Resolved
+
+- **Hardcoded Token**: ✅ Removed from all files
+- **Environment Variables**: ✅ Properly configured with validation
+- **Development Server**: ✅ Fixed Vercel dev configuration
+- **API Routes**: ✅ Working with query parameters
+
+### Documentation
+
+- **Single Source**: All blog documentation consolidated in `docs/blog-documentation.md`
+- **Includes**: Setup, status, limitations, troubleshooting, future phases
+
 ### Deployment & Hosting
 
-- **Platform**: Vercel (static hosting with SPA routing)
+- **Platform**: Vercel (static hosting with serverless functions)
 - **Live URL**: https://mingsplayground.com
 - **DNS**: A record method (76.76.21.21) with Cloudflare (proxy disabled)
-- **Build**: `npm run build` → `vercel --prod`
-- **Configuration**: `vercel.json` for client-side routing
+- **Development**: `vercel dev` (unified frontend + API routes)
+- **Production**: `npm run build` → `vercel --prod`
+- **Configuration**: `vercel.json` for client-side routing and API routes
+- **Environment**: `NOTION_TOKEN` configured in Vercel dashboard
 - **Domain management**: `vercel domains add [domain]` for custom domains

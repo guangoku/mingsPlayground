@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw } from "lucide-react";
 
@@ -94,6 +94,12 @@ export default function ImageGalleryModal({
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-0 flex flex-col">
+                <DialogTitle className="sr-only">
+                    Image Gallery - {alt} ({currentIndex + 1} / {images.length})
+                </DialogTitle>
+                <DialogDescription className="sr-only">
+                    Image gallery with zoom and rotation controls
+                </DialogDescription>
                 {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b bg-white dark:bg-gray-900 flex-shrink-0">
                     <div className="flex items-center gap-4">

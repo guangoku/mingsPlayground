@@ -23,6 +23,8 @@ export default function CategoryHeader({ category, language }: CategoryHeaderPro
     const IconComponent = iconMap[categoryData.icon as keyof typeof iconMap];
     const colorClass = 'text-emerald-600 dark:text-emerald-400';
 
+    const lede = (categoryData as { lede?: { en: string; zh: string } }).lede;
+
     return (
         <div className="mb-6">
             <div className="flex items-center gap-4">
@@ -34,6 +36,11 @@ export default function CategoryHeader({ category, language }: CategoryHeaderPro
                 </h3>
                 <div className="flex-1 h-px bg-gradient-to-r from-white/40 to-transparent dark:from-gray-400/40"></div>
             </div>
+            {lede && (
+                <p className="mt-2 text-sm md:text-base text-white/90 dark:text-gray-300 max-w-2xl" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.4)' }}>
+                    {getBilingualText(lede, language)}
+                </p>
+            )}
         </div>
     );
 }

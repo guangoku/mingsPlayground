@@ -63,3 +63,28 @@ export const getProjectStats = (projects: ProjectData[]) => {
   };
 };
 
+/**
+ * Maps project ID to its corresponding route using project data
+ * Uses the slug field from project data instead of hardcoded mapping
+ */
+export const getProjectUrl = (projectId: string, projects: ProjectData[]): string => {
+  const project = projects.find(p => p.id === projectId);
+  return project?.slug ? `/projects/${project.slug}` : '#';
+};
+
+/**
+ * Get project slug from project ID using actual project data
+ */
+export const getProjectSlug = (projectId: string, projects: ProjectData[]): string => {
+  const project = projects.find(p => p.id === projectId);
+  return project?.slug || 'unknown';
+};
+
+/**
+ * Get project ID from slug using actual project data
+ */
+export const getProjectIdFromSlug = (slug: string, projects: ProjectData[]): string | null => {
+  const project = projects.find(p => p.slug === slug);
+  return project?.id || null;
+};
+

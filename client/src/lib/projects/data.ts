@@ -3,8 +3,8 @@
  * Centralized location for all project-related data and data manipulation
  */
 
-import { type Project } from './types';
-import { PROJECT_CATEGORIES, PROJECT_TAGS } from './constants';
+import { type Project } from './shared/types';
+import { PROJECT_CATEGORIES, PROJECT_TAGS } from './shared/constants';
 import octopusGirlCool from '@assets/octopus_girl_cool.png';
 import nepal_travel_diaries_cover from '@assets/nepal_travel_diaries_cover.jpg';
 import flashmind_cover from '@assets/flashmind_cover.png';
@@ -13,6 +13,7 @@ import yihe_miniprogram_cover from '@assets/yihe_miniprogram_cover.jpg';
 export const projects: Project[] = [
   {
     id: '1',
+    slug: 'octopus-girl',
     title: {
       en: 'Octopus Girl',
       zh: '章鱼女孩'
@@ -31,6 +32,7 @@ export const projects: Project[] = [
   },
   {
     id: '2',
+    slug: 'nepal-travel',
     title: {
       en: 'Nepal Travel Diaries',
       zh: '尼国游日记'
@@ -45,6 +47,7 @@ export const projects: Project[] = [
   },
   {
     id: '3',
+    slug: 'flashmind',
     title: {
       en: 'FlashMind',
       zh: '闪念卡'
@@ -61,6 +64,7 @@ export const projects: Project[] = [
   },
   {
     id: '4',
+    slug: 'charity-box',
     title: {
       en: 'Charity Box Mini-Program',
       zh: '益盒小程序'

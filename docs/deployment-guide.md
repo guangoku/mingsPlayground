@@ -18,9 +18,10 @@ This guide covers how to test the portfolio website on mobile devices during dev
 
 ### Prerequisites
 
-- Development server running (`npm run dev`)
+- Development server running (`vercel dev` or `npm run dev`)
 - Mobile device connected to the same WiFi network as development machine
 - Basic terminal/command line access
+- Environment variables configured (`.env.local`)
 
 ### Method 1: Network IP Access (Recommended)
 
@@ -37,7 +38,10 @@ ifconfig | grep "inet " | grep -v 127.0.0.1
 **Step 2: Start Development Server with Network Access**
 
 ```bash
-# Stop current server (Ctrl+C) and restart with network access
+# Recommended: Start with API routes (includes blog functionality)
+vercel dev --host
+
+# Alternative: Frontend only (no blog API routes)
 npm run dev -- --host
 
 # Or specify all interfaces explicitly
@@ -48,8 +52,8 @@ npm run dev -- --host 0.0.0.0
 
 1. Connect mobile device to the same WiFi network
 2. Open mobile browser
-3. Navigate to: `http://[YOUR_IP]:5173` (or 5174 if 5173 is in use)
-4. Example: `http://192.168.1.100:5173`
+3. Navigate to: `http://[YOUR_IP]:3000` (for `vercel dev`) or `http://[YOUR_IP]:5173` (for `npm run dev`)
+4. Example: `http://192.168.1.100:3000` or `http://192.168.1.100:5173`
 
 ### Method 2: Using ngrok (Tunnel Service)
 
@@ -65,6 +69,10 @@ npm install -g ngrok
 **Step 2: Start Development Server**
 
 ```bash
+# Recommended: Start with API routes
+vercel dev
+
+# Alternative: Frontend only
 npm run dev
 ```
 
@@ -72,6 +80,10 @@ npm run dev
 
 ```bash
 # In a new terminal window
+# For vercel dev (port 3000)
+ngrok http 3000
+
+# For npm run dev (port 5173)
 ngrok http 5173
 ```
 
@@ -163,14 +175,22 @@ ngrok http 5173
    vercel login
    ```
 
-3. **Deploy to Production**
+3. **Set up Environment Variables**
+
+   ```bash
+   # Add NOTION_TOKEN to Vercel dashboard
+   # Go to Vercel dashboard → Project Settings → Environment Variables
+   # Add: NOTION_TOKEN = your_notion_integration_token
+   ```
+
+4. **Deploy to Production**
 
    ```bash
    npm run build
    vercel --prod
    ```
 
-4. **Add Custom Domain**
+5. **Add Custom Domain**
    ```bash
    vercel domains add mingsplayground.com
    ```
@@ -206,7 +226,7 @@ vercel --prod
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api|src|@vite|@react-refresh|@fs|node_modules).*)",
       "destination": "/index.html"
     }
   ]
@@ -236,6 +256,58 @@ If you need subdomains like `blog.mingsplayground.com`:
 1. Add CNAME record in Cloudflare
 2. Configure in Vercel dashboard
 3. Deploy subdomain-specific content
+
+## Blog System Deployment
+
+### Notion Integration Setup
+
+1. **Create Notion Integration**:
+
+   - Go to https://www.notion.so/my-integrations
+   - Create new integration
+   - Copy the integration token
+
+2. **Configure Environment Variables**:
+
+   ```bash
+   # Local development (.env.local)
+   NOTION_TOKEN=your_integration_token_here
+
+   # Production (Vercel dashboard)
+   # Add NOTION_TOKEN environment variable in Vercel project settings
+   ```
+
+3. **Share Notion Pages**:
+   - Share your Notion pages with the integration
+   - Get page IDs from Notion URLs
+   - Add pages to blog data configuration
+
+### API Routes
+
+The blog system uses Vercel serverless functions:
+
+- **Location**: `api/notion/pageId.js`
+- **Purpose**: Notion API proxy to handle CORS
+- **Development**: `vercel dev` runs API routes locally
+- **Production**: Vercel automatically deploys as serverless functions
+
+### Development vs Production
+
+**Development**:
+
+```bash
+# Start with API routes (recommended)
+vercel dev
+
+# Alternative: Frontend only (no blog functionality)
+npm run dev
+```
+
+**Production**:
+
+- API routes automatically deployed with `vercel --prod`
+- Environment variables configured in Vercel dashboard
+- Notion integration token securely stored
 
 ## Performance Optimization
 

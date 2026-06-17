@@ -12,6 +12,7 @@ import nepalTravelJournalZh from './nepal-travel-journal-zh.md?raw';
 
 export const nepalTravelData: ProjectData = {
   id: NEPAL_TRAVEL_CONSTANTS.PROJECT_ID,
+  slug: 'nepal-travel',
   title: {
     en: 'Nepal Travel Diaries',
     zh: '尼国游日记'

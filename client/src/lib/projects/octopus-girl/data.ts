@@ -10,6 +10,7 @@ import { OCTOPUS_GIRL_CONSTANTS } from './constants';
 
 export const octopusGirlData: ProjectData = {
   id: OCTOPUS_GIRL_CONSTANTS.PROJECT_ID,
+  slug: 'octopus-girl',
   title: {
     en: 'Octopus Girl: A Personal Avatar',
     zh: '章鱼女孩：我的角色形象'

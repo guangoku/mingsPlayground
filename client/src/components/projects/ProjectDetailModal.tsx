@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
-import { getProjectById, projects } from "@/lib/projects";
+import { getProjectById, projects, getProjectUrl } from "@/lib/projects";
 import ProjectDetailComposer from "./ProjectDetailComposer";
 
 interface ProjectDetailModalProps {
@@ -58,16 +58,8 @@ export default function ProjectDetailModal({
 
     const handleViewFullPage = () => {
         if (currentProject) {
-            // Map project IDs to their corresponding routes
-            const projectRoutes: Record<string, string> = {
-                '1': '/projects/octopus-girl',
-                '2': '/projects/nepal-travel',
-                '3': '/projects/flashmind',
-                '4': '/projects/charity-box'
-            };
-
-            const route = projectRoutes[currentProject.id];
-            if (route) {
+            const route = getProjectUrl(currentProject.id);
+            if (route && route !== '#') {
                 onClose(); // Close modal first
                 navigate(route);
             }
@@ -81,6 +73,12 @@ export default function ProjectDetailModal({
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-7xl max-h-[95vh] w-[95vw] p-0 flex flex-col">
+                <DialogTitle className="sr-only">
+                    {getBilingualText(currentProject.title, language)}
+                </DialogTitle>
+                <DialogDescription className="sr-only">
+                    Project details and information
+                </DialogDescription>
                 {/* Header - Fixed */}
                 <div className="flex items-center justify-between p-6 border-b bg-white dark:bg-gray-900 flex-shrink-0 sticky top-0 z-10">
                     <div className="flex items-center gap-4 min-w-0 flex-1">

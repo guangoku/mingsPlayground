@@ -1,6 +1,8 @@
 import BaseNavigation from './BaseNavigation';
 import { type Language } from '@/lib/types';
 
+// ProjectNavigation wrapper component
+
 interface ProjectNavigationProps {
     isDark: boolean;
     onThemeToggle: () => void;
