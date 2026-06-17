@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Calendar, Clock, Search, ArrowRight } from "lucide-react";
+import { Calendar, Clock, Search, ArrowRight, Newspaper } from "lucide-react";
 import { getBilingualText, getBilingualArray, formatReadTime } from "@/lib/utils";
 import { LANGUAGES, CATEGORIES } from "@/lib/constants";
 import { type Language, type BilingualText, type BilingualArray } from "@/lib/types";
@@ -20,6 +20,10 @@ import BlogDetailModal from "./blog/BlogDetailModal";
 
 // Single source of truth for categories (using new blog constants)
 const categories = Object.values(BLOG_CATEGORIES);
+
+// Flip to true once the first real posts are published. While false, the section
+// keeps all its UI (Coming Soon badge, search, filters) but hides the post list.
+const POSTS_PUBLISHED = false;
 
 interface BlogSectionProps {
   language: Language;
@@ -121,6 +125,8 @@ export default function BlogSection({ language }: BlogSectionProps) {
         </div>
 
         {/* Blog Posts List - Newspaper Style */}
+        {POSTS_PUBLISHED ? (
+        <>
         <div className="space-y-0">
           {filteredPosts.map((post: BlogPost, index: number) => (
             <a
@@ -145,7 +151,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
                 {/* Newspaper-style layout */}
                 <div className="space-y-2">
                   {/* Header with category, date, and read time - newspaper style */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pr-16 sm:pr-20">
                     <div className="flex items-center gap-2 flex-wrap">
                       <Badge
                         variant="secondary"
@@ -241,6 +247,28 @@ export default function BlogSection({ language }: BlogSectionProps) {
                   zh: '清除筛选'
                 }, language)}
               </Button>
+            </div>
+          </div>
+        )}
+        </>
+        ) : (
+          <div className="text-center py-16">
+            <div className="max-w-md mx-auto">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
+                <Newspaper className="h-8 w-8 text-stone-400 dark:text-stone-500" />
+              </div>
+              <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100 mb-2">
+                {getBilingualText({
+                  en: 'First posts are on the way',
+                  zh: '首批文章即将上线'
+                }, language)}
+              </h3>
+              <p className="text-stone-600 dark:text-stone-400">
+                {getBilingualText({
+                  en: "I'm writing the first pieces now — check back soon, or explore my projects in the meantime.",
+                  zh: '正在撰写最初的几篇文章 —— 敬请期待，也欢迎先看看我的项目。'
+                }, language)}
+              </p>
             </div>
           </div>
         )}
