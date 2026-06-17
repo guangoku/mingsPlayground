@@ -14,19 +14,19 @@ interface HeroProps {
 
 export default function Hero({ name, description, onResumeClick, onProjectsClick, language }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex flex-col sm:flex-row items-center overflow-hidden hero-bg">
+    <section className="relative min-h-[100svh] sm:h-[100svh] flex flex-col sm:flex-row items-stretch overflow-hidden hero-bg">
       {/* Octopus Girl Image */}
-      <div className="w-full sm:w-3/5 h-1/2 sm:h-full flex items-center justify-center sm:justify-start pl-4 sm:pl-8 order-1 sm:order-1">
+      <div className="w-full sm:w-3/5 h-[45svh] sm:h-full flex items-end justify-center sm:justify-start pl-4 sm:pl-8 order-1 sm:order-1">
         <img
           src={octopusGirlOrange}
           alt={getBilingualText({ en: 'Octopus Girl Character', zh: '章鱼女孩角色' }, language)}
-          className="max-w-full max-h-[48svh] sm:max-h-[82svh] object-contain"
+          className="h-full w-auto max-w-full object-contain object-bottom"
           data-testid="img-octopus-girl"
         />
       </div>
 
       {/* Content */}
-      <div className="w-full sm:w-2/5 flex flex-col justify-center items-center sm:items-end px-4 sm:pr-12 h-1/2 sm:h-full order-2 sm:order-2">
+      <div className="w-full sm:w-2/5 flex-1 sm:flex-none flex flex-col justify-center items-center sm:items-end px-4 sm:pr-12 py-8 sm:py-0 sm:h-full order-2 sm:order-2">
         <div className="text-center sm:text-right w-full max-w-full min-w-0" style={{ containerType: 'inline-size' }}>
 
           <h1 className="font-black mb-2 tracking-tight" style={{
