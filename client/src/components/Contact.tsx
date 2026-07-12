@@ -1,8 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Mail, Code, Linkedin, Camera } from "lucide-react";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
+import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 interface ContactProps {
   language: Language;
@@ -46,50 +47,47 @@ export default function Contact({ language }: ContactProps) {
   };
 
   return (
-    <section className="py-16 px-6 contact-bg" id="contact">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white dark:text-gray-100" data-testid="text-contact-title" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-            {getBilingualText({ en: "Let's Connect", zh: '联系我' }, language)}
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-white/90 dark:text-gray-200" data-testid="text-contact-description" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-            {getBilingualText({
-              en: "Open to collaborations, opportunities, or just a good conversation.",
-              zh: '欢迎合作、机会洽谈，或是简单地聊聊。'
-            }, language)}
-          </p>
-        </div>
+    <section className="py-16 md:py-24 px-6 contact-bg grain" id="contact">
+      <div className="relative z-[2] max-w-4xl mx-auto">
+        <SectionHeading
+          eyebrow={{ en: 'Say Hello', zh: '打个招呼' }}
+          title={{ en: "Let's Connect", zh: '联系我' }}
+          lede={{
+            en: "Open to collaborations, opportunities, or just a good conversation.",
+            zh: '欢迎合作、机会洽谈，或是简单地聊聊。'
+          }}
+          language={language}
+          tone="dark"
+          accent="hsl(35 90% 75%)"
+          testIdPrefix="contact"
+        />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-          {contactLinks.map((contact) => {
-            const IconComponent = contact.icon;
-            return (
-              <Card
-                key={contact.id}
-                className="group cursor-pointer hover-elevate bg-white/95 dark:bg-gray-800/95 border-white/30 dark:border-gray-600/30"
-                onClick={() => handleContactClick(contact.href, contact.label[language])}
-                data-testid={`card-contact-${contact.id}`}
-                style={{
-                  backdropFilter: 'blur(10px)'
-                }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center">
-                    <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: 'hsl(15 70% 45%)' }}
-                    >
-                      <IconComponent className="h-8 w-8 text-white" />
+        <Reveal delay={0.1}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-2xl mx-auto">
+            {contactLinks.map((contact) => {
+              const IconComponent = contact.icon;
+              return (
+                <Card
+                  key={contact.id}
+                  className="group cursor-pointer rounded-2xl bg-white/[0.08] border border-white/20 backdrop-blur-md shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/[0.14] hover:border-white/35 hover:shadow-xl"
+                  onClick={() => handleContactClick(contact.href, contact.label[language])}
+                  data-testid={`card-contact-${contact.id}`}
+                >
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4 flex justify-center">
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white/10 border border-white/25 transition-colors duration-300 group-hover:bg-white/20">
+                        <IconComponent className="h-6 w-6 text-white" />
+                      </div>
                     </div>
-                  </div>
-                  <p className="font-medium text-orange-700 dark:text-orange-300" data-testid={`text-contact-${contact.id}`}>
-                    {contact.label[language]}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                    <p className="font-medium text-white/85 tracking-wide group-hover:text-white transition-colors duration-300" data-testid={`text-contact-${contact.id}`}>
+                      {contact.label[language]}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </Reveal>
 
       </div>
     </section>

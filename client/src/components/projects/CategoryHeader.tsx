@@ -26,18 +26,18 @@ export default function CategoryHeader({ category, language }: CategoryHeaderPro
     const lede = (categoryData as { lede?: { en: string; zh: string } }).lede;
 
     return (
-        <div className="mb-6">
+        <div className="mb-8">
             <div className="flex items-center gap-4">
-                <div className="p-2 rounded-lg bg-white/20 dark:bg-gray-800/50 backdrop-blur-sm border border-white/30 dark:border-gray-600/50">
-                    <IconComponent className="h-5 w-5 text-white dark:text-gray-200" />
+                <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <IconComponent className="h-5 w-5 text-emerald-200" />
                 </div>
-                <h3 className="text-2xl font-bold text-white dark:text-gray-100 tracking-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                <h3 className="font-display text-2xl md:text-3xl font-semibold text-white tracking-tight">
                     {getBilingualText(categoryData.label, language)}
                 </h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-white/40 to-transparent dark:from-gray-400/40"></div>
+                <div className="flex-1 h-px bg-gradient-to-r from-white/30 to-transparent"></div>
             </div>
             {lede && (
-                <p className="mt-2 text-sm md:text-base text-white/90 dark:text-gray-300 max-w-2xl" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.4)' }}>
+                <p className="mt-3 text-sm md:text-base text-white/65 max-w-2xl">
                     {getBilingualText(lede, language)}
                 </p>
             )}

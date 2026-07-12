@@ -12,6 +12,8 @@ import {
 import CategoryHeader from "./CategoryHeader";
 import ProjectCard from "./ProjectCard";
 import AdvisoryCTA from "./AdvisoryCTA";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
 interface ProjectSectionProps {
   language: Language;
@@ -45,62 +47,58 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
 
   return (
     <section
-      className="py-8 md:py-12 px-6 projects-bg"
+      className="py-16 md:py-24 px-6 projects-bg grain"
       id="projects"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white dark:text-gray-100" data-testid="text-projects-title" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-            {getBilingualText({ en: 'Projects & Creative Work', zh: '项目与创作' }, language)}
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-white/90 dark:text-gray-200" data-testid="text-projects-description" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-            {getBilingualText({
-              en: 'A showcase of my independent projects and contributions',
-              zh: '独立项目与合作成果'
-            }, language)}
-          </p>
-        </div>
-
+      <div className="relative z-[2] max-w-6xl mx-auto">
+        <SectionHeading
+          eyebrow={{ en: 'Selected Work', zh: '精选作品' }}
+          title={{ en: 'Projects & Creative Work', zh: '项目与创作' }}
+          lede={{
+            en: 'A showcase of my independent projects and contributions',
+            zh: '独立项目与合作成果'
+          }}
+          language={language}
+          tone="dark"
+          accent="hsl(158 65% 62%)"
+          testIdPrefix="projects"
+        />
 
         {/* Tag Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          <Button
-            variant={selectedTag === 'all' ? "default" : "outline"}
-            size="sm"
-            onClick={() => setSelectedTag('all')}
-            className={`hover-elevate rounded-full border-2 ${selectedTag === 'all'
-              ? 'bg-white/90 dark:bg-gray-100 text-emerald-700 dark:text-emerald-800 border-emerald-600 dark:border-emerald-500'
-              : 'bg-transparent text-white dark:text-gray-200 border-white dark:border-gray-300'
-              }`}
-            data-testid="button-tag-all"
-            style={{
-              textShadow: selectedTag === 'all' ? 'none' : '1px 1px 2px rgba(0,0,0,0.3)'
-            }}
-          >
-            {getBilingualText({ en: 'All Tags', zh: '所有标签' }, language)}
-          </Button>
-          {getFilterableTags().map((tag) => (
+        <Reveal delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
-              key={tag.id}
-              variant={selectedTag === tag.id ? "default" : "outline"}
+              variant={selectedTag === 'all' ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedTag(tag.id)}
-              className={`hover-elevate rounded-full border-2 ${selectedTag === tag.id
-                ? 'bg-white/90 dark:bg-gray-100 text-emerald-700 dark:text-emerald-800 border-emerald-600 dark:border-emerald-500'
-                : 'bg-transparent text-white dark:text-gray-200 border-white dark:border-gray-300'
+              onClick={() => setSelectedTag('all')}
+              className={`rounded-full border transition-all duration-300 ${selectedTag === 'all'
+                ? 'bg-white text-emerald-900 border-white shadow-md hover:bg-white'
+                : 'bg-white/5 text-white/80 border-white/20 backdrop-blur-sm hover:bg-white/15 hover:text-white hover:border-white/40'
                 }`}
-              data-testid={`button-tag-${tag.id}`}
-              style={{
-                textShadow: selectedTag === tag.id ? 'none' : '1px 1px 2px rgba(0,0,0,0.3)'
-              }}
+              data-testid="button-tag-all"
             >
-              {getBilingualText(tag.label, language)}
+              {getBilingualText({ en: 'All Tags', zh: '所有标签' }, language)}
             </Button>
-          ))}
-        </div>
+            {getFilterableTags().map((tag) => (
+              <Button
+                key={tag.id}
+                variant={selectedTag === tag.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedTag(tag.id)}
+                className={`rounded-full border transition-all duration-300 ${selectedTag === tag.id
+                  ? 'bg-white text-emerald-900 border-white shadow-md hover:bg-white'
+                  : 'bg-white/5 text-white/80 border-white/20 backdrop-blur-sm hover:bg-white/15 hover:text-white hover:border-white/40'
+                  }`}
+                data-testid={`button-tag-${tag.id}`}
+              >
+                {getBilingualText(tag.label, language)}
+              </Button>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Projects by Category */}
-        <div className="space-y-8">
+        <div className="space-y-16">
           {(() => {
             const categoriesWithFilteredProjects = categoriesWithProjects
               .map((category) => {
@@ -114,7 +112,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
             if (categoriesWithFilteredProjects.length === 0) {
               return (
                 <div className="text-center py-12">
-                  <p className="text-white/80 dark:text-gray-300 text-lg" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+                  <p className="text-white/70 text-lg">
                     {getBilingualText(
                       { en: 'No projects found with this tag.', zh: '没有找到带有此标签的项目。' },
                       language
@@ -125,20 +123,20 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
             }
 
             return categoriesWithFilteredProjects.map(({ category, filteredProjects }) => (
-              <div key={category}>
+              <Reveal key={category}>
                 <CategoryHeader
                   category={category}
                   language={language}
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5 md:gap-7">
                   {filteredProjects.map((project) => (
                     <ProjectCard key={project.id} project={project} language={language} />
                   ))}
                 </div>
                 {category === 'social-impact' && (
-                  <AdvisoryCTA language={language} className="mt-8" />
+                  <AdvisoryCTA language={language} className="mt-10" />
                 )}
-              </div>
+              </Reveal>
             ));
           })()}
         </div>

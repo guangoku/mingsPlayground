@@ -9,6 +9,7 @@ import UMLogo from "../../../attached_assets/logos/logo_um.png";
 import { getBilingualText } from "@/lib/utils";
 import { LANGUAGES } from "@/lib/constants";
 import { type Language, type BilingualText } from "@/lib/types";
+import SectionHeading from "./SectionHeading";
 
 // Served from client/public — replace this file to update the downloadable resume.
 const RESUME_PDF_URL = "/Mingyun_Guan_Resume.pdf";
@@ -288,21 +289,24 @@ const resumeData = {
 
 export default function Resume({ language, isDark = false }: ResumeProps) {
   return (
-    <section className="py-16 px-6 resume-bg" id="resume">
+    <section className="py-16 md:py-24 px-6 resume-bg" id="resume">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground" data-testid="text-resume-title">
-            {getBilingualText({ en: 'Resume', zh: '简历' }, language)}
-          </h2>
-          <p className="text-lg mb-6 text-muted-foreground" data-testid="text-resume-description">
-            {getBilingualText({
-              en: 'A comprehensive overview of my professional experience and skills.',
-              zh: '我的职业经历和技能的全面概述。'
-            }, language)}
-          </p>
+        <SectionHeading
+          eyebrow={{ en: 'Experience', zh: '履历' }}
+          title={{ en: 'Resume', zh: '简历' }}
+          lede={{
+            en: 'A comprehensive overview of my professional experience and skills.',
+            zh: '我的职业经历和技能的全面概述。'
+          }}
+          language={language}
+          tone="light"
+          accent="hsl(215 45% 45%)"
+          testIdPrefix="resume"
+        />
+        <div className="text-center -mt-4 mb-12">
           <Button
             asChild
-            className="hover-elevate"
+            className="rounded-full px-6 shadow-md transition-transform duration-300 hover:scale-[1.03]"
             data-testid="button-download-resume"
             style={{
               backgroundColor: 'hsl(var(--graphite-gray))',
