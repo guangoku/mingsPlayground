@@ -23,23 +23,23 @@ export default function ProjectFlow({ steps, language }: ProjectFlowProps) {
                 const Icon = step.icon;
                 return (
                     <Fragment key={index}>
-                        <div className="flex-1 flex flex-col items-center text-center gap-2 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-gray-800/60 px-4 py-5">
-                            <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
+                        <div className="flex-1 flex flex-col items-center text-center gap-2 rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-gray-900/60 px-4 py-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                            <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center">
                                 <Icon className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                             </div>
-                            <div className="font-semibold text-gray-900 dark:text-white">
+                            <div className="font-semibold text-foreground">
                                 {getBilingualText(step.title, language)}
                             </div>
                             {step.subtitle && (
-                                <div className="text-sm text-gray-600 dark:text-gray-400">
+                                <div className="text-sm text-muted-foreground">
                                     {getBilingualText(step.subtitle, language)}
                                 </div>
                             )}
                         </div>
                         {index < steps.length - 1 && (
-                            <div className="flex items-center justify-center text-emerald-400 dark:text-emerald-500 flex-shrink-0">
-                                <ArrowRight className="h-6 w-6 hidden sm:block" />
-                                <ArrowDown className="h-6 w-6 sm:hidden" />
+                            <div className="flex items-center justify-center text-emerald-500/60 dark:text-emerald-400/60 flex-shrink-0">
+                                <ArrowRight className="h-5 w-5 hidden sm:block" />
+                                <ArrowDown className="h-5 w-5 sm:hidden" />
                             </div>
                         )}
                     </Fragment>

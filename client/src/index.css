@@ -539,6 +539,28 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
+/* Project detail pages & modal — quiet editorial paper with a faint sea-green cast. */
+.detail-bg {
+  background:
+    radial-gradient(900px 500px at 95% 0%, hsl(160 40% 90% / 0.45) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(45 40% 97%) 0%, hsl(42 32% 95%) 100%);
+}
+
+.dark .detail-bg {
+  background:
+    radial-gradient(900px 500px at 95% 0%, hsl(160 30% 16% / 0.45) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(200 30% 9%) 0%, hsl(202 28% 7%) 100%);
+}
+
+/* Editorial headings for project/blog detail content. */
+.detail-title {
+  @apply font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground;
+}
+
+.detail-section-title {
+  @apply font-display text-2xl md:text-3xl font-semibold tracking-tight text-foreground;
+}
+
 /* Small-caps kicker line used above section titles. */
 .eyebrow {
   font-size: 0.75rem;

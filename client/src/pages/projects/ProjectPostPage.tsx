@@ -52,7 +52,7 @@ export default function ProjectPostPage() {
 
     if (!project) {
         return (
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            <div className="min-h-screen detail-bg">
                 <BaseNavigation
                     variant="project"
                     language={language}
@@ -76,7 +76,7 @@ export default function ProjectPostPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen detail-bg">
             <BaseNavigation
                 variant="project"
                 language={language}
@@ -87,7 +87,7 @@ export default function ProjectPostPage() {
                 onBack={handleBack}
                 backText={{ en: 'Back to Projects', zh: '返回项目' }}
             />
-            <div className="max-w-6xl mx-auto px-6 pt-20 pb-8">
+            <div className="max-w-6xl mx-auto px-6 pt-28 pb-16">
                 <ProjectDetailComposer
                     project={project}
                     language={language}

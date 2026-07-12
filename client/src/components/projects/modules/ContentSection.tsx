@@ -21,7 +21,7 @@ export default function ContentSection({
     return (
         <Card className={className}>
             <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-4 text-foreground flex items-center gap-2">
                     {Icon && <Icon className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />}
                     {getBilingualText(title, language)}
                 </h2>

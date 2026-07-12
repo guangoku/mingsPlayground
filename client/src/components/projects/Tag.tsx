@@ -23,7 +23,7 @@ export default function Tag({ tagId, language, size = 'sm' }: TagProps) {
     return (
         <Badge
             variant="outline"
-            className={`${sizeClasses[size]} border-emerald-700 dark:border-emerald-400 text-emerald-700 dark:text-emerald-400 bg-transparent`}
+            className={`${sizeClasses[size]} rounded-full border-emerald-600/30 dark:border-emerald-400/30 text-emerald-800 dark:text-emerald-300 bg-emerald-50/70 dark:bg-emerald-900/20 font-medium`}
         >
             {getBilingualText(tagData.label, language)}
         </Badge>

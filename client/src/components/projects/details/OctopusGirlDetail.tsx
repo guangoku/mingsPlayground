@@ -26,10 +26,10 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
         <div className="space-y-8">
             {/* Hero Section */}
             <div className="text-center space-y-4">
-                <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+                <h1 className="detail-title">
                     {getBilingualText(project.title, language)}
                 </h1>
-                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                     {getBilingualText(project.description, language)}
                 </p>
             </div>
@@ -44,7 +44,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* The Story Section */}
             {project.theStory && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.mainContentTitle, language)}
                     </h2>
                     <MarkdownContent
@@ -57,7 +57,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* About Octopus Section */}
             {project.aboutOctopus && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.aboutOctopus.title, language)}
                     </h2>
                     <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -85,7 +85,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* About Octopus Girl Section */}
             {project.aboutOctopusGirl && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.aboutOctopusGirl.title, language)}
                     </h2>
                     <MarkdownContent
@@ -98,7 +98,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* Character Designs Section */}
             {project.characterDesigns && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.characterDesigns.title, language)}
                     </h2>
                     <MarkdownContent
@@ -119,7 +119,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* Variations Section */}
             {project.variations && (
                 <div className="space-y-8">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.variations.title, language)}
                     </h2>
                     {project.variations.intro && (
@@ -130,7 +130,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
                     )}
                     {project.variations.sections && project.variations.sections.map((section: any, index: number) => (
                         <div key={index} className="space-y-4">
-                            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                            <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-foreground">
                                 {getBilingualText(section.title, language)}
                             </h3>
                             <MarkdownContent
@@ -153,7 +153,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* Finishing Thoughts Section */}
             {project.finishingThoughts && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.finishingThoughts.title, language)}
                     </h2>
                     <MarkdownContent
@@ -166,7 +166,7 @@ export default function OctopusGirlDetail({ project, language }: OctopusGirlDeta
             {/* Image Gallery */}
             {project.detailImages && project.detailImages.length > 0 && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText({ en: 'Gallery', zh: '画廊' }, language)}
                     </h2>
                     <UnifiedImageGallery

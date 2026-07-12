@@ -38,10 +38,10 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
         <div className="space-y-8">
             {/* Hero Section */}
             <div className="text-center space-y-4">
-                <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+                <h1 className="detail-title">
                     {getBilingualText(project.title, language)}
                 </h1>
-                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                     {getBilingualText(project.description, language)}
                 </p>
             </div>
@@ -55,7 +55,7 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
             {/* About */}
             {project.about && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.about.title, language)}
                     </h2>
                     <MarkdownContent content={project.about.content} language={language} />
@@ -64,7 +64,7 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
 
             {/* How it works */}
             <div className="space-y-4">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h2 className="detail-section-title">
                     {getBilingualText({ en: 'How it works', zh: '运作方式' }, language)}
                 </h2>
                 <ProjectFlow steps={flowSteps} language={language} />
@@ -73,7 +73,7 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
             {/* My Role */}
             {project.role && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(project.role.title, language)}
                     </h2>
                     <MarkdownContent content={project.role.content} language={language} />
@@ -86,7 +86,7 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
             {/* Posters gallery */}
             {project.detailImages && project.detailImages.length > 0 && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText({ en: 'Posters', zh: '宣传海报' }, language)}
                     </h2>
                     <UnifiedImageGallery
