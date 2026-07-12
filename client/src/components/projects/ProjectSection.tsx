@@ -14,6 +14,7 @@ import ProjectCard from "./ProjectCard";
 import AdvisoryCTA from "./AdvisoryCTA";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import WaveDivider from "@/components/WaveDivider";
 
 interface ProjectSectionProps {
   language: Language;
@@ -47,7 +48,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
 
   return (
     <section
-      className="py-16 md:py-24 px-6 projects-bg grain"
+      className="relative py-16 md:py-24 pb-24 md:pb-32 px-6 projects-bg grain sea-motifs"
       id="projects"
     >
       <div className="relative z-[2] max-w-6xl mx-auto">
@@ -60,7 +61,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
           }}
           language={language}
           tone="dark"
-          accent="hsl(158 65% 62%)"
+          accent="hsl(172 65% 58%)"
           testIdPrefix="projects"
         />
 
@@ -72,7 +73,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
               size="sm"
               onClick={() => setSelectedTag('all')}
               className={`rounded-full border transition-all duration-300 ${selectedTag === 'all'
-                ? 'bg-white text-emerald-900 border-white shadow-md hover:bg-white'
+                ? 'bg-white text-teal-900 border-white shadow-md hover:bg-white'
                 : 'bg-white/5 text-white/80 border-white/20 backdrop-blur-sm hover:bg-white/15 hover:text-white hover:border-white/40'
                 }`}
               data-testid="button-tag-all"
@@ -86,7 +87,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
                 size="sm"
                 onClick={() => setSelectedTag(tag.id)}
                 className={`rounded-full border transition-all duration-300 ${selectedTag === tag.id
-                  ? 'bg-white text-emerald-900 border-white shadow-md hover:bg-white'
+                  ? 'bg-white text-teal-900 border-white shadow-md hover:bg-white'
                   : 'bg-white/5 text-white/80 border-white/20 backdrop-blur-sm hover:bg-white/15 hover:text-white hover:border-white/40'
                   }`}
                 data-testid={`button-tag-${tag.id}`}
@@ -141,6 +142,8 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
           })()}
         </div>
       </div>
+
+      <WaveDivider fill="hsl(var(--seam-blog))" />
     </section>
   );
 }

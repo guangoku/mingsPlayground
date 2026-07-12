@@ -134,7 +134,7 @@ export default function ProjectDetailModal({
                 </div>
 
                 {/* Content - Scrollable */}
-                <div className="flex-1 overflow-y-auto detail-bg min-h-0">
+                <div className="flex-1 overflow-y-auto detail-bg sea-motifs-ink min-h-0">
                     <div className="max-w-6xl mx-auto px-6 py-10">
                         <ProjectDetailComposer
                             project={currentProject}

@@ -95,6 +95,14 @@
   --coral-orange: 15 75% 65%;      /* Contact theme - coral orange #FF7F50 */
   --coral-salmon: 15 65% 60%;      /* Contact theme - coral salmon #e07a5f */
 
+  /* Wave-seam colors: each section's flat top color, used by the WaveDivider
+   * that the *previous* section renders at its bottom edge. */
+  --seam-projects: 178 42% 16%;
+  --seam-blog: 183 36% 94%;
+  --seam-resume: 206 50% 96%;
+  --seam-contact: 27 85% 58%;
+  --seam-footer: 212 60% 10%;
+
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
 
@@ -105,17 +113,17 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 45 50% 97%;
+  --background: 186 30% 95%;
 
-  --foreground: 220 25% 15%;
+  --foreground: 205 40% 13%;
 
-  --border: 220 12% 89%;
+  --border: 196 16% 86%;
 
-  --card: 45 40% 94%;
+  --card: 186 25% 92%;
 
-  --card-foreground: 220 25% 15%;
+  --card-foreground: 205 40% 13%;
 
-  --card-border: 220 12% 87%;
+  --card-border: 196 16% 84%;
 
   --sidebar: 220 15% 94%;
 
@@ -232,6 +240,13 @@
   --light-slate-gray: 220 15% 25%; /* Resume theme - darker slate gray for dark mode */
   --coral-orange: 15 70% 70%;      /* Contact theme - brighter coral orange for dark mode */
   --coral-salmon: 15 60% 65%;      /* Contact theme - brighter coral salmon for dark mode */
+
+  /* Wave-seam colors - dark mode */
+  --seam-projects: 180 40% 9%;
+  --seam-blog: 195 28% 10%;
+  --seam-resume: 205 35% 8%;
+  --seam-contact: 15 55% 26%;
+  --seam-footer: 213 65% 6%;
 
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
@@ -448,34 +463,38 @@
   }
 }
 
-/* Section-specific background gradients.
- * Each section is a layered color field: soft radial glows over a deep base
- * gradient, so the color reads rich instead of flat. */
+/* Section-specific backgrounds.
+ * The page is one descent through Ming's ocean: sunlit surface (hero) →
+ * teal reef with light shafts (projects) → sea-glass shallows (blog) →
+ * nautical-chart room (resume) → sunset horizon (contact). Sections are
+ * seamed with wave-shaped dividers (see WaveDivider + --seam-* tokens). */
 .projects-bg {
   background:
-    radial-gradient(1000px 520px at 88% -8%, hsl(160 70% 45% / 0.18) 0%, transparent 60%),
-    radial-gradient(820px 520px at -5% 108%, hsl(188 70% 42% / 0.14) 0%, transparent 55%),
-    linear-gradient(172deg, hsl(166 42% 15%) 0%, hsl(162 40% 11%) 60%, hsl(170 38% 9%) 100%);
+    repeating-linear-gradient(112deg, transparent 0px, transparent 160px, hsl(178 80% 68% / 0.045) 160px, hsl(178 80% 68% / 0.045) 220px, transparent 220px, transparent 420px),
+    radial-gradient(1000px 560px at 82% 22%, hsl(172 65% 38% / 0.30) 0%, transparent 60%),
+    radial-gradient(820px 520px at 4% 78%, hsl(192 70% 42% / 0.22) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(var(--seam-projects)) 0%, hsl(182 46% 12%) 55%, hsl(188 48% 9%) 100%);
 }
 
 .dark .projects-bg {
   background:
-    radial-gradient(1000px 520px at 88% -8%, hsl(160 60% 40% / 0.14) 0%, transparent 60%),
-    radial-gradient(820px 520px at -5% 108%, hsl(188 60% 38% / 0.10) 0%, transparent 55%),
-    linear-gradient(172deg, hsl(166 40% 10%) 0%, hsl(164 35% 7%) 100%);
+    repeating-linear-gradient(112deg, transparent 0px, transparent 160px, hsl(178 70% 60% / 0.03) 160px, hsl(178 70% 60% / 0.03) 220px, transparent 220px, transparent 420px),
+    radial-gradient(1000px 560px at 82% 22%, hsl(172 55% 32% / 0.22) 0%, transparent 60%),
+    radial-gradient(820px 520px at 4% 78%, hsl(192 60% 36% / 0.14) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(var(--seam-projects)) 0%, hsl(184 42% 7%) 60%, hsl(190 40% 5%) 100%);
 }
 
 .blog-bg {
   background:
-    radial-gradient(900px 480px at 92% -5%, hsl(35 85% 85% / 0.55) 0%, transparent 60%),
-    radial-gradient(700px 420px at 2% 105%, hsl(20 60% 88% / 0.45) 0%, transparent 55%),
-    linear-gradient(180deg, hsl(42 52% 96%) 0%, hsl(38 42% 93%) 100%);
+    radial-gradient(900px 500px at 88% 18%, hsl(172 50% 86% / 0.55) 0%, transparent 60%),
+    radial-gradient(700px 420px at 6% 82%, hsl(195 55% 88% / 0.5) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(var(--seam-blog)) 0%, hsl(181 30% 91%) 100%);
 }
 
 .dark .blog-bg {
   background:
-    radial-gradient(900px 480px at 92% -5%, hsl(35 40% 22% / 0.35) 0%, transparent 60%),
-    linear-gradient(180deg, hsl(30 12% 11%) 0%, hsl(28 10% 8%) 100%);
+    radial-gradient(900px 500px at 88% 18%, hsl(188 35% 18% / 0.45) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(var(--seam-blog)) 0%, hsl(198 30% 8%) 100%);
 }
 
 .hero-bg {
@@ -495,31 +514,36 @@
   --button-outline: rgba(255,255,255, 1);
 }
 
+/* Contact: sunset over the water — warm sky fading to rose sea, sun glow at the horizon. */
 .contact-bg {
   background:
-    radial-gradient(900px 500px at 12% -5%, hsl(35 90% 60% / 0.28) 0%, transparent 55%),
-    radial-gradient(760px 460px at 92% 108%, hsl(345 70% 42% / 0.35) 0%, transparent 60%),
-    linear-gradient(162deg, hsl(11 68% 34%) 0%, hsl(17 78% 44%) 100%);
+    radial-gradient(640px 340px at 50% 46%, hsl(45 100% 72% / 0.38) 0%, transparent 70%),
+    radial-gradient(900px 480px at 8% 88%, hsl(350 65% 40% / 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(var(--seam-contact)) 0%, hsl(17 78% 48%) 48%, hsl(358 58% 40%) 100%);
 }
 
 .dark .contact-bg {
   background:
-    radial-gradient(900px 500px at 12% -5%, hsl(35 60% 45% / 0.18) 0%, transparent 55%),
-    radial-gradient(760px 460px at 92% 108%, hsl(345 55% 30% / 0.30) 0%, transparent 60%),
-    linear-gradient(162deg, hsl(11 50% 20%) 0%, hsl(16 55% 27%) 100%);
+    radial-gradient(640px 340px at 50% 46%, hsl(40 80% 55% / 0.16) 0%, transparent 70%),
+    radial-gradient(900px 480px at 8% 88%, hsl(350 50% 22% / 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(var(--seam-contact)) 0%, hsl(10 52% 22%) 50%, hsl(352 45% 15%) 100%);
 }
 
-/* Resume-specific cooler theme */
+/* Resume: nautical-chart paper — pale blue with a faint plotting grid. */
 .resume-bg {
-  background:
-    radial-gradient(900px 500px at 95% 0%, hsl(210 60% 92% / 0.6) 0%, transparent 60%),
-    linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(214 34% 95%) 100%);
+  background-image:
+    linear-gradient(hsl(207 45% 82% / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(207 45% 82% / 0.5) 1px, transparent 1px),
+    linear-gradient(180deg, hsl(var(--seam-resume)) 0%, hsl(204 42% 93%) 100%);
+  background-size: 36px 36px, 36px 36px, 100% 100%;
 }
 
 .dark .resume-bg {
-  background:
-    radial-gradient(900px 500px at 95% 0%, hsl(210 45% 18% / 0.5) 0%, transparent 60%),
-    linear-gradient(180deg, hsl(200 35% 8%) 0%, hsl(206 32% 6%) 100%);
+  background-image:
+    linear-gradient(hsl(206 40% 24% / 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(206 40% 24% / 0.4) 1px, transparent 1px),
+    linear-gradient(180deg, hsl(var(--seam-resume)) 0%, hsl(207 33% 6%) 100%);
+  background-size: 36px 36px, 36px 36px, 100% 100%;
 }
 
 /* Film-grain texture overlay — adds tactility to the large color fields. */
@@ -539,17 +563,48 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
-/* Project detail pages & modal — quiet editorial paper with a faint sea-green cast. */
+/* Project detail pages & modal — sea-glass paper, not cream. */
 .detail-bg {
   background:
-    radial-gradient(900px 500px at 95% 0%, hsl(160 40% 90% / 0.45) 0%, transparent 60%),
-    linear-gradient(180deg, hsl(45 40% 97%) 0%, hsl(42 32% 95%) 100%);
+    radial-gradient(900px 500px at 92% 0%, hsl(175 45% 88% / 0.5) 0%, transparent 60%),
+    radial-gradient(700px 460px at 4% 100%, hsl(200 50% 90% / 0.45) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(186 32% 95%) 0%, hsl(190 28% 92%) 100%);
 }
 
 .dark .detail-bg {
   background:
-    radial-gradient(900px 500px at 95% 0%, hsl(160 30% 16% / 0.45) 0%, transparent 60%),
-    linear-gradient(180deg, hsl(200 30% 9%) 0%, hsl(202 28% 7%) 100%);
+    radial-gradient(900px 500px at 92% 0%, hsl(185 35% 16% / 0.5) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(198 30% 9%) 0%, hsl(201 28% 7%) 100%);
+}
+
+/* Hand-drawn sea doodles (fish, bubbles, sparkles) echoing the hero
+ * illustration — scattered across section backgrounds at low opacity.
+ * .sea-motifs = white line-art for dark sections; .sea-motifs-ink = deep
+ * teal ink for light sections (falls back to white in dark mode). */
+.sea-motifs,
+.sea-motifs-ink {
+  position: relative;
+}
+
+.sea-motifs::before,
+.sea-motifs-ink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 52 q13 -11 27 0 q-14 11 -27 0 Z'/%3E%3Cpath d='M49 52 l9 -6 l0 12 Z'/%3E%3Ccircle cx='160' cy='36' r='5'/%3E%3Ccircle cx='173' cy='22' r='3'/%3E%3Ccircle cx='152' cy='20' r='2'/%3E%3Cpath d='M235 88 l0 16 M227 96 l16 0'/%3E%3Cpath d='M60 170 a11 11 0 1 1 11 11 a7 7 0 1 1 -7 -7'/%3E%3Ccircle cx='262' cy='212' r='6'/%3E%3Ccircle cx='250' cy='228' r='3'/%3E%3Cpath d='M120 250 q10 -9 22 0 q-11 9 -22 0 Z'/%3E%3Cpath d='M142 250 l8 -5 l0 10 Z'/%3E%3Cpath d='M40 262 l0 12 M34 268 l12 0'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='31' cy='50' r='1.6'/%3E%3Ccircle cx='128' cy='248' r='1.4'/%3E%3Cpath d='M212 150 q2.5 7 9 9 q-6.5 2 -9 9 q-2.5 -7 -9 -9 q6.5 -2 9 -9 Z'/%3E%3Ccircle cx='90' cy='90' r='1.6'/%3E%3Ccircle cx='190' cy='268' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  opacity: 0.07;
+}
+
+.sea-motifs-ink::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%230E3A46' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 52 q13 -11 27 0 q-14 11 -27 0 Z'/%3E%3Cpath d='M49 52 l9 -6 l0 12 Z'/%3E%3Ccircle cx='160' cy='36' r='5'/%3E%3Ccircle cx='173' cy='22' r='3'/%3E%3Ccircle cx='152' cy='20' r='2'/%3E%3Cpath d='M235 88 l0 16 M227 96 l16 0'/%3E%3Cpath d='M60 170 a11 11 0 1 1 11 11 a7 7 0 1 1 -7 -7'/%3E%3Ccircle cx='262' cy='212' r='6'/%3E%3Ccircle cx='250' cy='228' r='3'/%3E%3Cpath d='M120 250 q10 -9 22 0 q-11 9 -22 0 Z'/%3E%3Cpath d='M142 250 l8 -5 l0 10 Z'/%3E%3Cpath d='M40 262 l0 12 M34 268 l12 0'/%3E%3C/g%3E%3Cg fill='%230E3A46'%3E%3Ccircle cx='31' cy='50' r='1.6'/%3E%3Ccircle cx='128' cy='248' r='1.4'/%3E%3Cpath d='M212 150 q2.5 7 9 9 q-6.5 2 -9 9 q-2.5 -7 -9 -9 q6.5 -2 9 -9 Z'/%3E%3Ccircle cx='90' cy='90' r='1.6'/%3E%3Ccircle cx='190' cy='268' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.06;
+}
+
+.dark .sea-motifs-ink::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 52 q13 -11 27 0 q-14 11 -27 0 Z'/%3E%3Cpath d='M49 52 l9 -6 l0 12 Z'/%3E%3Ccircle cx='160' cy='36' r='5'/%3E%3Ccircle cx='173' cy='22' r='3'/%3E%3Ccircle cx='152' cy='20' r='2'/%3E%3Cpath d='M235 88 l0 16 M227 96 l16 0'/%3E%3Cpath d='M60 170 a11 11 0 1 1 11 11 a7 7 0 1 1 -7 -7'/%3E%3Ccircle cx='262' cy='212' r='6'/%3E%3Ccircle cx='250' cy='228' r='3'/%3E%3Cpath d='M120 250 q10 -9 22 0 q-11 9 -22 0 Z'/%3E%3Cpath d='M142 250 l8 -5 l0 10 Z'/%3E%3Cpath d='M40 262 l0 12 M34 268 l12 0'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='31' cy='50' r='1.6'/%3E%3Ccircle cx='128' cy='248' r='1.4'/%3E%3Cpath d='M212 150 q2.5 7 9 9 q-6.5 2 -9 9 q-2.5 -7 -9 -9 q6.5 -2 9 -9 Z'/%3E%3Ccircle cx='90' cy='90' r='1.6'/%3E%3Ccircle cx='190' cy='268' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.04;
 }
 
 /* Editorial headings for project/blog detail content. */

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Waves } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import octopusGirlOrange from "@assets/hero_cover.png";
+import WaveDivider from "./WaveDivider";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 
@@ -136,6 +137,8 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
           </motion.div>
         </div>
       </div>
+
+      <WaveDivider fill="hsl(var(--seam-projects))" />
     </section>
   );
 }

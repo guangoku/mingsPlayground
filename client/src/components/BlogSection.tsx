@@ -19,6 +19,7 @@ import {
 import BlogDetailModal from "./blog/BlogDetailModal";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import WaveDivider from "./WaveDivider";
 
 // Single source of truth for categories (using new blog constants)
 const categories = Object.values(BLOG_CATEGORIES);
@@ -60,7 +61,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
   // Remove right-click handler - let browser handle it naturally
 
   return (
-    <section className="py-16 md:py-24 px-6 blog-bg" id="blog">
+    <section className="relative py-16 md:py-24 pb-24 md:pb-32 px-6 blog-bg sea-motifs-ink" id="blog">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           eyebrow={{ en: 'Writing', zh: '文字' }}
@@ -71,10 +72,10 @@ export default function BlogSection({ language }: BlogSectionProps) {
           }}
           language={language}
           tone="light"
-          accent="hsl(25 60% 45%)"
+          accent="hsl(188 60% 32%)"
           testIdPrefix="blog"
           titleExtra={
-            <Badge variant="outline" className="bg-amber-100/60 dark:bg-amber-900/20 text-amber-800 dark:text-amber-400 border-amber-400/50 dark:border-amber-600 rounded-full px-3">
+            <Badge variant="outline" className="bg-teal-100/60 dark:bg-teal-900/20 text-teal-800 dark:text-teal-300 border-teal-500/40 dark:border-teal-600 rounded-full px-3">
               {getBilingualText({ en: 'Coming Soon', zh: '即将发布' }, language)}
             </Badge>
           }
@@ -83,12 +84,12 @@ export default function BlogSection({ language }: BlogSectionProps) {
         {/* Search and Filter */}
         <Reveal delay={0.1} className="mb-8 space-y-4">
           <div className="relative max-w-md mx-auto">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-stone-600 dark:text-stone-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-slate-400" />
             <Input
               placeholder={getBilingualText({ en: 'Search posts...', zh: '搜索文章...' }, language)}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 rounded-full border-2 bg-stone-50 dark:bg-stone-900/20 border-stone-300 dark:border-stone-600 text-stone-900 dark:text-stone-200 placeholder:text-stone-600 dark:placeholder:text-stone-400 focus:border-stone-500 dark:focus:border-stone-400 transition-colors"
+              className="pl-10 rounded-full border-2 bg-slate-50 dark:bg-slate-900/20 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-200 placeholder:text-slate-600 dark:placeholder:text-slate-400 focus:border-slate-500 dark:focus:border-slate-400 transition-colors"
               data-testid="input-blog-search"
             />
           </div>
@@ -99,8 +100,8 @@ export default function BlogSection({ language }: BlogSectionProps) {
               size="sm"
               onClick={() => setSelectedCategory(FEATURED_FILTER.ID)}
               className={`hover-elevate rounded-full transition-all duration-200 ${selectedCategory === FEATURED_FILTER.ID
-                ? 'bg-stone-800 dark:bg-stone-600 text-stone-50 dark:text-white border-stone-800 dark:border-stone-600 shadow-sm'
-                : 'bg-transparent text-stone-800 dark:text-stone-300 border-stone-600 dark:border-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800/50'
+                ? 'bg-slate-800 dark:bg-slate-600 text-slate-50 dark:text-white border-slate-800 dark:border-slate-600 shadow-sm'
+                : 'bg-transparent text-slate-800 dark:text-slate-300 border-slate-600 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50'
                 }`}
               data-testid="button-category-featured"
             >
@@ -115,8 +116,8 @@ export default function BlogSection({ language }: BlogSectionProps) {
                 size="sm"
                 onClick={() => setSelectedCategory(category.id)}
                 className={`hover-elevate rounded-full transition-all duration-200 ${selectedCategory === category.id
-                  ? 'bg-stone-800 dark:bg-stone-600 text-stone-50 dark:text-white border-stone-800 dark:border-stone-600 shadow-sm'
-                  : 'bg-transparent text-stone-800 dark:text-stone-300 border-stone-600 dark:border-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800/50'
+                  ? 'bg-slate-800 dark:bg-slate-600 text-slate-50 dark:text-white border-slate-800 dark:border-slate-600 shadow-sm'
+                  : 'bg-transparent text-slate-800 dark:text-slate-300 border-slate-600 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50'
                   }`}
                 data-testid={`button-category-${category.id}`}
               >
@@ -139,7 +140,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
               className="block"
             >
               <article
-                className="group cursor-pointer hover:bg-stone-50/50 dark:hover:bg-stone-900/20 transition-all duration-300 py-4 px-0 relative opacity-90 hover:opacity-100"
+                className="group cursor-pointer hover:bg-slate-50/50 dark:hover:bg-slate-900/20 transition-all duration-300 py-4 px-0 relative opacity-90 hover:opacity-100"
                 data-testid={`card-post-${post.id}`}
               >
                 {/* Preview Flag - Restored */}
@@ -158,17 +159,17 @@ export default function BlogSection({ language }: BlogSectionProps) {
                     <div className="flex items-center gap-2 flex-wrap">
                       <Badge
                         variant="secondary"
-                        className="capitalize text-xs bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border-0 font-medium tracking-wide"
+                        className="capitalize text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-0 font-medium tracking-wide"
                       >
                         {getBilingualText(BLOG_CATEGORIES[post.category as keyof typeof BLOG_CATEGORIES]?.label || { en: post.category, zh: post.category }, language)}
                       </Badge>
-                      <div className="flex items-center text-xs text-stone-500 dark:text-stone-500 font-mono">
+                      <div className="flex items-center text-xs text-slate-500 dark:text-slate-500 font-mono">
                         <Calendar className="h-3 w-3 mr-1 flex-shrink-0" />
                         <span className="whitespace-nowrap">
                           {new Date(post.date).toLocaleDateString(language === LANGUAGES.EN ? 'en-US' : 'zh-CN')}
                         </span>
                       </div>
-                      <div className="flex items-center text-xs text-stone-500 dark:text-stone-500 font-mono">
+                      <div className="flex items-center text-xs text-slate-500 dark:text-slate-500 font-mono">
                         <Clock className="h-3 w-3 mr-1 flex-shrink-0" />
                         <span className="whitespace-nowrap">
                           {formatReadTime(post.readTimeMinutes, language)}
@@ -178,12 +179,12 @@ export default function BlogSection({ language }: BlogSectionProps) {
                   </div>
 
                   {/* Title - newspaper headline style */}
-                  <h3 className="text-lg md:text-xl font-bold group-hover:text-stone-600 dark:group-hover:text-stone-400 transition-colors text-stone-900 dark:text-stone-100 leading-tight tracking-tight" data-testid={`text-post-title-${post.id}`}>
+                  <h3 className="text-lg md:text-xl font-bold group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors text-slate-900 dark:text-slate-100 leading-tight tracking-tight" data-testid={`text-post-title-${post.id}`}>
                     {getBilingualText(post.title, language)}
                   </h3>
 
                   {/* Excerpt - newspaper body text style */}
-                  <p className="text-sm md:text-base leading-relaxed text-stone-700 dark:text-stone-300 max-w-4xl" data-testid={`text-post-excerpt-${post.id}`}>
+                  <p className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300 max-w-4xl" data-testid={`text-post-excerpt-${post.id}`}>
                     {getBilingualText(post.excerpt, language)}
                   </p>
 
@@ -193,25 +194,25 @@ export default function BlogSection({ language }: BlogSectionProps) {
                       {getBilingualArray(post.tags, language).slice(0, 4).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="text-xs text-stone-500 dark:text-stone-500 bg-stone-100 dark:bg-stone-800 px-2 py-0.5 rounded-sm font-mono tracking-wide inline-block"
+                          className="text-xs text-slate-500 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-sm font-mono tracking-wide inline-block"
                         >
                           #{tag}
                         </span>
                       ))}
                       {post.tags[language].length > 4 && (
-                        <span className="text-xs text-stone-500 dark:text-stone-500 font-mono">
+                        <span className="text-xs text-slate-500 dark:text-slate-500 font-mono">
                           +{post.tags[language].length - 4} more
                         </span>
                       )}
                     </div>
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-all text-stone-400 dark:text-stone-600 flex-shrink-0 ml-3" />
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-all text-slate-400 dark:text-slate-600 flex-shrink-0 ml-3" />
                   </div>
 
                 </div>
 
                 {/* Single line divider */}
                 {index < filteredPosts.length - 1 && (
-                  <div className="mt-4 pt-2 border-t border-stone-200 dark:border-stone-800" ></div>
+                  <div className="mt-4 pt-2 border-t border-slate-200 dark:border-slate-800" ></div>
                 )}
               </article>
             </a>
@@ -221,16 +222,16 @@ export default function BlogSection({ language }: BlogSectionProps) {
         {filteredPosts.length === 0 && (
           <div className="text-center py-16">
             <div className="max-w-md mx-auto">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                <Search className="h-8 w-8 text-stone-400 dark:text-stone-500" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <Search className="h-8 w-8 text-slate-400 dark:text-slate-500" />
               </div>
-              <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100 mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
                 {getBilingualText({
                   en: 'No posts found',
                   zh: '未找到文章'
                 }, language)}
               </h3>
-              <p data-testid="text-no-posts" className="text-stone-600 dark:text-stone-400 mb-4">
+              <p data-testid="text-no-posts" className="text-slate-600 dark:text-slate-400 mb-4">
                 {getBilingualText({
                   en: 'Try adjusting your search terms or category filter.',
                   zh: '尝试调整搜索词或分类筛选。'
@@ -257,16 +258,16 @@ export default function BlogSection({ language }: BlogSectionProps) {
         ) : (
           <div className="text-center py-16">
             <div className="max-w-md mx-auto">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                <Newspaper className="h-8 w-8 text-stone-400 dark:text-stone-500" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <Newspaper className="h-8 w-8 text-slate-400 dark:text-slate-500" />
               </div>
-              <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100 mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
                 {getBilingualText({
                   en: 'First posts are on the way',
                   zh: '首批文章即将上线'
                 }, language)}
               </h3>
-              <p className="text-stone-600 dark:text-stone-400">
+              <p className="text-slate-600 dark:text-slate-400">
                 {getBilingualText({
                   en: "I'm writing the first pieces now — check back soon, or explore my projects in the meantime.",
                   zh: '正在撰写最初的几篇文章 —— 敬请期待，也欢迎先看看我的项目。'
@@ -289,6 +290,8 @@ export default function BlogSection({ language }: BlogSectionProps) {
           language={language}
         />
       )}
+
+      <WaveDivider fill="hsl(var(--seam-resume))" />
     </section>
   );
 }

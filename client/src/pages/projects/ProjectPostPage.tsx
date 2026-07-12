@@ -76,7 +76,7 @@ export default function ProjectPostPage() {
     }
 
     return (
-        <div className="min-h-screen detail-bg">
+        <div className="min-h-screen detail-bg sea-motifs-ink">
             <BaseNavigation
                 variant="project"
                 language={language}

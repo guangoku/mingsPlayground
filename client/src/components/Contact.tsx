@@ -4,6 +4,7 @@ import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import WaveDivider from "./WaveDivider";
 
 interface ContactProps {
   language: Language;
@@ -47,7 +48,7 @@ export default function Contact({ language }: ContactProps) {
   };
 
   return (
-    <section className="py-16 md:py-24 px-6 contact-bg grain" id="contact">
+    <section className="relative py-16 md:py-24 pb-24 md:pb-32 px-6 contact-bg grain sea-motifs" id="contact">
       <div className="relative z-[2] max-w-4xl mx-auto">
         <SectionHeading
           eyebrow={{ en: 'Say Hello', zh: '打个招呼' }}
@@ -90,6 +91,8 @@ export default function Contact({ language }: ContactProps) {
         </Reveal>
 
       </div>
+
+      <WaveDivider fill="hsl(var(--seam-footer))" />
     </section>
   );
 }
