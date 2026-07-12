@@ -19,7 +19,7 @@ export default function WaveDivider({ fill, className = "" }: WaveDividerProps) 
             <svg
                 viewBox="0 0 1440 64"
                 preserveAspectRatio="none"
-                className="block w-full h-8 sm:h-12 md:h-16 -mb-px"
+                className="block w-full h-8 sm:h-12 md:h-16 -mb-1"
             >
                 <path
                     fill={fill}

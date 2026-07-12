@@ -5,6 +5,7 @@ import { getProjectById, getProjectIdFromSlug } from "@/lib/projects";
 import { type ProjectData } from "@/lib/projects";
 import ProjectDetailComposer from "@/components/projects/ProjectDetailComposer";
 import BaseNavigation from "@/components/navigation/BaseNavigation";
+import OceanBand from "@/components/OceanBand";
 
 export default function ProjectPostPage() {
     const { language, toggleLanguage } = useLanguage();
@@ -87,7 +88,8 @@ export default function ProjectPostPage() {
                 onBack={handleBack}
                 backText={{ en: 'Back to Projects', zh: '返回项目' }}
             />
-            <div className="max-w-6xl mx-auto px-6 pt-28 pb-16">
+            <OceanBand className="h-36 md:h-44" />
+            <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-16">
                 <ProjectDetailComposer
                     project={project}
                     language={language}

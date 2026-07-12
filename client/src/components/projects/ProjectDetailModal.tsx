@@ -8,6 +8,7 @@ import { type Language } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
 import { getProjectById, projects, getProjectUrl } from "@/lib/projects";
 import ProjectDetailComposer from "./ProjectDetailComposer";
+import OceanBand from "@/components/OceanBand";
 
 interface ProjectDetailModalProps {
     projectId: string | null;
@@ -135,7 +136,8 @@ export default function ProjectDetailModal({
 
                 {/* Content - Scrollable */}
                 <div className="flex-1 overflow-y-auto detail-bg sea-motifs-ink min-h-0">
-                    <div className="max-w-6xl mx-auto px-6 py-10">
+                    <OceanBand className="h-16 md:h-20" />
+                    <div className="max-w-6xl mx-auto px-6 pt-6 pb-10">
                         <ProjectDetailComposer
                             project={currentProject}
                             language={language}

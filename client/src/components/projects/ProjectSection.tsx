@@ -51,6 +51,7 @@ export default function ProjectSection({ language }: ProjectSectionProps) {
       className="relative py-16 md:py-24 pb-24 md:pb-32 px-6 projects-bg grain sea-motifs"
       id="projects"
     >
+      <div aria-hidden className="light-shafts" />
       <div className="relative z-[2] max-w-6xl mx-auto">
         <SectionHeading
           eyebrow={{ en: 'Selected Work', zh: '精选作品' }}
