@@ -14,10 +14,10 @@ export default function NepalTravelDetail({ project, language }: NepalTravelDeta
         <div className="space-y-8">
             {/* Hero Section */}
             <div className="text-center space-y-4">
-                <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+                <h1 className="detail-title">
                     {getBilingualText(project.title, language)}
                 </h1>
-                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                     {getBilingualText(project.description, language)}
                 </p>
             </div>
@@ -29,14 +29,14 @@ export default function NepalTravelDetail({ project, language }: NepalTravelDeta
             />
             {/* Coming Soon Message for additional content */}
             <div className="text-center py-8">
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 max-w-xl mx-auto">
-                    <p className="text-blue-700 dark:text-blue-300 text-sm">
+                <div className="bg-amber-50/80 dark:bg-amber-900/15 border border-amber-200/70 dark:border-amber-800/50 rounded-2xl p-6 max-w-xl mx-auto">
+                    <p className="text-amber-800 dark:text-amber-300 text-sm">
                         {getBilingualText({
                             en: `DO NOT READ ENGLISH VERSION IF YOU CAN READ CHINESE. THEY ARE AUTO-GENERATED EPIC-POEM STYLE TRANSLATION.`,
                             zh: '如果你能读懂中文，请不要阅读英文版本。'
                         }, language)}
                     </p>
-                    <p className="text-blue-700 dark:text-blue-300 text-sm">
+                    <p className="text-amber-800 dark:text-amber-300 text-sm">
                         {getBilingualText({
                             en: `More journal entries and illustrations coming soon...`,
                             zh: '更多游记章节和插图即将发布...'

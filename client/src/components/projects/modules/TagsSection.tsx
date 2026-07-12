@@ -37,7 +37,7 @@ export default function TagsSection({
     return (
         <div className={`flex flex-wrap gap-2 justify-center ${className}`}>
             {tags.map((tag, index) => (
-                <Badge key={index} variant="outline" className="border-emerald-700 dark:border-emerald-400 text-emerald-700 dark:text-emerald-400 text-sm px-3 py-1">
+                <Badge key={index} variant="outline" className="rounded-full border-emerald-600/30 dark:border-emerald-400/30 text-emerald-800 dark:text-emerald-300 bg-emerald-50/70 dark:bg-emerald-900/20 font-medium text-sm px-3.5 py-1">
                     {getTagLabel(tag)}
                 </Badge>
             ))}

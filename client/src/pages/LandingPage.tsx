@@ -96,7 +96,7 @@ function LandingPage() {
                 {/* Footer */}
                 <footer
                     className="py-12 px-6"
-                    style={{ background: 'linear-gradient(180deg, hsl(212 60% 10%) 0%, hsl(213 65% 7%) 100%)' }}
+                    style={{ background: 'linear-gradient(180deg, hsl(var(--seam-footer)) 0%, hsl(213 65% 5%) 100%)' }}
                 >
                     <div className="max-w-6xl mx-auto text-center">
                         <p className="font-display italic text-xl text-white/85 mb-3" aria-hidden>

@@ -24,16 +24,16 @@ export default function HeroSection({
 }: HeroSectionProps) {
     return (
         <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+            <h1 className="detail-title">
                 {title}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {description}
             </p>
             {(liveUrl || githubUrl) && (
                 <div className="flex justify-center gap-4">
                     {liveUrl && (
-                        <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+                        <Button asChild className="rounded-full px-6 bg-emerald-700 hover:bg-emerald-800 text-white border-emerald-700 shadow-md transition-transform duration-300 hover:scale-[1.03]">
                             <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                 <ExternalLink className="h-4 w-4" />
                                 {getBilingualText(liveButtonText, language)}
@@ -41,7 +41,7 @@ export default function HeroSection({
                         </Button>
                     )}
                     {githubUrl && (
-                        <Button variant="outline" asChild>
+                        <Button variant="outline" asChild className="rounded-full px-6">
                             <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                 <Github className="h-4 w-4" />
                                 {getBilingualText(codeButtonText, language)}

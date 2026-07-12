@@ -8,6 +8,7 @@ import { type Language } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
 import { getProjectById, projects, getProjectUrl } from "@/lib/projects";
 import ProjectDetailComposer from "./ProjectDetailComposer";
+import OceanBand from "@/components/OceanBand";
 
 interface ProjectDetailModalProps {
     projectId: string | null;
@@ -72,7 +73,7 @@ export default function ProjectDetailModal({
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-7xl max-h-[95vh] w-[95vw] p-0 flex flex-col">
+            <DialogContent className="max-w-7xl max-h-[95vh] w-[95vw] p-0 flex flex-col rounded-2xl overflow-hidden border-black/10 dark:border-white/10 shadow-2xl">
                 <DialogTitle className="sr-only">
                     {getBilingualText(currentProject.title, language)}
                 </DialogTitle>
@@ -80,9 +81,9 @@ export default function ProjectDetailModal({
                     Project details and information
                 </DialogDescription>
                 {/* Header - Fixed */}
-                <div className="flex items-center justify-between p-6 border-b bg-white dark:bg-gray-900 flex-shrink-0 sticky top-0 z-10">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-border/60 bg-background/90 backdrop-blur-md flex-shrink-0 sticky top-0 z-10">
                     <div className="flex items-center gap-4 min-w-0 flex-1">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white truncate">
+                        <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-foreground truncate">
                             {getBilingualText(currentProject.title, language)}
                         </h2>
                         {allProjects.length > 1 && (
@@ -134,8 +135,9 @@ export default function ProjectDetailModal({
                 </div>
 
                 {/* Content - Scrollable */}
-                <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900 min-h-0">
-                    <div className="max-w-6xl mx-auto p-6">
+                <div className="flex-1 overflow-y-auto detail-bg sea-motifs-ink min-h-0">
+                    <OceanBand className="h-16 md:h-20" />
+                    <div className="max-w-6xl mx-auto px-6 pt-6 pb-10">
                         <ProjectDetailComposer
                             project={currentProject}
                             language={language}

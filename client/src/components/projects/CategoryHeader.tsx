@@ -29,7 +29,7 @@ export default function CategoryHeader({ category, language }: CategoryHeaderPro
         <div className="mb-8">
             <div className="flex items-center gap-4">
                 <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
-                    <IconComponent className="h-5 w-5 text-emerald-200" />
+                    <IconComponent className="h-5 w-5 text-teal-200" />
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl font-semibold text-white tracking-tight">
                     {getBilingualText(categoryData.label, language)}

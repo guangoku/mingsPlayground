@@ -10,6 +10,7 @@ import { getBilingualText } from "@/lib/utils";
 import { LANGUAGES } from "@/lib/constants";
 import { type Language, type BilingualText } from "@/lib/types";
 import SectionHeading from "./SectionHeading";
+import WaveDivider from "./WaveDivider";
 
 // Served from client/public — replace this file to update the downloadable resume.
 const RESUME_PDF_URL = "/Mingyun_Guan_Resume.pdf";
@@ -289,7 +290,7 @@ const resumeData = {
 
 export default function Resume({ language, isDark = false }: ResumeProps) {
   return (
-    <section className="py-16 md:py-24 px-6 resume-bg" id="resume">
+    <section className="relative py-16 md:py-24 pb-24 md:pb-32 px-6 resume-bg" id="resume">
       <div className="max-w-4xl mx-auto">
         <SectionHeading
           eyebrow={{ en: 'Experience', zh: '履历' }}
@@ -590,6 +591,8 @@ export default function Resume({ language, isDark = false }: ResumeProps) {
           </CardContent>
         </Card>
       </div>
+
+      <WaveDivider fill="hsl(var(--seam-contact))" />
     </section>
   );
 }

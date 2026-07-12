@@ -40,11 +40,11 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
         <div className="space-y-8">
             {/* Hero Section */}
             <div className="text-center space-y-4">
-                <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+                <h1 className="detail-title">
                     {getBilingualText(project.title, language)}
                 </h1>
                 {project.tagline && (
-                    <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                         {getBilingualText(project.tagline, language)}
                     </p>
                 )}
@@ -52,7 +52,7 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
                     <div className="flex justify-center pt-2">
                         <Button
                             onClick={() => window.open(project.liveUrl, '_blank', 'noopener noreferrer')}
-                            className="rounded-full"
+                            className="rounded-full px-6 bg-emerald-700 hover:bg-emerald-800 text-white border-emerald-700 shadow-md transition-transform duration-300 hover:scale-[1.03]"
                         >
                             <ExternalLink className="h-4 w-4 mr-2" />
                             {getBilingualText({ en: 'Visit atollaocean.com', zh: '访问 atollaocean.com' }, language)}
@@ -69,7 +69,7 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
 
             {/* How it works */}
             <div className="space-y-4">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h2 className="detail-section-title">
                     {getBilingualText({ en: 'How it works', zh: '运作方式' }, language)}
                 </h2>
                 <ProjectFlow steps={flowSteps} language={language} />
@@ -78,7 +78,7 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
             {/* Content sections */}
             {sections.map((section: any, index: number) => (
                 <div key={index} className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText(section.title, language)}
                     </h2>
                     <MarkdownContent
@@ -91,7 +91,7 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
             {/* Screenshots gallery (shows once real screenshots are added) */}
             {project.detailImages && project.detailImages.length > 0 && (
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="detail-section-title">
                         {getBilingualText({ en: 'Screenshots', zh: '界面截图' }, language)}
                     </h2>
                     <UnifiedImageGallery
