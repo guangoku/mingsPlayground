@@ -35,16 +35,13 @@ export default function ProjectCard({ project, language }: ProjectCardProps) {
                 className="block"
             >
                 <Card
-                    className="group overflow-hidden hover-elevate bg-white/95 dark:bg-gray-800/95 border-2 border-emerald-200 dark:border-emerald-700 cursor-pointer transition-all duration-300 hover:border-emerald-400 dark:hover:border-emerald-500 hover:shadow-lg"
+                    className="group overflow-hidden rounded-2xl bg-white/95 dark:bg-gray-900/80 border border-white/40 dark:border-white/10 cursor-pointer shadow-lg shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/30"
                     data-testid={`card-project-${project.id}`}
-                    style={{
-                        backdropFilter: 'blur(10px)'
-                    }}
                 >
-                    <CardContent className="p-4">
-                        <div className="flex flex-col sm:flex-row gap-4">
+                    <CardContent className="p-5">
+                        <div className="flex flex-col sm:flex-row gap-5">
                             {/* Image: shorter banner on mobile, fixed square on larger screens */}
-                            <div className="relative w-full h-36 sm:w-40 sm:h-40 flex-shrink-0 overflow-hidden rounded-lg">
+                            <div className="relative w-full h-36 sm:w-40 sm:h-40 flex-shrink-0 overflow-hidden rounded-xl">
                                 <img
                                     src={project.imageUrl}
                                     alt={getBilingualText(project.title, language)}

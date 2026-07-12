@@ -167,8 +167,9 @@
   --chart-4: 280 65% 40%;
   --chart-5: 25 75% 45%;
 
-  --font-sans: Open Sans, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --font-serif: Georgia, serif;
+  --font-display: 'Playfair Display', 'Songti SC', 'STSong', 'SimSun', Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(220 15% 50% / 0.03);
@@ -447,56 +448,115 @@
   }
 }
 
-/* Section-specific background gradients */
+/* Section-specific background gradients.
+ * Each section is a layered color field: soft radial glows over a deep base
+ * gradient, so the color reads rich instead of flat. */
 .projects-bg {
-  background: linear-gradient(135deg, hsl(150 60% 44%) 0%, hsl(150 50% 36%) 100%);
+  background:
+    radial-gradient(1000px 520px at 88% -8%, hsl(160 70% 45% / 0.18) 0%, transparent 60%),
+    radial-gradient(820px 520px at -5% 108%, hsl(188 70% 42% / 0.14) 0%, transparent 55%),
+    linear-gradient(172deg, hsl(166 42% 15%) 0%, hsl(162 40% 11%) 60%, hsl(170 38% 9%) 100%);
 }
 
 .dark .projects-bg {
-  background: linear-gradient(135deg, hsl(150 40% 15%) 0%, hsl(150 30% 10%) 100%);
+  background:
+    radial-gradient(1000px 520px at 88% -8%, hsl(160 60% 40% / 0.14) 0%, transparent 60%),
+    radial-gradient(820px 520px at -5% 108%, hsl(188 60% 38% / 0.10) 0%, transparent 55%),
+    linear-gradient(172deg, hsl(166 40% 10%) 0%, hsl(164 35% 7%) 100%);
 }
 
 .blog-bg {
-  background-color: hsl(20 15% 92%);
+  background:
+    radial-gradient(900px 480px at 92% -5%, hsl(35 85% 85% / 0.55) 0%, transparent 60%),
+    radial-gradient(700px 420px at 2% 105%, hsl(20 60% 88% / 0.45) 0%, transparent 55%),
+    linear-gradient(180deg, hsl(42 52% 96%) 0%, hsl(38 42% 93%) 100%);
 }
 
 .dark .blog-bg {
-  background-color: hsl(20 10% 12%);
+  background:
+    radial-gradient(900px 480px at 92% -5%, hsl(35 40% 22% / 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(30 12% 11%) 0%, hsl(28 10% 8%) 100%);
 }
 
 .hero-bg {
-  background: linear-gradient(135deg, hsl(var(--deep-sea)) 0%, hsl(var(--ocean)) 100%);
+  background:
+    radial-gradient(950px 620px at 10% 102%, hsl(16 90% 55% / 0.20) 0%, transparent 62%),
+    radial-gradient(850px 540px at 96% -4%, hsl(190 85% 60% / 0.16) 0%, transparent 58%),
+    radial-gradient(1200px 800px at 50% 120%, hsl(205 75% 38% / 0.45) 0%, transparent 70%),
+    linear-gradient(160deg, hsl(213 68% 9%) 0%, hsl(209 62% 20%) 55%, hsl(203 68% 30%) 100%);
   --button-outline: rgba(255,255,255, 1);
 }
 
 .dark .hero-bg {
-  background: linear-gradient(135deg, hsl(210 60% 6%) 0%, hsl(205, 50%, 50%) 100%);
+  background:
+    radial-gradient(950px 620px at 10% 102%, hsl(16 80% 50% / 0.16) 0%, transparent 62%),
+    radial-gradient(850px 540px at 96% -4%, hsl(190 75% 55% / 0.12) 0%, transparent 58%),
+    linear-gradient(160deg, hsl(212 65% 5%) 0%, hsl(208 58% 13%) 55%, hsl(204 55% 24%) 100%);
   --button-outline: rgba(255,255,255, 1);
 }
 
 .contact-bg {
-  background: linear-gradient(135deg, hsl(15 75% 50%) 0%, hsl(15 65% 50%) 100%);
+  background:
+    radial-gradient(900px 500px at 12% -5%, hsl(35 90% 60% / 0.28) 0%, transparent 55%),
+    radial-gradient(760px 460px at 92% 108%, hsl(345 70% 42% / 0.35) 0%, transparent 60%),
+    linear-gradient(162deg, hsl(11 68% 34%) 0%, hsl(17 78% 44%) 100%);
 }
 
 .dark .contact-bg {
-  background: linear-gradient(135deg, hsl(15 40% 25%) 0%, hsl(15 30% 20%) 100%);
+  background:
+    radial-gradient(900px 500px at 12% -5%, hsl(35 60% 45% / 0.18) 0%, transparent 55%),
+    radial-gradient(760px 460px at 92% 108%, hsl(345 55% 30% / 0.30) 0%, transparent 60%),
+    linear-gradient(162deg, hsl(11 50% 20%) 0%, hsl(16 55% 27%) 100%);
 }
 
 /* Resume-specific cooler theme */
 .resume-bg {
-  background-color: hsl(210 40% 98%);
+  background:
+    radial-gradient(900px 500px at 95% 0%, hsl(210 60% 92% / 0.6) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(214 34% 95%) 100%);
 }
 
 .dark .resume-bg {
-  background-color: hsl(200 35% 8%);
+  background:
+    radial-gradient(900px 500px at 95% 0%, hsl(210 45% 18% / 0.5) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(200 35% 8%) 0%, hsl(206 32% 6%) 100%);
+}
+
+/* Film-grain texture overlay — adds tactility to the large color fields. */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.20;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Small-caps kicker line used above section titles. */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
 }
 
 .resume-card {
-  background-color: hsl(210 30% 96%);
-  border-color: hsl(220 12% 87%);
+  background-color: hsl(0 0% 100%);
+  border-color: hsl(220 15% 91%);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px hsl(222 47% 11% / 0.04), 0 12px 32px -16px hsl(222 47% 11% / 0.14);
 }
 
 .dark .resume-card {
-  background-color: hsl(200 25% 12%);
+  background-color: hsl(200 25% 11%);
   border-color: hsl(220 18% 22%);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.2), 0 12px 32px -16px hsl(0 0% 0% / 0.4);
 }

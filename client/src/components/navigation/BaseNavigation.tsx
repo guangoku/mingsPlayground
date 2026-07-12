@@ -161,8 +161,8 @@ export default function BaseNavigation({
 
     return (
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || variant !== 'landing'
-            ? 'bg-background/95 backdrop-blur-md border-b shadow-sm'
-            : 'bg-black/20 backdrop-blur-sm'
+            ? 'bg-background/75 backdrop-blur-xl border-b border-border/60 shadow-sm'
+            : 'bg-gradient-to-b from-black/30 to-transparent'
             }`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
                 <div className="flex items-center justify-between">
@@ -204,7 +204,9 @@ export default function BaseNavigation({
                                 )}
                             </div>
                         ) : (
-                            getBilingualText({ en: 'Mingyun Guan', zh: '超级赛亚关' }, language)
+                            <span className="font-display italic tracking-tight">
+                                {getBilingualText({ en: 'Mingyun Guan', zh: '超级赛亚关' }, language)}
+                            </span>
                         )}
                     </div>
 

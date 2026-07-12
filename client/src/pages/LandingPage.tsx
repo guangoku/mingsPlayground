@@ -94,9 +94,15 @@ function LandingPage() {
                 </main>
 
                 {/* Footer */}
-                <footer className="py-8 px-6 border-t bg-muted/30">
+                <footer
+                    className="py-12 px-6"
+                    style={{ background: 'linear-gradient(180deg, hsl(212 60% 10%) 0%, hsl(213 65% 7%) 100%)' }}
+                >
                     <div className="max-w-6xl mx-auto text-center">
-                        <div className="text-muted-foreground" data-testid="text-footer">
+                        <p className="font-display italic text-xl text-white/85 mb-3" aria-hidden>
+                            {getBilingualText({ en: "Ming's Playground", zh: '关关的游乐场' }, language)}
+                        </p>
+                        <div className="text-sm text-white/45 leading-relaxed" data-testid="text-footer">
                             <p>{getBilingualText(COPYRIGHT, language)}</p>
                             <p className="mt-1">{getBilingualText(FOOTER_TAGLINES, language)}</p>
                         </div>

@@ -17,6 +17,8 @@ import {
   type BlogCategoryId
 } from "@/lib/blog";
 import BlogDetailModal from "./blog/BlogDetailModal";
+import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 // Single source of truth for categories (using new blog constants)
 const categories = Object.values(BLOG_CATEGORIES);
@@ -58,27 +60,28 @@ export default function BlogSection({ language }: BlogSectionProps) {
   // Remove right-click handler - let browser handle it naturally
 
   return (
-    <section className="py-8 md:py-12 px-6 blog-bg" id="blog">
+    <section className="py-16 md:py-24 px-6 blog-bg" id="blog">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-6">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 dark:text-stone-200" data-testid="text-blog-title">
-              {getBilingualText({ en: 'Blog', zh: '博客' }, language)}
-            </h2>
-            <Badge variant="outline" className="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-blue-600">
+        <SectionHeading
+          eyebrow={{ en: 'Writing', zh: '文字' }}
+          title={{ en: 'Blog', zh: '博客' }}
+          lede={{
+            en: 'Reflections on technology, lifelong learning, books, and the world around me. The section is under construction — first posts coming soon!',
+            zh: '分享关于技术、旅行和持续学习的见解。完整文章正在准备中 —— 敬请期待。'
+          }}
+          language={language}
+          tone="light"
+          accent="hsl(25 60% 45%)"
+          testIdPrefix="blog"
+          titleExtra={
+            <Badge variant="outline" className="bg-amber-100/60 dark:bg-amber-900/20 text-amber-800 dark:text-amber-400 border-amber-400/50 dark:border-amber-600 rounded-full px-3">
               {getBilingualText({ en: 'Coming Soon', zh: '即将发布' }, language)}
             </Badge>
-          </div>
-          <p className="text-lg max-w-2xl mx-auto text-stone-700 dark:text-stone-300" data-testid="text-blog-description">
-            {getBilingualText({
-              en: 'Reflections on technology, lifelong learning, books, and the world around me. The section is under construction — first posts coming soon!',
-              zh: '分享关于技术、旅行和持续学习的见解。完整文章正在准备中 —— 敬请期待。'
-            }, language)}
-          </p>
-        </div>
+          }
+        />
 
         {/* Search and Filter */}
-        <div className="mb-8 space-y-4">
+        <Reveal delay={0.1} className="mb-8 space-y-4">
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-stone-600 dark:text-stone-400" />
             <Input
@@ -122,7 +125,7 @@ export default function BlogSection({ language }: BlogSectionProps) {
             ))}
           </div>
 
-        </div>
+        </Reveal>
 
         {/* Blog Posts List - Newspaper Style */}
         {POSTS_PUBLISHED ? (

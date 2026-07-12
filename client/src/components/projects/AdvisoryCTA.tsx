@@ -41,23 +41,23 @@ const services: { icon: typeof FileSearch; title: BilingualText; desc: Bilingual
 export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAProps) {
     return (
         <div
-            className={`rounded-xl border-2 border-blue-300 dark:border-blue-600/70 bg-blue-50 dark:bg-blue-950/40 p-5 md:p-6 ${className}`}
+            className={`rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md shadow-lg shadow-black/20 p-6 md:p-8 ${className}`}
         >
             <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
-                    <HeartHandshake className="h-6 w-6 text-blue-700 dark:text-blue-300" />
+                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                    <HeartHandshake className="h-6 w-6 text-emerald-200" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <span className="inline-block text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-2.5 py-1 rounded-full">
+                    <span className="inline-block text-xs font-semibold uppercase tracking-widest text-emerald-200 bg-white/10 border border-white/15 px-3 py-1 rounded-full">
                         {getBilingualText({ en: "Pro-bono advisory", zh: "公益咨询" }, language)}
                     </span>
-                    <h4 className="mt-2 text-lg font-bold text-blue-900 dark:text-blue-200">
+                    <h4 className="mt-3 font-display text-xl md:text-2xl font-semibold text-white">
                         {getBilingualText(
                             { en: "Tech & AI advice for mission-driven teams", zh: "为公益团队提供技术与 AI 咨询" },
                             language
                         )}
                     </h4>
-                    <p className="mt-1 text-sm leading-relaxed text-blue-950/80 dark:text-blue-100/80">
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">
                         {getBilingualText(
                             {
                                 en: "Run a small non-profit or social-impact team? I help with the technical calls that are hard to make alone — strongest on AI, but not limited to it.",
@@ -72,12 +72,12 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                             const Icon = s.icon;
                             return (
                                 <div key={i} className="flex items-start gap-2.5">
-                                    <Icon className="h-4 w-4 mt-0.5 flex-shrink-0 text-blue-600 dark:text-blue-400" />
+                                    <Icon className="h-4 w-4 mt-0.5 flex-shrink-0 text-emerald-300" />
                                     <div className="min-w-0">
-                                        <span className="text-sm font-semibold text-blue-900 dark:text-blue-100">
+                                        <span className="text-sm font-semibold text-white">
                                             {getBilingualText(s.title, language)}
                                         </span>
-                                        <span className="text-sm text-blue-950/70 dark:text-blue-100/70">
+                                        <span className="text-sm text-white/60">
                                             {" — "}{getBilingualText(s.desc, language)}
                                         </span>
                                     </div>
@@ -86,7 +86,7 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                         })}
                     </div>
 
-                    <p className="mt-4 text-xs leading-relaxed text-blue-900/60 dark:text-blue-200/60">
+                    <p className="mt-4 text-xs leading-relaxed text-white/50">
                         {getBilingualText(
                             {
                                 en: "A second opinion and advisor — not a full-time hire or a software vendor. Pro-bono or low-fee, and bounded: one review to start, more if it helps, or a light ongoing role.",
@@ -100,7 +100,7 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                         <Button
                             asChild
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
+                            className="rounded-full px-5 bg-white text-emerald-900 border-white hover:bg-emerald-50 font-semibold shadow-md transition-transform duration-300 hover:scale-[1.03]"
                         >
                             <a href={CONTACT_EMAIL}>
                                 {getBilingualText(
@@ -110,7 +110,7 @@ export default function AdvisoryCTA({ language, className = "" }: AdvisoryCTAPro
                                 <ArrowRight className="h-4 w-4 ml-2" />
                             </a>
                         </Button>
-                        <span className="text-xs text-blue-900/55 dark:text-blue-200/55">
+                        <span className="text-xs text-white/50">
                             {getBilingualText(
                                 {
                                     en: "Engineer & AI advisor @ 益盒 · contract & budget reviews for partner foundations",
