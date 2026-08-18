@@ -1,4 +1,6 @@
+import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type Piece, TOPIC_LABELS } from "@/lib/content/types";
@@ -7,8 +9,8 @@ import InkTile from "./InkTile";
 interface PieceCardProps {
     piece: Piece;
     language: Language;
-    /** "feature" = large card for the flagship shelf, "compact" = smaller row card */
-    variant?: "feature" | "compact";
+    /** "lead" = wide hero card, "feature" = standard card, "compact" = small row card */
+    variant?: "lead" | "feature" | "compact";
     /** "dark" = on a dark band, "light" = on the pale band (still dark in dark mode) */
     tone?: "dark" | "light";
 }
@@ -24,9 +26,11 @@ export default function PieceCard({
     variant = "feature",
     tone = "dark",
 }: PieceCardProps) {
-    const feature = variant === "feature";
+    const lead = variant === "lead";
+    const compact = variant === "compact";
     const onDark = tone === "dark";
     const inProgress = piece.status === "in-progress";
+    const linkable = !inProgress && Boolean(piece.href);
 
     const shell = onDark
         ? "bg-white/[0.06] border-white/10 hover:border-white/25"
@@ -34,79 +38,131 @@ export default function PieceCard({
     const titleColor = onDark ? "text-white" : "text-foreground dark:text-white";
     const kickerColor = onDark ? "text-white/55" : "text-muted-foreground dark:text-white/55";
     const blurbColor = onDark ? "text-white/70" : "text-muted-foreground dark:text-white/70";
+    const roleChip = onDark
+        ? "bg-white/10 border-white/20 text-emerald-200"
+        : "bg-emerald-50 border-emerald-200/70 text-emerald-700 dark:bg-white/10 dark:border-white/20 dark:text-emerald-200";
 
-    const body = (
-        <>
-            <div className={`relative overflow-hidden ${feature ? "h-48" : "h-36"}`}>
-                {piece.cover ? (
-                    <img
-                        src={piece.cover}
-                        alt={getBilingualText(piece.title, language)}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                    />
-                ) : (
-                    <InkTile className="w-full h-full" />
-                )}
-                {inProgress && (
-                    <span className="absolute top-3 right-3 rounded-full bg-[#c7502a] px-3 py-1 text-[11px] font-medium tracking-wide text-[#f3eeda]">
-                        {getBilingualText({ en: "in progress", zh: "施工中" }, language)}
-                    </span>
-                )}
-            </div>
-
-            <div className={feature ? "p-5 md:p-6" : "p-4 md:p-5"}>
-                <h3
-                    className={`font-display font-semibold tracking-tight ${titleColor} ${feature ? "text-xl md:text-2xl" : "text-lg"
-                        }`}
-                    data-testid={`text-piece-title-${piece.slug}`}
-                >
-                    {getBilingualText(piece.title, language)}
-                </h3>
-
-                {piece.kicker && (
-                    <p className={`mt-1 font-display italic text-sm ${kickerColor}`}>
-                        {getBilingualText(piece.kicker, language)}
-                    </p>
-                )}
-
-                {feature && (
-                    <p className={`mt-3 text-sm leading-relaxed ${blurbColor}`}>
-                        {getBilingualText(piece.blurb, language)}
-                    </p>
-                )}
-
-                <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1">
-                    {piece.topics.map((topic, i) => (
-                        <span key={topic} className="eyebrow text-[hsl(172_65%_45%)] dark:text-[hsl(172_65%_58%)]">
-                            {i > 0 && <span className="mr-2 opacity-50">·</span>}
-                            {getBilingualText(TOPIC_LABELS[topic], language)}
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </>
+    const media = (
+        <div
+            className={`relative overflow-hidden ${lead ? "h-56 md:h-full md:min-h-[19rem]" : compact ? "h-36" : "h-48"
+                }`}
+        >
+            {piece.cover ? (
+                <img
+                    src={piece.cover}
+                    alt={getBilingualText(piece.title, language)}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                />
+            ) : (
+                <InkTile className="w-full h-full" />
+            )}
+            {inProgress && (
+                <span className="absolute top-3 right-3 rounded-full bg-[#c7502a] px-3 py-1 text-[11px] font-medium tracking-wide text-[#f3eeda]">
+                    {getBilingualText({ en: "in progress", zh: "施工中" }, language)}
+                </span>
+            )}
+        </div>
     );
 
-    const shellClass = `group block overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${shell}`;
+    const text = (
+        <div className={lead ? "p-6 md:p-8 md:pb-4" : compact ? "p-4 md:p-5" : "p-5 md:p-6"}>
+            {piece.role && (
+                <span
+                    className={`inline-block mb-3 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${roleChip}`}
+                >
+                    {getBilingualText(piece.role, language)}
+                </span>
+            )}
 
-    // An unpublished piece is shown, but not yet clickable.
-    if (inProgress || !piece.href) {
-        return (
-            <div className={shellClass} data-testid={`card-piece-${piece.slug}`}>
-                {body}
-            </div>
+            <h3
+                className={`font-display font-semibold tracking-tight ${titleColor} ${lead ? "text-2xl md:text-4xl" : compact ? "text-lg" : "text-xl md:text-2xl"
+                    }`}
+                data-testid={`text-piece-title-${piece.slug}`}
+            >
+                {getBilingualText(piece.title, language)}
+            </h3>
+
+            {piece.kicker && (
+                <p className={`mt-1.5 font-display italic ${kickerColor} ${lead ? "text-base md:text-lg" : "text-sm"}`}>
+                    {getBilingualText(piece.kicker, language)}
+                </p>
+            )}
+
+            {!compact && (
+                <p className={`mt-3 leading-relaxed ${blurbColor} ${lead ? "text-sm md:text-base max-w-xl" : "text-sm"}`}>
+                    {getBilingualText(piece.blurb, language)}
+                </p>
+            )}
+        </div>
+    );
+
+    const linkWrap = (children: ReactNode) =>
+        linkable ? (
+            <Link to={piece.href!} onClick={rememberScroll} className="block">
+                {children}
+            </Link>
+        ) : (
+            <>{children}</>
         );
-    }
+
+    // Footer sits outside the internal link so the external link is a real,
+    // separately clickable anchor rather than an anchor inside an anchor.
+    const footer = (
+        <div
+            className={`flex flex-wrap items-center gap-x-4 gap-y-2 ${lead ? "px-6 pb-6 md:px-8 md:pb-8" : compact ? "px-4 pb-4 md:px-5 md:pb-5" : "px-5 pb-5 md:px-6 md:pb-6"
+                }`}
+        >
+            <div className="flex flex-wrap items-center gap-x-2">
+                {piece.topics.map((topic, i) => (
+                    <span key={topic} className="eyebrow text-[hsl(172_65%_45%)] dark:text-[hsl(172_65%_58%)]">
+                        {i > 0 && <span className="mr-2 opacity-50">·</span>}
+                        {getBilingualText(TOPIC_LABELS[topic], language)}
+                    </span>
+                ))}
+            </div>
+
+            {piece.externalUrl && (
+                <a
+                    href={piece.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline ${onDark ? "text-emerald-200" : "text-emerald-700 dark:text-emerald-200"
+                        }`}
+                    data-testid={`link-piece-external-${piece.slug}`}
+                >
+                    {piece.externalLabel ?? piece.externalUrl.replace(/^https?:\/\//, "")}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+            )}
+        </div>
+    );
 
     return (
-        <Link
-            to={piece.href}
-            onClick={rememberScroll}
-            className={`${shellClass} hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/25`}
+        <article
+            className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${shell} ${linkable ? "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/25" : ""
+                }`}
             data-testid={`card-piece-${piece.slug}`}
         >
-            {body}
-        </Link>
+            {lead ? (
+                <div className="grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
+                    {linkWrap(media)}
+                    <div className="flex flex-col justify-center">
+                        {linkWrap(text)}
+                        {footer}
+                    </div>
+                </div>
+            ) : (
+                <>
+                    {linkWrap(
+                        <>
+                            {media}
+                            {text}
+                        </>
+                    )}
+                    {footer}
+                </>
+            )}
+        </article>
     );
 }

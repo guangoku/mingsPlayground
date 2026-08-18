@@ -45,9 +45,15 @@ export default function ShelfSection({
     lightShafts = false,
 }: ShelfSectionProps) {
     const pieces = getPieces(shelf.pieces);
+    // "lead" puts the first piece in a wide card of its own, with the rest below.
+    const isLead = shelf.layout === "lead" && pieces.length > 0;
+    const [leadPiece, ...restPieces] = pieces;
+    const gridPieces = isLead ? restPieces : pieces;
     const grid =
         variant === "feature"
-            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7"
+            ? isLead
+                ? "grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7"
+                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7"
             : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6";
 
     return (
@@ -67,8 +73,14 @@ export default function ShelfSection({
                     testIdPrefix={`shelf-${shelf.key}`}
                 />
 
+                {isLead && (
+                    <Reveal className="mb-6 md:mb-7">
+                        <PieceCard piece={leadPiece} language={language} variant="lead" tone={tone} />
+                    </Reveal>
+                )}
+
                 <div className={grid}>
-                    {pieces.map((piece, i) => (
+                    {gridPieces.map((piece, i) => (
                         <Reveal key={piece.slug} delay={0.08 * i}>
                             <PieceCard
                                 piece={piece}

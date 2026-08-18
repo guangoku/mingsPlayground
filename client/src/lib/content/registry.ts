@@ -13,16 +13,22 @@ export const pieces: Piece[] = [
   {
     slug: 'atolla-ocean',
     title: { en: 'Atolla Ocean', zh: 'Atolla Ocean' },
-    kicker: { en: 'diving × marine life ID', zh: '潜水 × 海洋生物识别' },
+    role: { en: 'Founder', zh: '创始人' },
+    kicker: {
+      en: 'Your dive, understood and remembered.',
+      zh: '你的每一次下潜，被理解，被记住。',
+    },
     blurb: {
-      en: 'A startup experiment putting diving and marine-life identification together. Still in the water.',
-      zh: '把潜水和海洋生物识别放在一起的创业实验。还在水里。',
+      en: 'My startup. AI that turns raw dive footage into a finished dive story - identifying the marine life you saw, surfacing the best moments, and making the dive worth keeping.',
+      zh: '我创办的公司。用 AI 把杂乱的潜水影像变成一段完整的潜水故事——识别你看到的海洋生物，挑出最精彩的瞬间，让这次下潜真的留得下来。',
     },
     cover: coverOf('atolla-ocean'),
     weight: 'flagship',
-    topics: ['building'],
+    topics: ['startup'],
     status: 'live',
     href: '/projects/atolla-ocean',
+    externalUrl: 'https://atollaocean.com',
+    externalLabel: 'atollaocean.com',
   },
   {
     slug: 'charity-box',

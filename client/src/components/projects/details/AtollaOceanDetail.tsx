@@ -1,6 +1,7 @@
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
+import { ATOLLA_OCEAN_CONSTANTS } from "@/lib/projects/atolla-ocean/constants";
 import { ExternalLink, Video, Fish, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TagsSection } from "../modules";
@@ -40,6 +41,14 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
         <div className="space-y-8">
             {/* Hero Section */}
             <div className="text-center space-y-4">
+                <div className="flex justify-center">
+                    <span className="inline-block rounded-full border border-emerald-200/70 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-700 dark:border-white/20 dark:bg-white/10 dark:text-emerald-200">
+                        {getBilingualText(
+                            { en: `Founder · since ${ATOLLA_OCEAN_CONSTANTS.FOUNDED}`, zh: `创始人 · ${ATOLLA_OCEAN_CONSTANTS.FOUNDED} 至今` },
+                            language
+                        )}
+                    </span>
+                </div>
                 <h1 className="detail-title">
                     {getBilingualText(project.title, language)}
                 </h1>

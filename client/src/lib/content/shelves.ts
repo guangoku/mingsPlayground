@@ -9,6 +9,7 @@ export const FEATURED_SHELF: Shelf = {
   key: 'featured',
   eyebrow: { en: 'On the table', zh: '台面上' },
   title: { en: "What I'm up to", zh: '最近在忙的' },
+  layout: 'lead',
   pieces: ['atolla-ocean', 'charity-box', 'gap-year'],
 };
 
