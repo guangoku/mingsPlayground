@@ -43,6 +43,8 @@ export const pieces: Piece[] = [
       zh: '这个小程序唯一的工程师。让「捐出收入 1%」变简单、透明——支付、通知、整个技术栈都是我在做。',
     },
     cover: coverOf('charity-box'),
+    // the pledge line sits on the left; keep it when the slot narrows
+    coverPosition: 'left center',
     weight: 'flagship',
     topics: ['for-good', 'building'],
     status: 'live',

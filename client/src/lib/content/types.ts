@@ -24,6 +24,8 @@ export interface Piece {
   blurb: BilingualText;
   /** Cover art. Pieces without one render an ink tile instead. */
   cover?: string;
+  /** object-position for the cover, when centre-cropping would cut the subject. */
+  coverPosition?: string;
   weight: PieceWeight;
   topics: PieceTopic[];
   status: PieceStatus;

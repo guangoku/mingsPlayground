@@ -52,6 +52,7 @@ export default function PieceCard({
                     src={piece.cover}
                     alt={getBilingualText(piece.title, language)}
                     loading="lazy"
+                    style={piece.coverPosition ? { objectPosition: piece.coverPosition } : undefined}
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                 />
             ) : (
