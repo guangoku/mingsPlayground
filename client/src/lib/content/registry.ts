@@ -39,8 +39,8 @@ export const pieces: Piece[] = [
       zh: '一家做有效公益的研究与咨询机构。',
     },
     blurb: {
-      en: 'Thousands of donors give 1% of their income through its platform. I am the only engineer on it - payments, notifications, the whole stack.',
-      zh: '几千位捐赠人通过它的平台，每月捐出收入的 1%。这个平台唯一的工程师是我——支付、通知、整个技术栈。',
+      en: 'Donors pledge 1% of their income through its platform, to charities its researchers have vetted. I am the only engineer on it.',
+      zh: '捐赠人通过它的平台承诺捐出收入的 1%，捐给研究团队筛选过的项目。这个平台唯一的工程师是我。',
     },
     cover: coverOf('charity-box'),
     // the pledge line sits on the left; keep it when the slot narrows
