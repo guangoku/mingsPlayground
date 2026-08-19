@@ -1,123 +1,97 @@
 import { getBilingualText } from "@/lib/utils";
-import { type Language } from "@/lib/types";
+import { type Language, type BilingualText } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
-import { ExternalLink, Smartphone, Sparkles, Repeat } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { TagsSection } from "../modules";
-import UnifiedImageGallery from "../modules/UnifiedImageGallery";
-import MarkdownContent from "@/components/ui/MarkdownContent";
-import ProjectFlow, { type FlowStep } from "../ProjectFlow";
+import { ArrowUpRight } from "lucide-react";
+import LivePreview from "@/components/ui/LivePreview";
 
 interface FlashMindDetailProps {
     project: ProjectData;
     language: Language;
 }
 
-const flowSteps: FlowStep[] = [
-    {
-        icon: Smartphone,
-        title: { en: 'Capture', zh: '捕获' },
-        subtitle: { en: 'Word, voice, link, or photo', zh: '词、语音、链接或照片' }
-    },
-    {
-        icon: Sparkles,
-        title: { en: 'AI drafts a card', zh: 'AI 起草卡片' },
-        subtitle: { en: 'You review & approve', zh: '你审阅并确认' }
-    },
-    {
-        icon: Repeat,
-        title: { en: 'Active recall', zh: '主动回忆' },
-        subtitle: { en: 'Produce, rate, repeat (FSRS)', zh: '产出、评分、循环（FSRS）' }
-    }
-];
+const LIVE_URL = "https://www.catch-and-keep.com/";
 
+/**
+ * Catch & Keep's own site explains the product and stays current, so this
+ * page carries what it cannot: that Ming designed and built the whole thing
+ * alone, and why.
+ */
 export default function FlashMindDetail({ project, language }: FlashMindDetailProps) {
-    const allProjectImages = [...(project.detailImages || [])].filter(Boolean);
-    const sections = [project.problem, project.solution, project.approach].filter(Boolean);
+    const t = (text: BilingualText) => getBilingualText(text, language);
 
     return (
-        <div className="space-y-8">
-            {/* Hero Section */}
-            <div className="text-center space-y-4">
-                <h1 className="detail-title">
-                    {getBilingualText(project.title, language)}
-                </h1>
+        <div className="max-w-4xl mx-auto space-y-10">
+            <header className="space-y-4">
+                {project.roleChip && (
+                    <span className="inline-block rounded-full border border-emerald-200/70 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-700 dark:border-white/20 dark:bg-white/10 dark:text-emerald-200">
+                        {t(project.roleChip)}
+                    </span>
+                )}
+
+                <h1 className="detail-title">{t(project.title)}</h1>
+
                 {project.tagline && (
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        {getBilingualText(project.tagline, language)}
+                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                        {t(project.tagline)}
                     </p>
                 )}
-                {project.liveUrl && (
-                    <div className="flex justify-center pt-2">
-                        <Button
-                            onClick={() => window.open(project.liveUrl, '_blank', 'noopener noreferrer')}
-                            className="rounded-full px-6 bg-emerald-700 hover:bg-emerald-800 text-white border-emerald-700 shadow-md transition-transform duration-300 hover:scale-[1.03]"
-                        >
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            {getBilingualText({ en: 'Visit catch-and-keep.com', zh: '访问 catch-and-keep.com' }, language)}
-                        </Button>
-                    </div>
-                )}
-            </div>
 
-            {/* Tags */}
-            <TagsSection
-                tags={project.tags || []}
-                language={language}
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-1">
+                    <a
+                        href={LIVE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-emerald-700 px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-transform duration-300 hover:scale-[1.03] hover:bg-emerald-800"
+                        data-testid="link-catch-and-keep-live"
+                    >
+                        {t({ en: 'Visit catch-and-keep.com', zh: '访问 catch-and-keep.com' })}
+                        <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                    {project.liveLabel && (
+                        <span className="text-sm text-muted-foreground">{t(project.liveLabel)}</span>
+                    )}
+                </div>
+            </header>
+
+            <LivePreview
+                url={LIVE_URL}
+                label={t({ en: 'Open catch-and-keep.com', zh: '打开 catch-and-keep.com' })}
+                fallbackImage={project.imageUrl}
+                caption="catch-and-keep.com"
             />
 
-            {/* How it works */}
-            <div className="space-y-4">
-                <h2 className="detail-section-title">
-                    {getBilingualText({ en: 'How it works', zh: '运作方式' }, language)}
-                </h2>
-                <ProjectFlow steps={flowSteps} language={language} />
-            </div>
-
-            {/* Content sections */}
-            {sections.map((section: any, index: number) => (
-                <div key={index} className="space-y-4">
-                    <h2 className="detail-section-title">
-                        {getBilingualText(section.title, language)}
-                    </h2>
-                    <MarkdownContent
-                        content={section.content}
-                        language={language}
-                    />
+            {project.founderStory && (
+                <div className="grid gap-8 md:grid-cols-3 md:gap-10">
+                    {project.founderStory.map((block: any, i: number) => (
+                        <div key={i}>
+                            <p className="eyebrow text-emerald-700 dark:text-emerald-300">{t(block.kicker)}</p>
+                            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mt-1.5">
+                                {t(block.title)}
+                            </h2>
+                            <p className="mt-2 text-sm md:text-base leading-relaxed text-muted-foreground">
+                                {t(block.body)}
+                            </p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            )}
 
-            {/* Tech stack */}
+            {/* Kept: the stack is evidence the marketing site has no reason to carry */}
             {project.technicalStack && project.technicalStack.length > 0 && (
-                <div className="space-y-4">
-                    <h2 className="detail-section-title">
-                        {getBilingualText({ en: 'Built With', zh: '技术栈' }, language)}
-                    </h2>
-                    <div className="flex flex-wrap gap-2">
-                        {project.technicalStack.map((tech: string, index: number) => (
+                <div className="border-t border-black/10 dark:border-white/10 pt-8">
+                    <p className="eyebrow text-muted-foreground">
+                        {t({ en: 'Built with', zh: '技术栈' })}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                        {project.technicalStack.map((tech: string) => (
                             <span
-                                key={index}
-                                className="text-sm px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700"
+                                key={tech}
+                                className="rounded-full border border-black/10 bg-black/[0.03] px-3 py-1 text-sm text-muted-foreground dark:border-white/10 dark:bg-white/[0.06]"
                             >
                                 {tech}
                             </span>
                         ))}
                     </div>
-                </div>
-            )}
-
-            {/* Screenshots gallery */}
-            {project.detailImages && project.detailImages.length > 0 && (
-                <div className="space-y-4">
-                    <h2 className="detail-section-title">
-                        {getBilingualText({ en: 'Screenshots', zh: '界面截图' }, language)}
-                    </h2>
-                    <UnifiedImageGallery
-                        images={project.detailImages}
-                        alt={getBilingualText(project.title, language)}
-                        gridCols={4}
-                        allProjectImages={allProjectImages}
-                    />
                 </div>
             )}
         </div>

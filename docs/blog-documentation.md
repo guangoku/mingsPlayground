@@ -1,3 +1,8 @@
+> **Partly superseded (Aug 2026).** The blog is no longer a separate system:
+> posts and projects share one content pool rendered as curated shelves, and
+> the detail modals described here were removed. The Notion integration and
+> deployment notes below still apply. See `docs/content-model.md`.
+
 # Blog System Documentation
 
 ## Overview
