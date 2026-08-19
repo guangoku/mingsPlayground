@@ -6,6 +6,9 @@
 // Hero image
 import heroImage from '@assets/projects/charity-box/hero.jpg';
 
+// WeChat mini-program QR - the only way into the product
+import miniProgramQr from '@assets/projects/charity-box/miniprogram-qr.png';
+
 // Dynamically import poster images
 const posterImages = import.meta.glob('@assets/projects/charity-box/posters/*.{png,jpg,jpeg,webp,JPG}', { 
   eager: true,
@@ -24,6 +27,7 @@ const screenshotGallery = Object.values(screenshotImages) as string[];
 
 export const CHARITY_BOX_IMAGES = {
   hero: heroImage,
+  miniProgramQr,
   posters: posterGallery,
   screenshots: screenshotGallery
 } as const;
