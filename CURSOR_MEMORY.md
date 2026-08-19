@@ -60,29 +60,18 @@ Update when new patterns emerge.
 - **Helper functions**: `getProjectById()`, `getProjectsByCategory()`, `searchProjects()` for data manipulation
 - **Single import**: Import everything from `@/lib/projects` for project-related functionality
 
-### Blog System Architecture
+### Content Architecture
 
-- **Hybrid Content**: Static posts (React components) + Notion posts (dynamic API)
-- **Notion Integration**: Vercel serverless functions handle CORS for Notion API
-- **Content Types**: Static (React components) vs Notion (API-fetched)
-- **Navigation**: Unified system with modal + individual page views
-- **Data Structure**: Feature-based modules with constants, types, data, and utilities
-- **Bilingual Support**: All content supports English/Chinese with `getBilingualText()`
-- **Security**: Environment variables for API tokens, no hardcoded secrets
-
-### Blog Implementation Status
-
-- **Phase 1-5**: ✅ Complete (Architecture, UI, Navigation, Static Content, Notion Integration)
-- **Phase 6**: 🔄 Subway Map System (not started)
-- **Phase 7**: ⏳ Documentation & Cleanup (not started)
-- **Phase 8**: ⏳ Final Cleanup (not started)
-
-### ✅ Security Issues Resolved
-
-- **Hardcoded Token**: ✅ Removed from all files
-- **Environment Variables**: ✅ Properly configured with validation
-- **Development Server**: ✅ Fixed Vercel dev configuration
-- **API Routes**: ✅ Working with query parameters
+- **One pool**: every published thing is a `Piece` in `lib/content/registry.ts`,
+  carrying `weight` (flagship/story/note), `topics`, `status`, and optionally
+  `role` and `externalUrl`. The projects/blog split is retired.
+- **Shelves**: the landing renders ordered slug lists from `lib/content/shelves.ts`,
+  so rearranging the page is a data edit.
+- **Pages, not modals**: piece cards navigate to real URLs; scroll position is
+  restored on back. Detail modals were removed.
+- **Forms**: the default editorial detail pages live under `components/projects/details/`;
+  a flagship piece may earn a custom form (see the gap-year piece).
+- See `docs/content-model.md` and `docs/design-guidelines.md`.
 
 ### Documentation
 

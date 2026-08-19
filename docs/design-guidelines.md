@@ -1,119 +1,94 @@
-# Design Guidelines
+# Design guidelines
 
-## Design Approach
+How this site looks and why. If something here disagrees with the code, the
+code is right and this file needs fixing.
 
-**Reference-Based Approach**: Drawing inspiration from creative portfolio websites like Behance, Dribbble, and modern developer portfolios (Linear, Notion) to balance artistic expression with technical professionalism.
+## Two registers
 
-## Core Design Elements
+The site runs on two visual languages, and keeping them apart is the point.
 
-### Color Palette
+**The ocean stage** frames everything: the landing page, navigation, section
+bands, wave seams. It is atmospheric and editorial - a journey from night sky
+through the surface and the deep to a seabed sunset. Serif display type,
+photographic and illustrated covers, glass panels over gradients.
 
-**Light Mode:**
+**The ink register** lives *inside* pieces that earn their own form. Charcoal,
+cream and vermillion, hand-drawn line work, handwriting type. The gap-year
+piece is the first of these.
 
-- Primary: 220 85% 20% (deep blue for trust and professionalism)
-- Secondary: 350 70% 55% (warm coral for artistic flair)
-- Background: 220 15% 98% (soft off-white)
-- Text: 220 25% 15% (rich dark blue-gray)
+They meet only at cover art. A piece with no artwork yet renders an ink tile,
+which previews the register rather than showing an empty frame.
 
-**Dark Mode:**
+## Type
 
-- Primary: 220 80% 70% (bright blue for visibility)
-- Secondary: 350 65% 65% (soft coral accent)
-- Background: 220 20% 8% (deep charcoal)
-- Text: 220 15% 88% (warm light gray)
+Set in `client/src/index.css` as CSS variables, wired to Tailwind in
+`tailwind.config.ts`.
 
-**Gradients**: Subtle diagonal gradients from primary to secondary colors for hero backgrounds and section dividers.
+- `--font-display`: Playfair Display, falling back to Songti/STSong for Chinese.
+  Headings, piece titles, the italic subtitle line.
+- `--font-sans`: Plus Jakarta Sans, falling back to PingFang/Hiragino/YaHei.
+  Body and UI.
+- `--font-mono`: Menlo.
 
-### Typography
+Deliberately **not** Inter, Roboto, or a system UI stack. Those read as default
+rather than chosen.
 
-- **Headers**: Inter (700-800 weight) for clean, modern impact
-- **Body**: Inter (400-500 weight) for excellent readability
-- **Code/Technical**: JetBrains Mono for code snippets and technical content
+`.eyebrow` is the small-caps, wide-tracked label used above section titles and
+on cards.
 
-### Layout System
+## Colour
 
-Primary Tailwind spacing units: **2, 4, 6, 8, 12, 16** (p-2, m-4, gap-6, h-8, etc.)
+Ocean tokens live at the top of `index.css`: `--ocean`, `--deep-sea`, `--teal`,
+`--foam`, `--coral`. Section bands compose them into `.hero-bg`,
+`.projects-bg`, `.blog-bg`, `.resume-bg`, `.contact-bg`, `.detail-bg`.
 
-### Component Library
+The `--seam-*` tokens matter more than they look: each holds the flat top
+colour of the *next* section, and `WaveDivider` fills its wave with it, so a
+section appears to lap up into the one above. Changing the order of sections
+means changing which seam each one renders.
 
-**Navigation**: Sticky header with language toggle, smooth scrolling navigation, and mobile hamburger menu with slide-out drawer
+Ink-register colours are scoped to their own stylesheet, not global.
 
-**Hero Section**: Large hero with animated typography, subtle particle effects, and professional headshot with artistic border treatment
+## Cards
 
-**Blog System**:
+Cards are the main selling surface, so their hierarchy is deliberate:
 
-- Card-based layout with category tags
-- "Subway map" style tag connections showing related posts
-- Search and filter functionality
-- Reading time indicators
+1. **Role chip** - who Ming is to this piece (Founder, Sole engineer). Only
+   where the answer is interesting.
+2. **Title** - display face, the name and nothing else. Not the format.
+3. **Subtitle** - display italic, 15-16px at ~80% opacity. On compact cards
+   this is the *only* description shown, so it must survive on its own.
+4. **Blurb** - feature cards only.
+5. **Topics and any external link.**
 
-**Projects Gallery**:
+Grid cards stretch to equal height with footers aligned, so a chip on one card
+does not make it taller than its neighbours. A cover can set `coverPosition`
+when centre-cropping would cut its subject.
 
-- Masonry grid layout for varied image sizes
-- Lightbox modal for detailed viewing
-- Collection/series grouping with themed headers
-- Zoom and pan capabilities for detailed artwork
-- Category filtering (Art & Illustration, Graphic Novels, Tech Innovation, Social Impact)
-- Like functionality for user engagement (future consideration)
+## Motion
 
-**Resume Section**:
+`Reveal` fades and lifts content into view once. Everything respects
+`prefers-reduced-motion`; the ink register disables its animation wholesale
+under it. Hover lifts are small (`-translate-y-1.5`) and only on things that
+are actually clickable.
 
-- Timeline-style layout for experience
-- Skill visualization with progress indicators
-- Downloadable PDF with matching design
-- Interactive elements showing project details
+## Rules that keep being worth repeating
 
-### Accessibility Features
+- **Never duplicate a live product's pitch.** If a piece has a public site,
+  that site says what it is, and stays current. This site says what Ming did.
+  Where the product is embeddable, `LivePreview` shows it live instead of a
+  screenshot that ages.
+- **External links open in a new tab; internal navigation does not.** Forcing
+  new tabs internally breaks the back button, which the landing depends on for
+  scroll restoration.
+- **An anchor never nests inside another anchor.** Cards with both an internal
+  and an external link put the external one outside the internal link.
+- **Numbers on the page are claims.** Attribute organisation figures to the
+  organisation, and do not publish a number that cannot be checked.
 
-- High contrast ratios (4.5:1 minimum)
-- Keyboard navigation for all interactive elements
-- Screen reader optimized with proper ARIA labels
-- Focus indicators with 2px blue outline
-- Reduced motion options for animations
-- Consistent dark mode across all form inputs
+## Accessibility
 
-### Mobile-First Responsive Design
-
-- Touch-friendly 44px minimum tap targets
-- Swipe gestures for gallery navigation
-- Collapsible sections for content organization
-- Optimized image loading with progressive enhancement
-
-### Animations
-
-**Minimal and purposeful only:**
-
-- Subtle fade-in on scroll for sections
-- Smooth hover states for interactive elements
-- Loading states for content transitions
-- Page transition animations between sections
-
-### Images
-
-**Hero Image**: Large, artistic background image showcasing your creative work with gradient overlay for text readability
-
-**Profile Images**: Professional headshot with creative border treatment, smaller artistic thumbnails throughout
-
-**Gallery Images**: High-quality artwork and project screenshots with consistent aspect ratios where possible
-
-**Blog Images**: Featured images for posts, icons for categories, and inline illustrations for technical content
-
-The design balances your technical expertise with artistic sensibility, creating a professional yet playful experience that showcases your diverse skills while maintaining excellent usability and accessibility.
-
-## Future Considerations
-
-### User Engagement Features
-
-**Like Functionality for Projects**:
-
-- **Current Status**: Not implemented (low priority)
-- **Purpose**: Allow visitors to show appreciation for specific projects
-- **Technical Options Evaluated**:
-  - **Local Storage**: Per-browser only, no global counts
-  - **Firebase**: Real-time global counts, free tier available
-  - **Supabase**: Open source alternative with PostgreSQL
-  - **GitHub Gists**: Creative free solution using public gists
-  - **Airtable**: Simple database with visual interface
-  - **Google Sheets API**: Free spreadsheet-based solution
-- **Decision**: Deferred for future consideration
-- **Rationale**: Not critical for portfolio functionality, external dependencies add complexity
+Contrast at least 4.5:1 for body text. Every interactive element reachable and
+visible on keyboard focus. Decorative images `aria-hidden`; the live-site
+embeds are inert and hidden from assistive tech, with the surrounding link
+carrying the accessible name. Bilingual throughout via `getBilingualText`.

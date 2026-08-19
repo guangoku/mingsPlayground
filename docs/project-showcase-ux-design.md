@@ -1,3 +1,8 @@
+> **Superseded (Aug 2026).** This document describes the modal-based project
+> showcase and the "FlashMind" naming, both retired. The site now uses one
+> content pool rendered as curated shelves, with pages instead of modals - see
+> `docs/content-model.md` and `docs/design-guidelines.md`. Kept for history.
+
 # Project Showcase UX Design
 
 ## Decision: Hybrid Modal + URL Approach with Categorized Rows
