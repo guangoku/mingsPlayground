@@ -19,8 +19,8 @@ export const pieces: Piece[] = [
       zh: '你的每一次下潜，被理解，被记住。',
     },
     blurb: {
-      en: 'My startup. AI that turns raw dive footage into a finished dive story - identifying the marine life you saw, surfacing the best moments, and making the dive worth keeping.',
-      zh: '我创办的公司。用 AI 把杂乱的潜水影像变成一段完整的潜水故事——识别你看到的海洋生物，挑出最精彩的瞬间，让这次下潜真的留得下来。',
+      en: 'My startup. AI that turns raw dive footage into a finished dive story - the species you saw, and the moments worth keeping.',
+      zh: '我创办的公司。用 AI 把杂乱的潜水影像变成一段完整的潜水故事——你看到的物种，和值得留下的瞬间。',
     },
     cover: coverOf('atolla-ocean'),
     weight: 'flagship',
@@ -32,11 +32,15 @@ export const pieces: Piece[] = [
   },
   {
     slug: 'charity-box',
-    title: { en: 'CharityBox Mini-Program', zh: '益盒小程序' },
-    kicker: { en: 'volunteer build · effective giving', zh: '志愿开发 · 高效公益' },
+    title: { en: 'CharityBox', zh: '益盒' },
+    role: { en: 'Sole engineer', zh: '唯一工程师' },
+    kicker: {
+      en: 'Effective giving, inside WeChat.',
+      zh: '微信里的有效公益。',
+    },
     blurb: {
-      en: 'A WeChat mini-program that makes giving 1% of your income simple and transparent. I work on the backend, payments, and the parts users actually touch.',
-      zh: '让「捐出收入 1%」这件事变简单、透明的微信小程序。我负责后端、支付流程，和用户真正会碰到的那些地方。',
+      en: 'The only engineer on a mini-program that makes giving 1% of your income simple and transparent - payments, notifications, the whole stack.',
+      zh: '这个小程序唯一的工程师。让「捐出收入 1%」变简单、透明——支付、通知、整个技术栈都是我在做。',
     },
     cover: coverOf('charity-box'),
     weight: 'flagship',
@@ -74,7 +78,8 @@ export const pieces: Piece[] = [
   {
     slug: 'catch-and-keep',
     title: { en: 'Catch & Keep', zh: 'Catch & Keep' },
-    kicker: { en: 'spaced repetition, built end to end', zh: '间隔重复学习工具' },
+    role: { en: 'Solo build', zh: '独立开发' },
+    kicker: { en: 'Spaced repetition, built end to end.', zh: '间隔重复学习工具，独立做完。' },
     blurb: {
       en: 'Catch a word or an idea in seconds, and it turns into a card you actually come back to.',
       zh: '几秒钟捕获一个词或一个想法，它就变成一张你真会回头复习的卡片。',

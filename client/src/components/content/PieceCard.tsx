@@ -36,7 +36,7 @@ export default function PieceCard({
         ? "bg-white/[0.06] border-white/10 hover:border-white/25"
         : "bg-white/90 dark:bg-white/[0.06] border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/25";
     const titleColor = onDark ? "text-white" : "text-foreground dark:text-white";
-    const kickerColor = onDark ? "text-white/55" : "text-muted-foreground dark:text-white/55";
+    const kickerColor = onDark ? "text-white/80" : "text-foreground/70 dark:text-white/80";
     const blurbColor = onDark ? "text-white/70" : "text-muted-foreground dark:text-white/70";
     const roleChip = onDark
         ? "bg-white/10 border-white/20 text-emerald-200"
@@ -84,7 +84,7 @@ export default function PieceCard({
             </h3>
 
             {piece.kicker && (
-                <p className={`mt-1.5 font-display italic ${kickerColor} ${lead ? "text-base md:text-lg" : "text-sm"}`}>
+                <p className={`mt-1.5 font-display italic ${kickerColor} ${lead ? "text-lg md:text-xl" : "text-[15px] md:text-base"}`}>
                     {getBilingualText(piece.kicker, language)}
                 </p>
             )}
@@ -140,7 +140,8 @@ export default function PieceCard({
 
     return (
         <article
-            className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${shell} ${linkable ? "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/25" : ""
+            className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${shell} ${lead ? "" : "h-full flex flex-col"
+                } ${linkable ? "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/25" : ""
                 }`}
             data-testid={`card-piece-${piece.slug}`}
         >
@@ -160,7 +161,7 @@ export default function PieceCard({
                             {text}
                         </>
                     )}
-                    {footer}
+                    <div className="mt-auto">{footer}</div>
                 </>
             )}
         </article>

@@ -20,7 +20,7 @@ export const charityBoxData: ProjectData = {
     en: 'A WeChat mini-program that makes donating 1% of your income simple, transparent, and effective — supporting vetted high-impact charities across China.',
     zh: '一款微信小程序，让「捐出收入的 1%」变得简单、透明且高效——支持全中国经过筛选的高影响力公益组织。'
   },
-  imageUrl: CHARITY_BOX_IMAGES.hero,
+  imageUrl: CHARITY_BOX_IMAGES.card,
   tags: [
     PROJECT_CATEGORIES.SOCIAL_IMPACT.id,
     PROJECT_TAGS.WEB_APP.id,

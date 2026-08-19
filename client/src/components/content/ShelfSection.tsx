@@ -81,7 +81,7 @@ export default function ShelfSection({
 
                 <div className={grid}>
                     {gridPieces.map((piece, i) => (
-                        <Reveal key={piece.slug} delay={0.08 * i}>
+                        <Reveal key={piece.slug} delay={0.08 * i} className="h-full">
                             <PieceCard
                                 piece={piece}
                                 language={language}
