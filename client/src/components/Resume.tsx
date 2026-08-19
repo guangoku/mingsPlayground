@@ -66,8 +66,8 @@ const resumeData = {
         zh: "创始人",
       },
       period: {
-        en: "Jan 2026 – Present",
-        zh: "2026年1月 – 至今",
+        en: "Nov 2025 – Present",
+        zh: "2025年11月 – 至今",
       },
       location: {
         en: "Seattle & China",

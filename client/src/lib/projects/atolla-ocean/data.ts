@@ -34,8 +34,8 @@ export const atollaOceanData: ProjectData = {
   },
 
   credentials: {
-    en: 'Atolla Ocean, Inc. · Founder Institute graduate (pre-seed accelerator)',
-    zh: 'Atolla Ocean, Inc. · Founder Institute（pre-seed 加速器）毕业'
+    en: 'Atolla Ocean, Inc.',
+    zh: 'Atolla Ocean, Inc.'
   },
 
   founderStory: [
@@ -59,8 +59,8 @@ export const atollaOceanData: ProjectData = {
       kicker: { en: 'Where it stands', zh: '现在到哪了' },
       title: { en: 'Live, and early', zh: '上线了，还很早期' },
       body: {
-        en: 'Came out of the Founder Institute pre-seed accelerator, incorporated, and now running. Free while I am still learning what divers actually want.',
-        zh: '从 Founder Institute（pre-seed 加速器）走出来，注册成公司，现在已经上线。还在摸索潜水者到底要什么，所以免费。'
+        en: 'Incorporated, built, and live. Free for early users while I am still learning what divers actually want.',
+        zh: '公司注册了，东西做出来了，也上线了。还在摸索潜水者到底要什么，所以对早期用户免费。'
       }
     }
   ],
