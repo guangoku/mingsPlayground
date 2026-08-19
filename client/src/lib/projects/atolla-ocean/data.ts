@@ -71,8 +71,8 @@ export const atollaOceanData: ProjectData = {
   ],
 
   whyMe: {
-    en: "I'm an ML engineer and a certified divemaster. I know the tech, and I've been the diver sitting on hundreds of clips I never opened again.",
-    zh: '我是机器学习工程师，也是持证潜水长。技术我懂；而那个存了几百段素材、再也没点开过的潜水者，就是我自己。'
+    en: "I'm an ML engineer and a certified divemaster. I know the problem, the technology, and the dive community.",
+    zh: '我是机器学习工程师，也是持证潜水长。这个问题、这项技术，还有潜水这个圈子，我都熟。'
   },
 
   tagline: {

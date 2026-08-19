@@ -43,7 +43,7 @@ const resumeData = {
       "Architected full data/ML stacks: multi-source ingestion → knowledge graph → trend detection → APIs & OpenSearch ranking.",
       "Deployed 5 batch ML models with near-real-time ranking on SageMaker + CI/CD; integrated 5+ external data providers into an S3/Glue/Snowflake/Redshift/Athena lakehouse.",
       "IC tech lead: led a 6-engineer team, org-level security/privacy reviews, hiring, mentoring, and AWS cost efficiency.",
-      "Founder Institute 2025 cohort; exploring computer vision for marine-species identification from real diver media.",
+      "Founder Institute graduate (pre-seed accelerator); applying computer vision to marine-species identification from real diver media.",
     ],
     zh: [
       "Atolla Ocean 创始人——打造一款 AI 平台，将休闲潜水者的水下影像转化为海洋生物识别与结构化的科普潜水故事。",
@@ -51,7 +51,7 @@ const resumeData = {
       "设计完整的数据 / 机器学习架构：多源数据接入 → 知识图谱 → 趋势检测 → API 与 OpenSearch 排序。",
       "部署 5 个批量机器学习模型并实现准实时排序（SageMaker + CI/CD）；将 5+ 外部数据源集成进 S3/Glue/Snowflake/Redshift/Athena 数据湖仓。",
       "作为技术负责人：带领 6 人工程团队，主导组织级安全与隐私审查、招聘、指导及 AWS 成本优化。",
-      "Founder Institute 2025 学员；探索基于真实潜水影像的海洋物种计算机视觉识别。",
+      "Founder Institute（pre-seed 加速器）毕业；将计算机视觉应用于真实潜水影像的海洋物种识别。",
     ],
   },
 
@@ -66,8 +66,8 @@ const resumeData = {
         zh: "创始人",
       },
       period: {
-        en: "Nov 2025 – Present",
-        zh: "2025年11月 – 至今",
+        en: "Jan 2026 – Present",
+        zh: "2026年1月 – 至今",
       },
       location: {
         en: "Seattle & China",
@@ -76,12 +76,12 @@ const resumeData = {
       bullets: {
         en: [
           "Building an AI platform that helps recreational divers identify marine life and turn raw dive footage into structured, educational stories.",
-          "Defining product direction, user experience, and validation strategy from zero; running user interviews and discovery as part of the Founder Institute 2025 cohort.",
+          "Defining product direction, user experience, and validation strategy from zero; ran user interviews and discovery through the Founder Institute pre-seed accelerator.",
           "Exploring computer vision and ML for species identification using real diver media; prototyping early MVP concepts end to end.",
         ],
         zh: [
           "打造一款 AI 平台，帮助休闲潜水者识别海洋生物，并将原始潜水影像转化为结构化的科普故事。",
-          "从零定义产品方向、用户体验与验证策略；作为 Founder Institute 2025 学员开展用户访谈与需求探索。",
+          "从零定义产品方向、用户体验与验证策略；在 Founder Institute（pre-seed 加速器）期间完成用户访谈与需求探索。",
           "基于真实潜水影像探索计算机视觉与机器学习的物种识别方法；端到端打造早期 MVP 原型。",
         ],
       },
