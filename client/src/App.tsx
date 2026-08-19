@@ -3,6 +3,7 @@ import { LanguageProvider } from "@/hooks/useLanguage";
 import LandingPage from "@/pages/LandingPage";
 import ProjectPostPage from "@/pages/projects/ProjectPostPage";
 import BlogPostPage from "@/pages/blog/BlogPostPage";
+import NotFound from "@/pages/not-found";
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
           <Route path="/projects/:slug" element={<ProjectPostPage />} />
           {/* Dynamic blog post page */}
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          {/* Anything else */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>
