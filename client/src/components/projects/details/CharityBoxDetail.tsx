@@ -3,7 +3,6 @@ import { type Language, type BilingualText } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
 import { CHARITY_BOX_IMAGES } from "@/lib/projects/charity-box/images";
 import { ArrowUpRight, PenLine } from "lucide-react";
-import UnifiedImageGallery from "../modules/UnifiedImageGallery";
 import AdvisoryCTA from "../AdvisoryCTA";
 
 interface CharityBoxDetailProps {
@@ -18,7 +17,6 @@ interface CharityBoxDetailProps {
  */
 export default function CharityBoxDetail({ project, language }: CharityBoxDetailProps) {
     const t = (text: BilingualText) => getBilingualText(text, language);
-    const allProjectImages = [...(project.detailImages || [])].filter(Boolean);
 
     return (
         <div className="max-w-4xl mx-auto space-y-10">
@@ -117,19 +115,6 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
 
             <AdvisoryCTA language={language} />
 
-            {project.detailImages && project.detailImages.length > 0 && (
-                <div className="space-y-4">
-                    <h2 className="detail-section-title">
-                        {t({ en: 'Campaign posters', zh: '宣传海报' })}
-                    </h2>
-                    <UnifiedImageGallery
-                        images={project.detailImages}
-                        alt={t(project.title)}
-                        gridCols={4}
-                        allProjectImages={allProjectImages}
-                    />
-                </div>
-            )}
         </div>
     );
 }

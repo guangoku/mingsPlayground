@@ -228,12 +228,12 @@ const resumeData = {
     bullets: {
       en: [
         "Only technical contributor to a WeChat-based platform making 1%-income giving simple and transparent across China — owning full-stack development end to end.",
-        "Leading the organization's AI transformation: building internal tools and providing strategic guidance on AI adoption.",
+        "Building internal tools and advising on AI adoption across the organization, alongside owning the product end to end.",
         "Built an automated operational data pipeline integrating multiple sources via Feishu to support reporting and program management.",
       ],
       zh: [
         "作为唯一的技术贡献者，为一款微信平台开发——让「捐出 1% 收入」变得简单透明，覆盖全中国，端到端负责全栈开发。",
-        "主导机构的 AI 转型：搭建内部工具并就 AI 落地提供战略指导。",
+        "在端到端负责产品的同时，搭建内部工具，并就机构的 AI 落地提供建议。",
         "通过飞书构建自动化运营数据管道，整合多方数据源，支撑报告与项目管理。",
       ],
     },
