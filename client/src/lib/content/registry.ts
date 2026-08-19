@@ -32,15 +32,15 @@ export const pieces: Piece[] = [
   },
   {
     slug: 'charity-box',
-    title: { en: 'CharityBox', zh: '益盒' },
-    role: { en: 'Sole engineer', zh: '唯一工程师' },
+    title: { en: 'CharityBox 益盒', zh: '益盒 CharityBox' },
+    role: { en: 'Volunteer · sole engineer', zh: '志愿 · 唯一工程师' },
     kicker: {
-      en: 'Effective giving, inside WeChat.',
-      zh: '微信里的有效公益。',
+      en: 'An effective-giving research organisation in China.',
+      zh: '一家做有效公益的研究与咨询机构。',
     },
     blurb: {
-      en: 'The only engineer on a mini-program that makes giving 1% of your income simple and transparent - payments, notifications, the whole stack.',
-      zh: '这个小程序唯一的工程师。让「捐出收入 1%」变简单、透明——支付、通知、整个技术栈都是我在做。',
+      en: 'Thousands of donors give 1% of their income through its platform. I am the only engineer on it - payments, notifications, the whole stack.',
+      zh: '几千位捐赠人通过它的平台，每月捐出收入的 1%。这个平台唯一的工程师是我——支付、通知、整个技术栈。',
     },
     cover: coverOf('charity-box'),
     // the pledge line sits on the left; keep it when the slot narrows
