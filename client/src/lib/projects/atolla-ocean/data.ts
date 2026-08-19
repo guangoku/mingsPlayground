@@ -34,8 +34,8 @@ export const atollaOceanData: ProjectData = {
   },
 
   credentials: {
-    en: 'Atolla Ocean, Inc. · Founder Institute 2025 cohort · Seattle',
-    zh: 'Atolla Ocean, Inc. · Founder Institute 2025 学员 · 西雅图'
+    en: 'Atolla Ocean, Inc. · Founder Institute graduate (pre-seed accelerator)',
+    zh: 'Atolla Ocean, Inc. · Founder Institute（pre-seed 加速器）毕业'
   },
 
   founderStory: [
@@ -59,21 +59,20 @@ export const atollaOceanData: ProjectData = {
       kicker: { en: 'Where it stands', zh: '现在到哪了' },
       title: { en: 'Live, and early', zh: '上线了，还很早期' },
       body: {
-        en: 'Started as a sprint in the Founder Institute 2025 cohort, now incorporated and running. Free while we are still learning what divers want.',
-        zh: '最初是 Founder Institute 2025 期间的一次冲刺，现在已注册、已上线。还在摸索潜水者要什么，所以免费。'
+        en: 'Came out of the Founder Institute pre-seed accelerator, incorporated, and now running. Free while I am still learning what divers actually want.',
+        zh: '从 Founder Institute（pre-seed 加速器）走出来，注册成公司，现在已经上线。还在摸索潜水者到底要什么，所以免费。'
       }
     }
   ],
 
   facts: [
     { value: '200+', label: { en: 'dives · certified divemaster', zh: '次下潜 · 持证潜水长' } },
-    { value: '10+ yrs', label: { en: 'data & ML engineering', zh: '数据与机器学习工程' } },
-    { value: '2025', label: { en: 'Founder Institute cohort', zh: 'Founder Institute 学员' } }
+    { value: '10+ yrs', label: { en: 'data & ML engineering', zh: '数据与机器学习工程' } }
   ],
 
   whyMe: {
-    en: "I'm an ML engineer and a certified divemaster - I know the problem, the technology, and the people who have it.",
-    zh: '我是机器学习工程师，也是持证潜水长——这个问题、这项技术，和有这个问题的人，我都熟。'
+    en: "I'm an ML engineer and a certified divemaster. I know the tech, and I've been the diver sitting on hundreds of clips I never opened again.",
+    zh: '我是机器学习工程师，也是持证潜水长。技术我懂；而那个存了几百段素材、再也没点开过的潜水者，就是我自己。'
   },
 
   tagline: {

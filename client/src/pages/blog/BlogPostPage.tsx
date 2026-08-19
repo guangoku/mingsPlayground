@@ -61,7 +61,7 @@ export default function BlogPostPage() {
                     onLanguageToggle={toggleLanguage}
                     currentProjectId={undefined}
                     onBack={handleBack}
-                    backText={{ en: 'Back to Blog', zh: '返回博客' }}
+                    backText={{ en: 'Back', zh: '返回' }}
                 />
                 <div className="pt-16 flex items-center justify-center">
                     <div className="text-center">
@@ -85,7 +85,7 @@ export default function BlogPostPage() {
                 onLanguageToggle={toggleLanguage}
                 currentProjectId={post.id}
                 onBack={handleBack}
-                backText={{ en: 'Back to Blog', zh: '返回博客' }}
+                backText={{ en: 'Back', zh: '返回' }}
             />
             <div className="pt-16">
                 <BlogDetailComposer

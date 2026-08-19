@@ -37,7 +37,7 @@ const landingNavItems: NavItem[] = [
 
 const projectNavItems: NavItem[] = [
     { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/', type: 'route' },
-    { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '/', type: 'route' },
+    { id: 'projects', label: { en: 'Work', zh: '在忙的' }, href: '/', type: 'route' },
 ];
 
 export default function BaseNavigation({
@@ -48,7 +48,7 @@ export default function BaseNavigation({
     variant = 'landing',
     currentProjectId,
     onBack,
-    backText = { en: 'Back to Projects', zh: '返回项目' }
+    backText = { en: 'Back', zh: '返回' }
 }: NavigationProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
