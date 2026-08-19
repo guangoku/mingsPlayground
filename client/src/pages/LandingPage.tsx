@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import ProjectSection from "@/components/projects/ProjectSection";
-import BlogSection from "@/components/BlogSection";
+import ShelfSection from "@/components/content/ShelfSection";
+import AdvisoryCTA from "@/components/projects/AdvisoryCTA";
+import { FEATURED_SHELF, MORE_SHELF } from "@/lib/content/shelves";
 import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,15 @@ function LandingPage() {
 
         setIsDark(shouldBeDark);
         document.documentElement.classList.toggle('dark', shouldBeDark);
+    }, []);
+
+    // Coming back from a piece page should land where you left off.
+    useLayoutEffect(() => {
+        const saved = sessionStorage.getItem('landing-scroll');
+        if (saved) {
+            sessionStorage.removeItem('landing-scroll');
+            window.scrollTo(0, Number(saved));
+        }
     }, []);
 
     const handleThemeToggle = () => {
@@ -76,13 +86,32 @@ function LandingPage() {
                         />
                     </section>
 
-                    <section id="projects">
-                        <ProjectSection language={language} />
-                    </section>
+                    <ShelfSection
+                        shelf={FEATURED_SHELF}
+                        language={language}
+                        id="projects"
+                        bgClass="projects-bg"
+                        textureClass="sea-motifs"
+                        tone="dark"
+                        accent="hsl(172 65% 58%)"
+                        variant="feature"
+                        seamFill="hsl(var(--seam-blog))"
+                        lightShafts
+                    >
+                        <AdvisoryCTA language={language} variant="onDark" className="mt-12 md:mt-14" />
+                    </ShelfSection>
 
-                    <section id="blog">
-                        <BlogSection language={language} />
-                    </section>
+                    <ShelfSection
+                        shelf={MORE_SHELF}
+                        language={language}
+                        id="blog"
+                        bgClass="blog-bg"
+                        textureClass="sea-motifs-ink"
+                        tone="light"
+                        accent="hsl(190 60% 34%)"
+                        variant="compact"
+                        seamFill="hsl(var(--seam-resume))"
+                    />
 
                     <section id="resume">
                         <Resume language={language} isDark={isDark} />

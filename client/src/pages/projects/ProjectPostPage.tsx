@@ -62,7 +62,7 @@ export default function ProjectPostPage() {
                     onLanguageToggle={toggleLanguage}
                     currentProjectId={undefined}
                     onBack={handleBack}
-                    backText={{ en: 'Back to Projects', zh: '返回项目' }}
+                    backText={{ en: 'Back', zh: '返回' }}
                 />
                 <div className="pt-16 flex items-center justify-center">
                     <div className="text-center">
@@ -86,7 +86,7 @@ export default function ProjectPostPage() {
                 onLanguageToggle={toggleLanguage}
                 currentProjectId={project.id}
                 onBack={handleBack}
-                backText={{ en: 'Back to Projects', zh: '返回项目' }}
+                backText={{ en: 'Back', zh: '返回' }}
             />
             <OceanBand className="h-36 md:h-44" />
             <div className="max-w-6xl mx-auto px-6 pt-8 md:pt-12 pb-16">

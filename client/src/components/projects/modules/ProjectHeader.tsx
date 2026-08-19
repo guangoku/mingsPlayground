@@ -14,7 +14,7 @@ export default function ProjectHeader({
     title,
     language,
     onBack,
-    backText = { en: 'Back to Projects', zh: '返回项目' }
+    backText = { en: 'Back', zh: '返回' }
 }: ProjectHeaderProps) {
     return (
         <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">

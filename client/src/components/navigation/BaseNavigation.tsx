@@ -29,15 +29,15 @@ export interface NavigationProps {
 
 const landingNavItems: NavItem[] = [
     { id: 'home', label: { en: 'Home', zh: '主页' }, href: '#hero', type: 'scroll' },
-    { id: 'projects', label: { en: 'Projects', zh: '作品' }, href: '#projects', type: 'scroll' },
-    { id: 'blog', label: { en: 'Blog', zh: '博客' }, href: '#blog', type: 'scroll' },
+    { id: 'projects', label: { en: 'Work', zh: '在忙的' }, href: '#projects', type: 'scroll' },
+    { id: 'blog', label: { en: 'More', zh: '其他角落' }, href: '#blog', type: 'scroll' },
     { id: 'resume', label: { en: 'Resume', zh: '简历' }, href: '#resume', type: 'scroll' },
     { id: 'contact', label: { en: 'Contact', zh: '联系' }, href: '#contact', type: 'scroll' },
 ];
 
 const projectNavItems: NavItem[] = [
     { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/', type: 'route' },
-    { id: 'projects', label: { en: 'Projects', zh: '项目' }, href: '/', type: 'route' },
+    { id: 'projects', label: { en: 'Work', zh: '在忙的' }, href: '/', type: 'route' },
 ];
 
 export default function BaseNavigation({
@@ -48,7 +48,7 @@ export default function BaseNavigation({
     variant = 'landing',
     currentProjectId,
     onBack,
-    backText = { en: 'Back to Projects', zh: '返回项目' }
+    backText = { en: 'Back', zh: '返回' }
 }: NavigationProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');

@@ -18,7 +18,7 @@ export default function ProjectNavigation({
     currentProjectId,
     language,
     onBack,
-    backText = { en: 'Back to Projects', zh: '返回项目' }
+    backText = { en: 'Back', zh: '返回' }
 }: ProjectNavigationProps) {
     const navigate = useNavigate();
     const [currentProject, setCurrentProject] = useState<Project | null>(null);

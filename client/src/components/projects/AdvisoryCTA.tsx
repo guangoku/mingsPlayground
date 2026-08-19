@@ -1,4 +1,4 @@
-import { HeartHandshake, FileSearch, GitBranch, Sparkles, ArrowRight } from "lucide-react";
+import { FileSearch, GitBranch, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBilingualText } from "@/lib/utils";
 import { type Language, type BilingualText } from "@/lib/types";
@@ -45,8 +45,6 @@ export default function AdvisoryCTA({ language, className = "", variant = "onLig
     const t = onDark
         ? {
             wrapper: "border-white/15 bg-white/[0.07] backdrop-blur-md shadow-lg shadow-black/20",
-            iconWrap: "bg-white/10 border-white/20",
-            icon: "text-emerald-200",
             badge: "text-emerald-200 bg-white/10 border-white/15",
             title: "text-white",
             body: "text-white/70",
@@ -58,8 +56,6 @@ export default function AdvisoryCTA({ language, className = "", variant = "onLig
         }
         : {
             wrapper: "border-black/5 dark:border-white/10 bg-white dark:bg-gray-900/70 shadow-lg shadow-emerald-950/5 dark:shadow-black/20",
-            iconWrap: "bg-emerald-50 dark:bg-emerald-900/40 border-emerald-100 dark:border-emerald-800",
-            icon: "text-emerald-600 dark:text-emerald-300",
             badge: "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 border-emerald-200/70 dark:border-emerald-800",
             title: "text-foreground",
             body: "text-muted-foreground",
@@ -74,11 +70,7 @@ export default function AdvisoryCTA({ language, className = "", variant = "onLig
         <div
             className={`rounded-2xl border ${t.wrapper} p-6 md:p-8 ${className}`}
         >
-            <div className="flex items-start gap-4">
-                <div className={`flex-shrink-0 w-11 h-11 rounded-full border flex items-center justify-center ${t.iconWrap}`}>
-                    <HeartHandshake className={`h-6 w-6 ${t.icon}`} />
-                </div>
-                <div className="flex-1 min-w-0">
+            <div className="min-w-0">
                     <span className={`inline-block text-xs font-semibold uppercase tracking-widest border px-3 py-1 rounded-full ${t.badge}`}>
                         {getBilingualText({ en: "Pro-bono advisory", zh: "公益咨询" }, language)}
                     </span>
@@ -133,7 +125,7 @@ export default function AdvisoryCTA({ language, className = "", variant = "onLig
                             size="sm"
                             className={`rounded-full px-5 font-semibold shadow-md transition-transform duration-300 hover:scale-[1.03] ${t.button}`}
                         >
-                            <a href={CONTACT_EMAIL}>
+                            <a href={CONTACT_EMAIL} target="_blank" rel="noopener noreferrer">
                                 {getBilingualText(
                                     { en: "Let's talk", zh: "聊聊吧" },
                                     language
@@ -151,7 +143,6 @@ export default function AdvisoryCTA({ language, className = "", variant = "onLig
                             )}
                         </span>
                     </div>
-                </div>
             </div>
         </div>
     );

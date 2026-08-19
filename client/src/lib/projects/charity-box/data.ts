@@ -20,7 +20,7 @@ export const charityBoxData: ProjectData = {
     en: 'A WeChat mini-program that makes donating 1% of your income simple, transparent, and effective — supporting vetted high-impact charities across China.',
     zh: '一款微信小程序，让「捐出收入的 1%」变得简单、透明且高效——支持全中国经过筛选的高影响力公益组织。'
   },
-  imageUrl: CHARITY_BOX_IMAGES.hero,
+  imageUrl: CHARITY_BOX_IMAGES.card,
   tags: [
     PROJECT_CATEGORIES.SOCIAL_IMPACT.id,
     PROJECT_TAGS.WEB_APP.id,
@@ -41,26 +41,61 @@ export const charityBoxData: ProjectData = {
     }
   },
 
-  role: {
-    title: {
-      en: 'My Role',
-      zh: '我的角色'
+  roleChip: {
+    en: 'Sole Engineer & AI Advisor · Volunteer',
+    zh: '唯一工程师与 AI 顾问 · 志愿'
+  },
+
+  period: { en: 'Jan 2025 - present', zh: '2025 年 1 月至今' },
+
+  // Ming's part. The organisation's own record is kept separate below so the
+  // two never blur together.
+  contribution: [
+    {
+      kicker: { en: 'What I own', zh: '我负责的' },
+      title: { en: 'The product, end to end', zh: '整个产品' },
+      body: {
+        en: 'The only technical contributor to the WeChat mini-program - full-stack, from the payment flows to what donors actually touch.',
+        zh: '小程序唯一的技术贡献者——全栈，从支付流程到捐赠人真正会碰到的每个地方。'
+      }
     },
-    content: {
-      en: `**Sole Engineer & AI Advisor** · Volunteer · Jan 2025 – present
+    {
+      kicker: { en: 'What I have shipped', zh: '做出来的东西' },
+      title: { en: 'The giving machinery', zh: '捐赠这套机器' },
+      body: {
+        en: 'Matched giving through invite codes, one-time gifts, letting donors change their amount, an in-app notification system - plus the dev-ops that keeps all of it shippable by one person.',
+        zh: '邀请码配捐、次捐、更改捐赠金额、站内通知系统，还有让这一切能被一个人持续交付的 DevOps。'
+      }
+    },
+    {
+      kicker: { en: 'Where else I help', zh: '产品之外' },
+      title: { en: 'Tools, and where AI fits', zh: '工具，和 AI 的位置' },
+      body: {
+        en: 'An automated ops pipeline through Feishu so a small team can report without spreadsheets. Beyond the product I build internal tools and push on where AI genuinely helps other teams, without owning their work.',
+        zh: '用飞书搭的自动化运营数据管道，让小团队不用再手工搬表格出报告。产品之外，我做内部工具，也推动 AI 在其他团队真正能帮上忙的地方——但那些活儿不归我管。'
+      }
+    }
+  ],
 
-- The **only technical contributor** to the WeChat-based platform — owning full-stack development end to end.
-- Leading the organization's **AI transformation**: building internal tools and advising on where AI genuinely helps a small non-profit.
-- Built an **automated operational data pipeline** integrating multiple sources via Feishu, so the team can report and run programs without manual spreadsheet wrangling.
+  // The organisation's record, not Ming's - kept explicitly attributed.
+  orgNote: {
+    en: 'CharityBox (益盒) is an effective-giving research and advisory organisation, incubated by MiraclePlus and Tsinghua X-Lab. Its research is held to standards comparable with GiveWell, and it has mobilised over 5M RMB for the projects it recommends.',
+    zh: '益盒是一家有效公益研究与咨询机构，由奇绩创坛与清华大学 X-Lab 孵化。其研究被认为与 GiveWell 的学术质量相当，累计为推荐的公益项目筹集超过 500 万元。'
+  },
 
-You can scan the QR code in the posters below (with WeChat) to open the mini-program.`,
-      zh: `**唯一工程师与 AI 顾问** · 志愿 · 2025年1月 – 至今
+  links: {
+    miniProgram: { en: 'Scan inside WeChat to open the mini-program', zh: '用微信扫码打开小程序' },
+    podcast: {
+      url: 'https://podcasts.apple.com/us/podcast/%E8%84%86%E5%BC%B1%E4%B8%96%E7%95%8C/id1644236790',
+      label: { en: 'Podcast: 脆弱世界', zh: '播客：脆弱世界' }
+    }
+  },
 
-- 平台**唯一的技术贡献者**——端到端负责全栈开发。
-- 主导机构的 **AI 转型**：搭建内部工具，并就「AI 在小型公益机构中真正有用的地方」提供建议。
-- 通过飞书构建**自动化运营数据管道**，整合多方数据源，让团队无需手工处理表格即可完成报告与项目运营。
-
-可用微信扫描下方海报中的二维码，打开该小程序。`
+  upcoming: {
+    title: { en: 'One Day a Week', zh: 'One Day a Week' },
+    blurb: {
+      en: 'Being an entire tech team for a mission-driven org - solo, with AI. Writing this one up now.',
+      zh: '一个人，加上 AI，给一家公益机构当整个技术团队。正在写。'
     }
   }
 };
