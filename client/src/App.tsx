@@ -4,6 +4,7 @@ import LandingPage from "@/pages/LandingPage";
 import ProjectPostPage from "@/pages/projects/ProjectPostPage";
 import BlogPostPage from "@/pages/blog/BlogPostPage";
 import OneDayAWeekPage from "@/pages/blog/OneDayAWeekPage";
+import GapYearPage from "@/pages/gapyear/GapYearPage";
 import NotFound from "@/pages/not-found";
 
 
@@ -19,6 +20,8 @@ function App() {
           <Route path="/blog/one-day-a-week" element={<OneDayAWeekPage />} />
           {/* Dynamic blog post page */}
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          {/* Gap-year wrap-up (standalone visual form) */}
+          <Route path="/gap-year" element={<GapYearPage />} />
           {/* Anything else */}
           <Route path="*" element={<NotFound />} />
         </Routes>

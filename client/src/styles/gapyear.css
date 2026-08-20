@@ -1,0 +1,426 @@
+/* Gap-year wrap-up page: standalone visual form (hand-drawn deck style).
+ * Palette mirrors the charityBox year-end deck: charcoal / cream / vermillion. */
+
+.gy-root {
+  --gy-charcoal: #2a2a27;
+  --gy-cream: #f3eeda;
+  --gy-verm: #c7502a;
+  --gy-verm-bright: #d8582e;
+
+  background: var(--gy-charcoal);
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Handwritten heading stack: Latin gets Patrick Hand, CJK falls to ZCOOL KuaiLe */
+.gy-h {
+  font-family: 'Patrick Hand', 'ZCOOL KuaiLe', 'PingFang SC', 'Microsoft YaHei', cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Looser handwriting for quotes / asides */
+.gy-hand {
+  font-family: 'Caveat', 'Long Cang', 'PingFang SC', cursive;
+}
+
+.gy-slide {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+}
+
+.gy-slide > .gy-inner {
+  width: 100%;
+  max-width: 56rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Short strip section (not a full slide) */
+.gy-strip {
+  min-height: 0;
+  padding: 4.5rem 1.5rem;
+}
+
+.gy-bg-charcoal { background: var(--gy-charcoal); color: var(--gy-cream); }
+.gy-bg-charcoal .gy-accent { color: var(--gy-verm-bright); }
+
+.gy-bg-verm { background: var(--gy-verm); color: var(--gy-cream); }
+.gy-bg-verm .gy-accent { color: #2f2a22; }
+
+.gy-bg-cream { background: var(--gy-cream); color: var(--gy-charcoal); }
+.gy-bg-cream .gy-accent { color: var(--gy-verm); }
+
+
+/* Hand-drawn expandable box (多说两句) */
+.gy-voice {
+  border: 2px dashed color-mix(in srgb, currentColor 45%, transparent);
+  border-radius: 14px 10px 16px 9px;
+  transform: rotate(-0.25deg);
+}
+
+/* Small empty checkbox for the under-construction list */
+.gy-checkbox {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border: 2px solid currentColor;
+  border-radius: 3px 5px 4px 6px;
+  transform: rotate(-3deg);
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gy-root * { animation: none !important; transition: none !important; }
+}
+
+/* Static render mode (?static=1): everything visible, no animation.
+ * Used for debugging/QA captures; also a safe fallback view. */
+.gy-static [style] { opacity: 1 !important; transform: none !important; }
+.gy-static path, .gy-static circle, .gy-static text {
+  opacity: 1 !important;
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+}
+
+/* Compact QA mode (?compact=1): collapse slide heights so the whole page
+ * fits in one tall viewport capture. */
+.gy-compact .gy-slide { min-height: 0 !important; padding-top: 3rem; padding-bottom: 3rem; }
+
+
+
+/* Hand-drawn solid box (deck's 测试 boxes) */
+.gy-box {
+  border: 2.5px solid;
+  border-radius: 14px 9px 15px 8px;
+  transform: rotate(-0.2deg);
+}
+.gy-box:nth-child(even) { transform: rotate(0.25deg); border-radius: 9px 15px 8px 14px; }
+.gy-bg-charcoal .gy-box { border-color: var(--gy-verm-bright); }
+.gy-bg-cream .gy-box { border-color: var(--gy-verm); }
+.gy-bg-verm .gy-box { border-color: var(--gy-cream); }
+
+
+.gy-header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+.gy-header-scrolled {
+  background: color-mix(in srgb, var(--gy-charcoal) 82%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+
+/* Fixed thread rail: viewport-height TOC on the left */
+.gy-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 25;
+  pointer-events: none;
+  width: 15rem;
+}
+.gy-rail-svg { display: block; }
+
+.gy-rail-node {
+  position: absolute;
+  left: 18px;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 3px;
+  z-index: 26;
+}
+
+.gy-rail-label {
+  font-size: 0.95rem;
+  white-space: nowrap;
+  padding: 1px 9px;
+  border-radius: 9px 7px 10px 8px;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.gy-rail-label-idle {
+  color: #d8582e;
+  background: color-mix(in srgb, var(--gy-charcoal) 72%, transparent);
+}
+.gy-rail-label-active {
+  background: var(--gy-verm);
+  color: var(--gy-cream);
+}
+.gy-rail-label-wip { font-size: 0.85rem; }
+
+/* Below lg: the rail stays silent - line and knots only - until touched,
+ * sits quieter, and content clears it */
+@media (max-width: 1023px) {
+  .gy-rail-label { display: none; }
+  .gy-rail-peek .gy-rail-label { display: inline-block; }
+  .gy-rail-svg { opacity: 0.5; }
+  .gy-rail-node { transform: translateY(-50%) scale(0.72); opacity: 0.6; }
+  .gy-rail-peek .gy-rail-svg { opacity: 1; }
+  .gy-rail-peek .gy-rail-node { opacity: 1; }
+  .gy-slide { padding-left: 3.4rem; }
+}
+
+/* At lg+ reserve room on the left so the rail never covers content.
+ * 12.5rem clears the widest rail label (~180px) with room to spare - any
+ * more is dead space that squeezes the content columns. */
+@media (min-width: 1024px) {
+  .gy-slide { padding-left: 12.5rem; }
+}
+
+/* Act dividers on the rail */
+.gy-rail-divider {
+  position: absolute;
+  left: 14px;
+  transform: translateY(-50%) rotate(-2deg);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #d8582e;
+  background: color-mix(in srgb, var(--gy-charcoal) 74%, transparent);
+  padding: 0 8px;
+  border-radius: 8px 6px 9px 7px;
+  pointer-events: none;
+  z-index: 26;
+}
+@media (max-width: 1023px) {
+  .gy-rail-divider { display: none; }
+  .gy-rail-peek .gy-rail-divider { display: block; }
+}
+
+/* Reason clusters in 为什么停下来: a dashed bracket plus a handwritten label,
+ * so four icons read as one group instead of four loose cards */
+.gy-why-group {
+  position: relative;
+  padding: 1.6rem 0 0 1.1rem;
+  border-left: 2px dashed color-mix(in srgb, currentColor 26%, transparent);
+}
+.gy-why-group-label {
+  position: absolute;
+  top: 0;
+  left: 0.6rem;
+  font-size: 1.15rem;
+  color: var(--gy-verm-bright);
+  transform: rotate(-2deg);
+}
+.gy-bg-cream .gy-why-group-label { color: var(--gy-verm); }
+
+/* Direction tag worn by Act II chapters (「生活」「关系」「事业」) */
+.gy-dir-tag {
+  position: absolute;
+  top: 4.2rem;
+  right: 1.25rem;
+  z-index: 12;
+  font-size: 1.2rem;
+  transform: rotate(3deg);
+}
+
+/* Bare-rail touch target (narrow screens): reveals the contents */
+.gy-rail-peek-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 24;
+  background: transparent;
+}
+
+/* While peeking, the contents sit on their own panel over the page */
+.gy-rail-peek::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(18rem, 88vw);
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--gy-charcoal) 97%, transparent) 0,
+    color-mix(in srgb, var(--gy-charcoal) 97%, transparent) 84%,
+    transparent 100%
+  );
+  z-index: 23;
+}
+
+/* On the panel the pills are redundant - let the labels breathe */
+.gy-rail-peek .gy-rail-label-idle { background: transparent; }
+
+/* Hero slide: fluid vertical padding so the title, the drawing and the
+ * scroll cue all fit inside one screen */
+.gy-slide-hero {
+  padding-top: clamp(3rem, 7vh, 5rem);
+  padding-bottom: clamp(3.5rem, 8vh, 5.5rem);
+}
+
+/* 世界的拼贴: four places assembled as a jigsaw board */
+.gy-board {
+  position: relative;
+  width: min(26rem, 84vw);
+  margin-inline: auto;
+}
+.gy-piece {
+  position: absolute;
+  cursor: pointer;
+  color: var(--gy-cream);
+}
+.gy-piece-svg {
+  position: absolute;
+  inset: -22%;
+  width: 144%;
+  height: 144%;
+  overflow: visible;
+}
+.gy-piece-face {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: color 0.25s ease;
+}
+.gy-piece-face-on { color: var(--gy-verm); }
+
+/* Photos ride inside the pieces, muted until picked */
+.gy-piece-photo {
+  filter: grayscale(1) contrast(1.06) brightness(1.02);
+  opacity: 0.8;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.gy-piece-on .gy-piece-photo {
+  filter: none;
+  opacity: 1;
+}
+.gy-piece-caption {
+  background: color-mix(in srgb, var(--gy-charcoal) 74%, transparent);
+  color: var(--gy-cream);
+  padding: 1px 8px;
+  border-radius: 8px 6px 9px 7px;
+}
+
+.gy-board-link {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+  overflow: visible;
+}
+.gy-board-link-label {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  z-index: 7;
+  font-size: 0.8rem;
+  color: var(--gy-cream);
+  background: var(--gy-verm);
+  padding: 1px 8px;
+  border-radius: 8px 6px 9px 7px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Note cards: a sketch or photo with one line under it */
+.gy-note {
+  width: 100%;
+}
+.gy-note-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 2px solid color-mix(in srgb, currentColor 40%, transparent);
+  border-radius: 10px 7px 11px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: rotate(-0.5deg);
+}
+.gy-note:nth-child(even) .gy-note-frame { transform: rotate(0.6deg); }
+.gy-note-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Status-update chips: the flat, 2D version of a friendship */
+.gy-chip {
+  font-family: 'Patrick Hand', 'ZCOOL KuaiLe', cursive;
+  font-size: 0.95rem;
+  padding: 1px 11px;
+  border: 1.5px dashed color-mix(in srgb, currentColor 38%, transparent);
+  border-radius: 9px 7px 10px 8px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* Narrow screens: shrink the chips so the label and all four keep one line */
+@media (max-width: 767px) {
+  .gy-chip { font-size: 0.78rem; padding: 0 6px; }
+}
+
+/* A loose spread of snapshots: most of every picture visible at once */
+.gy-spread-wrap { width: 100%; max-width: 30rem; }
+.gy-spread { position: relative; width: 100%; }
+.gy-spread-item {
+  position: absolute;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: pointer;
+  background: color-mix(in srgb, var(--gy-cream) 12%, transparent);
+  border: 2.5px solid var(--gy-cream);
+  border-radius: 8px 6px 9px 7px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.gy-bg-cream .gy-spread-item { border-color: var(--gy-charcoal); }
+.gy-spread-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gy-spread-sketch {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+/* "Pick a piece" hint riding the board corner until first touch */
+.gy-board-hint {
+  position: absolute;
+  top: -14px;
+  right: -6px;
+  z-index: 8;
+  transform: rotate(-4deg);
+  font-size: 0.95rem;
+  background: var(--gy-cream);
+  color: var(--gy-verm);
+  padding: 1px 10px;
+  border-radius: 9px 7px 10px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  animation: gy-hint-nudge 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes gy-hint-nudge {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(-4deg) translateY(-4px); }
+}
+
+/* Mobile: the board flattens into one compact strip */
+.gy-board-strip { width: 100%; max-width: 26rem; }
+
+/* Study sections get a wider column so the panel text stops over-wrapping */
+.gy-wide .gy-inner { max-width: 74rem; }
+
+/* On the wide study layout the board cedes a little width to the text */
+@media (min-width: 768px) {
+  .gy-wide .gy-board { width: min(23rem, 40vw); }
+}
