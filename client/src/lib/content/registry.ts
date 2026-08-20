@@ -6,6 +6,7 @@
 import { projects } from '@/lib/projects';
 import atollaCard from '@assets/projects/atolla-ocean/card.jpg';
 import charityBoxCollage from '@assets/projects/charity-box/collage.webp';
+import gapYearCover from '@assets/gapyear/cover.jpg';
 import { type Piece } from './types';
 
 const coverOf = (projectSlug: string): string | undefined =>
@@ -84,6 +85,7 @@ export const pieces: Piece[] = [
       en: 'Eighteen months of quitting, wandering, and recalibrating - written as one long scroll.',
       zh: '裸辞、旅居、重新校准自己的十八个月，写成一篇长的。',
     },
+    cover: gapYearCover,
     weight: 'flagship',
     topics: ['life'],
     status: 'in-progress',

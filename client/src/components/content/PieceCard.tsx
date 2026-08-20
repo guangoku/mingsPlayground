@@ -31,7 +31,9 @@ export default function PieceCard({
     const compact = variant === "compact";
     const onDark = tone === "dark";
     const inProgress = piece.status === "in-progress";
-    const linkable = !inProgress && Boolean(piece.href);
+    // An in-progress piece still links once it has somewhere to go; the badge
+    // stays so the reader knows it is still being built.
+    const linkable = Boolean(piece.href);
     const CoverArt = piece.coverArt ? COVER_ART[piece.coverArt] : undefined;
     const layout = piece.coverLayout ?? "banner";
     // "full" reads the text on the artwork, so it is always read on dark.
