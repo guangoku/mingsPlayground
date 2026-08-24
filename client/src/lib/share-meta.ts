@@ -68,7 +68,7 @@ export const ROUTE_META: Record<string, ShareMeta> = {
   '/projects/charity-box': {
     title: 'CharityBox 益盒 - the engineering behind effective giving',
     description:
-      'A research and advisory organisation for effective giving in China, and the volunteer engineering that keeps its donation platform running.',
+      'A research and advisory organisation for effective giving in China, and the pro bono engineering that keeps its donation platform running.',
     image: '/og/charity-box.jpg',
     tab: { en: "CharityBox 益盒 | Ming's Playground", zh: "益盒 CharityBox | Ming's Playground" },
   },

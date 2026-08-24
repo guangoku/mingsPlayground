@@ -42,7 +42,7 @@ export const charityBoxData: ProjectData = {
   },
 
   roleChip: {
-    en: 'Sole Engineer & AI Advisor · Volunteer',
+    en: 'Sole Engineer & AI Advisor · Pro bono',
     zh: '唯一工程师与 AI 顾问 · 志愿'
   },
 
