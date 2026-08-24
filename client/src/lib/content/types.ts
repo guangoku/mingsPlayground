@@ -35,6 +35,9 @@ export interface Piece {
    * - "strip"  - a narrow band, so the typography leads
    */
   coverLayout?: 'banner' | 'full' | 'strip';
+  /** Draws paper edges behind the card, so it reads as a stack of pages
+   *  rather than a single one. Purely decorative. */
+  stacked?: boolean;
   weight: PieceWeight;
   topics: PieceTopic[];
   status: PieceStatus;
