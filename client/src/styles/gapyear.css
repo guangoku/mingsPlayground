@@ -424,3 +424,12 @@
 @media (min-width: 768px) {
   .gy-wide .gy-board { width: min(23rem, 40vw); }
 }
+
+/* Closing image: the book, sitting on the page like a photograph on a table */
+.gy-ending-cover {
+  width: min(20rem, 62vw);
+  height: auto;
+  border-radius: 2px;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.18);
+}

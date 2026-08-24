@@ -25,31 +25,22 @@ export default function GapLedger() {
         </div>
       </Reveal>
 
+      {/* Topics only. The numbers are not run yet and the write-up is unpublished. */}
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
         <Reveal delay={0.1}>
-          <div className="flex items-center gap-3">
-            <Doodle {...PIGGY} className="w-14" />
-            <h3 className="gy-h gy-accent text-2xl md:text-3xl">{t(ledger.costTitle)}</h3>
+          <div className="gy-box px-5 py-6 flex items-center gap-4 opacity-70">
+            <Doodle {...PIGGY} className="w-14 flex-shrink-0" />
+            <div>
+              <h3 className="gy-h gy-accent text-2xl md:text-3xl">{t(ledger.costTitle)}</h3>
+              <p className="mt-1 text-sm opacity-70">⋯⋯</p>
+            </div>
           </div>
-          <ul className="mt-4 space-y-3">
-            {ledger.costs.map((c) => (
-              <li key={c.zh} className="flex gap-2 text-base md:text-lg leading-relaxed opacity-90">
-                <span className="gy-accent flex-shrink-0" aria-hidden="true">·</span>
-                <span>{t(c)}</span>
-              </li>
-            ))}
-          </ul>
         </Reveal>
         <Reveal delay={0.2}>
-          <h3 className="gy-h gy-accent text-2xl md:text-3xl md:mt-1">{t(ledger.challengeTitle)}</h3>
-          <ul className="mt-4 space-y-3">
-            {ledger.challenges.map((c) => (
-              <li key={c.zh} className="flex gap-2 text-base md:text-lg leading-relaxed opacity-90">
-                <span className="gy-accent flex-shrink-0" aria-hidden="true">·</span>
-                <span>{t(c)}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="gy-box px-5 py-6 opacity-70">
+            <h3 className="gy-h gy-accent text-2xl md:text-3xl">{t(ledger.challengeTitle)}</h3>
+            <p className="mt-1 text-sm opacity-70">⋯⋯</p>
+          </div>
         </Reveal>
       </div>
 

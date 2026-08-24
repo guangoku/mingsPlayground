@@ -301,7 +301,6 @@ export const selfStudy = {
     {
       key: 'newfriends',
       title: { zh: '新朋友', en: 'New friends' },
-      hook: { zh: '路上认识的人，照出另一个我', en: 'the people met on the road, and the me they reflect' },
       wip: true,
       notes: [],
     },
@@ -309,23 +308,14 @@ export const selfStudy = {
       key: 'ditan',
       title: { zh: '我与地坛', en: 'Me and Ditan Park' },
       shortTitle: { zh: '我与地坛', en: 'Ditan Park' },
-      hook: { zh: '完美人生的低配版，差不了太多', en: 'a budget edition of the perfect life' },
-      notes: [
-        { id: 'ditan-a', art: 'book', caption: { zh: '在地坛读《我与地坛》', en: 'Reading Shi Tiesheng in the park he wrote about.' } },
-        { id: 'ditan-b', art: 'tree', caption: { zh: '他畅想的那种人生', en: 'The life he imagined.' } },
-        { id: 'ditan-c', art: 'heart', caption: { zh: '我这版，配置低一点', en: 'Mine: lower spec, same shape.' } },
-      ],
+      wip: true,
+      notes: [],
     },
     {
       key: 'komodo',
       title: { zh: '科莫多', en: 'Komodo' },
-      hook: { zh: '我比很多年都更像自己', en: 'more myself than I had been in years' },
-      notes: [
-        { id: 'komodo-a', art: 'mask', caption: { zh: '两个月，几乎天天在水里', en: 'Two months, in the water almost daily.' } },
-        { id: 'komodo-b', art: 'fish', caption: { zh: '非常健康的海，很接近天堂', en: 'A thriving reef. Close enough to paradise.' } },
-        { id: 'komodo-c', art: 'support', caption: { zh: '第二次来：路好了，潜店管理层是本地人', en: 'Second visit: better roads, locals running the shop.' } },
-        { id: 'komodo-d', art: 'sparkle', caption: { zh: '自信、放松、对生活有掌控感', en: 'Confident, relaxed, in charge of their lives.' } },
-      ],
+      wip: true,
+      notes: [],
     },
   ],
 } as const;
@@ -340,52 +330,30 @@ export const worldStudy = {
   pieces: [
     {
       key: 'tibetan',
-      title: { zh: '藏传佛教', en: 'Tibetan Buddhism' },
-      hook: { zh: '从义县大佛寺，到尼泊尔的山顶', en: 'from the Big Buddha at home to a Nepali mountaintop' },
-      notes: [
-        { id: 'tibetan-a', art: 'temple', caption: { zh: '义县大佛寺，小时候只当是「我们那儿的庙」', en: 'The Big Buddha at home. Growing up it was just "our temple".' } },
-        { id: 'tibetan-b', art: 'painting', caption: { zh: '长大了才在自己家门口当了回游客', en: 'Took until now to be a tourist on my own doorstep.' } },
-        { id: 'tibetan-c', art: 'mountains', caption: { zh: '几千公里外的山顶，同一支藏传佛教', en: 'A mountaintop thousands of km away. Same lineage.' } },
-        { id: 'tibetan-d', art: 'speech', caption: { zh: '掏出手机，给老喇嘛看我故乡的照片', en: 'Pulled out my phone, showed the old lama photos of home.' } },
-        { id: 'tibetan-e', art: 'hair', caption: { zh: '小姑娘、老喇嘛、我奶奶：都嫌弃我的头发', en: 'The girl, the lama, my grandma: all disliked my hair.' } },
-        { id: 'tibetan-f', art: 'scarf', caption: { zh: '边境 bazaar 只剩一个摊，买了条当地女性组织做的围巾', en: "Border bazaar down to one stall. Bought a scarf from a women's org." } },
-      ],
+      title: { zh: '海棠山到尼泊尔', en: 'Haitang Shan to Nepal' },
+      shortTitle: { zh: '海棠山', en: 'Haitang Shan' },
+      wip: true,
+      notes: [],
     },
     {
       key: 'spain',
       title: { zh: '强烈的西班牙', en: 'Intense Spain' },
       shortTitle: { zh: '西班牙', en: 'Spain' },
-      hook: { zh: '不知道为什么，这里的东西都直戳心灵', en: 'somehow everything here goes straight through you' },
-      notes: [
-        { id: 'spain-a', art: 'church', caption: { zh: '圣家堂一种 intense，中世纪教堂另一种', en: 'Sagrada Família: one intense. Medieval churches: another.' } },
-        { id: 'spain-b', art: 'painting', caption: { zh: '格尔尼卡，和对面抱着孩子哭的女人', en: 'Guernica, and the weeping woman across from it.' } },
-        { id: 'spain-c', art: 'painting', caption: { zh: '戈雅的农神，不敢看', en: "Goya's Saturn. Couldn't look." } },
-        { id: 'spain-d', art: 'sparkle', caption: { zh: '弗拉门戈：小说里写的那种萨满', en: 'Flamenco: the shamanic hit novels describe.' } },
-      ],
+      wip: true,
+      notes: [],
     },
     {
       key: 'korea',
-      title: { zh: '韩国', en: 'Korea' },
-      hook: { zh: '离得最近的一面镜子，也最有可比性', en: 'the closest mirror, and the most comparable' },
-      notes: [
-        { id: 'korea-a', art: 'odd', caption: { zh: '很多视角和中国更相近，所以更好对照', en: 'So many angles run close to China. Easy to compare.' } },
-        { id: 'korea-b', art: 'painting', caption: { zh: '我习惯站在「被侵略」那一边看历史', en: 'I grew up reading history from the invaded side.' } },
-        { id: 'korea-c', art: 'temple', caption: { zh: '在这儿，我们是「宗主国」那一边', en: 'Here, we are the suzerain side of the story.' } },
-        { id: 'korea-d', art: 'speech', caption: { zh: '她身边的人怕「不一样」，我一直觉得与众不同挺好', en: 'People around her fear differing. I always liked being different.' } },
-      ],
+      title: { zh: '首尔', en: 'Seoul' },
+      wip: true,
+      notes: [],
     },
     {
       key: 'planetree',
       title: { zh: '悬铃木的四季', en: 'Plane trees, four seasons' },
       shortTitle: { zh: '悬铃木', en: 'Plane trees' },
-      hook: { zh: '同一种树，跟着我换了好几个城市', en: 'one kind of tree, city after city' },
-      notes: [
-        { id: 'planetree-spring', art: 'tree', caption: { zh: '春天，新叶刚冒头', en: 'Spring: new leaves just out.' } },
-        { id: 'planetree-dusk', art: 'sparkle', caption: { zh: '傍晚，和路灯一起亮', en: 'Dusk: lit up with the street lamp.' } },
-        { id: 'planetree-winter', art: 'tree', caption: { zh: '冬天剪成光秃秃的样子', en: 'Winter: pruned down to bare arms.' } },
-        { id: 'planetree-bark', art: 'painting', caption: { zh: '树皮永远是那身迷彩', en: 'The bark always wears the same camo.' } },
-        { id: 'planetree-hug', art: 'heart', caption: { zh: '忍不住抱一下', en: 'Had to hug one.' } },
-      ],
+      wip: true,
+      notes: [],
     },
   ],
 } as const;
@@ -394,24 +362,17 @@ export const worldStudy = {
 
 export const coliving = {
   heading: { zh: '共居社区', en: 'Co-living' },
-  sub: { zh: '大理 · 西班牙乡间 · 首尔', en: 'Dali · rural Spain · Seoul' },
-  paragraphs: [
-    {
-      zh: '我们在大理、西班牙乡间、首尔都住过共居社区。它既是认识世界各地的人的窗口，也是理解当地的一种方式。',
-      en: 'We stayed in co-living communities in Dali, rural Spain, and Seoul. Each one is a window onto people from everywhere, and a way into the local place itself.',
-    },
-    {
-      zh: '西班牙乡村那个，长期支持欧洲青年回乡共建新农村。我们在的时候，他们用一周办了个黑客松，做了个村子水表系统的应用，很实用。',
-      en: 'The Spanish one has spent years helping young Europeans move back and rebuild their villages. While we were there they ran a week-long hackathon, and shipped a genuinely useful app for the village water meters.'
-    },
-    {
-      zh: '「地方」和「人」，是可以被技术认真对待的。',
-      en: 'Places and people can be taken seriously by technology.',
-    },
+  sub: { zh: '大理 · 西班牙 · 首尔 · 上海', en: 'Dali · Spain · Seoul · Shanghai' },
+  /** Places only for now. The write-up is unpublished - see the drafts note. */
+  places: [
+    { zh: '大理', en: 'Dali' },
+    { zh: '西班牙', en: 'Spain' },
+    { zh: '首尔', en: 'Seoul' },
+    { zh: '上海', en: 'Shanghai' },
   ],
   note: {
-    zh: '三个社区的详细对比，之后会单独写一篇 → 待续',
-    en: 'A fuller three-way comparison is coming as its own piece → to be continued',
+    zh: '四个社区的对比，之后单独写一篇',
+    en: 'A four-way comparison is coming as its own piece',
   },
 } as const;
 

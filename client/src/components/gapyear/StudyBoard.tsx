@@ -175,12 +175,17 @@ export default function StudyBoard({
               transition={{ duration: 0.28 }}
             >
               <h3 className="gy-h text-2xl md:text-3xl">{t(open.title)}</h3>
-              {open.hook && (
+              {open.wip && (
+                <div className="mt-4">
+                  <WipStamp />
+                </div>
+              )}
+              {!open.wip && open.hook && (
                 <p className="gy-hand text-xl md:text-2xl mt-1 opacity-95">
                   {t(open.hook)}
                 </p>
               )}
-              {open.chips && open.chips.length > 0 && (
+              {!open.wip && open.chips && open.chips.length > 0 && (
                 <div className="mt-4 flex flex-wrap items-center gap-x-1.5 md:gap-x-2 gap-y-2">
                   {open.chipsLabel && (
                     <span className="gy-h text-sm md:text-base opacity-55 whitespace-nowrap">
@@ -194,7 +199,7 @@ export default function StudyBoard({
                   ))}
                 </div>
               )}
-              {open.prose && open.prose.length > 0 && (
+              {!open.wip && open.prose && open.prose.length > 0 && (
                 <div className="mt-5 space-y-2 max-w-xl">
                   {open.prose.map((line, i) => (
                     <p key={i} className="leading-relaxed text-base md:text-lg opacity-92">
@@ -203,7 +208,7 @@ export default function StudyBoard({
                   ))}
                 </div>
               )}
-              {open.list && (
+              {!open.wip && open.list && (
                 <p className="mt-3 gy-hand text-lg md:text-xl leading-snug max-w-xl">
                   {open.list.label && (
                     <span className="gy-h text-sm md:text-base opacity-55 mr-2">
@@ -222,11 +227,6 @@ export default function StudyBoard({
                   ))}
                 </p>
               )}
-              {open.wip && (
-                <div className="mt-5">
-                  <WipStamp />
-                </div>
-              )}
               <div className="mt-4 flex flex-wrap gap-x-8 gap-y-6">
                 {groupNotes(open.notes).map((g, i) => (
                   <PhotoSpread
@@ -238,7 +238,7 @@ export default function StudyBoard({
                   />
                 ))}
               </div>
-              {open.closing && open.closing.length > 0 && (
+              {!open.wip && open.closing && open.closing.length > 0 && (
                 <div className="mt-5 space-y-1 max-w-xl">
                   {open.closing.map((line, i) => (
                     <p key={i} className="gy-hand text-xl md:text-2xl leading-snug opacity-95">

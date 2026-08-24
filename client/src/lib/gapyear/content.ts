@@ -36,13 +36,13 @@ export const toc: readonly TocEntry[] = [
   { key: 'shift', id: 'gy-shift', act: 'during', label: { zh: '最优解 → 小试错', en: 'optimal → experiments' } },
   { key: 'self', id: 'gy-self', act: 'during', label: { zh: '对自己的比较研究', en: 'studying myself' } },
   { key: 'collage', id: 'gy-collage', act: 'during', label: { zh: '世界的拼贴', en: 'world as collage' } },
-  { key: 'coliving', id: 'gy-coliving', act: 'during', label: { zh: '共居社区', en: 'co-living' } },
+  { key: 'coliving', id: 'gy-coliving', act: 'during', wip: true, label: { zh: '共居社区', en: 'co-living' } },
   { key: 'family', id: 'gy-family', act: 'during', label: { zh: '重新认识彼此', en: 'three generations' } },
   { key: 'good', id: 'gy-good', act: 'during', label: { zh: '向善的位置', en: 'tech for good' } },
   { key: 'startup', id: 'gy-startup', act: 'during', wip: true, label: { zh: '创业实验中', en: 'startup, mid-experiment' } },
   { key: 'ledger', id: 'gy-ledger', act: 'after', wip: true, label: { zh: 'Gap 的账本', en: 'the ledger of the gap' } },
   { key: 'qa', id: 'gy-qa', act: 'after', wip: true, label: { zh: '快问快答', en: 'quick Q&A' } },
-  { key: 'now', id: 'gy-now', act: 'after', label: { zh: '未完待续', en: 'to be continued' } },
+  { key: 'now', id: 'gy-now', act: 'after', wip: true, label: { zh: '未完待续', en: 'to be continued' } },
 ];
 
 export const title = {
@@ -142,32 +142,15 @@ export const toBeContinued = {
     zh: 'Gap 在 2026 年 5 月算是告一段落。人回了西雅图，事还没停。',
     en: "The gap more or less wrapped up in May 2026. I'm back in Seattle; most of what it started is still going.",
   },
-  items: [
-    {
-      key: 'atolla',
-      text: {
-        zh: 'Atolla：潜水 × 海洋生物识别的创业实验，还在水里',
-        en: 'Atolla: a startup experiment where scuba diving meets marine-life ID. Still in the water.',
-      },
+  /** The closing image: the 1957 first edition of On the Road. */
+  ending: {
+    alt: {
+      zh: '《在路上》1957 年初版封面',
+      en: 'On the Road, 1957 first edition cover',
     },
-    {
-      key: 'drawing',
-      text: {
-        zh: '画画记录生活，慢慢攒一本绘本',
-        en: 'Drawing daily life, one sketch at a time, saving up toward a picture book.',
-      },
+    caption: {
+      zh: 'Jack Kerouac《在路上》，1957 年初版封面',
+      en: 'Jack Kerouac, On the Road - first edition, 1957',
     },
-    {
-      key: 'advisory',
-      text: {
-        zh: '用 AI 给公益组织搭把手的咨询探索',
-        en: 'Exploring pro-bono AI advisory for nonprofits.',
-      },
-    },
-  ],
-  closing: {
-    zh: '还没都想明白，但比出发的时候，清楚了一点点。',
-    en: 'Not all figured out. Just a little clearer than when I set out.',
   },
-  ending: { zh: '未完待续', en: 'to be continued…' },
 } as const;
