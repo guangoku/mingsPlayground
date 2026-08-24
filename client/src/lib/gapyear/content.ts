@@ -4,13 +4,6 @@
  */
 import type { BilingualText } from '@/lib/types';
 
-export const meta = {
-  documentTitle: {
-    zh: '东一榔头，西一棒槌的 Gap Year | Ming\'s Playground',
-    en: 'A Whack Here, a Whack There | Ming\'s Playground',
-  } satisfies BilingualText,
-};
-
 export type ActKey = 'before' | 'during' | 'after';
 
 export const actLabels: Record<ActKey, { zh: string; en: string }> = {

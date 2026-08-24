@@ -101,8 +101,8 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
             <h2>{t({ en: "The team, then and now", zh: "团队：之前与现在" })}</h2>
             <p>
                 <L
-                    en={<>益盒 CharityBox is a Chinese social enterprise - research and advisory for effective giving, with 5M+ RMB steered to vetted programs. Its product: a WeChat mini-app where 1,500+ members run monthly donation pledges - payments, receipts, gifts, certificates - plus an admin portal and a research-and-events channel.</>}
-                    zh={<>益盒 CharityBox 是一家公益研究与咨询机构，用严格的影响力模型帮捐赠人识别对中国最紧迫问题有显著改变的底层解法，累计撬动 500 万+ 人民币。产品是一个微信小程序，1,500 多位会员在上面完成每月的月捐承诺，支付、开票、礼物、证书都在里面；此外还有一个管理后台和一个研究与活动频道。</>}
+                    en={<>益盒 CharityBox is a Chinese social enterprise - research and advisory for effective giving, with 5M+ RMB steered to vetted programs. Its product: a WeChat mini-app for 1,500+ members - a payment system (monthly pledges, one-time donations, birthday and group campaigns, matched giving), alongside receipts, donor gifts, certificates and a research-and-events channel, with an admin portal behind it.</>}
+                    zh={<>益盒 CharityBox 是一家公益研究与咨询机构，用严格的影响力模型帮捐赠人识别对中国最紧迫问题有显著改变的底层解法，累计撬动 500 万+ 人民币。产品是一个微信小程序，1,500 多位会员在上面捐赠。一套支付系统：月捐、次捐、生日捐、一起捐、配捐；开票、礼物、证书、研究与活动频道也都在里面；后面还有一个管理后台。</>}
                 />
             </p>
             <p>

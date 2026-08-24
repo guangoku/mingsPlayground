@@ -42,7 +42,7 @@ export const pieces: Piece[] = [
   {
     slug: 'charity-box',
     title: { en: 'CharityBox 益盒', zh: '益盒 CharityBox' },
-    role: { en: 'Volunteer · sole engineer', zh: '志愿 · 唯一工程师' },
+    role: { en: 'Pro bono · sole engineer', zh: '志愿 · 唯一工程师' },
     kicker: {
       en: 'An effective-giving research organisation in China.',
       zh: '一家做有效公益的研究与咨询机构。',
