@@ -430,3 +430,92 @@
 .odw .odw-closing h2 {
   margin-top: 0;
 }
+
+/* --- move marks ----------------------------------------------------------
+ * A drawn glyph beside each move's number. The essay's spine is four moves;
+ * these give the scroll a rhythm and a place for the eye to land, without
+ * asking the reader to decode another diagram.
+ */
+.odw .odw-move-mark {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.odw .odw-move-mark-svg {
+  width: 2.1rem;
+  height: 2.1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- impact figures ------------------------------------------------------
+ * The numbers were strong and buried mid-paragraph. As tiles they carry the
+ * section, and the prose underneath can stay prose.
+ */
+.odw .odw-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.75rem 0 2rem;
+}
+
+@media (min-width: 640px) {
+  .odw .odw-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.odw .odw-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 0.9rem;
+  border: 1px solid hsl(var(--odw-rule));
+  border-radius: 0.75rem;
+  background: hsl(var(--odw-panel));
+}
+
+.odw .odw-stat-n {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: hsl(var(--odw-accent));
+}
+
+.odw .odw-stat-l {
+  font-size: 0.83rem;
+  line-height: 1.4;
+  color: hsl(var(--muted-foreground));
+}
+
+/* --- closing sign-off ----------------------------------------------------
+ * The last section is an invitation, so it is the one place the piece can
+ * sound like a person rather than a report.
+ */
+.odw .odw-signoff {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px dashed hsl(var(--odw-rule));
+}
+
+.odw .odw-signoff img {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 999px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid hsl(var(--odw-panel));
+  box-shadow: 0 0 0 1px hsl(var(--odw-rule));
+}
+
+.odw .odw-signoff-text {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
+}
