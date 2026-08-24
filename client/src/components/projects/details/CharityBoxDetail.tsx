@@ -2,7 +2,8 @@ import { getBilingualText } from "@/lib/utils";
 import { type Language, type BilingualText } from "@/lib/types";
 import { type ProjectData } from "@/lib/projects";
 import { CHARITY_BOX_IMAGES } from "@/lib/projects/charity-box/images";
-import { ArrowUpRight, PenLine } from "lucide-react";
+import { ArrowRight, ArrowUpRight, PenLine } from "lucide-react";
+import { Link } from "react-router-dom";
 import AdvisoryCTA from "../AdvisoryCTA";
 
 interface CharityBoxDetailProps {
@@ -95,22 +96,34 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
                 </aside>
             )}
 
-            {/* Piece in progress */}
-            {project.upcoming && (
-                <div className="flex items-start gap-3 border-t border-black/10 dark:border-white/10 pt-8">
-                    <PenLine className="h-5 w-5 mt-0.5 flex-shrink-0 text-emerald-700 dark:text-emerald-300" />
-                    <div>
-                        <p className="font-display text-lg md:text-xl font-semibold tracking-tight">
-                            {t(project.upcoming.title)}
-                            <span className="ml-2 align-middle rounded-full bg-[#c7502a] px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-[#f3eeda]">
-                                {t({ en: 'in progress', zh: '写作中' })}
-                            </span>
+            {/* The write-up of this work, stacked as its own card - the page's
+                second act, not a footnote */}
+            {project.writeUp && (
+                <Link
+                    to={project.writeUp.href}
+                    className="group block rounded-2xl border border-emerald-600/25 bg-white/85 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-600/60 hover:shadow-xl hover:shadow-black/10 dark:border-emerald-300/25 dark:bg-white/[0.05] dark:hover:border-emerald-300/60 md:p-8"
+                    data-testid="link-charity-box-writeup"
+                >
+                    <p className="eyebrow flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+                        <PenLine className="h-4 w-4" />
+                        {t({ en: 'The write-up', zh: '工作复盘' })}
+                    </p>
+                    <p className="font-display mt-3 text-2xl font-bold tracking-tight md:text-3xl">
+                        {t(project.writeUp.title)}
+                    </p>
+                    {project.writeUp.kicker && (
+                        <p className="font-display mt-2 text-lg italic text-foreground/80 md:text-xl">
+                            {t(project.writeUp.kicker)}
                         </p>
-                        <p className="mt-1 text-sm md:text-base text-muted-foreground leading-relaxed">
-                            {t(project.upcoming.blurb)}
-                        </p>
-                    </div>
-                </div>
+                    )}
+                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                        {t(project.writeUp.blurb)}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 underline-offset-4 group-hover:underline dark:text-emerald-300">
+                        {t({ en: 'Read the piece', zh: '读这一篇' })}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                </Link>
             )}
 
             <AdvisoryCTA language={language} />

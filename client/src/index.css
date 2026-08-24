@@ -622,6 +622,28 @@
   opacity: 0.04;
 }
 
+/* A much scarcer cut of the ink doodles, for long-form reading pages where
+ * the full pattern competes with the text: a handful of motifs spread over a
+ * 520px tile instead of a dozen over 300px. */
+.sea-motifs-sparse {
+  position: relative;
+}
+
+.sea-motifs-sparse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%230E3A46' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M42 92 q13 -11 27 0 q-14 11 -27 0 Z'/%3E%3Cpath d='M69 92 l9 -6 l0 12 Z'/%3E%3Ccircle cx='398' cy='70' r='5'/%3E%3Ccircle cx='411' cy='56' r='3'/%3E%3Cpath d='M118 388 q3 8 11 8 q-6 5 -4 13 q-7 -4 -14 0 q2 -8 -4 -13 q8 0 11 -8 Z'/%3E%3C/g%3E%3Cg fill='%230E3A46'%3E%3Ccircle cx='51' cy='90' r='1.6'/%3E%3Cpath d='M310 238 q2.5 7 9 9 q-6.5 2 -9 9 q-2.5 -7 -9 -9 q6.5 -2 9 -9 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 520px 520px;
+  opacity: 0.05;
+}
+
+.dark .sea-motifs-sparse::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M42 92 q13 -11 27 0 q-14 11 -27 0 Z'/%3E%3Cpath d='M69 92 l9 -6 l0 12 Z'/%3E%3Ccircle cx='398' cy='70' r='5'/%3E%3Ccircle cx='411' cy='56' r='3'/%3E%3Cpath d='M118 388 q3 8 11 8 q-6 5 -4 13 q-7 -4 -14 0 q2 -8 -4 -13 q8 0 11 -8 Z'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='51' cy='90' r='1.6'/%3E%3Cpath d='M310 238 q2.5 7 9 9 q-6.5 2 -9 9 q-2.5 -7 -9 -9 q6.5 -2 9 -9 Z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
 /* Editorial headings for project/blog detail content. */
 .detail-title {
   @apply font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground;

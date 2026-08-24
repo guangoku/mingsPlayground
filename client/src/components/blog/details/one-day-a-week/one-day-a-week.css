@@ -1,0 +1,432 @@
+/* "One Day a Week" - article-scoped styles.
+ *
+ * The piece arrived as a self-contained essay with its own diagrams; this
+ * stylesheet re-voices it in the site's register: sea-glass paper, Playfair
+ * headings, the emerald accent the CharityBox page already speaks.
+ * Everything is scoped under .odw so nothing leaks into the rest of the site.
+ */
+
+.odw {
+  /* emerald accent, matching the CharityBox detail page */
+  --odw-accent: 163 94% 24%;
+  /* white panel for figures, like .resume-card and the QR card */
+  --odw-panel: 0 0% 100%;
+  /* sea-glass tint for story asides and code blocks */
+  --odw-soft: 187 30% 92%;
+  --odw-rule: 196 16% 84%;
+
+  max-width: 42rem;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: hsl(var(--foreground));
+}
+
+.dark .odw {
+  --odw-accent: 156 62% 60%;
+  --odw-panel: 200 25% 12%;
+  --odw-soft: 197 26% 15%;
+  --odw-rule: 220 18% 22%;
+}
+
+/* Chinese runs denser than Latin; give it more air. */
+.odw.odw-zh {
+  line-height: 1.9;
+}
+
+.odw p {
+  margin: 0 0 1.1rem;
+}
+
+.odw ul {
+  margin: 0 0 1.1rem;
+  padding-left: 1.4rem;
+  list-style: disc;
+}
+
+.odw ul li {
+  margin-bottom: 0.35rem;
+}
+
+.odw a {
+  color: hsl(var(--odw-accent));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: hsl(var(--odw-accent) / 0.4);
+}
+
+.odw a:hover {
+  text-decoration-color: hsl(var(--odw-accent));
+}
+
+.odw strong {
+  font-weight: 650;
+}
+
+/* --- headings ------------------------------------------------------------ */
+
+.odw h2 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 3rem 0 1rem;
+  text-wrap: balance;
+}
+
+.odw .odw-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: hsl(var(--odw-accent));
+  margin-bottom: 0.4rem;
+}
+
+/* --- hero ---------------------------------------------------------------- */
+
+.odw .odw-hero {
+  margin-bottom: 2.5rem;
+}
+
+.odw .odw-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+  margin: 0.9rem 0 0;
+  text-wrap: balance;
+}
+
+.odw .odw-subtitle strong {
+  font-weight: 700;
+  color: hsl(var(--odw-accent));
+}
+
+@media (max-width: 480px) {
+  .odw .odw-subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+.odw .odw-hero-rule {
+  border: 0;
+  border-top: 2px solid hsl(var(--odw-accent));
+  width: 3.5rem;
+  margin: 1.5rem 0 0;
+}
+
+/* --- story asides (the lede and the magic-date reveal) ------------------- */
+
+.odw .odw-story {
+  background: hsl(var(--odw-soft));
+  border-left: 3px solid hsl(var(--odw-accent));
+  border-radius: 0 6px 6px 0;
+  padding: 1.1rem 1.3rem 1.15rem;
+  margin: 1.6rem 0 2rem;
+}
+
+.odw .odw-story::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.odw .odw-story p {
+  margin: 0 0 0.7rem;
+}
+
+.odw .odw-story p:last-child {
+  margin: 0;
+}
+
+.odw .odw-side-ill {
+  float: right;
+  width: 124px;
+  height: auto;
+  margin: 0.2rem 0.2rem 0.6rem 1.4rem;
+  color: hsl(var(--foreground));
+}
+
+@media (max-width: 480px) {
+  .odw .odw-side-ill {
+    width: 100px;
+    margin-left: 1rem;
+  }
+}
+
+/* --- reader call, small labels ------------------------------------------- */
+
+.odw .odw-reader-call {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  border-top: 1px solid hsl(var(--odw-accent) / 0.55);
+  border-bottom: 1px solid hsl(var(--odw-accent) / 0.55);
+  padding: 1rem 0.2rem;
+  margin: 1.8rem 0 2rem;
+}
+
+.odw .odw-eng-tag {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  margin: -0.2rem 0 0.4rem;
+}
+
+.odw .odw-fn {
+  font-size: 0.82rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: -0.5rem;
+}
+
+.odw .odw-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* --- workspace tree, skill excerpt --------------------------------------- */
+
+.odw .odw-tree {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  background: hsl(var(--odw-soft));
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1.1rem;
+  overflow-x: auto;
+  color: hsl(var(--foreground));
+}
+
+.odw .odw-tree .c {
+  color: hsl(var(--muted-foreground));
+}
+
+.odw .odw-skill {
+  font-family: var(--font-mono);
+  font-size: 0.83rem;
+  line-height: 1.7;
+  background: hsl(var(--odw-panel));
+  border: 1px solid hsl(var(--odw-rule));
+  border-radius: 8px;
+  margin: 1.4rem 0;
+  padding: 0.9rem 1.2rem 1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.odw .odw-skill .odw-label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid hsl(var(--odw-rule));
+  margin: -0.2rem 0 0.7rem;
+}
+
+.odw .odw-skill p {
+  margin: 0 0 0.35rem;
+}
+
+.odw .odw-skill p:last-child {
+  margin: 0;
+}
+
+/* --- the harness rules table --------------------------------------------- */
+
+.odw table.odw-rules {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0 0 1.2rem;
+}
+
+.odw table.odw-rules th {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+}
+
+.odw table.odw-rules th,
+.odw table.odw-rules td {
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid hsl(var(--odw-rule));
+  text-align: left;
+  vertical-align: top;
+}
+
+.odw table.odw-rules th:first-child,
+.odw table.odw-rules td:first-child {
+  width: 34%;
+  min-width: 9rem;
+}
+
+/* --- figures and diagrams ------------------------------------------------- */
+
+.odw figure {
+  margin: 2rem 0;
+  padding: 1.4rem 1rem 1rem;
+  background: hsl(var(--odw-panel));
+  border: 1px solid hsl(var(--odw-rule));
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 1px 2px hsl(222 47% 11% / 0.04), 0 12px 32px -16px hsl(222 47% 11% / 0.1);
+}
+
+.dark .odw figure {
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.2), 0 12px 32px -16px hsl(0 0% 0% / 0.4);
+}
+
+.odw figure svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  color: hsl(var(--foreground));
+}
+
+.odw figcaption {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+.odw figcaption.emph {
+  font-size: 0.92rem;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+/* diagram vocabulary, shared by all figures */
+.odw .d-box {
+  fill: hsl(var(--odw-panel));
+  stroke: currentColor;
+  stroke-width: 1.3;
+}
+
+.odw .d-box-accent {
+  fill: hsl(var(--odw-panel));
+  stroke: hsl(var(--odw-accent));
+  stroke-width: 1.6;
+}
+
+.odw .d-box-dashed {
+  fill: none;
+  stroke: hsl(var(--muted-foreground));
+  stroke-width: 1.3;
+  stroke-dasharray: 5 4;
+}
+
+.odw .d-box-owned-accent {
+  fill: hsl(var(--odw-soft));
+  stroke: hsl(var(--odw-accent));
+  stroke-width: 1.6;
+}
+
+.odw .d-line {
+  stroke: currentColor;
+  stroke-width: 1.2;
+  fill: none;
+}
+
+.odw .d-line-accent {
+  stroke: hsl(var(--odw-accent));
+  stroke-width: 1.6;
+  fill: none;
+}
+
+.odw .d-divider {
+  stroke: hsl(var(--odw-rule));
+  stroke-width: 1.2;
+  stroke-dasharray: 3 5;
+}
+
+.odw .d-t {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  fill: currentColor;
+}
+
+.odw .d-t-strong {
+  font-weight: 600;
+}
+
+.odw .d-t-sub {
+  font-size: 11px;
+  fill: hsl(var(--muted-foreground));
+}
+
+.odw .d-t-label {
+  font-size: 11px;
+  fill: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+.odw .d-t-accent {
+  fill: hsl(var(--odw-accent));
+  font-weight: 600;
+}
+
+.odw .d-t-chip {
+  font-size: 11.5px;
+}
+
+.odw .d-t-paid {
+  font-size: 11px;
+  font-weight: 600;
+  fill: hsl(27 85% 42%);
+}
+
+.dark .odw .d-t-paid {
+  fill: hsl(40 70% 60%);
+}
+
+.odw .d-t-panel {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: hsl(var(--muted-foreground));
+  font-weight: 600;
+}
+
+.odw .arrow-head {
+  fill: currentColor;
+}
+
+.odw .arrow-head-accent {
+  fill: hsl(var(--odw-accent));
+}
+
+/* --- closing ------------------------------------------------------------- */
+
+.odw .odw-closing {
+  border-top: 1px solid hsl(var(--odw-rule));
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.odw .odw-closing h2 {
+  margin-top: 0;
+}

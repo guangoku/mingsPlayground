@@ -26,6 +26,15 @@ export interface Piece {
   cover?: string;
   /** object-position for the cover, when centre-cropping would cut the subject. */
   coverPosition?: string;
+  /** A drawn cover instead of a photo - see components/content/covers. */
+  coverArt?: string;
+  /**
+   * How much of the card the cover occupies.
+   * - "banner" (default) - a band above the text
+   * - "full"   - the cover is the card, text sits on it
+   * - "strip"  - a narrow band, so the typography leads
+   */
+  coverLayout?: 'banner' | 'full' | 'strip';
   weight: PieceWeight;
   topics: PieceTopic[];
   status: PieceStatus;

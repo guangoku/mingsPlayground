@@ -3,14 +3,11 @@
  * Dynamically loads images from specific directories
  */
 
-// Hero image
-import heroImage from '@assets/projects/charity-box/hero.jpg';
-
 // WeChat mini-program QR - the only way into the product
 import miniProgramQr from '@assets/projects/charity-box/miniprogram-qr.png';
 
-// Landscape crop of the hero used as the landing-page card cover
-import cardCover from '@assets/projects/charity-box/card.jpg';
+// Torn-paper collage used as the landing-page card cover
+import cardCover from '@assets/projects/charity-box/collage.webp';
 
 // Dynamically import poster images
 const posterImages = import.meta.glob('@assets/projects/charity-box/posters/*.{png,jpg,jpeg,webp,JPG}', { 
@@ -29,7 +26,6 @@ const posterGallery = Object.values(posterImages) as string[];
 const screenshotGallery = Object.values(screenshotImages) as string[];
 
 export const CHARITY_BOX_IMAGES = {
-  hero: heroImage,
   card: cardCover,
   miniProgramQr,
   posters: posterGallery,

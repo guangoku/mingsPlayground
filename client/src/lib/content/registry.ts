@@ -4,6 +4,8 @@
  * stay defined in exactly one place.
  */
 import { projects } from '@/lib/projects';
+import atollaCard from '@assets/projects/atolla-ocean/card.jpg';
+import charityBoxCollage from '@assets/projects/charity-box/collage.webp';
 import { type Piece } from './types';
 
 const coverOf = (projectSlug: string): string | undefined =>
@@ -22,7 +24,13 @@ export const pieces: Piece[] = [
       en: 'My startup. AI that turns raw dive footage into a finished dive story - the species you saw, and the moments worth keeping.',
       zh: '我创办的公司。用 AI 把杂乱的潜水影像变成一段完整的潜水故事——你看到的物种，和值得留下的瞬间。',
     },
-    cover: coverOf('atolla-ocean'),
+    // The site screenshot carried its own headline; this is a frame from the
+    // dives the product is built on, which competes with nothing.
+    cover: atollaCard,
+    // Anchoring left keeps the jellyfish out of the text when the card
+    // narrows on mobile and the frame crops horizontally.
+    coverPosition: 'left center',
+    coverLayout: 'full',
     weight: 'flagship',
     topics: ['startup'],
     status: 'live',
@@ -42,13 +50,31 @@ export const pieces: Piece[] = [
       en: 'Donors pledge 1% of their income through its platform, to charities its researchers have vetted. I am the only engineer on it.',
       zh: '捐赠人通过它的平台承诺捐出收入的 1%，捐给研究团队筛选过的项目。这个平台唯一的工程师是我。',
     },
-    cover: coverOf('charity-box'),
-    // the pledge line sits on the left; keep it when the slot narrows
-    coverPosition: 'left center',
+    // The campaign poster carried its own headline, which out-shouted the
+    // card's title. A torn-paper collage has no words to compete with.
+    cover: charityBoxCollage,
+    coverLayout: 'full',
     weight: 'flagship',
     topics: ['for-good', 'building'],
     status: 'live',
     href: '/projects/charity-box',
+  },
+  {
+    slug: 'one-day-a-week',
+    title: { en: 'One Day a Week', zh: '每周一天' },
+    kicker: {
+      en: 'An entire tech team - solo, with AI.',
+      zh: '一个人加 AI，当整个技术团队。',
+    },
+    blurb: {
+      en: 'The CharityBox work, written up: four moves that let one volunteer day a week cover what used to take a team.',
+      zh: '益盒工作的复盘：四步，让每周一天的志愿时间，顶住原来一个团队的活儿。',
+    },
+    coverArt: 'one-day-a-week',
+    weight: 'story',
+    topics: ['for-good', 'building'],
+    status: 'live',
+    href: '/blog/one-day-a-week',
   },
   {
     slug: 'gap-year',

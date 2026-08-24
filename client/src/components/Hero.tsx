@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Waves } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import octopusGirlOrange from "@assets/hero_cover.png";
+import octopusGirlOrange from "@assets/hero_cover.webp";
 import WaveDivider from "./WaveDivider";
 import { getBilingualText } from "@/lib/utils";
 import { type Language } from "@/lib/types";
