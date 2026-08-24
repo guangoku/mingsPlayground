@@ -21,7 +21,7 @@ export const MORE_SHELF: Shelf = {
     en: 'Stories and smaller notes - drawn, built, or written along the way.',
     zh: '一些故事和小记，画的、做的、写的都有。',
   },
-  pieces: ['octopus-girl', 'catch-and-keep', 'nepal-travel'],
+  pieces: ['one-day-a-week', 'octopus-girl', 'catch-and-keep', 'nepal-travel'],
 };
 
 export const shelves: Shelf[] = [FEATURED_SHELF, MORE_SHELF];
