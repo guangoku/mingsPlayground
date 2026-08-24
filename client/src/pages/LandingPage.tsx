@@ -28,11 +28,23 @@ function LandingPage() {
         document.documentElement.classList.toggle('dark', shouldBeDark);
     }, []);
 
-    // Coming back from a piece page should land where you left off.
+    // Coming back from a piece page should land where you left off - unless the
+    // link named a section, in which case that wins. Otherwise "Work" would
+    // return you to whatever you were last reading.
     useLayoutEffect(() => {
         const saved = sessionStorage.getItem('landing-scroll');
+        sessionStorage.removeItem('landing-scroll');
+
+        const target = window.location.hash.replace('#', '');
+        if (target) {
+            const el = document.getElementById(target);
+            if (el) {
+                window.scrollTo(0, Math.max(0, el.offsetTop - 80));
+                return;
+            }
+        }
+
         if (saved) {
-            sessionStorage.removeItem('landing-scroll');
             window.scrollTo(0, Number(saved));
         }
     }, []);

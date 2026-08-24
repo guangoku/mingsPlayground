@@ -38,9 +38,14 @@ const landingNavItems: NavItem[] = [
     { id: 'contact', label: { en: 'Contact', zh: '联系' }, href: '#contact', type: 'scroll' },
 ];
 
-const projectNavItems: NavItem[] = [
-    { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/', type: 'route' },
-    { id: 'projects', label: { en: 'Work', zh: '在忙的' }, href: '/', type: 'route' },
+/* Shown on every detail page - a project, a post, anything you reach from a
+ * card. Both entries carry the section they name: bare "/" would hand the
+ * landing page back to its saved scroll position, which lands you wherever you
+ * happened to be reading rather than where the link said it would go. */
+const detailNavItems: NavItem[] = [
+    { id: 'home', label: { en: 'Home', zh: '首页' }, href: '/#hero', type: 'route' },
+    { id: 'projects', label: { en: 'Work', zh: '在忙的' }, href: '/#projects', type: 'route' },
+    { id: 'blog', label: { en: 'More', zh: '其他角落' }, href: '/#blog', type: 'route' },
 ];
 
 export default function BaseNavigation({
@@ -147,8 +152,8 @@ export default function BaseNavigation({
     const getNavItems = (): NavItem[] => {
         switch (variant) {
             case 'project':
-                return projectNavItems;
             case 'blog':
+                return detailNavItems;
             case 'minimal':
                 return [];
             default:
@@ -222,8 +227,7 @@ export default function BaseNavigation({
                                 <Link
                                     key={item.id}
                                     to={item.href}
-                                    className={`text-base font-semibold transition-colors hover:text-white ${location.pathname === item.href ? 'text-white' : 'text-white/80'
-                                        }`}
+                                    className={`text-base font-semibold transition-colors ${navMutedColor} ${navHoverColor}`}
                                 >
                                     {getBilingualText(item.label, language)}
                                 </Link>
