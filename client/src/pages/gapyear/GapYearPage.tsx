@@ -1,8 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/hooks/useLanguage';
-import { getBilingualText } from '@/lib/utils';
-import { meta, toc } from '@/lib/gapyear/content';
+import { toc } from '@/lib/gapyear/content';
 import RedThread from '@/components/gapyear/RedThread';
 import TitleSlide from '@/components/gapyear/sections/TitleSlide';
 import WhoIsMing from '@/components/gapyear/sections/WhoIsMing';
@@ -32,10 +31,6 @@ export default function GapYearPage() {
   const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
   const isStatic = params?.has('static') ?? false;
   const isCompact = params?.has('compact') ?? false;
-
-  useEffect(() => {
-    document.title = getBilingualText(meta.documentTitle, language);
-  }, [language]);
 
   // Header gets a backdrop once the page scrolls
   useEffect(() => {

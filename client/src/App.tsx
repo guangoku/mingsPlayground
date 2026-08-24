@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/hooks/useLanguage";
+import RouteTitle from "@/components/RouteTitle";
 import LandingPage from "@/pages/LandingPage";
 import ProjectPostPage from "@/pages/projects/ProjectPostPage";
 import BlogPostPage from "@/pages/blog/BlogPostPage";
@@ -12,6 +13,7 @@ function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        <RouteTitle />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           {/* Dynamic project page */}
