@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Download, MapPin, Mail, Phone, Globe, Calendar, Waves, Building, ArrowLeft, GraduationCap } from "lucide-react";
 import AmazonLogo from "../../../attached_assets/logos/logo_amazon.png";
 import ColumbiaLogo from "../../../attached_assets/logos/logo_columbia.png";
-import XiamenLogo from "../../../attached_assets/logos/logo_xiamen_university.png";
+import XiamenLogo from "../../../attached_assets/logos/logo_xiamen_university.webp";
 import UMLogo from "../../../attached_assets/logos/logo_um.png";
 import { getBilingualText } from "@/lib/utils";
 import { LANGUAGES } from "@/lib/constants";

@@ -4,7 +4,7 @@
  */
 
 // Hero image
-import heroImage from '@assets/projects/nepal-travel/hero.jpg';
+import heroImage from '@assets/projects/nepal-travel/hero.webp';
 
 // Page images (placeholder for future additions)
 // import page1 from '@assets/projects/nepal-travel/pages/page-01.jpg';

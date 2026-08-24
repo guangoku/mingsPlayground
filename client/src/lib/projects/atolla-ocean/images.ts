@@ -5,7 +5,7 @@
  */
 
 // Hero image (screenshot of atollaocean.com). hero.svg kept as a fallback placeholder.
-import heroImage from '@assets/projects/atolla-ocean/cover.png';
+import heroImage from '@assets/projects/atolla-ocean/cover.webp';
 
 // Dynamically import screenshot images (none yet — glob returns [] until added)
 const screenshotImages = import.meta.glob('@assets/projects/atolla-ocean/screenshots/*.{png,jpg,jpeg,webp}', {

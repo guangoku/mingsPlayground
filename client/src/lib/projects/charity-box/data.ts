@@ -91,11 +91,16 @@ export const charityBoxData: ProjectData = {
     }
   },
 
-  upcoming: {
-    title: { en: 'One Day a Week', zh: 'One Day a Week' },
+  writeUp: {
+    title: { en: 'One Day a Week', zh: '每周一天' },
+    kicker: {
+      en: 'Being an entire tech team for a mission-driven org - solo, with AI.',
+      zh: '独自一人，带着 AI，做一家公益机构的整个技术团队。'
+    },
     blurb: {
-      en: 'Being an entire tech team for a mission-driven org - solo, with AI. Writing this one up now.',
-      zh: '一个人，加上 AI，给一家公益机构当整个技术团队。正在写。'
-    }
+      en: 'The full write-up of this work: four moves that let one volunteer day a week cover what used to take a team.',
+      zh: '这份工作的完整复盘：四步，让每周一天的志愿时间，顶住原来一个团队的活儿。'
+    },
+    href: '/blog/one-day-a-week'
   }
 };

@@ -6,9 +6,20 @@ vite.config.ts.*
 *.tar.gz
 .vercel
 
+# Local agent tooling. This is also where git worktrees live, so keeping it
+# out of git prevents a worktree ever being committed by accident.
+.claude/
+
 # Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Source-sized media. attached_assets holds the web-sized derivatives that the
+# app imports; keep the originals (camera files, screen recordings, raw exports)
+# out of git, since it stores them forever even after a later delete.
+*.mp4
+*.mov
+attached_assets/**/Screenshot *

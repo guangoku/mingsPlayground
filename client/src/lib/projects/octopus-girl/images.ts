@@ -4,8 +4,8 @@
  */
 
 // Individual images
-import heroImage from '@assets/projects/octopus-girl/hero.png';
-import aboutOctopus from '@assets/projects/octopus-girl/aboutOctopus/aboutOctopus.png';
+import heroImage from '@assets/projects/octopus-girl/hero.webp';
+import aboutOctopus from '@assets/projects/octopus-girl/aboutOctopus/aboutOctopus.webp';
 
 // Dynamically import initial design images
 const initialDesignImages = import.meta.glob('@assets/projects/octopus-girl/initialDesign/*.{png,jpg,jpeg,webp}', { 
