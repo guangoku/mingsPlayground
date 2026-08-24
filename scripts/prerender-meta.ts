@@ -8,9 +8,12 @@
  * a crawler reads. The bundle is byte-identical, so React still takes over
  * and renders the real page.
  *
- * Vercel checks the filesystem before it applies the SPA rewrite in
- * vercel.json, so dist/gap-year/index.html wins for /gap-year and the
- * rewrite still catches everything else.
+ * vercel.json names each of these routes ahead of the catch-all SPA rewrite,
+ * so the per-route file wins by rule rather than by relying on how Vercel
+ * orders the filesystem check. The check below fails the build if the two
+ * lists ever drift apart - a route added here and forgotten there would
+ * silently fall back to the home page's card, which is the exact bug this
+ * script exists to fix.
  *
  * Runs after `vite build`; see the build script in package.json.
  */
@@ -53,6 +56,19 @@ const headFor = (route: string, meta: ShareMeta): string => {
     `    <link rel="canonical" href="${url}" />`,
   ].join('\n');
 };
+
+const routes = Object.keys(ROUTE_META).filter((route) => route !== '/');
+
+const rewrites: Array<{ source: string }> = JSON.parse(
+  readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'),
+).rewrites;
+const missing = routes.filter((route) => !rewrites.some((rule) => rule.source === route));
+if (missing.length > 0) {
+  throw new Error(
+    `vercel.json has no rewrite for ${missing.join(', ')}. Add one per route, ` +
+      'above the catch-all, pointing at "<route>/index.html".',
+  );
+}
 
 const template = readFileSync(path.join(DIST, 'index.html'), 'utf8');
 if (!template.includes('<title>')) {

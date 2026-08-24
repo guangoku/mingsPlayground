@@ -1,6 +1,34 @@
 {
     "rewrites": [
         {
+            "source": "/blog/one-day-a-week",
+            "destination": "/blog/one-day-a-week/index.html"
+        },
+        {
+            "source": "/gap-year",
+            "destination": "/gap-year/index.html"
+        },
+        {
+            "source": "/projects/atolla-ocean",
+            "destination": "/projects/atolla-ocean/index.html"
+        },
+        {
+            "source": "/projects/charity-box",
+            "destination": "/projects/charity-box/index.html"
+        },
+        {
+            "source": "/projects/octopus-girl",
+            "destination": "/projects/octopus-girl/index.html"
+        },
+        {
+            "source": "/projects/catch-and-keep",
+            "destination": "/projects/catch-and-keep/index.html"
+        },
+        {
+            "source": "/projects/nepal-travel",
+            "destination": "/projects/nepal-travel/index.html"
+        },
+        {
             "source": "/((?!api|src|@vite|@react-refresh|@fs|node_modules).*)",
             "destination": "/index.html"
         }
