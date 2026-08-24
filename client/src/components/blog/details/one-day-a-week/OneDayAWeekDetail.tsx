@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import octopusSignoff from "@assets/projects/one-day-a-week/author-mark.webp";
 import { getBilingualText } from "@/lib/utils";
 import { type Language, type BilingualText } from "@/lib/types";
 import {
@@ -9,6 +10,10 @@ import {
     RepetitionLadderFigure,
     TriageFlowFigure,
     OpsPipelineFigure,
+    MarkWorkspace,
+    MarkHarness,
+    MarkLoop,
+    MarkHandover,
 } from "./diagrams";
 import "./one-day-a-week.css";
 
@@ -161,6 +166,7 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
             </p>
 
             <h2>
+                <span className="odw-move-mark"><MarkWorkspace className="odw-move-mark-svg" /></span>
                 <span className="odw-eyebrow">{t({ en: "Move 1", zh: "第 1 步" })}</span>
                 {t({ en: "Context and memory", zh: "上下文与记忆（Context and Memory）" })}
             </h2>
@@ -196,6 +202,7 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
             </p>
 
             <h2>
+                <span className="odw-move-mark"><MarkHarness className="odw-move-mark-svg" /></span>
                 <span className="odw-eyebrow">{t({ en: "Move 2", zh: "第 2 步" })}</span>
                 {t({ en: "The harness", zh: "护栏（Harness）" })}
             </h2>
@@ -306,6 +313,7 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
             </p>
 
             <h2>
+                <span className="odw-move-mark"><MarkLoop className="odw-move-mark-svg" /></span>
                 <span className="odw-eyebrow">{t({ en: "Move 3", zh: "第 3 步" })}</span>
                 {t({ en: "The compounding loop", zh: "复利循环" })}
             </h2>
@@ -428,6 +436,7 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
             </p>
 
             <h2>
+                <span className="odw-move-mark"><MarkHandover className="odw-move-mark-svg" /></span>
                 <span className="odw-eyebrow">{t({ en: "Move 4", zh: "第 4 步" })}</span>
                 {t({ en: "Built to be owned", zh: "为移交而建" })}
             </h2>
@@ -492,6 +501,36 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
                     zh={<>这些换来了什么？三件事，外加一笔账。</>}
                 />
             </p>
+
+            {/* The numbers are the strongest thing in this section and they were
+                buried mid-paragraph. Lifted out, they also give the scroll a
+                place to breathe. */}
+            <div className="odw-stats">
+                <div className="odw-stat">
+                    <span className="odw-stat-n">~70%</span>
+                    <span className="odw-stat-l">
+                        {t({ en: "of the weekly manual effort, gone", zh: "每周手工投入消失" })}
+                    </span>
+                </div>
+                <div className="odw-stat">
+                    <span className="odw-stat-n">36</span>
+                    <span className="odw-stat-l">
+                        {t({ en: "tasks shipped in three months", zh: "三个月完成的任务" })}
+                    </span>
+                </div>
+                <div className="odw-stat">
+                    <span className="odw-stat-n">2</span>
+                    <span className="odw-stat-l">
+                        {t({ en: "big builds brought in-house", zh: "大项目收回自建" })}
+                    </span>
+                </div>
+                <div className="odw-stat">
+                    <span className="odw-stat-n">1</span>
+                    <span className="odw-stat-l">
+                        {t({ en: "volunteered day a week", zh: "每周志愿一天" })}
+                    </span>
+                </div>
+            </div>
             <p>
                 <L
                     en={<>The ops team got their week back. <strong>About 70% of the weekly manual effort is gone</strong> - their number, and largely their own doing: the pipeline moves the data, and everything running on top of it they built themselves.</>}
@@ -622,6 +661,17 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
                         zh={<>想聊聊的话，<Link to="/#contact">网站上</Link>有我的邮箱。</>}
                     />
                 </p>
+
+                {/* The one place the piece signs off as a person. */}
+                <div className="odw-signoff">
+                    <img src={octopusSignoff} alt="" loading="lazy" aria-hidden />
+                    <p className="odw-signoff-text">
+                        {t({
+                            en: 'One day a week, still going.',
+                            zh: '每周一天，还在继续。',
+                        })}
+                    </p>
+                </div>
             </div>
         </article>
     );

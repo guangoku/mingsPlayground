@@ -347,3 +347,56 @@ export function OpsPipelineFigure({ t }: DiagramProps) {
         </figure>
     );
 }
+
+/* ---------------------------------------------------------------------------
+ * Small marks. The essay is long and the four moves are its spine, so each one
+ * gets a drawn glyph beside its number - enough to give the scroll a rhythm
+ * without turning an engineering write-up into a picture book.
+ * ------------------------------------------------------------------------- */
+
+/** Move 1 - one workspace holding three codebases. */
+export function MarkWorkspace({ className = '' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden>
+            <rect x="4" y="9" width="32" height="25" rx="3" className="d-box-accent" />
+            <path d="M4 15h32" className="d-line-accent" />
+            <path d="M4 12.5c0-2 1-3.5 3-3.5h9l2.5 3" className="d-line-accent" />
+            <path d="M11 21h7M11 25.5h12M22 21h7" className="d-line" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+/** Move 2 - the leash: a boundary the work stays inside. */
+export function MarkHarness({ className = '' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden>
+            <path d="M20 5l13 5v9c0 8-5.5 13.5-13 16-7.5-2.5-13-8-13-16v-9z" className="d-box-accent" />
+            <path d="M14.5 20.5l4 4 7.5-8" className="d-line-accent" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+/** Move 3 - the compounding loop that eats repetition. */
+export function MarkLoop({ className = '' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden>
+            <path d="M32 20a12 12 0 1 1-4.2-9.1" className="d-line-accent" strokeWidth={2} strokeLinecap="round" />
+            <path d="M28.5 4.5v6.8h-6.8" className="d-line-accent" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="20" cy="20" r="3.4" className="d-box-owned-accent" />
+        </svg>
+    );
+}
+
+/** Move 4 - handing the controls outward. */
+export function MarkHandover({ className = '' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden>
+            <rect x="3.5" y="14" width="12" height="12" rx="2.5" className="d-box" />
+            <rect x="24.5" y="14" width="12" height="12" rx="2.5" className="d-box-owned-accent" />
+            <path d="M16.5 20h7" className="d-line-accent" strokeWidth={2} strokeLinecap="round" />
+            <path d="M21 17l3 3-3 3" className="d-line-accent" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+export const MOVE_MARKS = [MarkWorkspace, MarkHarness, MarkLoop, MarkHandover];
