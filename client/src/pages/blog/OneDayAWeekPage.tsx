@@ -46,6 +46,7 @@ export default function OneDayAWeekPage() {
                 isDark={isDark}
                 onThemeToggle={handleThemeToggle}
                 onLanguageToggle={toggleLanguage}
+                title={{ en: 'One Day a Week', zh: '每周一天' }}
                 onBack={handleBack}
                 backText={{ en: 'Back', zh: '返回' }}
             />

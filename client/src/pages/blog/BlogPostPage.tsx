@@ -83,7 +83,7 @@ export default function BlogPostPage() {
                 isDark={isDark}
                 onThemeToggle={handleThemeToggle}
                 onLanguageToggle={toggleLanguage}
-                currentProjectId={post.id}
+                title={post.title}
                 onBack={handleBack}
                 backText={{ en: 'Back', zh: '返回' }}
             />

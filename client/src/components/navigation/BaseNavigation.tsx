@@ -23,6 +23,9 @@ export interface NavigationProps {
     onLanguageToggle: () => void;
     variant?: 'landing' | 'project' | 'blog' | 'minimal';
     currentProjectId?: string;
+    /** Title shown beside the back button on a blog post, so a post's header
+     *  reads the same way a project's does. */
+    title?: { en: string; zh: string };
     onBack?: () => void;
     backText?: { en: string; zh: string };
 }
@@ -47,6 +50,7 @@ export default function BaseNavigation({
     onLanguageToggle,
     variant = 'landing',
     currentProjectId,
+    title,
     onBack,
     backText = { en: 'Back', zh: '返回' }
 }: NavigationProps) {
@@ -193,14 +197,15 @@ export default function BaseNavigation({
                                     className="flex items-center gap-2 flex-shrink-0"
                                 >
                                     <ArrowLeft className="h-4 w-4" />
-                                    {getBilingualText(backText, language)}
+                                    <span className="hidden sm:inline">{getBilingualText(backText, language)}</span>
                                 </Button>
-                                {currentProjectId && (
-                                    <div className="hidden sm:block">
-                                        <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">
-                                            Blog #{currentProjectId}
-                                        </span>
-                                    </div>
+                                {title && (
+                                    <>
+                                        <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
+                                        <h1 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white truncate min-w-0">
+                                            {getBilingualText(title, language)}
+                                        </h1>
+                                    </>
                                 )}
                             </div>
                         ) : (
