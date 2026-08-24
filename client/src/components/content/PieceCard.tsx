@@ -31,7 +31,9 @@ export default function PieceCard({
     const compact = variant === "compact";
     const onDark = tone === "dark";
     const inProgress = piece.status === "in-progress";
-    const linkable = !inProgress && Boolean(piece.href);
+    // An in-progress piece still links once it has somewhere to go; the badge
+    // stays so the reader knows it is still being built.
+    const linkable = Boolean(piece.href);
     const CoverArt = piece.coverArt ? COVER_ART[piece.coverArt] : undefined;
     const layout = piece.coverLayout ?? "banner";
     // "full" reads the text on the artwork, so it is always read on dark.
@@ -187,10 +189,32 @@ export default function PieceCard({
     const cardShell = `group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 ${shell} ${linkable ? "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/25" : ""
         }`;
 
+    /**
+     * Paper edges peeking out behind the card, so a piece that holds more than
+     * one page looks like it. Decorative only - the layers are inert and the
+     * card on top keeps every interactive element.
+     */
+    const withStack = (card: ReactNode) =>
+        piece.stacked ? (
+            <div className="relative h-full">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-5 -bottom-[10px] top-2 rounded-2xl border border-black/10 bg-white/70 shadow-sm dark:border-white/15 dark:bg-[hsl(200_30%_16%)]"
+                />
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-2.5 -bottom-[5px] top-1 rounded-2xl border border-black/10 bg-white/85 shadow-sm dark:border-white/20 dark:bg-[hsl(200_28%_20%)]"
+                />
+                <div className="relative h-full">{card}</div>
+            </div>
+        ) : (
+            card
+        );
+
     // The cover is the card, and the text sits on it. Only safe for artwork
     // that carries no words of its own.
     if (full) {
-        return (
+        return withStack(
             <article
                 className={`${cardShell} relative isolate flex h-full flex-col ${lead ? "min-h-[22rem]" : compact ? "min-h-[15rem]" : "min-h-[19rem]"
                     }`}
@@ -211,7 +235,7 @@ export default function PieceCard({
         );
     }
 
-    return (
+    return withStack(
         <article
             className={`${cardShell} ${lead ? "" : "h-full flex flex-col"}`}
             data-testid={`card-piece-${piece.slug}`}

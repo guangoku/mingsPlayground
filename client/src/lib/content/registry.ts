@@ -6,6 +6,7 @@
 import { projects } from '@/lib/projects';
 import atollaCard from '@assets/projects/atolla-ocean/card.jpg';
 import charityBoxCollage from '@assets/projects/charity-box/collage.webp';
+import gapYearCard from '@assets/gapyear/card.webp';
 import { type Piece } from './types';
 
 const coverOf = (projectSlug: string): string | undefined =>
@@ -54,6 +55,8 @@ export const pieces: Piece[] = [
     // card's title. A torn-paper collage has no words to compete with.
     cover: charityBoxCollage,
     coverLayout: 'full',
+    // Reads as a stack: the project page, and the write-up behind it.
+    stacked: true,
     weight: 'flagship',
     topics: ['for-good', 'building'],
     status: 'live',
@@ -84,6 +87,14 @@ export const pieces: Piece[] = [
       en: 'Eighteen months of quitting, wandering, and recalibrating - written as one long scroll.',
       zh: '裸辞、旅居、重新校准自己的十八个月，写成一篇长的。',
     },
+    // A card-specific crop of the page's opening artwork: the motif rides
+    // high so the title lands on clean charcoal, the way the other two
+    // flagships put their text on a quiet part of the picture.
+    cover: gapYearCard,
+    // Anchoring top means a card wider than the art trims empty charcoal off
+    // the bottom instead of taking the top off the drawing.
+    coverPosition: 'center top',
+    coverLayout: 'full',
     weight: 'flagship',
     topics: ['life'],
     status: 'in-progress',
@@ -129,7 +140,7 @@ export const pieces: Piece[] = [
     cover: coverOf('nepal-travel'),
     weight: 'note',
     topics: ['travel', 'art'],
-    status: 'live',
+    status: 'in-progress',
     href: '/projects/nepal-travel',
   },
 ];

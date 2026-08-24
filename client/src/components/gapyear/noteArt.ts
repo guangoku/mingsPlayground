@@ -1,0 +1,37 @@
+import {
+  SPEECH_PAIR,
+  ODD_ONE_OUT,
+  DIVE_MASK,
+  MOUNTAINS,
+  TEMPLE,
+  SCARF,
+  TREE,
+  CHURCH,
+  PAINTING,
+  BOOK,
+  FISH,
+  HAIR,
+  HEART,
+  SPARKLE,
+  SUPPORT,
+  type DoodleSpec,
+} from './doodles';
+
+/** Sketches used on the note cards inside a study panel. */
+export const NOTE_ART: Record<string, DoodleSpec> = {
+  speech: SPEECH_PAIR,
+  odd: ODD_ONE_OUT,
+  mask: DIVE_MASK,
+  mountains: MOUNTAINS,
+  temple: TEMPLE,
+  scarf: SCARF,
+  tree: TREE,
+  church: CHURCH,
+  painting: PAINTING,
+  book: BOOK,
+  fish: FISH,
+  hair: HAIR,
+  heart: HEART,
+  sparkle: SPARKLE,
+  support: SUPPORT,
+};

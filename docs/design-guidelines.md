@@ -19,6 +19,16 @@ piece is the first of these.
 They meet only at cover art. A piece with no artwork yet renders an ink tile,
 which previews the register rather than showing an empty frame.
 
+**`/gap-year` is deliberately its own visual system**, and the Type, Colour,
+Cards and Motion rules below do not apply to it - those describe the ocean
+stage. It owns its tokens, components and layout in
+`client/src/styles/gapyear.css`, `client/src/components/gapyear/` and
+`client/src/pages/gapyear/`, and shares nothing with the site theme but the
+language toggle and the `@assets` pipeline. Changing the site palette, card
+shells or motion does not change that page, and tuning that page does not
+touch the rest of the site. Treat the same independence as available to any
+future piece that earns its own form.
+
 ## Type
 
 Set in `client/src/index.css` as CSS variables, wired to Tailwind in
