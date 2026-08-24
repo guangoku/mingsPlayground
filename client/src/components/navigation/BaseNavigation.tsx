@@ -273,8 +273,11 @@ export default function BaseNavigation({
                         )}
                     </div>
 
-                    {/* Controls */}
-                    <div className="flex items-center gap-2">
+                    {/* Controls. The left margin is the nav items' breathing room:
+                        project pages happen to get it from the prev/next pager,
+                        and without it a post's links sit flush against the
+                        theme toggle. */}
+                    <div className="flex items-center gap-2 md:ml-10 flex-shrink-0">
                         {/* Theme Toggle */}
                         <Button
                             variant="outline"
