@@ -616,6 +616,13 @@ export default function OneDayAWeekDetail({ language }: OneDayAWeekDetailProps) 
                         {t({ en: " - digital help for nonprofits", zh: "：为公益组织提供数字化帮助" })}
                     </li>
                     <li>
+                        <a href="https://www.nten.org/" target="_blank" rel="noopener noreferrer">NTEN</a>
+                        {t({
+                            en: " - the US nonprofit-technology community: online groups, courses, and a job board",
+                            zh: "：美国公益科技从业者社区，有线上小组、课程和招聘版",
+                        })}
+                    </li>
+                    <li>
                         <a href="https://techforgood.qq.com/projects" target="_blank" rel="noopener noreferrer">
                             {t({ en: "腾讯技术公益 Tencent Tech for Good", zh: "腾讯技术公益" })}
                         </a>
