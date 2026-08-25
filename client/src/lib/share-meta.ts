@@ -42,7 +42,7 @@ export const ROUTE_META: Record<string, ShareMeta> = {
   '/blog/one-day-a-week': {
     title: 'One Day a Week: an entire tech team, solo, with AI',
     description:
-      'One volunteered day a week covers the tech for a Chinese effective-giving nonprofit. Four moves - a context layer, a harness, a loop, a handover - what the day bought, and the three things still hard.',
+      'One volunteered day a week covers the tech for a Chinese effective-giving social enterprise. Four moves - a context layer, a harness, a loop, a handover - what the day bought, and the three things still hard.',
     image: '/og/one-day-a-week.jpg',
     type: 'article',
     tab: { en: "One Day a Week | Ming's Playground", zh: "每周一天 | Ming's Playground" },
