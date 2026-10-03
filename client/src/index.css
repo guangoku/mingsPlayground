@@ -465,6 +465,27 @@
   }
 }
 
+/* The hero art is drawn with the hair running off its top edge and the body
+ * off its bottom, which reads as a hard cut. Fade both ends into the water:
+ * the hair tips dissolve into the dark above, the body below the collar into
+ * the band below. The face sits at 70-80% of the height, clear of both. */
+.hero-art-fade {
+  --hero-art-fade: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.35) 5%,
+    rgb(0 0 0 / 0.8) 11%,
+    #000 17%,
+    #000 83%,
+    rgb(0 0 0 / 0.75) 88%,
+    rgb(0 0 0 / 0.4) 93%,
+    rgb(0 0 0 / 0.12) 97%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--hero-art-fade);
+  mask-image: var(--hero-art-fade);
+}
+
 /* Section-specific backgrounds.
  * The page is one descent through Ming's ocean: sunlit surface (hero) →
  * teal reef with light shafts (projects) → sea-glass shallows (blog) →
@@ -673,4 +694,15 @@
   border-color: hsl(220 18% 22%);
   border-radius: 1rem;
   box-shadow: 0 1px 2px hsl(0 0% 0% / 0.2), 0 12px 32px -16px hsl(0 0% 0% / 0.4);
+}
+
+/* Highlighted phrases in resume body text: the body's own gray, one step
+ * darker. Enough to catch a skimming eye, well short of the near-black role
+ * titles and the links, which stay the first read. */
+.resume-em {
+  color: hsl(220 15% 37%);
+}
+
+.dark .resume-em {
+  color: hsl(220 15% 75%);
 }

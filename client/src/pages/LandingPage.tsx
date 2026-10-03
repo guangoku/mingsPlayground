@@ -5,13 +5,12 @@ import { useLanguage } from "@/hooks/useLanguage";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import ShelfSection from "@/components/content/ShelfSection";
-import AdvisoryCTA from "@/components/projects/AdvisoryCTA";
 import { FEATURED_SHELF, MORE_SHELF } from "@/lib/content/shelves";
 import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { getBilingualText } from "@/lib/utils";
+import { getBilingualText, LANDING_SCROLL_KEY } from "@/lib/utils";
 import { COPYRIGHT, FOOTER_TAGLINES } from "@/lib/constants";
 
 function LandingPage() {
@@ -32,8 +31,8 @@ function LandingPage() {
     // link named a section, in which case that wins. Otherwise "Work" would
     // return you to whatever you were last reading.
     useLayoutEffect(() => {
-        const saved = sessionStorage.getItem('landing-scroll');
-        sessionStorage.removeItem('landing-scroll');
+        const saved = sessionStorage.getItem(LANDING_SCROLL_KEY);
+        sessionStorage.removeItem(LANDING_SCROLL_KEY);
 
         const target = window.location.hash.replace('#', '');
         if (target) {
@@ -109,9 +108,7 @@ function LandingPage() {
                         variant="feature"
                         seamFill="hsl(var(--seam-blog))"
                         lightShafts
-                    >
-                        <AdvisoryCTA language={language} variant="onDark" className="mt-12 md:mt-14" />
-                    </ShelfSection>
+                    />
 
                     <ShelfSection
                         shelf={MORE_SHELF}
@@ -126,7 +123,7 @@ function LandingPage() {
                     />
 
                     <section id="resume">
-                        <Resume language={language} isDark={isDark} />
+                        <Resume language={language} />
                     </section>
 
                     <section id="contact">

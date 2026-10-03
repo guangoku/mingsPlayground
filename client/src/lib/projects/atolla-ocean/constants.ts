@@ -5,7 +5,7 @@
 
 export const ATOLLA_OCEAN_CONSTANTS = {
   PROJECT_ID: '5',
-  FOUNDED: 'Nov 2025',
+  FOUNDED: { en: 'Jan 2026', zh: '2026年1月' },
   LIVE_URL: 'https://atollaocean.com',
 
   // Technical focus

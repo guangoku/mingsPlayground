@@ -5,6 +5,7 @@ import { CHARITY_BOX_IMAGES } from "@/lib/projects/charity-box/images";
 import { ArrowRight, ArrowUpRight, PenLine } from "lucide-react";
 import { Link } from "react-router-dom";
 import OneDayCover from "@/components/content/covers/OneDayCover";
+import AdvisoryCTA from "@/components/projects/AdvisoryCTA";
 
 interface CharityBoxDetailProps {
     project: ProjectData;
@@ -133,6 +134,10 @@ export default function CharityBoxDetail({ project, language }: CharityBoxDetail
                 </Link>
             )}
 
+            {/* The same help, offered to other nonprofits. It lives here rather
+                than on the landing page, where it read to hiring managers as
+                an open offer of outside work ahead of any work evidence. */}
+            <AdvisoryCTA language={language} variant="onLight" />
         </div>
     );
 }

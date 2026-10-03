@@ -42,8 +42,8 @@ export const charityBoxData: ProjectData = {
   },
 
   roleChip: {
-    en: 'Sole Engineer & AI Advisor · Pro bono',
-    zh: '唯一工程师与 AI 顾问 · 志愿'
+    en: 'Sole Engineer · Pro bono',
+    zh: '唯一工程师 · 无偿'
   },
 
   period: { en: 'Jan 2025 - present', zh: '2025 年 1 月至今' },

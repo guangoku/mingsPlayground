@@ -72,3 +72,14 @@ export const isChinese = (language: Language): boolean => {
 export const getOppositeLanguage = (language: Language): Language => {
   return language === LANGUAGES.EN ? LANGUAGES.ZH : LANGUAGES.EN;
 };
+
+/**
+ * Session key the landing page reads on mount to put the reader back where
+ * they were before opening a piece.
+ */
+export const LANDING_SCROLL_KEY = 'landing-scroll';
+
+/** Remember the landing scroll position so the back button returns to the same spot. */
+export const rememberLandingScroll = (): void => {
+  sessionStorage.setItem(LANDING_SCROLL_KEY, String(window.scrollY));
+};

@@ -43,8 +43,10 @@ Rearranging the page is a data edit, never a layout change:
   or keep the top few and link to a full index
 
 Each shelf is one band of the ocean gradient, so the existing wave-seam chain
-is unchanged: `projects-bg` (featured + advisory) -> `blog-bg` (the rest) ->
+is unchanged: `projects-bg` (featured) -> `blog-bg` (the rest) ->
 resume -> contact.
+The pro-bono advisory block lives at the end of the CharityBox page, where it
+reaches the nonprofits it is for, rather than on the landing page.
 
 ## Pages, not modals
 

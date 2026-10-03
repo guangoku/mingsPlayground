@@ -26,8 +26,8 @@ export default function AtollaOceanDetail({ project, language }: AtollaOceanDeta
             <header className="space-y-4">
                 <span className="inline-block rounded-full border border-emerald-200/70 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-700 dark:border-white/20 dark:bg-white/10 dark:text-emerald-200">
                     {t({
-                        en: `Founder · since ${ATOLLA_OCEAN_CONSTANTS.FOUNDED}`,
-                        zh: `创始人 · ${ATOLLA_OCEAN_CONSTANTS.FOUNDED} 至今`,
+                        en: `Founder · since ${ATOLLA_OCEAN_CONSTANTS.FOUNDED.en}`,
+                        zh: `创始人 · ${ATOLLA_OCEAN_CONSTANTS.FOUNDED.zh} 至今`,
                     })}
                 </span>
 
