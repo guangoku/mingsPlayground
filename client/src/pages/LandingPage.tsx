@@ -122,13 +122,10 @@ function LandingPage() {
                         seamFill="hsl(var(--seam-resume))"
                     />
 
-                    <section id="resume">
-                        <Resume language={language} />
-                    </section>
+                    {/* Each renders its own <section> with the id the nav scrolls to. */}
+                    <Resume language={language} />
 
-                    <section id="contact">
-                        <Contact language={language} />
-                    </section>
+                    <Contact language={language} />
                 </main>
 
                 {/* Footer */}
