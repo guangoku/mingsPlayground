@@ -33,19 +33,25 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
   ];
 
   return (
-    <section className="relative min-h-[100svh] sm:h-[100svh] flex flex-col sm:flex-row items-stretch overflow-hidden hero-bg grain">
-      {/* Octopus Girl Image */}
-      <div className="relative w-full sm:w-3/5 h-[45svh] sm:h-full flex items-end justify-center sm:justify-start pl-4 sm:pl-8 order-1 sm:order-1">
+    // Art beside the text only where both fit (see the hero-split screen in
+    // tailwind.config.ts); tablets in portrait and narrow windows stack.
+    <section className="relative min-h-[100svh] hero-split:h-[100svh] flex flex-col hero-split:flex-row items-stretch overflow-hidden hero-bg grain">
+      {/* Octopus Girl Image. Stacked, its top 4.5rem clears the fixed 70px nav
+          so the links never sit on the art; the padding comes out of the art's
+          45svh, so the text and buttons below stay where they were. */}
+      <div className="relative w-full hero-split:w-3/5 h-[45svh] hero-split:h-full flex items-end justify-center hero-split:justify-start pt-[4.5rem] hero-split:pt-0 pl-4 hero-split:pl-8 [container-type:size]">
         {/* Soft coral glow behind the character */}
         <div
           aria-hidden
-          className="absolute bottom-0 left-1/2 sm:left-1/3 -translate-x-1/2 w-[80%] h-[70%] rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/2 hero-split:left-1/3 -translate-x-1/2 w-[80%] h-[70%] rounded-full blur-3xl"
           style={{ background: 'radial-gradient(closest-side, hsl(18 90% 55% / 0.22), transparent)' }}
         />
         <motion.img
           src={octopusGirlOrange}
           alt={getBilingualText({ en: 'Octopus Girl Character', zh: '章鱼女孩角色' }, language)}
-          className="relative h-full w-auto max-w-full object-contain object-bottom"
+          // Sized to exactly the drawing (1084x1080), as large as the column
+          // allows, so the edge fade lands on the art and not on empty box.
+          className="hero-art-fade relative h-[min(100cqh,calc(100cqw*1080/1084))] w-auto object-contain object-bottom"
           data-testid="img-octopus-girl"
           {...(reduceMotion
             ? {}
@@ -58,8 +64,8 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full sm:w-2/5 flex-1 sm:flex-none flex flex-col justify-center items-center sm:items-end px-4 sm:pr-12 lg:pr-16 py-8 sm:py-0 sm:h-full order-2 sm:order-2">
-        <div className="text-center sm:text-right w-full max-w-full min-w-0" style={{ containerType: 'inline-size' }}>
+      <div className="relative z-10 w-full hero-split:w-2/5 flex-1 hero-split:flex-none flex flex-col justify-center items-center hero-split:items-end px-4 hero-split:pr-16 py-8 hero-split:py-0 hero-split:h-full">
+        <div className="text-center hero-split:text-right w-full max-w-full min-w-0" style={{ containerType: 'inline-size' }}>
 
           <motion.p
             className="eyebrow mb-5 text-white/60"
@@ -111,7 +117,9 @@ export default function Hero({ name, description, onResumeClick, onProjectsClick
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full max-w-sm sm:max-w-none mx-auto sm:mx-0"
+            // Wraps rather than overflows: a narrow text column stacks the
+            // buttons instead of pushing one onto the artwork.
+            className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center hero-split:justify-end gap-4 w-full max-w-sm sm:max-w-none mx-auto hero-split:mx-0"
             {...fadeUp(0.85)}
           >
             <Button

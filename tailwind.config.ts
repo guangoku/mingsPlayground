@@ -5,6 +5,12 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        // The hero sets its square artwork beside the text only when the
+        // screen is wide enough for the text column and landscape enough for
+        // the art to fill the height; otherwise it stacks, as on phones.
+        "hero-split": { raw: "(min-width: 1024px) and (min-aspect-ratio: 4/3)" },
+      },
       borderRadius: {
         lg: ".5625rem", /* 9px */
         md: ".375rem", /* 6px */
