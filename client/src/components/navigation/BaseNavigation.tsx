@@ -85,6 +85,14 @@ export default function BaseNavigation({
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
 
+            // Contact is shorter than the screen, so its top never reaches the
+            // nav; at the bottom of the page it is the section being read.
+            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+            if (atBottom) {
+                setActiveSection(landingNavItems[landingNavItems.length - 1].id);
+                return;
+            }
+
             // Update active section based on scroll position
             const sections = landingNavItems.map(item => item.href.replace('#', ''));
             const scrollPosition = window.scrollY + 80; // Match navigation bar height
