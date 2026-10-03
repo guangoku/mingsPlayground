@@ -22,8 +22,8 @@ export const pieces: Piece[] = [
       zh: '你的每一次下潜，被理解，被记住。',
     },
     blurb: {
-      en: 'My startup. AI that turns raw dive footage into a finished dive story - the species you saw, and the moments worth keeping.',
-      zh: '我创办的公司。用 AI 把杂乱的潜水影像变成一段完整的潜水故事——你看到的物种，和值得留下的瞬间。',
+      en: 'My startup. AI that turns raw dive footage into highlight clips and a digital aquarium - the species you saw, and the moments worth keeping.',
+      zh: '我创办的公司。用 AI 把杂乱的潜水影像变成精彩片段和数字水族馆——你看到的物种，和值得留下的瞬间。',
     },
     // The site screenshot carried its own headline; this is a frame from the
     // dives the product is built on, which competes with nothing.
@@ -42,7 +42,7 @@ export const pieces: Piece[] = [
   {
     slug: 'charity-box',
     title: { en: 'CharityBox 益盒', zh: '益盒 CharityBox' },
-    role: { en: 'Pro bono · sole engineer', zh: '志愿 · 唯一工程师' },
+    role: { en: 'Pro bono · sole engineer', zh: '无偿 · 唯一工程师' },
     kicker: {
       en: 'An effective-giving research organisation in China.',
       zh: '一家做有效公益的研究与咨询机构。',

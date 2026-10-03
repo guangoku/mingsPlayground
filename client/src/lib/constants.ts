@@ -37,10 +37,12 @@ export const CATEGORIES = {
 
 // Project-specific constants are now in @/lib/projects
 
-// Copyright text
+// Copyright text. The year is read when the bundle loads, so it never goes stale.
+const COPYRIGHT_YEAR = new Date().getFullYear();
+
 export const COPYRIGHT = {
-  en: '© 2025 Mingyun Guan. All rights reserved.',
-  zh: '© 2025 超级赛亚关 — 版权所有。'
+  en: `© ${COPYRIGHT_YEAR} Mingyun Guan. All rights reserved.`,
+  zh: `© ${COPYRIGHT_YEAR} 超级赛亚关 — 版权所有。`
 } as const;
 
 // Footer taglines

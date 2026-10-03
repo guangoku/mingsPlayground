@@ -674,3 +674,14 @@
   border-radius: 1rem;
   box-shadow: 0 1px 2px hsl(0 0% 0% / 0.2), 0 12px 32px -16px hsl(0 0% 0% / 0.4);
 }
+
+/* Highlighted phrases in resume body text: the body's own gray, one step
+ * darker. Enough to catch a skimming eye, well short of the near-black role
+ * titles and the links, which stay the first read. */
+.resume-em {
+  color: hsl(220 15% 37%);
+}
+
+.dark .resume-em {
+  color: hsl(220 15% 75%);
+}

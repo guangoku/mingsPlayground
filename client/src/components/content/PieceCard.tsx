@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { getBilingualText } from "@/lib/utils";
+import { getBilingualText, rememberLandingScroll } from "@/lib/utils";
 import { type Language } from "@/lib/types";
 import { type Piece, TOPIC_LABELS } from "@/lib/content/types";
 import { COVER_ART } from "./covers";
@@ -15,11 +15,6 @@ interface PieceCardProps {
     /** "dark" = on a dark band, "light" = on the pale band (still dark in dark mode) */
     tone?: "dark" | "light";
 }
-
-/** Remember where we were so the back button returns to the same spot. */
-const rememberScroll = () => {
-    sessionStorage.setItem("landing-scroll", String(window.scrollY));
-};
 
 export default function PieceCard({
     piece,
@@ -140,7 +135,7 @@ export default function PieceCard({
 
     const linkWrap = (children: ReactNode) =>
         linkable ? (
-            <Link to={piece.href!} onClick={rememberScroll} className="block">
+            <Link to={piece.href!} onClick={rememberLandingScroll} className="block">
                 {children}
             </Link>
         ) : (
